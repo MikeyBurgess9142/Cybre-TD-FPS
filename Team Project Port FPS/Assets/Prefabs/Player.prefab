@@ -158,7 +158,7 @@ MonoBehaviour:
   gravity: 10
   shtRate: 1
   shtDist: 10
-  shtDam: 5
+  shtDmg: 5
   cube: {fileID: 0}
 --- !u!143 &1086089923953650431
 CharacterController:
