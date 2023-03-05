@@ -29,12 +29,18 @@ public class playerControlle : MonoBehaviour
 
     void movement()
     {
+
+        if (controller.isGrounded)
+        {
+            jumpsCurr = 0;
+        }
         move = transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical");
         move = move.normalized;
         controller.Move(move * Time.deltaTime * playerSpd);
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && jumpsCurr < jumpMax)
         {
+            jumpsCurr++;
             playerVeloc.y = jumpSpd;
         }
 
