@@ -47,7 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c367931127d57af43abb88b33ead98f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 5
+  model: {fileID: 189379441849263594}
+  HP: 15
 --- !u!33 &9207844481767909819
 MeshFilter:
   m_ObjectHideFlags: 0

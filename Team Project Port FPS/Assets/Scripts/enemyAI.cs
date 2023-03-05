@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class enemyAI : MonoBehaviour, IDamage
 {
+    [SerializeField] Renderer model;
+
     [Range(5, 500)] [SerializeField] int HP;
 
     // Start is called before the first frame update
@@ -20,10 +22,18 @@ public class enemyAI : MonoBehaviour, IDamage
     public void takeDmg(int dmg)
     {
         HP -= dmg;
+        StartCoroutine(flashMat());
 
         if (HP <=0)
         {
             Destroy(gameObject);
         }
+    }
+
+    IEnumerator flashMat()
+    {
+        model.material.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        model.material.color = Color.white;
     }
 }
