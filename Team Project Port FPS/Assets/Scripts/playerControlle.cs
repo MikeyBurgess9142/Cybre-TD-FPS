@@ -4,16 +4,25 @@ using UnityEngine;
 
 public class playerControlle : MonoBehaviour
 {
+    [Header("---Components---")]
     [SerializeField] CharacterController controller;
 
-    [SerializeField] float playerSpd;
-    [SerializeField] int jumpMax;
-    [SerializeField] int jumpSpd;
-    [SerializeField] int gravity;
+    [Header("---Player Stats---")]
+    [Range(5, 30)] [SerializeField] float playerSpd;
+    [Range(1, 10)] [SerializeField] int jumpMax;
+    [Range(5, 50)] [SerializeField] int jumpSpd;
+    [Range(10, 10)] [SerializeField] int gravity;
+
+    [Header("---Gun Stats---")]
+    [Range(0, 10)] [SerializeField] float shtRate;
+    [Range(10, 500)] [SerializeField] int shtDist;
+    [Range(5, 250)] [SerializeField] int shtDmg;
+    [SerializeField] GameObject cube;
 
     int jumpsCurr;
     Vector3 move;
     Vector3 playerVeloc;
+    bool isShooting;
 
     // Start is called before the first frame update
     void Start()
@@ -25,12 +34,17 @@ public class playerControlle : MonoBehaviour
     void Update()
     {
         movement();
+
+        if (!isShooting && Input.GetButton("Shoot"))
+        {
+            StartCoroutine(shoot());
+        }
     }
 
     void movement()
     {
 
-        if (controller.isGrounded && playerVeloc.y <0)
+        if (controller.isGrounded && playerVeloc.y < 0)
         {
             playerVeloc.y = 0;
             jumpsCurr = 0;
@@ -48,5 +62,22 @@ public class playerControlle : MonoBehaviour
 
         playerVeloc.y -= gravity * Time.deltaTime;
         controller.Move(playerVeloc * Time.deltaTime);
+    }
+
+    IEnumerator shoot()
+    {
+        isShooting = true;
+
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shtDist))
+        {
+            if (hit.collider.GetComponent<IDamage>() != null)
+            {
+                hit.collider.GetComponent<IDamage>().takeDmg(shtDmg);
+            }
+        }
+
+        yield return new WaitForSeconds(shtRate);
+        isShooting = false;
     }
 }

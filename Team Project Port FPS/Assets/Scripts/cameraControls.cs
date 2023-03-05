@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class cameraControls : MonoBehaviour
 {
+    [Header("---Sensitvity---")]
     [SerializeField] int sensHor;
     [SerializeField] int sensVer;
 
+    [Header("---View Min,Max---")]
     [SerializeField] int lockVerMin;
     [SerializeField] int lockVerMax;
 
+    [Header("---Invert Camera Y---")]
     [SerializeField] bool invertY;
 
     float xRotation;
@@ -17,7 +20,8 @@ public class cameraControls : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame

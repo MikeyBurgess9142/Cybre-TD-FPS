@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 1086089923953650426}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -156,6 +156,10 @@ MonoBehaviour:
   jumpMax: 3
   jumpSpd: 6
   gravity: 10
+  shtRate: 1
+  shtDist: 10
+  shtDam: 5
+  cube: {fileID: 0}
 --- !u!143 &1086089923953650431
 CharacterController:
   m_ObjectHideFlags: 0
