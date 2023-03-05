@@ -18,7 +18,7 @@ public class playerControlle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -30,10 +30,12 @@ public class playerControlle : MonoBehaviour
     void movement()
     {
 
-        if (controller.isGrounded)
+        if (controller.isGrounded && playerVeloc.y <0)
         {
+            playerVeloc.y = 0;
             jumpsCurr = 0;
         }
+
         move = transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical");
         move = move.normalized;
         controller.Move(move * Time.deltaTime * playerSpd);
@@ -45,7 +47,6 @@ public class playerControlle : MonoBehaviour
         }
 
         playerVeloc.y -= gravity * Time.deltaTime;
-
         controller.Move(playerVeloc * Time.deltaTime);
     }
 }
