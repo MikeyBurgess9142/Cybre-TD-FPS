@@ -16,6 +16,7 @@ public class gameManager : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject winMenu;
     public GameObject loseMenu;
+    public GameObject checkPointMsg;
 
     [Header("---Game Goals---")]
     public int enemiesAlive;
