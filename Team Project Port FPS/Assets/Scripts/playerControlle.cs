@@ -33,12 +33,16 @@ public class playerControlle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movement();
-
-        if (!isShooting && Input.GetButton("Shoot"))
+        if (!gameManager.instance.isPaused)
         {
-            StartCoroutine(shoot());
+            movement();
+
+            if (!isShooting && Input.GetButton("Shoot"))
+            {
+                StartCoroutine(shoot());
+            }
         }
+        
     }
 
     void movement()

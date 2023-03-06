@@ -13,6 +13,11 @@ public class gameManager : MonoBehaviour
     [Header("---UI---")]
     public GameObject activeMenu;
     public GameObject pauseMenu;
+    public GameObject winMenu;
+    public GameObject loseMenu;
+
+    [Header("---Game Goals---")]
+    public int enemiesAlive;
 
     public bool isPaused;
 
@@ -25,11 +30,20 @@ public class gameManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Cancel"))
+        if (Input.GetButtonDown("Cancel") && activeMenu == null)
         {
             isPaused = !isPaused;
             activeMenu = pauseMenu;
             activeMenu.SetActive(isPaused);
+
+            if (isPaused)
+            {
+                pasueState();
+            }
+            else
+            {
+                unpauseState();
+            }
         }
     }
 
@@ -47,5 +61,17 @@ public class gameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         activeMenu.SetActive(false);
         activeMenu = null;
+    }
+
+    public void updateGameGoal(int amt)
+    {
+        enemiesAlive += amt;
+
+        if (enemiesAlive <= 0)
+        {
+            pasueState();
+            activeMenu = winMenu;
+            activeMenu.SetActive(true);
+        }
     }
 }
