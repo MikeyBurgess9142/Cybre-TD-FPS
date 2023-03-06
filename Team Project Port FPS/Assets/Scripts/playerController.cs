@@ -8,6 +8,7 @@ public class playerController : MonoBehaviour
     [SerializeField] CharacterController controller;
 
     [Header("---Player Stats---")]
+    [Range(10, 1000)] [SerializeField] int HP;
     [Range(5, 30)] [SerializeField] float playerSpd;
     [Range(1, 10)] [SerializeField] int jumpMax;
     [Range(5, 50)] [SerializeField] int jumpSpd;
@@ -18,6 +19,7 @@ public class playerController : MonoBehaviour
     [Range(10, 500)] [SerializeField] int shtDist;
     [Range(5, 250)] [SerializeField] int shtDmg;
 
+    int hpOrigin;
     int jumpsCurr;
     Vector3 move;
     Vector3 playerVeloc;
@@ -86,8 +88,19 @@ public class playerController : MonoBehaviour
 
     public void respawnPlayer()
     {
+        HP = hpOrigin;
         controller.enabled = false;
         transform.position = gameManager.instance.playerSpawnPos.transform.position;
         controller.enabled = true;
+    }
+
+    public void takeDmg(int dmg)
+    {
+        HP -= dmg;
+
+        if (HP <= 0)
+        {
+            
+        }
     }
 }
