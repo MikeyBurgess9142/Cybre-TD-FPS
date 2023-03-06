@@ -151,15 +151,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2f304ab4201c7547a80808a02a4b877, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
-  playerSpd: 0
-  jumpMax: 0
-  jumpSpd: 0
-  gravity: 0
+  controller: {fileID: 1086089923953650431}
+  HP: 0
+  playerSpd: 5
+  jumpMax: 1
+  jumpSpd: 5
+  gravity: 10
   shtRate: 0
-  shtDist: 0
-  shtDmg: 0
-  cube: {fileID: 0}
+  shtDist: 10
+  shtDmg: 5
 --- !u!143 &1086089923953650431
 CharacterController:
   m_ObjectHideFlags: 0

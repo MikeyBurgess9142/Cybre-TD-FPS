@@ -14,6 +14,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [Range(0, 10)] [SerializeField] float shtRate;
     [Range(10, 500)] [SerializeField] int shtDist;
     [SerializeField] GameObject bullet;
+    [SerializeField] int bulletSpd;
     [SerializeField] Transform shootPos;
 
     bool isShooting;
@@ -27,12 +28,17 @@ public class enemyAI : MonoBehaviour, IDamage
     // Update is called once per frame
     void Update()
     {
-
+        if (!isShooting)
+        {
+            StartCoroutine(shoot());
+        }
     }
 
     IEnumerator shoot()
     {
         isShooting = true;
+        GameObject bulletClone = Instantiate(bullet,shootPos.position, bullet.transform.rotation);
+        bulletClone.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpd;
         yield return new WaitForSeconds(shtRate);
         isShooting = false;
     }
