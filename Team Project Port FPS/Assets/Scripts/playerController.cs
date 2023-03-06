@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerControlle : MonoBehaviour
+public class playerController : MonoBehaviour
 {
     [Header("---Components---")]
     [SerializeField] CharacterController controller;
@@ -17,7 +17,6 @@ public class playerControlle : MonoBehaviour
     [Range(0, 10)] [SerializeField] float shtRate;
     [Range(10, 500)] [SerializeField] int shtDist;
     [Range(5, 250)] [SerializeField] int shtDmg;
-    [SerializeField] GameObject cube;
 
     int jumpsCurr;
     Vector3 move;
@@ -27,7 +26,7 @@ public class playerControlle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        respawnPlayer();
     }
 
     // Update is called once per frame
@@ -83,5 +82,12 @@ public class playerControlle : MonoBehaviour
 
         yield return new WaitForSeconds(shtRate);
         isShooting = false;
+    }
+
+    public void respawnPlayer()
+    {
+        controller.enabled = false;
+        transform.position = gameManager.instance.playerSpawnPos.transform.position;
+        controller.enabled = true;
     }
 }

@@ -8,7 +8,8 @@ public class gameManager : MonoBehaviour
 
     [Header("---Player Stuff---")]
     public GameObject player;
-    public playerControlle playerScript;
+    public playerController playerScript;
+    public GameObject playerSpawnPos;
 
     [Header("---UI---")]
     public GameObject activeMenu;
@@ -25,7 +26,8 @@ public class gameManager : MonoBehaviour
     {
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player");
-        playerScript = player.GetComponent<playerControlle>();
+        playerScript = player.GetComponent<playerController>();
+        playerSpawnPos = GameObject.FindGameObjectWithTag("Player Spawn Pos");
     }
 
     void Update()
