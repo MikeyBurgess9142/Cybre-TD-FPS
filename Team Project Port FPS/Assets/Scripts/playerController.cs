@@ -28,6 +28,7 @@ public class playerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        hpOrigin = HP;
         respawnPlayer();
     }
 
@@ -100,7 +101,7 @@ public class playerController : MonoBehaviour
 
         if (HP <= 0)
         {
-            
+            gameManager.instance.playerDead();
         }
     }
 }

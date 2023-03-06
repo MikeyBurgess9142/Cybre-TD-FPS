@@ -77,4 +77,11 @@ public class gameManager : MonoBehaviour
             activeMenu.SetActive(true);
         }
     }
+
+    public void playerDead()
+    {
+        pasueState();
+        activeMenu = loseMenu;
+        activeMenu.SetActive(true);
+    }
 }
