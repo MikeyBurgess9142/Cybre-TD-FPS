@@ -98,6 +98,12 @@ public class enemyAI : MonoBehaviour, IDamage
         return false;
     }
 
+    void facePlayer()
+    {
+        playerDir.y = 0;
+        Quaternion rot = Quaternion.LookRotation(playerDir);
+        transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * playerFaceSpeed);
+    }
     IEnumerator shoot()
     {
         isShooting = true;
