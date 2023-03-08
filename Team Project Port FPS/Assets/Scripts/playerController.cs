@@ -105,4 +105,9 @@ public class playerController : MonoBehaviour
             gameManager.instance.playerDead();
         }
     }
+
+    public void updateHP()
+    {
+        gameManager.instance.playerHPBar.fillAmount = (float)HP / (float)hpOrigin;
+    }
 }
