@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dmg: 1
-  timer: 3
+  timer: 5
 --- !u!135 &6873387068043755889
 SphereCollider:
   m_ObjectHideFlags: 0
