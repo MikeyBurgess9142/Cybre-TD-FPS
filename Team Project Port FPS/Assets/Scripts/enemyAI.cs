@@ -40,6 +40,23 @@ public class enemyAI : MonoBehaviour, IDamage
         startingPos = transform.position;
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = true;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = false;
+            agent.stoppingDistance = 0;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
