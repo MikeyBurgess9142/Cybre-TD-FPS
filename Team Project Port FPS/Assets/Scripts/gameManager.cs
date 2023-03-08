@@ -89,4 +89,10 @@ public class gameManager : MonoBehaviour
         activeMenu = loseMenu;
         activeMenu.SetActive(true);
     }
+    public IEnumerator playerHit()
+    {
+        playerHitFlash.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        playerHitFlash.SetActive(false);
+    }
 }
