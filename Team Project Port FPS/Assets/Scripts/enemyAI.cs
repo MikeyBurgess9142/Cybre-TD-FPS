@@ -36,6 +36,8 @@ public class enemyAI : MonoBehaviour, IDamage
     void Start()
     {
         gameManager.instance.updateGameGoal(1);
+        stoppingDistOrig = agent.stoppingDistance;
+        startingPos = transform.position;
     }
 
     // Update is called once per frame
