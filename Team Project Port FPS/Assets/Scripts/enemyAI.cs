@@ -85,7 +85,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
                 if(agent.remainingDistance < agent.stoppingDistance)
                 {
-                    
+                    facePlayer();
                 }
 
                 if (!isShooting)
