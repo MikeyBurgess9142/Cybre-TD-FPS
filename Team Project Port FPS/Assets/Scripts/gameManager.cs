@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class gameManager : MonoBehaviour
 {
@@ -17,6 +19,9 @@ public class gameManager : MonoBehaviour
     public GameObject winMenu;
     public GameObject loseMenu;
     public GameObject checkPointMsg;
+    public GameObject playerHitFlash;
+    public Image playerHPBar;
+    public TextMeshProUGUI enemiesRemainingText;
 
     [Header("---Game Goals---")]
     public int enemiesAlive;
