@@ -99,6 +99,8 @@ public class playerController : MonoBehaviour
     public void takeDmg(int dmg)
     {
         HP -= dmg;
+        updateHP();
+        StartCoroutine(gameManager.instance.playerHit());
 
         if (HP <= 0)
         {
