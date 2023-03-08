@@ -30,6 +30,7 @@ public class playerController : MonoBehaviour
     void Start()
     {
         hpOrigin = HP;
+        updateHP();
         respawnPlayer();
     }
 
@@ -91,6 +92,7 @@ public class playerController : MonoBehaviour
     public void respawnPlayer()
     {
         HP = hpOrigin;
+        updateHP();
         controller.enabled = false;
         transform.position = gameManager.instance.playerSpawnPos.transform.position;
         controller.enabled = true;
