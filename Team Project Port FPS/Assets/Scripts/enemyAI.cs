@@ -98,6 +98,24 @@ public class enemyAI : MonoBehaviour, IDamage
         return false;
     }
 
+    IEnumerator roam()
+    {
+        if(!destinationChosen && agent.remainingDistance < 0.05)
+        {
+            destinationChosen = true;
+            agent.stoppingDistance = 0;
+            yield return new WaitForSeconds(waitTime);
+            destinationChosen = false;
+
+            Vector3 ranDir = Random.insideUnitSphere * roamDist;
+            ranDir += startingPos;
+            NavMeshHit hit;
+            NavMesh.SamplePosition(ranDir, out hit, roamDist, 1);
+
+            agent.SetDestination(hit.position);
+        }
+    }
+
     void facePlayer()
     {
         playerDir.y = 0;
