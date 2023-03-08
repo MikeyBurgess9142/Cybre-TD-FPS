@@ -12,7 +12,7 @@ public class playerController : MonoBehaviour
     [Range(5, 30)] [SerializeField] float playerSpd;
     [Range(1, 10)] [SerializeField] int jumpMax;
     [Range(5, 50)] [SerializeField] int jumpSpd;
-    [Range(10, 10)] [SerializeField] int gravity;
+    [Range(5, 50)] [SerializeField] int gravity;
 
     [Header("---Gun Stats---")]
     [Range(0, 10)] [SerializeField] float shtRate;
