@@ -18,6 +18,7 @@ public class playerController : MonoBehaviour
     [Range(0, 10)] [SerializeField] float shtRate;
     [Range(10, 500)] [SerializeField] int shtDist;
     [Range(5, 250)] [SerializeField] int shtDmg;
+    [SerializeField] GameObject cube;
 
     int hpOrigin;
     int jumpsCurr;
