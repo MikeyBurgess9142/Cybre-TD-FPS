@@ -117,8 +117,9 @@ public class enemyAI : MonoBehaviour, IDamage
     {
         HP -= dmg;
         StartCoroutine(flashMat());
+        agent.SetDestination(gameManager.instance.player.transform.position);
 
-        if (HP <=0)
+        if (HP <= 0)
         {
             gameManager.instance.updateGameGoal(-1);
             Destroy(gameObject);
