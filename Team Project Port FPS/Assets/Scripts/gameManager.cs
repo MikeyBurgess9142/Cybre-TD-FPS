@@ -74,6 +74,7 @@ public class gameManager : MonoBehaviour
     public void updateGameGoal(int amt)
     {
         enemiesAlive += amt;
+        enemiesRemainingText.text = enemiesAlive.ToString("F0");
 
         if (enemiesAlive <= 0)
         {
