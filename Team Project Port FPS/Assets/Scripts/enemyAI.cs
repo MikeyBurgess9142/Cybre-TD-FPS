@@ -31,6 +31,7 @@ public class enemyAI : MonoBehaviour, IDamage
     bool destinationChosen;
     float stoppingDistOrig;
     Vector3 startingPos;
+    Color matOriginColor;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +39,7 @@ public class enemyAI : MonoBehaviour, IDamage
         gameManager.instance.updateGameGoal(1);
         stoppingDistOrig = agent.stoppingDistance;
         startingPos = transform.position;
+        matOriginColor = model.material.color;
     }
 
     void OnTriggerEnter(Collider other)
@@ -153,6 +155,6 @@ public class enemyAI : MonoBehaviour, IDamage
     {
         model.material.color = Color.red;
         yield return new WaitForSeconds(0.1f);
-        model.material.color = Color.white;
+        model.material.color = matOriginColor;
     }
 }
