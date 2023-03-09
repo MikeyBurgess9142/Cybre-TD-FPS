@@ -152,14 +152,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1086089923953650431}
-  HP: 0
-  playerSpd: 5
-  jumpMax: 1
-  jumpSpd: 5
+  HP: 15
+  playerSpd: 10
+  jumpMax: 3
+  jumpSpd: 6
   gravity: 10
   shtRate: 0
-  shtDist: 10
+  shtDist: 57
   shtDmg: 5
+  cube: {fileID: 0}
 --- !u!143 &1086089923953650431
 CharacterController:
   m_ObjectHideFlags: 0
@@ -206,7 +207,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 1033b8312250a124abeea0ca7938979d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
