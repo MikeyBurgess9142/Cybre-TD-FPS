@@ -13,6 +13,7 @@ public class playerController : MonoBehaviour
     [Range(1, 10)] [SerializeField] int jumpMax;
     [Range(1,25)] [SerializeField] int jumpSpd;
     [Range(10,10)] [SerializeField] int gravity;
+    [SerializeField] Transform playerHitBox;
 
     [Header("---Gun Stats---")]
     [Range(0, 10)] [SerializeField] float shtRate;
