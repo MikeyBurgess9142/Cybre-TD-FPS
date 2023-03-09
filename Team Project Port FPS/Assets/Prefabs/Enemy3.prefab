@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 480487852608299200}
-  - component: {fileID: 480487852608299231}
+  - component: {fileID: 6157960131239600921}
   - component: {fileID: 480487852608299230}
   - component: {fileID: 480487852608299229}
   - component: {fileID: 480487852608299228}
@@ -101,7 +101,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &480487852608299231
+--- !u!114 &6157960131239600921
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -113,19 +113,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c367931127d57af43abb88b33ead98f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  model: {fileID: 480487852608299229}
-  agent: {fileID: 480487852608299226}
-  headPos: {fileID: 480487850737878418}
-  HP: 100
-  roamDist: 30
-  sightAngle: 90
-  playerFaceSpeed: 25
-  waitTime: 5
-  shtRate: 0.1
-  shtDist: 10
+  model: {fileID: 0}
+  agent: {fileID: 0}
+  headPos: {fileID: 0}
+  HP: 0
+  roamDist: 0
+  sightAngle: 0
+  playerFaceSpeed: 0
+  waitTime: 0
+  shtRate: 0
+  shtDist: 0
   bullet: {fileID: 0}
-  bulletSpd: 15
-  shootPos: {fileID: 480487850730057814}
+  bulletSpd: 0
+  shootPos: {fileID: 0}
 --- !u!33 &480487852608299230
 MeshFilter:
   m_ObjectHideFlags: 0
