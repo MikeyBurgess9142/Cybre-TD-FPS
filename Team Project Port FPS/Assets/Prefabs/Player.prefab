@@ -189,12 +189,12 @@ MonoBehaviour:
   controller: {fileID: 1086089923953650431}
   HP: 15
   playerSpd: 10
-  jumpMax: 3
-  jumpSpd: 6
-  gravity: 10
+  jumpMax: 1
+  jumpSpd: 10
+  gravity: 30
   playerHitBox: {fileID: 0}
   shtRate: 0.25
-  shtDist: 57
+  shtDist: 50
   shtDmg: 5
 --- !u!143 &1086089923953650431
 CharacterController:

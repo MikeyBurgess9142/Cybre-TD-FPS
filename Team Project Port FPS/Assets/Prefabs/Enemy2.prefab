@@ -88,9 +88,9 @@ GameObject:
   - component: {fileID: 4110700952835344599}
   - component: {fileID: 9207844481767909819}
   - component: {fileID: 189379441849263594}
-  - component: {fileID: 7994017119190582435}
   - component: {fileID: 6258353447094383591}
   - component: {fileID: 2134442934}
+  - component: {fileID: 158034316}
   m_Layer: 6
   m_Name: Enemy2
   m_TagString: Enemy
@@ -130,16 +130,16 @@ MonoBehaviour:
   model: {fileID: 189379441849263594}
   agent: {fileID: 6258353447094383591}
   headPos: {fileID: 883567909}
-  HP: 60
-  roamDist: 20
-  sightAngle: 90
-  playerFaceSpeed: 3
-  waitTime: 1
-  shtRate: 5
-  shtDist: 100
-  bullet: {fileID: 3737781795031576592, guid: 255c4c45ddee5cf48bb11ec0c3948bb3, type: 3}
-  bulletSpd: 50
+  HP: 25
+  playerFaceSpeed: 5
+  viewAngle: 75
+  shootAngle: 75
+  waitTime: 3
+  roamDist: 10
   shootPos: {fileID: 16506017130990892}
+  bullet: {fileID: 3737781795031576592, guid: 5df1c4e6b573d824ea23ce279ed4f111, type: 3}
+  bulletSpeed: 50
+  shootRate: 2
 --- !u!33 &9207844481767909819
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -190,19 +190,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7994017119190582435
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8241397270926822719}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &6258353447094383591
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -237,4 +224,18 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 40
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &158034316
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8241397270926822719}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}

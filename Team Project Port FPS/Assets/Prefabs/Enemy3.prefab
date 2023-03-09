@@ -113,19 +113,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c367931127d57af43abb88b33ead98f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  model: {fileID: 0}
-  agent: {fileID: 0}
-  headPos: {fileID: 0}
-  HP: 0
-  roamDist: 0
-  sightAngle: 0
-  playerFaceSpeed: 0
+  model: {fileID: 480487852608299229}
+  agent: {fileID: 480487852608299226}
+  headPos: {fileID: 480487850737878418}
+  HP: 20
+  playerFaceSpeed: 5
+  viewAngle: 90
+  shootAngle: 90
   waitTime: 0
-  shtRate: 0
-  shtDist: 0
-  bullet: {fileID: 0}
-  bulletSpd: 0
-  shootPos: {fileID: 0}
+  roamDist: 0
+  shootPos: {fileID: 480487850730057814}
+  bullet: {fileID: 3737781795031576592, guid: da827120c66018144aff7012db85a3b1, type: 3}
+  bulletSpeed: 35
+  shootRate: 0.1
 --- !u!33 &480487852608299230
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -186,10 +186,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000001
+  m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0, y: 1.25, z: 0}
 --- !u!135 &480487852608299227
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -213,7 +213,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5000001
-  m_Speed: 20
+  m_Speed: 0
   m_Acceleration: 3
   avoidancePriority: 50
   m_AngularSpeed: 600
