@@ -191,10 +191,9 @@ MonoBehaviour:
   jumpMax: 3
   jumpSpd: 6
   gravity: 10
-  shtRate: 0
+  shtRate: 0.25
   shtDist: 57
   shtDmg: 5
-  cube: {fileID: 0}
 --- !u!143 &1086089923953650431
 CharacterController:
   m_ObjectHideFlags: 0
