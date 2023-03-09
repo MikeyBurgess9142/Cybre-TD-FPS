@@ -39,7 +39,7 @@ public class enemyAI : MonoBehaviour, IDamage
         startingPos = transform.position;
         stoppingDistOrig = agent.stoppingDistance;
         speedOrig = agent.speed;
-        gameManager.instance.updateGameGoal(gameManager.instance.enemiesAlive);
+        gameManager.instance.updateGameGoal(1);
     }
 
     void Update()
