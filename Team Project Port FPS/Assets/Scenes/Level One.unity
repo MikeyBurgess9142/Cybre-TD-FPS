@@ -178,10 +178,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floor(Grass)
       objectReference: {fileID: 0}
-    - target: {fileID: 7122105088397803635, guid: b24db3ed68a8d1a418ded6c64d1cd3d4, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 5d8af8f434f69794eabd684fb44b4fbf, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b24db3ed68a8d1a418ded6c64d1cd3d4, type: 3}
 --- !u!1001 &784307655
@@ -205,7 +201,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6969435581272140379, guid: 593275ef2f6e296459b2bd4ad93b5e05, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6969435581272140379, guid: 593275ef2f6e296459b2bd4ad93b5e05, type: 3}
       propertyPath: m_AnchorMax.x
@@ -294,7 +290,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8190365473080733132, guid: fbcc42eaf75c1c743b4ed48db8f4b976, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8190365473080733132, guid: fbcc42eaf75c1c743b4ed48db8f4b976, type: 3}
       propertyPath: m_LocalPosition.x
@@ -466,7 +462,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1086089923953650425, guid: 6eeea0ea7d6815c4a91b4d636845ff03, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1086089923953650425, guid: 6eeea0ea7d6815c4a91b4d636845ff03, type: 3}
       propertyPath: m_LocalPosition.x
