@@ -46,7 +46,6 @@ public class playerController : MonoBehaviour
                 StartCoroutine(shoot());
             }
         }
-        
     }
 
     void movement()
