@@ -11,6 +11,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
     [Header("----- Stats -----")]
     [SerializeField] Transform headPos;
+    [SerializeField] Transform playerHitBox;
     [Range(1, 50)][SerializeField] int HP;
     [SerializeField] int playerFaceSpeed;
     [SerializeField] int viewAngle;
@@ -29,6 +30,7 @@ public class enemyAI : MonoBehaviour, IDamage
     float stoppingDistOrig;
 
     Vector3 playerDir;
+    Vector3 shootDir;
     bool playerInRange;
     bool isShooting;
     float angleToPlayer;
@@ -86,6 +88,7 @@ public class enemyAI : MonoBehaviour, IDamage
     bool canSeePlayer()
     {
         playerDir = (gameManager.instance.player.transform.position - headPos.position).normalized;
+        shootDir = (gameManager.instance.player.transform.position - headPos.position).normalized;
         angleToPlayer = Vector3.Angle(new Vector3(playerDir.x, 0, playerDir.z), transform.forward);
 
         RaycastHit hit;
@@ -150,7 +153,7 @@ public class enemyAI : MonoBehaviour, IDamage
     {
         isShooting = true;
         GameObject bulletClone = Instantiate(bullet, shootPos.position, bullet.transform.rotation);
-        bulletClone.GetComponent<Rigidbody>().velocity = playerDir * bulletSpeed;
+        bulletClone.GetComponent<Rigidbody>().velocity = shootDir * bulletSpeed;
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
     }
