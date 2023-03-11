@@ -505,18 +505,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 364676463}
     m_Modifications:
-    - target: {fileID: 883567908, guid: af43f59bf519a90439b3215afdcf0734, type: 3}
-      propertyPath: m_Name
-      value: Head Pos
-      objectReference: {fileID: 0}
-    - target: {fileID: 883567909, guid: af43f59bf519a90439b3215afdcf0734, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 16506017130990892, guid: af43f59bf519a90439b3215afdcf0734, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 4110700952835344599, guid: af43f59bf519a90439b3215afdcf0734, type: 3}
       propertyPath: playerHitBox
       value: 
