@@ -160,6 +160,7 @@ public class playerController : MonoBehaviour
 
         if (HP <= 0)
         {
+            zooming = false;
             gameManager.instance.playerDead();
         }
     }
