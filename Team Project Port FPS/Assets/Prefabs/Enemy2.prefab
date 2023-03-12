@@ -132,7 +132,7 @@ MonoBehaviour:
   headPos: {fileID: 883567909}
   playerHitBox: {fileID: 0}
   HP: 15
-  playerFaceSpeed: 3
+  playerFaceSpeed: 16
   viewAngle: 75
   shootAngle: 75
   waitTime: 3

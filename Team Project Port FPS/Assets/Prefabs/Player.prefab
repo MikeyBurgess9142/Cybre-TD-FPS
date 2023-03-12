@@ -262,8 +262,8 @@ Transform:
   m_GameObject: {fileID: 796801754829517249}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1238917395}
   m_RootOrder: 1
@@ -281,7 +281,6 @@ GameObject:
   - component: {fileID: 1086089923953650431}
   - component: {fileID: 1086089923953650424}
   - component: {fileID: 1086089923953650427}
-  - component: {fileID: 1086089923953650426}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -320,12 +319,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1086089923953650431}
   HP: 100
-  playerSpd: 0
-  jumpMax: 0
-  jumpSpd: 0
+  playerSpd: 5
+  jumpMax: 1
+  jumpSpd: 10
   gravity: 30
   sprintMod: 2
-  playerHitBox: {fileID: 0}
+  playerHitBox: {fileID: 4503172131126522297}
   gunList: []
   shtRate: 0
   shtDist: 0
@@ -408,20 +407,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &1086089923953650426
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1086089923953650309}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3019172137904304814
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,8 +477,8 @@ Transform:
   m_GameObject: {fileID: 9049708018389529850}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1238917395}
   m_RootOrder: 2
