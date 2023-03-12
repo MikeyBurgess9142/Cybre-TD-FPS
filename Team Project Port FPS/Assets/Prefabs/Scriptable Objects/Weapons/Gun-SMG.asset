@@ -24,5 +24,5 @@ MonoBehaviour:
   shtRate: 0.1
   shtDist: 30
   shtDmg: 1
-  gunModel: {fileID: 7257352472016805819, guid: f53b44b49de3d584d87b12aea2125f51, type: 3}
+  gunModel: {fileID: 5407598496746668248, guid: f53b44b49de3d584d87b12aea2125f51, type: 3}
   gunShotAud: {fileID: 0}
