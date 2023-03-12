@@ -23,7 +23,16 @@ public class playerController : MonoBehaviour
     [Range(5, 250)] [SerializeField] int shtDmg;
     [SerializeField] MeshFilter gunModel;
     [SerializeField] MeshRenderer gunMaterial;
-    //[SerializeField] GameObject cube;
+    public Transform gunModelADS;
+    public Transform gunModelDefaultPos;
+    public int adsSpd;
+    public int notADSSpd;
+
+    public bool zooming;
+    public float zoomMax;
+    public int zoomInSpd;
+    public int zoomOutSpd;
+    float zoomOrig;
 
     int hpOrigin;
     int jumpsCurr;
@@ -38,9 +47,11 @@ public class playerController : MonoBehaviour
     void Start()
     {
         hpOrigin = HP;
-        updateHP();
-        respawnPlayer();
         playerSpdOrig = playerSpd;
+        zoomOrig = Camera.main.fieldOfView;
+
+        respawnPlayer();
+        updateHP();
     }
 
     // Update is called once per frame
@@ -49,6 +60,8 @@ public class playerController : MonoBehaviour
         if (!gameManager.instance.isPaused)
         {
             movement();
+            selectGun();
+            zoomCamera();
 
             if (!isShooting && Input.GetButton("Shoot"))
             {
@@ -156,13 +169,65 @@ public class playerController : MonoBehaviour
         gameManager.instance.playerHPBar.fillAmount = (float)HP / (float)hpOrigin;
     }
 
+    public void resetGunPos()
+    {
+        Camera.main.fieldOfView = zoomOrig;
+
+        gunModelDefaultPos.localPosition = new Vector3(0, 0, 0);
+        gunModel.transform.localPosition = new Vector3(0, 0, 0);
+        gunModelADS.localPosition = new Vector3(0, 0, 0);
+    }
+
+    void selectGun()
+    {
+        if (Input.GetAxis("Mouse ScrollWheel") > 0 && selectedGun < gunList.Count - 1)
+        {
+            selectedGun++;
+            changeGun();
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && selectedGun > 0)
+        {
+            selectedGun--;
+            changeGun();
+        }
+    }
+
+    void changeGun()
+    {
+        resetGunPos();
+
+        shtRate = gunList[selectedGun].shtRate;
+        shtDist = gunList[selectedGun].shtDist;
+        shtDmg = gunList[selectedGun].shtDmg;
+        gunModelADS.localPosition = gunList[selectedGun].gunModelADS;
+        gunModel.transform.localPosition = gunList[selectedGun].gunPosition;
+        gunModelDefaultPos.localPosition = gunList[selectedGun].gunModelDefaultPos;
+        zoomMax = gunList[selectedGun].zoomMax;
+        zoomInSpd = gunList[selectedGun].zoomInSpd;
+        zoomOutSpd = gunList[selectedGun].zoomOutSpd;
+        adsSpd = gunList[selectedGun].adsSpd;
+        notADSSpd = gunList[selectedGun].notADSSpd;
+
+        gunModel.sharedMesh = gunList[selectedGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
+        gunMaterial.sharedMaterial = gunList[selectedGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+    }
+
     public void gunPickup(gunStats gunStat)
     {
+        resetGunPos();
         gunList.Add(gunStat);
 
-        shtDmg = gunStat.shtDmg;
-        shtDist = gunStat.shtDist;
         shtRate = gunStat.shtRate;
+        shtDist = gunStat.shtDist;
+        shtDmg = gunStat.shtDmg;
+        gunModelADS.localPosition = gunStat.gunModelADS;
+        gunModel.transform.localPosition = gunStat.gunPosition;
+        gunModelDefaultPos.localPosition = gunStat.gunModelDefaultPos;
+        zoomMax = gunStat.zoomMax;
+        zoomInSpd = gunStat.zoomInSpd;
+        zoomOutSpd = gunStat.zoomOutSpd;
+        adsSpd = gunStat.adsSpd;
+        notADSSpd = gunStat.notADSSpd;
 
         gunModel.sharedMesh = gunStat.gunModel.GetComponent<MeshFilter>().sharedMesh;
         gunMaterial.sharedMaterial = gunStat.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
@@ -170,26 +235,43 @@ public class playerController : MonoBehaviour
         selectedGun = gunList.Count - 1;
     }
 
-    void selectGun()
+    void zoomInput()
     {
-        if(Input.GetAxis("Mouse ScrollWheel") > 0 && selectedGun < gunList.Count - 1)
+        if (Input.GetButtonDown("Zoom"))
         {
-            selectedGun++;
-
+            zooming = true;
         }
-        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && selectedGun > 0)
+        else if (Input.GetButtonUp("Zoom"))
         {
-            selectedGun--;
-
+            zooming = false;
         }
     }
-    void changeGun()
-    {
-        shtDmg = gunList[selectedGun].shtDmg;
-        shtDist = gunList[selectedGun].shtDist;
-        shtRate = gunList[selectedGun].shtRate;
 
-        gunModel.sharedMesh = gunList[selectedGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
-        gunMaterial.sharedMaterial = gunList[selectedGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+    void zoomCamera()
+    {
+        zoomInput();
+
+        if (zooming)
+        {
+            Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, zoomMax, Time.deltaTime * zoomInSpd);
+
+            if (isSprinting)
+            {
+                isSprinting = false;
+            }
+            if (gunList.Count > 0)
+            {
+                gunModel.transform.localPosition = Vector3.Lerp(gunModel.transform.localPosition, gunModelADS.localPosition, Time.deltaTime * adsSpd);
+            }
+        }
+        else
+        {
+            Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, zoomOrig, Time.deltaTime * zoomOutSpd);
+
+            if (gunList.Count > 0)
+            {
+                gunModel.transform.localPosition = Vector3.Lerp(gunModel.transform.localPosition, gunModelDefaultPos.localPosition, Time.deltaTime * notADSSpd);
+            }
+        }
     }
 }

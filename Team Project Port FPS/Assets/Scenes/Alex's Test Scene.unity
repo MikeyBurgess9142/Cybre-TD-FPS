@@ -1482,6 +1482,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b585c988c380c343995ed6c4632c2e6, type: 3}
+--- !u!1 &353849135
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 353849136}
+  m_Layer: 0
+  m_Name: Gun Models Default Pos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &353849136
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353849135}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 504072685}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &360561668
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1940,6 +1971,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b585c988c380c343995ed6c4632c2e6, type: 3}
+--- !u!4 &504072685 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1086089923953650425, guid: 6eeea0ea7d6815c4a91b4d636845ff03, type: 3}
+  m_PrefabInstance: {fileID: 2022336514}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &547247976
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4082,6 +4118,89 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbcc42eaf75c1c743b4ed48db8f4b976, type: 3}
+--- !u!1 &1153679195
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1153679196}
+  - component: {fileID: 1153679198}
+  - component: {fileID: 1153679197}
+  m_Layer: 0
+  m_Name: Gun Models
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1153679196
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153679195}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 504072685}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1153679197
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153679195}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1153679198
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153679195}
+  m_Mesh: {fileID: 0}
 --- !u!1001 &1190685184
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5414,6 +5533,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 6cb219f5527f8624f867f1895dc92e27, type: 3}
   m_PrefabInstance: {fileID: 1782778285}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1802202716
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1802202717}
+  m_Layer: 0
+  m_Name: Gun Models ADS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1802202717
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802202716}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 504072685}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1820289909 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3191658994806685865, guid: 063032079afcb4d42a024bff7a9047d1, type: 3}
@@ -6255,6 +6405,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1125524555408756854, guid: 6eeea0ea7d6815c4a91b4d636845ff03, type: 3}
+      propertyPath: gunModel
+      value: 
+      objectReference: {fileID: 1153679198}
+    - target: {fileID: 1125524555408756854, guid: 6eeea0ea7d6815c4a91b4d636845ff03, type: 3}
       propertyPath: playerSpd
       value: 5
       objectReference: {fileID: 0}
@@ -6262,6 +6416,14 @@ PrefabInstance:
       propertyPath: sprintMod
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1125524555408756854, guid: 6eeea0ea7d6815c4a91b4d636845ff03, type: 3}
+      propertyPath: gunModelADS
+      value: 
+      objectReference: {fileID: 1802202717}
+    - target: {fileID: 1125524555408756854, guid: 6eeea0ea7d6815c4a91b4d636845ff03, type: 3}
+      propertyPath: gunModelDefaultPos
+      value: 
+      objectReference: {fileID: 353849136}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6eeea0ea7d6815c4a91b4d636845ff03, type: 3}
 --- !u!4 &2022336515 stripped
