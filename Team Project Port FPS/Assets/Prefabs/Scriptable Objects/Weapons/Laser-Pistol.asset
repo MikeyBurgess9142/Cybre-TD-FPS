@@ -12,8 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf79e9d18afe4454ebbe7f796343f8e0, type: 3}
   m_Name: Laser-Pistol
   m_EditorClassIdentifier: 
+  gunPosition: {x: 0.12, y: -0.2, z: 0.4}
+  gunModelADS: {x: 0, y: -0.15, z: 0.36}
+  gunModelDefaultPos: {x: 0.12, y: -0.2, z: 0.4}
+  zoomMax: 50
+  zoomInSpd: 8
+  zoomOutSpd: 6
+  adsSpd: 16
+  notADSSpd: 8
+  ammoCount: 0
   shtRate: 0.5
   shtDist: 40
   shtDmg: 6
-  gunModel: {fileID: 0}
+  gunModel: {fileID: 8815034888603009954, guid: cbf74a796d9b43f4588c9b8088bde521, type: 3}
   gunShotAud: {fileID: 0}
