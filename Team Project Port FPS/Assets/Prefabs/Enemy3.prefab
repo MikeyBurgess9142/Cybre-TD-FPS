@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 480487852608299226}
   m_Layer: 6
   m_Name: Enemy3
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,6 +123,7 @@ MonoBehaviour:
   shootAngle: 90
   waitTime: 0
   roamDist: 0
+  pointValue: 0
   shootPos: {fileID: 480487850730057814}
   bullet: {fileID: 3737781795031576592, guid: da827120c66018144aff7012db85a3b1, type: 3}
   bulletSpeed: 35
