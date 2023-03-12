@@ -12,17 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf79e9d18afe4454ebbe7f796343f8e0, type: 3}
   m_Name: Gun-Rocket Launcher
   m_EditorClassIdentifier: 
-  gunPosition: {x: 0, y: 0, z: 0}
-  gunModelADS: {x: 0, y: 0, z: 0}
-  gunModelDefaultPos: {x: 0, y: 0, z: 0}
-  zoomMax: 0
-  zoomInSpd: 0
-  zoomOutSpd: 0
-  adsSpd: 0
-  notADSSpd: 0
+  gunPosition: {x: 0.12, y: -0.25, z: 0.4}
+  gunModelADS: {x: 0, y: -0.264, z: 0.36}
+  gunModelDefaultPos: {x: 0.12, y: -0.25, z: 0.4}
+  zoomMax: 30
+  zoomInSpd: 10
+  zoomOutSpd: 8
+  adsSpd: 16
+  notADSSpd: 8
   ammoCount: 0
   shtRate: 2
   shtDist: 100
   shtDmg: 10
-  gunModel: {fileID: 0}
+  gunModel: {fileID: 1950741687981957073, guid: 3797f476cefe40444b6e98e9cd8694be, type: 3}
   gunShotAud: {fileID: 0}
