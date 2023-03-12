@@ -12,6 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf79e9d18afe4454ebbe7f796343f8e0, type: 3}
   m_Name: Gun-Shotgun
   m_EditorClassIdentifier: 
+  gunPosition: {x: 0, y: 0, z: 0}
+  gunModelADS: {x: 0, y: 0, z: 0}
+  gunModelDefaultPos: {x: 2, y: 2, z: 2}
+  zoomMax: 50
+  zoomInSpd: 8
+  zoomOutSpd: 6
+  adsSpd: 16
+  notADSSpd: 8
+  ammoCount: 0
   shtRate: 0.5
   shtDist: 20
   shtDmg: 8
