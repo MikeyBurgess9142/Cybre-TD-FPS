@@ -32,6 +32,7 @@ public class playerController : MonoBehaviour
     Vector3 playerVeloc;
     bool isShooting;
     bool isSprinting;
+    float playerSpdOrig;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +40,7 @@ public class playerController : MonoBehaviour
         hpOrigin = HP;
         updateHP();
         respawnPlayer();
+        playerSpdOrig = playerSpd;
     }
 
     // Update is called once per frame
@@ -79,17 +81,35 @@ public class playerController : MonoBehaviour
         controller.Move(playerVeloc * Time.deltaTime);
     }
 
-    void sprint()
+    void sprintInput()
     {
-        if (Input.GetButtonDown("Sprint"))
+        if (Input.GetButton("Sprint")) // && !zooming)
         {
             isSprinting = true;
-            playerSpd *= sprintMod;
         }
         else if (Input.GetButtonUp("Sprint"))
         {
             isSprinting = false;
-            playerSpd /= sprintMod;
+        }
+    }
+
+    void sprint()
+    {
+        sprintInput();
+
+        if (isSprinting)
+        {
+            if (playerSpd < (playerSpdOrig * sprintMod))
+            {
+                playerSpd *= sprintMod;
+            }
+        }
+        else
+        {
+            if (playerSpd != playerSpdOrig)
+            {
+                playerSpd /= sprintMod;
+            }
         }
     }
 
