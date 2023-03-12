@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf79e9d18afe4454ebbe7f796343f8e0, type: 3}
-  m_Name: New Gun Stats
+  m_Name: Gun-Rocket Launcher
   m_EditorClassIdentifier: 
   gunPosition: {x: 0, y: 0, z: 0}
   gunModelADS: {x: 0, y: 0, z: 0}
@@ -21,8 +21,8 @@ MonoBehaviour:
   adsSpd: 0
   notADSSpd: 0
   ammoCount: 0
-  shtRate: 0
-  shtDist: 0
-  shtDmg: 0
+  shtRate: 2
+  shtDist: 100
+  shtDmg: 10
   gunModel: {fileID: 0}
   gunShotAud: {fileID: 0}

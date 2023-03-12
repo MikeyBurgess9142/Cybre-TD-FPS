@@ -12,8 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf79e9d18afe4454ebbe7f796343f8e0, type: 3}
   m_Name: Laser-Sniper
   m_EditorClassIdentifier: 
+  gunPosition: {x: 0, y: 0, z: 0}
+  gunModelADS: {x: 0, y: 0, z: 0}
+  gunModelDefaultPos: {x: 0, y: 0, z: 0}
+  zoomMax: 20
+  zoomInSpd: 10
+  zoomOutSpd: 8
+  adsSpd: 16
+  notADSSpd: 8
+  ammoCount: 0
   shtRate: 1.5
   shtDist: 200
-  shtDmg: 20
+  shtDmg: 16
   gunModel: {fileID: 0}
   gunShotAud: {fileID: 0}
