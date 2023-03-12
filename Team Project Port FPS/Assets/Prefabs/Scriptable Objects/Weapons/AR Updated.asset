@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf79e9d18afe4454ebbe7f796343f8e0, type: 3}
   m_Name: AR Updated
   m_EditorClassIdentifier: 
-  gunPosition: {x: 1.36, y: 1, z: 1.47}
-  gunModelADS: {x: 0, y: 0, z: 0}
-  gunModelDefaultPos: {x: 0, y: 0, z: 0}
+  gunPosition: {x: 0.12, y: -0.25, z: 0.4}
+  gunModelADS: {x: 0, y: -0.264, z: 0.36}
+  gunModelDefaultPos: {x: 0.12, y: -0.25, z: 0.4}
   zoomMax: 45
   zoomInSpd: 8
   zoomOutSpd: 6

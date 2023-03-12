@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1153679196}
+  - component: {fileID: 8104212357374807010}
   - component: {fileID: 1153679198}
   - component: {fileID: 1153679197}
   m_Layer: 3
@@ -33,6 +34,20 @@ Transform:
   m_Father: {fileID: 1238917395}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8104212357374807010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153679195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ad3efff68b442d459b84c7070935c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smooth: 16
+  swayMultiplier: 2
 --- !u!33 &1153679198
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -305,25 +320,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1086089923953650431}
   HP: 100
-  playerSpeed: 5
-  sprintMod: 2
-  jumpTimes: 1
-  jumpSpeed: 10
+  playerSpd: 0
+  jumpMax: 0
+  jumpSpd: 0
   gravity: 30
+  sprintMod: 2
+  playerHitBox: {fileID: 0}
   gunList: []
-  shootRate: 0
-  shootDist: 0
-  shootDamage: 0
+  shtRate: 0
+  shtDist: 0
+  shtDmg: 0
   gunModel: {fileID: 1153679198}
   gunMaterial: {fileID: 1153679197}
   gunModelADS: {fileID: 3572009012477201600}
   gunModelDefaultPos: {fileID: 7614832568674328771}
-  adsSpeed: 0
-  notADSSpeed: 0
+  adsSpd: 0
+  notADSSpd: 0
   zooming: 0
   zoomMax: 0
-  zoomInSpeed: 0
-  zoomOutSpeed: 0
+  zoomInSpd: 0
+  zoomOutSpd: 0
 --- !u!143 &1086089923953650431
 CharacterController:
   m_ObjectHideFlags: 0
