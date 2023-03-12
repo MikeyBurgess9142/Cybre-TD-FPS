@@ -22,9 +22,11 @@ public class gameManager : MonoBehaviour
     public GameObject playerHitFlash;
     public Image playerHPBar;
     public TextMeshProUGUI enemiesRemainingText;
+    public TextMeshProUGUI pointsTotalText;
 
     [Header("---Game Goals---")]
     public int enemiesAlive;
+    public int pointsTotal;
 
     public bool isPaused;
 
@@ -71,10 +73,13 @@ public class gameManager : MonoBehaviour
         activeMenu = null;
     }
 
-    public void updateGameGoal(int amt)
+    public void updateGameGoal(int amt, int points)
     {
         enemiesAlive += amt;
         enemiesRemainingText.text = enemiesAlive.ToString("F0");
+
+        pointsTotal += points;
+        pointsTotalText.text = pointsTotal.ToString("F0");
 
         if (enemiesAlive <= 0)
         {

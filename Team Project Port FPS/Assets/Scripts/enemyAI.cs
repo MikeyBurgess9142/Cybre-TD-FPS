@@ -18,6 +18,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] int shootAngle;
     [SerializeField] int waitTime;
     [SerializeField] int roamDist;
+    [SerializeField] int pointValue;
 
     [Header("----- Gun Stats -----")]
     [SerializeField] Transform shootPos;
@@ -41,7 +42,7 @@ public class enemyAI : MonoBehaviour, IDamage
         startingPos = transform.position;
         stoppingDistOrig = agent.stoppingDistance;
         speedOrig = agent.speed;
-        gameManager.instance.updateGameGoal(1);
+        gameManager.instance.updateGameGoal(1,0);
     }
 
     void Update()
@@ -123,7 +124,7 @@ public class enemyAI : MonoBehaviour, IDamage
         if (HP <= 0)
         {
             GetComponent<CapsuleCollider>().enabled = false;
-            gameManager.instance.updateGameGoal(-1);
+            gameManager.instance.updateGameGoal(-1,pointValue);
             agent.enabled = false;
             GameObject.Destroy(gameObject);
         }
