@@ -8,19 +8,19 @@ public class playerController : MonoBehaviour
     [SerializeField] CharacterController controller;
 
     [Header("---Player Stats---")]
-    [Range(10, 1000)] [SerializeField] int HP;
-    [Range(5, 30)] [SerializeField] float playerSpd;
-    [Range(1, 10)] [SerializeField] int jumpMax;
-    [Range(1,25)] [SerializeField] int jumpSpd;
-    [Range(10,40)] [SerializeField] int gravity;
-    [Range(1, 5)] [SerializeField] int sprintMod;
+    [Range(10, 1000)][SerializeField] int HP;
+    [Range(5, 30)][SerializeField] float playerSpd;
+    [Range(1, 10)][SerializeField] int jumpMax;
+    [Range(1, 25)][SerializeField] int jumpSpd;
+    [Range(10, 40)][SerializeField] int gravity;
+    [Range(1, 5)][SerializeField] int sprintMod;
     [SerializeField] Transform playerHitBox;
 
     [Header("---Gun Stats---")]
     [SerializeField] List<gunStats> gunList = new List<gunStats>();
-    [Range(0, 10)] [SerializeField] float shtRate;
-    [Range(10, 500)] [SerializeField] int shtDist;
-    [Range(5, 250)] [SerializeField] int shtDmg;
+    [Range(0, 10)][SerializeField] float shtRate;
+    [Range(10, 500)][SerializeField] int shtDist;
+    [Range(5, 250)][SerializeField] int shtDmg;
     [SerializeField] MeshFilter gunModel;
     [SerializeField] MeshRenderer gunMaterial;
     public Transform gunModelADS;
@@ -96,7 +96,7 @@ public class playerController : MonoBehaviour
 
     void sprintInput()
     {
-        if (Input.GetButton("Sprint")) // && !zooming)
+        if (Input.GetButton("Sprint") && !zooming)
         {
             isSprinting = true;
         }

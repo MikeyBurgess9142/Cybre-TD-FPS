@@ -12,8 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf79e9d18afe4454ebbe7f796343f8e0, type: 3}
   m_Name: Gun-Assault(Full)
   m_EditorClassIdentifier: 
-  shtRate: 0.2
-  shtDist: 50
-  shtDmg: 5
-  gunModel: {fileID: 0}
+  gunPosition: {x: 0.45, y: -0.4, z: 85}
+  gunModelADS: {x: 0, y: -0.265, z: 0.45}
+  gunModelDefaultPos: {x: 0, y: -0.3, z: 0.6}
+  zoomMax: 45
+  zoomInSpd: 8
+  zoomOutSpd: 6
+  adsSpd: 16
+  notADSSpd: 8
+  ammoCount: 0
+  shtRate: 0.1
+  shtDist: 1000
+  shtDmg: 2
+  gunModel: {fileID: 1205910820345473931, guid: 176d2c8996188414a97d7fb9b4acc723, type: 3}
   gunShotAud: {fileID: 0}
