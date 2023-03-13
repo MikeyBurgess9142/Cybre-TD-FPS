@@ -22,7 +22,7 @@ MonoBehaviour:
   notADSSpd: 8
   ammoCount: 0
   shtRate: 0.25
-  shtDist: 1000
+  shtDist: 50
   shtDmg: 2
   gunModel: {fileID: 1205910820345473931, guid: 176d2c8996188414a97d7fb9b4acc723, type: 3}
   gunShotAud: {fileID: 0}
