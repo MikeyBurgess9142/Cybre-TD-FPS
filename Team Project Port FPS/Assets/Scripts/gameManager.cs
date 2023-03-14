@@ -18,11 +18,29 @@ public class gameManager : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject winMenu;
     public GameObject loseMenu;
+    public GameObject shopMenu;
     public GameObject checkPointMsg;
     public GameObject playerHitFlash;
     public Image playerHPBar;
     public TextMeshProUGUI enemiesRemainingText;
     public TextMeshProUGUI pointsTotalText;
+
+    [Header("---Pickup References---")]
+    public Transform pickupPos;
+    public GameObject gunPistol;
+    public GameObject gunSmg;
+    public GameObject gunShotgun;
+    public GameObject gunAssaultFull;
+    public GameObject gunAssaultSemi;
+    public GameObject gunSniper;
+    public GameObject gunRocketLauncher;
+    public GameObject laserPistol;
+    public GameObject laserSmg;
+    public GameObject laserShotgun;
+    public GameObject laserAssaultFull;
+    public GameObject laserAssaultSemi;
+    public GameObject laserSniper;
+    public GameObject laserRocketLauncher;
 
     [Header("---Game Goals---")]
     public int enemiesAlive;
@@ -55,6 +73,7 @@ public class gameManager : MonoBehaviour
                 unpauseState();
             }
         }
+        shop();
     }
 
     public void pasueState()
@@ -100,5 +119,19 @@ public class gameManager : MonoBehaviour
         playerHitFlash.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         playerHitFlash.SetActive(false);
+    }
+
+    public void shop()
+    {
+        if (Input.GetButtonDown("Shop") && activeMenu == null)
+        {
+            pasueState();
+            activeMenu = shopMenu;
+            activeMenu.SetActive(true);
+        }
+        else if (Input.GetButtonDown("Shop") && activeMenu == shopMenu)
+        {
+            unpauseState();
+        }
     }
 }
