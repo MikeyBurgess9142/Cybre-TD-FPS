@@ -1295,6 +1295,10 @@ PrefabInstance:
       propertyPath: pickupPos
       value: 
       objectReference: {fileID: 1379786212}
+    - target: {fileID: 1579139282, guid: 593275ef2f6e296459b2bd4ad93b5e05, type: 3}
+      propertyPath: pointsTotal
+      value: 10000
+      objectReference: {fileID: 0}
     - target: {fileID: 6969435581272140359, guid: 593275ef2f6e296459b2bd4ad93b5e05, type: 3}
       propertyPath: m_Name
       value: UI
@@ -1381,6 +1385,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6969435581272140379, guid: 593275ef2f6e296459b2bd4ad93b5e05, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8536124793122540018, guid: 593275ef2f6e296459b2bd4ad93b5e05, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
