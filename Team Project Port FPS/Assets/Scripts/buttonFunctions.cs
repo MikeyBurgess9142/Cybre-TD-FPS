@@ -30,6 +30,11 @@ public class buttonFunctions : MonoBehaviour
 
     //Shop Menu Buttons
 
+    public void exitShop()
+    {
+        gameManager.instance.unpauseState();
+    }
+
     public void gunPistol()
     {
         if (gameManager.instance.pointsTotal >= 100)

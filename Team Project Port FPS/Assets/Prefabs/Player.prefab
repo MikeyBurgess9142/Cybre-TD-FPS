@@ -326,7 +326,7 @@ MonoBehaviour:
   sprintMod: 2
   playerHitBox: {fileID: 0}
   gunList: []
-  shtRate: 0
+  shtRate: 0.25
   shtDist: 10
   shtDmg: 0
   gunModel: {fileID: 1153679198}
