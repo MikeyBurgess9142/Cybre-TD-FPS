@@ -324,10 +324,10 @@ MonoBehaviour:
   jumpSpd: 10
   gravity: 30
   sprintMod: 2
-  playerHitBox: {fileID: 4503172131126522297}
+  playerHitBox: {fileID: 0}
   gunList: []
   shtRate: 0
-  shtDist: 0
+  shtDist: 10
   shtDmg: 0
   gunModel: {fileID: 1153679198}
   gunMaterial: {fileID: 1153679197}

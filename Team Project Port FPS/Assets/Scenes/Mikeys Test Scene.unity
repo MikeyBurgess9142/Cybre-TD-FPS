@@ -349,10 +349,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy1
       objectReference: {fileID: 0}
-    - target: {fileID: 9123422910166265747, guid: 063032079afcb4d42a024bff7a9047d1, type: 3}
-      propertyPath: pointValue
-      value: 100
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 063032079afcb4d42a024bff7a9047d1, type: 3}
 --- !u!4 &1379786212 stripped
@@ -414,22 +410,6 @@ PrefabInstance:
     - target: {fileID: 1086089923953650425, guid: 6eeea0ea7d6815c4a91b4d636845ff03, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1125524555408756854, guid: 6eeea0ea7d6815c4a91b4d636845ff03, type: 3}
-      propertyPath: shtDist
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1125524555408756854, guid: 6eeea0ea7d6815c4a91b4d636845ff03, type: 3}
-      propertyPath: shtRate
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1125524555408756854, guid: 6eeea0ea7d6815c4a91b4d636845ff03, type: 3}
-      propertyPath: sprintMod
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1125524555408756854, guid: 6eeea0ea7d6815c4a91b4d636845ff03, type: 3}
-      propertyPath: playerHitBox
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6eeea0ea7d6815c4a91b4d636845ff03, type: 3}
@@ -1295,10 +1275,6 @@ PrefabInstance:
       propertyPath: pickupPos
       value: 
       objectReference: {fileID: 1379786212}
-    - target: {fileID: 1579139282, guid: 593275ef2f6e296459b2bd4ad93b5e05, type: 3}
-      propertyPath: pointsTotal
-      value: 10000
-      objectReference: {fileID: 0}
     - target: {fileID: 6969435581272140359, guid: 593275ef2f6e296459b2bd4ad93b5e05, type: 3}
       propertyPath: m_Name
       value: UI
@@ -1385,10 +1361,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6969435581272140379, guid: 593275ef2f6e296459b2bd4ad93b5e05, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8536124793122540018, guid: 593275ef2f6e296459b2bd4ad93b5e05, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

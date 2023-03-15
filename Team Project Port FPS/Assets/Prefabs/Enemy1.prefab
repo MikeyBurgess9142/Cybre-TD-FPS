@@ -28,6 +28,10 @@ PrefabInstance:
       value: 75
       objectReference: {fileID: 0}
     - target: {fileID: -3253881248300763634, guid: 2599104a4a2a5214f8407d03827b5eff, type: 3}
+      propertyPath: pointValue
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -3253881248300763634, guid: 2599104a4a2a5214f8407d03827b5eff, type: 3}
       propertyPath: shootAngle
       value: 15
       objectReference: {fileID: 0}
@@ -57,15 +61,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 432436, guid: 2599104a4a2a5214f8407d03827b5eff, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.2299995
+      value: 4.342778
       objectReference: {fileID: 0}
     - target: {fileID: 432436, guid: 2599104a4a2a5214f8407d03827b5eff, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.0772775
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 432436, guid: 2599104a4a2a5214f8407d03827b5eff, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -20.37
+      value: -29.53217
       objectReference: {fileID: 0}
     - target: {fileID: 432436, guid: 2599104a4a2a5214f8407d03827b5eff, type: 3}
       propertyPath: m_LocalRotation.w

@@ -2242,7 +2242,7 @@ MonoBehaviour:
   laserSniper: {fileID: 2263333929785320140, guid: 3a11532ffdd753046a2a7d327c268e66, type: 3}
   laserRocketLauncher: {fileID: 0}
   enemiesAlive: 0
-  pointsTotal: 0
+  pointsTotal: 10000
   isPaused: 0
 --- !u!114 &1579139283
 MonoBehaviour:
@@ -7665,7 +7665,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1426567602743727822
 RectTransform:
   m_ObjectHideFlags: 0
