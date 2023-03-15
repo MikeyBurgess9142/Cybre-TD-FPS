@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 868366773010386414}
   - component: {fileID: 8558111587153906181}
   m_Layer: 7
-  m_Name: Bullet
+  m_Name: Bullet Rifle(full)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eef6296765f31644db801e56e67c9e85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dmg: 2
-  timer: 5
+  dmg: 3
+  timer: 3
 --- !u!135 &6873387068043755889
 SphereCollider:
   m_ObjectHideFlags: 0
