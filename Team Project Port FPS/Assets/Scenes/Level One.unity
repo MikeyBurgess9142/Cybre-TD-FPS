@@ -1489,6 +1489,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floor(Concrete)
       objectReference: {fileID: 0}
+    - target: {fileID: 4705316348638415661, guid: b0357c9ca142cb947a6980db28395d04, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0357c9ca142cb947a6980db28395d04, type: 3}
 --- !u!1001 &818162160

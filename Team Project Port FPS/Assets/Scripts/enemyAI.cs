@@ -49,16 +49,13 @@ public class enemyAI : MonoBehaviour, IDamage
     {
         if (agent.isActiveAndEnabled)
         {
+            agent.SetDestination(gameManager.instance.player.transform.position);
             if (playerInRange)
             {
-                if (!canSeePlayer())
+                if (canSeePlayer())
                 {
-                    StartCoroutine(roam());
+                    
                 }
-            }
-            else if (agent.destination != gameManager.instance.player.transform.position)
-            {
-                StartCoroutine(roam());
             }
         }
     }
@@ -97,8 +94,8 @@ public class enemyAI : MonoBehaviour, IDamage
         {
             if (hit.collider.CompareTag("Player") && angleToPlayer <= viewAngle)
             {
-                agent.stoppingDistance = stoppingDistOrig;
-                agent.SetDestination(gameManager.instance.player.transform.position);
+                //agent.stoppingDistance = stoppingDistOrig;
+                //agent.SetDestination(gameManager.instance.player.transform.position);
 
                 if (agent.remainingDistance < agent.stoppingDistance)
                 {
@@ -113,7 +110,7 @@ public class enemyAI : MonoBehaviour, IDamage
                 return true;
             }
         }
-        agent.stoppingDistance = 0;
+        //agent.stoppingDistance = 0;
         return false;
     }
 
