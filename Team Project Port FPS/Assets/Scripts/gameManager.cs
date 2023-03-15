@@ -43,6 +43,22 @@ public class gameManager : MonoBehaviour
     public GameObject laserSniper;
     public GameObject laserRocketLauncher;
 
+    [Header("---Shop Button References---")]
+    public Button button1;
+    public Button button2;
+    public Button button3;
+    public Button button4;
+    public Button button5;
+    public Button button6;
+    public Button button7;
+    public Button button8;
+    public Button button9;
+    public Button button10;
+    public Button button11;
+    public Button button12;
+    public Button button13;
+    public Button button14;
+
     [Header("---Game Goals---")]
     public int enemiesAlive;
     public int pointsTotal;

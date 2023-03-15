@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85561630fdf9896429a157a25104ed12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gun: {fileID: 11400000, guid: 8fbb08d1ae5ed1f4b816f26d9afd63c1, type: 2}
+  gun: {fileID: 11400000, guid: a4d252291ec4aea45a585e893d669ba1, type: 2}
 --- !u!33 &7634366991347862398
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -109,5 +109,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.6
   m_Center: {x: -0.0000000018626451, y: 0, z: 0.00000015646219}
