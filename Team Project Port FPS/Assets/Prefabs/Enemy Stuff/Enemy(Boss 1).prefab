@@ -2488,7 +2488,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5446506939623439749}
-  - component: {fileID: 3610721079624623326}
+  - component: {fileID: 3138111800309300930}
   - component: {fileID: 2122829165350201343}
   - component: {fileID: 7828534562485276417}
   - component: {fileID: 925745829588881270}
@@ -2522,7 +2522,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3610721079624623326
+--- !u!114 &3138111800309300930
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2531,10 +2531,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4674227996192941887}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c367931127d57af43abb88b33ead98f8, type: 3}
+  m_Script: {fileID: 11500000, guid: 0efd475d8563f3648adcbaa10b3b4cf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  model: {fileID: 0}
+  model: {fileID: 305252131397060459}
   agent: {fileID: 7828534562485276417}
   headPos: {fileID: 6045249536804572111}
   playerHitBox: {fileID: 0}
@@ -2542,6 +2542,8 @@ MonoBehaviour:
   playerFaceSpeed: 20
   viewAngle: 90
   shootAngle: 90
+  waitTime: 3
+  roamDist: 30
   pointValue: 1000
   shootPos: {fileID: 6161030894429765878}
   bullet: {fileID: 3737781795031576592, guid: 3c5043043ac9d6e468a5a5ed39930213, type: 3}
