@@ -12,12 +12,12 @@ public class enemyAI : MonoBehaviour, IDamage
     [Header("----- Stats -----")]
     [SerializeField] Transform headPos;
     [SerializeField] Transform playerHitBox;
-    [Range(1, 50)][SerializeField] int HP;
+    [Range(1, 500)][SerializeField] int HP;
     [SerializeField] int playerFaceSpeed;
     [SerializeField] int viewAngle;
     [SerializeField] int shootAngle;
-    [SerializeField] int waitTime;
-    [SerializeField] int roamDist;
+    //[SerializeField] int waitTime;
+    //[SerializeField] int roamDist;
     [SerializeField] int pointValue;
 
     [Header("----- Gun Stats -----")]
@@ -60,28 +60,28 @@ public class enemyAI : MonoBehaviour, IDamage
         }
     }
 
-    IEnumerator roam()
-    {
-        if (!destinationChosen && agent.remainingDistance < 0.05f)
-        {
-            destinationChosen = true;
-            agent.stoppingDistance = 0;
-            agent.speed = speedOrig;
-            yield return new WaitForSeconds(waitTime);
-            destinationChosen = false;
+    //IEnumerator roam()
+    //{
+      //  if (!destinationChosen && agent.remainingDistance < 0.05f)
+        //{
+          //  destinationChosen = true;
+            //agent.stoppingDistance = 0;
+            //agent.speed = speedOrig;
+            //yield return new WaitForSeconds(waitTime);
+            //destinationChosen = false;
 
-            if (agent.isActiveAndEnabled)
-            {
-                Vector3 randDir = Random.insideUnitSphere * roamDist;
-                randDir += startingPos;
+            //if (agent.isActiveAndEnabled)
+            //{
+               // Vector3 randDir = Random.insideUnitSphere * roamDist;
+                //randDir += startingPos;
 
-                NavMeshHit hit;
-                NavMesh.SamplePosition(randDir, out hit, roamDist, NavMesh.AllAreas);
+                //NavMeshHit hit;
+                //NavMesh.SamplePosition(randDir, out hit, roamDist, NavMesh.AllAreas);
 
-                agent.SetDestination(hit.position);
-            }
-        }
-    }
+                //agent.SetDestination(hit.position);
+            //}
+        //}
+    //}
 
     bool canSeePlayer()
     {
