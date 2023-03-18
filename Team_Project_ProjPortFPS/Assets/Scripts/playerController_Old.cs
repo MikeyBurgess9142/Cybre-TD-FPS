@@ -177,15 +177,20 @@ public class playerController_Old : MonoBehaviour
         gameManager.instance.playerHPBar.fillAmount = (float)HP / (float)hpOrigin;
     }
 
-    public void resetGunPos()
+    public void resetGun()
     {
         Camera.main.fieldOfView = zoomOrig;
 
-        gunModelDefaultPos.localPosition = new Vector3(0, 0, 0);
-        gunModel.transform.localPosition = new Vector3(0, 0, 0);
         gunPivot.localPosition = new Vector3(0, 0, 0);
         gunPivot.localEulerAngles = new Vector3(0, 0, 0);
+        gunPivot.localScale = new Vector3(1, 1, 1);
+
+        gunModel.transform.localPosition = new Vector3(0, 0, 0);
+        gunModel.transform.eulerAngles = new Vector3(0, 0, 0);
+        gunModel.transform.localScale = new Vector3(0, 0, 0);
+
         gunModelADS.localPosition = new Vector3(0, 0, 0);
+        gunModelDefaultPos.localPosition = new Vector3(0, 0, 0);
     }
 
     void selectGun()
@@ -204,7 +209,7 @@ public class playerController_Old : MonoBehaviour
 
     void changeGun()
     {
-        resetGunPos();
+        resetGun();
 
         shtRate = gunList[selectedGun].shtRate;
         shtDist = gunList[selectedGun].shtDist;
@@ -226,7 +231,7 @@ public class playerController_Old : MonoBehaviour
 
     public void gunPickup(gunStats gunStat)
     {
-        resetGunPos();
+        resetGun();
         gunList.Add(gunStat);
 
         shtRate = gunStat.shtRate;
