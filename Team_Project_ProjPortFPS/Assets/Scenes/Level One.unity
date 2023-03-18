@@ -3740,6 +3740,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 590088263328114310, guid: 6619083e3c5c23e4f8d3afd67e5ddd92, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1403307736527754238, guid: 6619083e3c5c23e4f8d3afd67e5ddd92, type: 3}
       propertyPath: m_Name
       value: Enemy(Boss 2)
@@ -4642,6 +4646,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 925745829588881270, guid: 3b5543ef32e110f46ab743fd1db55012, type: 3}
+      propertyPath: m_Height
+      value: 1.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 925745829588881270, guid: 3b5543ef32e110f46ab743fd1db55012, type: 3}
+      propertyPath: m_Radius
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 925745829588881270, guid: 3b5543ef32e110f46ab743fd1db55012, type: 3}
+      propertyPath: m_Center.y
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1461443915266467696, guid: 3b5543ef32e110f46ab743fd1db55012, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3138111800309300930, guid: 3b5543ef32e110f46ab743fd1db55012, type: 3}
       propertyPath: playerHitBox
       value: 
