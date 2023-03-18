@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1153679196}
-  - component: {fileID: 8104212357374807010}
   - component: {fileID: 1153679198}
   - component: {fileID: 1153679197}
   m_Layer: 3
@@ -26,28 +25,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1153679195}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.145, z: -0.23700052}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
-  m_ConstrainProportionsScale: 1
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7263480016912577100}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8104212357374807010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1153679195}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ad3efff68b442d459b84c7070935c1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smooth: 16
-  swayMultiplier: 2
 --- !u!33 &1153679198
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -319,18 +304,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1086089923953650431}
   HP: 100
-  playerSpd: 10
+  playerSpd: 5
   jumpMax: 2
   jumpSpd: 10
   gravity: 30
   sprintMod: 2
-  playerHitBox: {fileID: 0}
+  playerHitBox: {fileID: 4503172131126522297}
   gunList: []
   shtRate: 0.25
   shtDist: 10
   shtDmg: 0
   gunModel: {fileID: 1153679198}
   gunMaterial: {fileID: 1153679197}
+  gunPivot: {fileID: 7263480016912577100}
   gunModelADS: {fileID: 3572009012477201600}
   gunModelDefaultPos: {fileID: 7614832568674328771}
   adsSpd: 0
@@ -339,6 +325,8 @@ MonoBehaviour:
   zoomMax: 0
   zoomInSpd: 0
   zoomOutSpd: 0
+  smooth: 8
+  swayMultiplier: 1.5
 --- !u!143 &1086089923953650431
 CharacterController:
   m_ObjectHideFlags: 0
@@ -416,6 +404,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7263480016912577100}
+  - component: {fileID: 661768964}
   m_Layer: 3
   m_Name: Gun Pivot
   m_TagString: Untagged
@@ -431,7 +420,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1867480792733642064}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.145, z: 0.237}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -439,6 +428,20 @@ Transform:
   m_Father: {fileID: 1238917395}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &661768964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1867480792733642064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10627b30c14c9c54ca53b8c234b547d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunPivotPosition: {x: 1, y: 0.05, z: 0.5}
+  gunPivotRotation: {x: -90, y: 0, z: 0}
 --- !u!1 &3019172137904304814
 GameObject:
   m_ObjectHideFlags: 0

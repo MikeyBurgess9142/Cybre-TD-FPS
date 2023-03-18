@@ -184,6 +184,7 @@ public class playerController_Old : MonoBehaviour
         gunModelDefaultPos.localPosition = new Vector3(0, 0, 0);
         gunModel.transform.localPosition = new Vector3(0, 0, 0);
         gunPivot.localPosition = new Vector3(0, 0, 0);
+        gunPivot.localEulerAngles = new Vector3(0, 0, 0);
         gunModelADS.localPosition = new Vector3(0, 0, 0);
     }
 
@@ -210,7 +211,6 @@ public class playerController_Old : MonoBehaviour
         shtDmg = gunList[selectedGun].shtDmg;
         gunModelADS.localPosition = gunList[selectedGun].gunModelADS;
         gunPivot.localPosition = gunList[selectedGun].gunPosition;
-        gunList[selectedGun].gunPosition = new Vector3(0, 0, 0);
         gunModel.transform.localEulerAngles = gunList[selectedGun].gunRotation;
         gunModel.transform.localScale = gunList[selectedGun].gunScale;
         gunModelDefaultPos.localPosition = gunList[selectedGun].gunModelDefaultPos;
@@ -234,8 +234,6 @@ public class playerController_Old : MonoBehaviour
         shtDmg = gunStat.shtDmg;
         gunModelADS.localPosition = gunStat.gunModelADS;
         gunPivot.localPosition = gunStat.gunPosition;
-        gunStat.gunPosition = new Vector3(0, 0, 0);
-        gunModel.transform.localPosition = gunStat.gunPosition;
         gunModel.transform.localEulerAngles = gunStat.gunRotation;
         gunModel.transform.localScale = gunStat.gunScale;
         gunModelDefaultPos.localPosition = gunStat.gunModelDefaultPos;
@@ -277,7 +275,7 @@ public class playerController_Old : MonoBehaviour
             }
             if (gunList.Count > 0)
             {
-                gunModel.transform.localPosition = Vector3.Lerp(gunModel.transform.localPosition, gunModelADS.localPosition, Time.deltaTime * adsSpd);
+                gunPivot.transform.localPosition = Vector3.Lerp(gunPivot.transform.localPosition, gunModelADS.localPosition, Time.deltaTime * adsSpd);
             }
         }
         else
@@ -286,7 +284,7 @@ public class playerController_Old : MonoBehaviour
 
             if (gunList.Count > 0)
             {
-                gunModel.transform.localPosition = Vector3.Lerp(gunModel.transform.localPosition, gunModelDefaultPos.localPosition, Time.deltaTime * notADSSpd);
+                gunPivot.transform.localPosition = Vector3.Lerp(gunPivot.transform.localPosition, gunModelDefaultPos.localPosition, Time.deltaTime * notADSSpd);
             }
         }
     }
