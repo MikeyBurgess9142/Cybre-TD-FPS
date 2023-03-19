@@ -64,11 +64,13 @@ public class gameManager : MonoBehaviour
     public int pointsTotal;
 
     public bool isPaused;
+    public GameObject[] enemy;
 
     void Awake()
     {
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player");
+        enemy = GameObject.FindGameObjectsWithTag("Enemy");
         playerScript = player.GetComponent<playerController_Old>();
         playerSpawnPos = GameObject.FindGameObjectWithTag("Player Spawn Pos");
     }
