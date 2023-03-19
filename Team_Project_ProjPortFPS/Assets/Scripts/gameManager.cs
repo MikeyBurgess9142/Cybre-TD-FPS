@@ -113,12 +113,12 @@ public class gameManager : MonoBehaviour
         activeMenu = null;
     }
 
-    public void updateGameGoal(int amt, int points)
+    public void updateGameGoal(int amt, int bamt, int points)
     {
         enemiesAlive += amt;
         enemiesRemainingText.text = enemiesAlive.ToString("F0");
 
-        bossesAlive += amt;
+        bossesAlive += bamt;
         bossEnemiesRemainingText.text = bossesAlive.ToString("F0");
 
         pointsTotal += points;
