@@ -24,6 +24,7 @@ public class gameManager : MonoBehaviour
     public GameObject playerHitFlash;
     public Image playerHPBar;
     public TextMeshProUGUI enemiesRemainingText;
+    public TextMeshProUGUI bossEnemiesRemainingText;
     public TextMeshProUGUI pointsTotalText;
 
     [Header("---Pickup References---")]
@@ -61,6 +62,7 @@ public class gameManager : MonoBehaviour
 
     [Header("---Game Goals---")]
     public int enemiesAlive;
+    public int bossesAlive;
     public int pointsTotal;
 
     public bool isPaused;
@@ -116,10 +118,13 @@ public class gameManager : MonoBehaviour
         enemiesAlive += amt;
         enemiesRemainingText.text = enemiesAlive.ToString("F0");
 
+        bossesAlive += amt;
+        bossEnemiesRemainingText.text = bossesAlive.ToString("F0");
+
         pointsTotal += points;
         pointsTotalText.text = pointsTotal.ToString("F0");
 
-        if (enemiesAlive <= 0)
+        if (enemiesAlive <= 0 && bossesAlive <= 0)
         {
             pasueState();
             activeMenu = winMenu;
