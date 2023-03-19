@@ -48,7 +48,22 @@ public class enemyAI : MonoBehaviour, IDamage
         gameManager.instance.updateGameGoal(1,0,0);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = true;
+        }
+    }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = false;
+            agent.stoppingDistance = 0;
+        }
+    }
 
     void Update()
     {
