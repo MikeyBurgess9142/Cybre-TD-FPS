@@ -94,7 +94,7 @@ public class enemyAI : MonoBehaviour, IDamage
     public void takeDmg(int dmg)
     {
         HP -= dmg;
-
+        anim.SetTrigger("Damage");
         if (HP <= 0)
         {
             GetComponent<CapsuleCollider>().enabled = false;
@@ -126,6 +126,7 @@ public class enemyAI : MonoBehaviour, IDamage
     IEnumerator shoot()
     {
         isShooting = true;
+        anim.SetTrigger("Shoot");
         GameObject bulletClone = Instantiate(bullet, shootPos.position, bullet.transform.rotation);
         bulletClone.GetComponent<Rigidbody>().velocity = shootDir * bulletSpeed;
         yield return new WaitForSeconds(shootRate);
