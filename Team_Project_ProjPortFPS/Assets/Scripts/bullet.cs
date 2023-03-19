@@ -6,6 +6,7 @@ public class bullet : MonoBehaviour
 {
     public int dmg;
     [Range(1,5)][SerializeField] int timer;
+    bool hit;
 
     // Start is called before the first frame update
     void Start()
@@ -15,8 +16,9 @@ public class bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !hit)
         {
+            hit = true;
             gameManager.instance.playerScript.takeDmg(dmg);
         }
     }

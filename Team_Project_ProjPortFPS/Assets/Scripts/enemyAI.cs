@@ -9,6 +9,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] Renderer model;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Animator anim;
+    [SerializeField] Rigidbody rb;
 
     [Header("----- Stats -----")]
     [SerializeField] Transform headPos;
@@ -149,7 +150,7 @@ public class enemyAI : MonoBehaviour, IDamage
     public void createBullet()
     {
         GameObject bulletClone = Instantiate(bullet, shootPos.position, bullet.transform.rotation);
-        bulletClone.GetComponent<Rigidbody>().velocity = shootDir * bulletSpeed;
+        bulletClone.GetComponent<Rigidbody>().velocity = (transform.forward + new Vector3(0, playerDir.y, 0)) * bulletSpeed;
     }
 
     public void agentStop()
