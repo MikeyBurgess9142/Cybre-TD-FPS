@@ -8,6 +8,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [Header("----- Components -----")]
     [SerializeField] Renderer model;
     [SerializeField] NavMeshAgent agent;
+    [SerializeField] Animator anim;
 
     [Header("----- Stats -----")]
     [SerializeField] Transform headPos;
