@@ -49,6 +49,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
     void Update()
     {
+        anim.SetFloat("Speed", agent.velocity.normalized.magnitude);
         if (agent.isActiveAndEnabled)
         {
             agent.SetDestination(gameManager.instance.player.transform.position);
