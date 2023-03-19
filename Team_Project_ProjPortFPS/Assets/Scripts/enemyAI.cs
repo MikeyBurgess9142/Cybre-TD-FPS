@@ -46,6 +46,7 @@ public class enemyAI : MonoBehaviour, IDamage
         stoppingDistOrig = agent.stoppingDistance;
         speedOrig = agent.speed;
         gameManager.instance.updateGameGoal(1,0,0);
+        gameManager.instance.addEnemy(agent);
     }
 
     private void OnTriggerEnter(Collider other)

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 using TMPro;
 
 public class gameManager : MonoBehaviour
@@ -64,15 +65,15 @@ public class gameManager : MonoBehaviour
     public int enemiesAlive;
     public int bossesAlive;
     public int pointsTotal;
-
     public bool isPaused;
-    public GameObject[] enemy;
+
+    public List<NavMeshAgent> enemy;
+
 
     void Awake()
     {
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player");
-        enemy = GameObject.FindGameObjectsWithTag("Enemy");
         playerScript = player.GetComponent<playerController_Old>();
         playerSpawnPos = GameObject.FindGameObjectWithTag("Player Spawn Pos");
     }
@@ -143,5 +144,10 @@ public class gameManager : MonoBehaviour
         playerHitFlash.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         playerHitFlash.SetActive(false);
+    }
+
+    public void addEnemy(NavMeshAgent enmy)
+    {
+        enemy.Add(enmy);
     }
 }

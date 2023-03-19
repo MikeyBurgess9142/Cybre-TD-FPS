@@ -162,7 +162,7 @@ public class allyAI : MonoBehaviour, IDamage
         if (other.CompareTag("Enemy"))
         {
             enemyInRange = true;
-            currEnemy = other.gameObject;
+            
         }
     }
 
