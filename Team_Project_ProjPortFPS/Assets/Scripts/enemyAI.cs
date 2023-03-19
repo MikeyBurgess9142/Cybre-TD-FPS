@@ -23,6 +23,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] GameObject bullet;
     [SerializeField] int bulletSpeed;
     [SerializeField] float shootRate;
+    [SerializeField]int playerInRangeDist;
 
     Vector3 startingPos;
     bool destinationChosen;
@@ -32,6 +33,7 @@ public class enemyAI : MonoBehaviour, IDamage
     Vector3 shootDir;
     bool isShooting;
     float angleToPlayer;
+    
     float speedOrig;
 
     void Start()
@@ -48,7 +50,10 @@ public class enemyAI : MonoBehaviour, IDamage
         {
             agent.SetDestination(gameManager.instance.player.transform.position);
 
-            canSeePlayer();
+            if (agent.remainingDistance <= playerInRangeDist)
+            {
+                canSeePlayer();
+            }
         }
     }
     bool canSeePlayer()

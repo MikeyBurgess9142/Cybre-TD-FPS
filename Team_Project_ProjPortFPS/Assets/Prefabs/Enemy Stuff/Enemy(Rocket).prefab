@@ -1471,6 +1471,7 @@ MonoBehaviour:
   bullet: {fileID: 3737781795031576592, guid: 83f67836478801b4e87b5dad8da8e3a0, type: 3}
   bulletSpeed: 15
   shootRate: 3
+  playerInRangeDist: 0
 --- !u!95 &5732308996367015396
 Animator:
   serializedVersion: 5
