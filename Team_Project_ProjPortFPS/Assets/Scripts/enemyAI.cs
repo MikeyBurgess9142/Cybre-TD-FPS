@@ -35,9 +35,11 @@ public class enemyAI : MonoBehaviour, IDamage
     float angleToPlayer;
     
     float speedOrig;
+    Color origColor;
 
     void Start()
     {
+        origColor = model.material.color;
         startingPos = transform.position;
         stoppingDistOrig = agent.stoppingDistance;
         speedOrig = agent.speed;
@@ -109,7 +111,7 @@ public class enemyAI : MonoBehaviour, IDamage
     {
         model.material.color = Color.red;
         yield return new WaitForSeconds(0.15f);
-        model.material.color = Color.white;
+        model.material.color = origColor;
     }
 
     void facePlayer()
