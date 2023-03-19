@@ -184,4 +184,8 @@ public class allyAI : MonoBehaviour, IDamage
             agent.stoppingDistance = 0;
         }
     }
+    public void OnParticleCollision(GameObject other)
+    {
+            
+    }
 }
