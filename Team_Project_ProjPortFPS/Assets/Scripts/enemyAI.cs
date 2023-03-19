@@ -33,6 +33,7 @@ public class enemyAI : MonoBehaviour, IDamage
     Vector3 playerDir;
     Vector3 shootDir;
     bool isShooting;
+    bool playerInRange;
     float angleToPlayer;
     
     float speedOrig;
@@ -47,11 +48,13 @@ public class enemyAI : MonoBehaviour, IDamage
         gameManager.instance.updateGameGoal(1,0,0);
     }
 
+
+
     void Update()
     {
-        anim.SetFloat("Speed", agent.velocity.normalized.magnitude);
         if (agent.isActiveAndEnabled)
         {
+            anim.SetFloat("Speed", agent.velocity.normalized.magnitude);
             agent.SetDestination(gameManager.instance.player.transform.position);
 
             if (agent.remainingDistance <= playerInRangeDist)
@@ -127,10 +130,13 @@ public class enemyAI : MonoBehaviour, IDamage
     {
         isShooting = true;
         anim.SetTrigger("Shoot");
-        GameObject bulletClone = Instantiate(bullet, shootPos.position, bullet.transform.rotation);
-        bulletClone.GetComponent<Rigidbody>().velocity = shootDir * bulletSpeed;
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
+    }
+    public void createBullet()
+    {
+        GameObject bulletClone = Instantiate(bullet, shootPos.position, bullet.transform.rotation);
+        bulletClone.GetComponent<Rigidbody>().velocity = shootDir * bulletSpeed;
     }
 
     public void agentStop()
