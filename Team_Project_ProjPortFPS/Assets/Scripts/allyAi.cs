@@ -88,6 +88,7 @@ public class allyAI : MonoBehaviour, IDamage
 
     bool canSeeEnemy()
     {
+        
         enemyDir = (currEnemy.transform.position - headPos.position).normalized;
         shootDir = (currEnemy.transform.position - headPos.position).normalized;
         angleToEnemy = Vector3.Angle(new Vector3(enemyDir.x, 0, enemyDir.z), transform.forward);
@@ -162,8 +163,7 @@ public class allyAI : MonoBehaviour, IDamage
         if (other.CompareTag("Enemy"))
         {
             enemyInRange = true;
-            
-        }
+        }   
     }
 
     public void agentStop()

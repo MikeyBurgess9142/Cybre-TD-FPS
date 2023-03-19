@@ -55,6 +55,10 @@ public class enemyAI : MonoBehaviour, IDamage
         {
             playerInRange = true;
         }
+        if (other.CompareTag("Ally"))
+        {
+            gameManager.instance.allyScript.currEnemy = gameObject;
+        }
     }
 
     private void OnTriggerExit(Collider other)

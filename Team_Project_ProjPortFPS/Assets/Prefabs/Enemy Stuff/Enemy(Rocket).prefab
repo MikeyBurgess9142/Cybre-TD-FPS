@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508032}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508034}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: leftArm1_HiResClavical
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508036}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: head1_head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508038}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: head1_neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +135,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508040}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: leftArm1_HiResLowerArmTwist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,7 +167,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508042}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: leftArm1_HiResUpperArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,7 +199,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508044}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: leftArm1_HiResHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -233,7 +233,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508046}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: leftArm1_HiResLowerArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +265,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508048}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: leftFinger1_Joint2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -297,7 +297,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508050}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: leftFinger1_Joint3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -328,7 +328,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508052}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: leftArm1_HiResUpperArmTwist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,7 +360,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508054}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: leftFinger1_Joint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -392,7 +392,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508056}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: leftLeg1_HiResLowerLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -424,7 +424,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508058}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: leftLeg1_HiResLowerLegTwist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -456,7 +456,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508060}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: leftFinger1_MetaCarpel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -488,7 +488,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508062}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: leftLeg1_HiResFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -520,7 +520,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508064}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: leftLeg1_HiResUpperLegTwist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -552,7 +552,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508066}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: leftThumb1_Joint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -584,7 +584,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508068}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: leftLeg1_HiResToe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -615,7 +615,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508070}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: leftLeg1_HiResUpperLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -648,7 +648,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5732308996374508072}
   - component: {fileID: 5732308996371161892}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: polySurface1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -780,7 +780,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508074}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -811,7 +811,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508076}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: leftThumb1_Joint2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -843,7 +843,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508078}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: leftThumb1_Joint3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -874,7 +874,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508080}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rightArm1_HiResLowerArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -906,7 +906,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508082}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rightArm1_HiResLowerArmTwist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -938,7 +938,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508084}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rightArm1_HiResClavical
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -970,7 +970,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508086}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rightArm1_HiResHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1004,7 +1004,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508088}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rightFinger1_Joint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1036,7 +1036,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508090}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rightFinger1_Joint2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1068,7 +1068,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508092}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rightArm1_HiResUpperArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1100,7 +1100,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508094}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rightArm1_HiResUpperArmTwist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1132,7 +1132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508096}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rightLeg1_HiResFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1164,7 +1164,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508098}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rightLeg1_HiResLowerLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1196,7 +1196,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508100}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rightFinger1_Joint3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1227,7 +1227,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508102}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rightFinger1_MetaCarpel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1259,7 +1259,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508104}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rightLeg1_HiResUpperLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1291,7 +1291,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508106}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rightLeg1_HiResUpperLegTwist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1323,7 +1323,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508108}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rightLeg1_HiResLowerLegTwist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1355,7 +1355,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508110}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rightLeg1_HiResToe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1386,7 +1386,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508112}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rightThumb1_Joint3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1422,9 +1422,9 @@ GameObject:
   - component: {fileID: 7522056342875079261}
   - component: {fileID: 2558339346812955958}
   - component: {fileID: 4041288304107056888}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy(Rocket)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1460,8 +1460,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   model: {fileID: 5732308996371161892}
   agent: {fileID: 7522056342875079261}
+  anim: {fileID: 0}
+  rb: {fileID: 0}
   headPos: {fileID: 5732308996374508036}
-  playerHitBox: {fileID: 0}
   HP: 0
   playerFaceSpeed: 20
   viewAngle: 90
@@ -1551,7 +1552,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508116}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rightThumb1_Joint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1583,7 +1584,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508118}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rightThumb1_Joint2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1615,7 +1616,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508120}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: spine1_hiResSpine2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1647,7 +1648,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508122}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: spine1_hiResSpine3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1679,7 +1680,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508124}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: spine1_hiResHips
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1712,7 +1713,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508126}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: spine1_hiResSpine1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1745,7 +1746,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508128}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TSMGWorldJoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1777,7 +1778,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508132}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: spine1_hiResSpine4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1809,7 +1810,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508134}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: spine1_hiResSpine5
   m_TagString: Untagged
   m_Icon: {fileID: 0}

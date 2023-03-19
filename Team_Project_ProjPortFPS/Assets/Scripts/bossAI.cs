@@ -43,6 +43,7 @@ public class bossAI : MonoBehaviour, IDamage
         stoppingDistOrig = agent.stoppingDistance;
         speedOrig = agent.speed;
         gameManager.instance.updateGameGoal(0, 1, 0);
+        gameManager.instance.addEnemy(agent);
     }
 
     void Update()

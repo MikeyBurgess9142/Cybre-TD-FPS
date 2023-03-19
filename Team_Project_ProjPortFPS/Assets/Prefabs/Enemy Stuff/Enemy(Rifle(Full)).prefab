@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 3739037488177203571}
   m_Layer: 6
   m_Name: Enemy(Rifle(Full))
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -193,7 +193,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 121190405655635490}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   m_Radius: 0.2
   m_Height: 1
   m_Direction: 1

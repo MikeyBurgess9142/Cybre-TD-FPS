@@ -13,6 +13,7 @@ public class gameManager : MonoBehaviour
     public GameObject player;
     public playerController_Old playerScript;
     public GameObject playerSpawnPos;
+    public allyAI allyScript;
 
     [Header("---UI---")]
     public GameObject activeMenu;
@@ -68,6 +69,7 @@ public class gameManager : MonoBehaviour
     public bool isPaused;
 
     public List<NavMeshAgent> enemy;
+    
 
 
     void Awake()

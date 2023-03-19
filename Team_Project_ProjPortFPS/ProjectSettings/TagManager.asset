@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Player Spawn Pos
+  - Ally
   layers:
   - Default
   - TransparentFX
