@@ -6,10 +6,18 @@ public class spawnerAI : MonoBehaviour
 {
     [SerializeField] GameObject objectToSpawn;
     [SerializeField] Transform spawnPos;
-    // Start is called before the first frame update
-    void Start()
+
+    [SerializeField] int spawnDelay;
+
+    int spawnAmount;
+
+    public IEnumerator spawnWave()
     {
-        
+        for (int i = 0; i < spawnAmount; i++) 
+        {
+            yield return new WaitForSeconds(spawnDelay);
+            createObject();
+        }
     }
     public void createObject()
     {
