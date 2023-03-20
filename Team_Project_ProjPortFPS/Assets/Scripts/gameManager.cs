@@ -134,10 +134,11 @@ public class gameManager : MonoBehaviour
 
         if (enemiesAlive <= 0 && bossesAlive <= 0)
         {
+            Debug.Log("Wave Ended");
             waveNumber++;
             startWave();
         }
-        if(numberOfWaves <= waveNumber)
+        if(numberOfWaves < waveNumber)
         {
             pasueState();
             activeMenu = winMenu;
@@ -167,6 +168,7 @@ public class gameManager : MonoBehaviour
     {
         foreach(spawnerAI spawner in spawners)
         {
+            Debug.Log("Spawner Activated");
             spawner.spawnWave();
         }
     }

@@ -6,7 +6,6 @@ public class spawnerAI : MonoBehaviour
 {
     [Header("----- Components -----")]
     [SerializeField] GameObject objectToSpawn;
-    [SerializeField] Transform spawnPos;
 
     [Header("----- Spawn Stats -----")]
     [SerializeField] int spawnDelay;
@@ -14,6 +13,7 @@ public class spawnerAI : MonoBehaviour
 
     public IEnumerator spawnWave()
     {
+        Debug.Log("Wave Spawning");
         for (int i = 0; i < spawnAmount; i++) 
         {
             yield return new WaitForSeconds(spawnDelay);
@@ -22,6 +22,7 @@ public class spawnerAI : MonoBehaviour
     }
     public void createObject()
     {
-        GameObject objectClone = Instantiate(objectToSpawn, spawnPos.position, objectToSpawn.transform.rotation);
+        Instantiate(objectToSpawn, transform.position, Quaternion.identity);
+        Debug.Log("Object Spawned");
     }
 }
