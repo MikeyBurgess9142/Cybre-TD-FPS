@@ -134,6 +134,7 @@ public class gameManager : MonoBehaviour
 
         if (enemiesAlive <= 0 && bossesAlive <= 0)
         {
+            waveNumber++;
             startWave();
         }
         if(numberOfWaves <= waveNumber)
