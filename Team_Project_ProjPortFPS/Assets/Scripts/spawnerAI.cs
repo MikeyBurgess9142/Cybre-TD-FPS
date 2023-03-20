@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class spawnerAI : MonoBehaviour
 {
-    [SerializeField] GameObject spawnObject;
+    [SerializeField] GameObject objectToSpawn;
+    [SerializeField] Transform spawnPos;
     // Start is called before the first frame update
     void Start()
     {
         
     }
-
+    public void createObject()
+    {
+        GameObject objectClone = Instantiate(objectToSpawn, spawnPos.position, objectToSpawn.transform.rotation);
+    }
 }
