@@ -218,6 +218,8 @@ public class playerController_Old : MonoBehaviour
         shtRate = gunList[selectedGun].shtRate;
         shtDist = gunList[selectedGun].shtDist;
         shtDmg = gunList[selectedGun].shtDmg;
+        gunModel.transform.localEulerAngles = gunList[selectedGun].gunRotation;
+        gunModel.transform.localScale = gunList[selectedGun].gunScale;
         zoomMax = gunList[selectedGun].zoomMaxFov;
         zoomInSpd = gunList[selectedGun].zoomInSpd;
         zoomOutSpd = gunList[selectedGun].zoomOutSpd;
