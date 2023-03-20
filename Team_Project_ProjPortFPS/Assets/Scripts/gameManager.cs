@@ -169,7 +169,7 @@ public class gameManager : MonoBehaviour
         foreach(spawnerAI spawner in spawners)
         {
             Debug.Log("Spawner Activated");
-            spawner.spawnWave();
+            StartCoroutine(spawner.spawnWave());
         }
     }
 }
