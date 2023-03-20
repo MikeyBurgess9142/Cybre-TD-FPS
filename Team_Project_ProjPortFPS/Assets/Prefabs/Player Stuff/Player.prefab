@@ -192,19 +192,12 @@ MonoBehaviour:
   jumpSpd: 10
   gravity: 30
   sprintMod: 2
-  playerHitBox: {fileID: 0}
   gunList: []
   shtRate: 0.25
   shtDist: 10
   shtDmg: 0
   gunModel: {fileID: 0}
   gunMaterial: {fileID: 0}
-  gunPivot: {fileID: 0}
-  gunModelADS: {fileID: 0}
-  gunModelDefaultPos: {fileID: 7614832568674328771}
-  adsSpd: 0
-  notADSSpd: 0
-  zooming: 0
   zoomMax: 0
   zoomInSpd: 0
   zoomOutSpd: 0
@@ -287,8 +280,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7614832568674328771}
-  - component: {fileID: 5935147981221561869}
   - component: {fileID: 3500125699141684733}
+  - component: {fileID: 5935147981221561869}
   m_Layer: 0
   m_Name: Gun Model Default Pos
   m_TagString: Untagged
@@ -311,6 +304,14 @@ Transform:
   m_Father: {fileID: 1238917395}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &3500125699141684733
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9049708018389529850}
+  m_Mesh: {fileID: 0}
 --- !u!23 &5935147981221561869
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -353,11 +354,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &3500125699141684733
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9049708018389529850}
-  m_Mesh: {fileID: 0}

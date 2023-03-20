@@ -16,11 +16,11 @@ public class gunStats : ScriptableObject
     public float zoomMaxFov;
     public int zoomInSpd;
     public int zoomOutSpd;
-    public int adsSpd;
-    public int notADSSpd;
+    //public int adsSpd;
+    //public int notADSSpd;
 
     [Header("Gun Stats")]
-    public int ammoCount;
+    //public int ammoCount;
     public float shtRate;
     public int shtDist;
     public int shtDmg;
