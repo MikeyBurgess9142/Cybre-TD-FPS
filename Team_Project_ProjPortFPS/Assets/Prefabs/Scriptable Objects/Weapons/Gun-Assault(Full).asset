@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf79e9d18afe4454ebbe7f796343f8e0, type: 3}
   m_Name: Gun-Assault(Full)
   m_EditorClassIdentifier: 
-  gunPosition: {x: 0.15675, y: -0.30875, z: 0.555}
-  gunRotation: {x: -2.5, y: 0, z: 0}
-  gunScale: {x: 1, y: 1, z: 1}
+  gunPosition: {x: 0.4, y: -0.5, z: 0.8}
+  gunRotation: {x: 0, y: 10, z: 0}
+  gunScale: {x: 0.6, y: 0.6, z: 0.6}
   gunModelADS: {x: 0, y: -0.31275, z: 0.46}
-  gunModelDefaultPos: {x: 0.15675, y: -0.30875, z: 0.555}
+  gunModelDefaultPos: {x: 0.4, y: -0.5, z: 0.8}
   zoomMaxFov: 45
   zoomInSpd: 8
   zoomOutSpd: 6

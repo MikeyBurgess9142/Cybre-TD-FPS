@@ -13,14 +13,15 @@ MonoBehaviour:
   m_Name: Laser-Pistol
   m_EditorClassIdentifier: 
   gunPosition: {x: 0.12, y: -0.2, z: 0.4}
+  gunRotation: {x: 0, y: 10, z: 0}
+  gunScale: {x: 0.5, y: 0.5, z: 0.5}
   gunModelADS: {x: 0, y: -0.15, z: 0.36}
   gunModelDefaultPos: {x: 0.12, y: -0.2, z: 0.4}
-  zoomMax: 50
+  zoomMaxFov: 0
   zoomInSpd: 8
   zoomOutSpd: 6
   adsSpd: 16
   notADSSpd: 8
-  ammoCount: 0
   shtRate: 0.5
   shtDist: 60
   shtDmg: 6
