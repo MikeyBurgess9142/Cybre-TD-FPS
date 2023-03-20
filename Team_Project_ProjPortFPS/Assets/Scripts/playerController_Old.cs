@@ -14,7 +14,6 @@ public class playerController_Old : MonoBehaviour
     [Range(1, 25)][SerializeField] int jumpSpd;
     [Range(10, 40)][SerializeField] int gravity;
     [Range(1, 5)][SerializeField] int sprintMod;
-    [SerializeField] Transform playerHitBox;
 
     [Header("---Gun Stats---")]
     public List<gunStats> gunList = new List<gunStats>();
@@ -23,16 +22,16 @@ public class playerController_Old : MonoBehaviour
     [Range(5, 250)][SerializeField] int shtDmg;
     [SerializeField] MeshFilter gunModel;
     [SerializeField] MeshRenderer gunMaterial;
-    public Transform gunPivot;
-    public Transform gunModelADS;
-    public Transform gunModelDefaultPos;
-    public int adsSpd;
-    public int notADSSpd;
-    public bool zooming;
+    //public Transform gunPivot;
+    //public Transform gunModelADS;
+    //public Transform gunModelDefaultPos;
+    //public int adsSpd;
+    //public int notADSSpd;
+
+    [Header("----- Camera Stats -----")]
     public float zoomMax;
     public int zoomInSpd;
     public int zoomOutSpd;
-    float zoomOrig;
 
     [Header("---Sway Settings---")]
     [SerializeField] float smooth;
@@ -47,7 +46,9 @@ public class playerController_Old : MonoBehaviour
     Vector3 playerVeloc;
     bool isShooting;
     bool isSprinting;
+    bool zooming;
     float playerSpdOrig;
+    float zoomOrig;
 
     // Start is called before the first frame update
     void Start()
