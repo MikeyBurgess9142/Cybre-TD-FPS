@@ -13,13 +13,13 @@ public class playerController_Old : MonoBehaviour
     [Range(1, 10)][SerializeField] int jumpMax;
     [Range(1, 25)][SerializeField] int jumpSpd;
     [Range(10, 40)][SerializeField] int gravity;
-    [Range(1, 5)][SerializeField] int sprintMod;
+    [Range(1, 5)][SerializeField] float sprintMod;
 
     [Header("---Gun Stats---")]
     public List<gunStats> gunList = new List<gunStats>();
     [Range(0, 10)][SerializeField] float shtRate;
-    [Range(10, 500)][SerializeField] int shtDist;
-    [Range(5, 250)][SerializeField] int shtDmg;
+    [Range(0, 500)][SerializeField] int shtDist;
+    [Range(0, 250)][SerializeField] int shtDmg;
     [SerializeField] MeshFilter gunModel;
     [SerializeField] MeshRenderer gunMaterial;
 
