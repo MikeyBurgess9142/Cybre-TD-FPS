@@ -15,6 +15,9 @@ public class gameManager : MonoBehaviour
     public GameObject playerSpawnPos;
     public allyAI allyScript;
 
+    [Header("----- Spawner List -----")]
+    public List<spawnerAI> spawners;
+
     [Header("---UI---")]
     public GameObject activeMenu;
     public GameObject pauseMenu;
@@ -61,9 +64,6 @@ public class gameManager : MonoBehaviour
     public Button button12;
     public Button button13;
     public Button button14;
-
-    [Header("----- Spawner List -----")]
-    public List<spawnerAI> spawners;
 
     [Header("---Game Goals---")]
     public int enemiesAlive;
@@ -134,7 +134,6 @@ public class gameManager : MonoBehaviour
 
         if (enemiesAlive <= 0 && bossesAlive <= 0)
         {
-            Debug.Log("Wave Ended");
             waveNumber++;
             startWave();
         }
@@ -168,7 +167,6 @@ public class gameManager : MonoBehaviour
     {
         foreach(spawnerAI spawner in spawners)
         {
-            Debug.Log("Spawner Activated");
             StartCoroutine(spawner.spawnWave());
         }
     }
