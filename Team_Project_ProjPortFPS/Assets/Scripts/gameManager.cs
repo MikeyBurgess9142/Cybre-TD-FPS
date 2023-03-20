@@ -62,11 +62,16 @@ public class gameManager : MonoBehaviour
     public Button button13;
     public Button button14;
 
+    [Header("----- Spawner List -----")]
+    public List<spawnerAI> spawners;
+
     [Header("---Game Goals---")]
     public int enemiesAlive;
     public int bossesAlive;
     public int pointsTotal;
     public bool isPaused;
+    public int numberOfWaves;
+    public int waveNumber;
 
     public List<NavMeshAgent> enemy;
     
@@ -129,6 +134,10 @@ public class gameManager : MonoBehaviour
 
         if (enemiesAlive <= 0 && bossesAlive <= 0)
         {
+            startWave();
+        }
+        if(numberOfWaves <= waveNumber)
+        {
             pasueState();
             activeMenu = winMenu;
             activeMenu.SetActive(true);
@@ -151,5 +160,13 @@ public class gameManager : MonoBehaviour
     public void addEnemy(NavMeshAgent enmy)
     {
         enemy.Add(enmy);
+    }
+
+    public void startWave()
+    {
+        foreach(spawnerAI spawner in spawners)
+        {
+            spawner.spawnWave();
+        }
     }
 }
