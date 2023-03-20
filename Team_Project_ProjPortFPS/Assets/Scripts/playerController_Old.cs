@@ -22,11 +22,13 @@ public class playerController_Old : MonoBehaviour
     [Range(5, 250)][SerializeField] int shtDmg;
     [SerializeField] MeshFilter gunModel;
     [SerializeField] MeshRenderer gunMaterial;
-    //public Transform gunPivot;
-    //public Transform gunModelADS;
-    //public Transform gunModelDefaultPos;
-    //public int adsSpd;
-    //public int notADSSpd;
+
+    [Header("---Gun Transformations---")]
+    public Transform gunPivot;
+    public Transform gunModelADS;
+    public Transform gunModelDefaultPos;
+    public int adsSpd;
+    public int notADSSpd;
 
     [Header("----- Camera Stats -----")]
     public float zoomMax;
@@ -182,17 +184,17 @@ public class playerController_Old : MonoBehaviour
     {
         Camera.main.fieldOfView = zoomOrig;
 
-        //gunPivot.localPosition = new Vector3(0, 0, 0);
-        //gunPivot.localEulerAngles = new Vector3(0, 0, 0);
-        //gunPivot.localScale = new Vector3(1, 1, 1);
+        gunPivot.localPosition = new Vector3(0, 0, 0);
+        gunPivot.localEulerAngles = new Vector3(0, 0, 0);
+        gunPivot.localScale = new Vector3(1, 1, 1);
         if (gunModel != null)
         {
             gunModel.transform.localPosition = new Vector3(0, 0, 0);
             gunModel.transform.eulerAngles = new Vector3(0, 0, 0);
             gunModel.transform.localScale = new Vector3(0, 0, 0);
         }
-        //gunModelADS.localPosition = new Vector3(0, 0, 0);
-        //gunModelDefaultPos.localPosition = new Vector3(0, 0, 0);
+        gunModelADS.localPosition = new Vector3(0, 0, 0);
+        gunModelDefaultPos.localPosition = new Vector3(0, 0, 0);
     }
 
     void selectGun()
@@ -219,11 +221,11 @@ public class playerController_Old : MonoBehaviour
         zoomMax = gunList[selectedGun].zoomMaxFov;
         zoomInSpd = gunList[selectedGun].zoomInSpd;
         zoomOutSpd = gunList[selectedGun].zoomOutSpd;
-        //adsSpd = gunList[selectedGun].adsSpd;
-        //notADSSpd = gunList[selectedGun].notADSSpd;
-        //gunModelADS.localPosition = gunList[selectedGun].gunModelADS;
-        //gunPivot.localPosition = gunList[selectedGun].gunPosition;
-        //gunModelDefaultPos.localPosition = gunList[selectedGun].gunModelDefaultPos;
+        adsSpd = gunList[selectedGun].adsSpd;
+        notADSSpd = gunList[selectedGun].notADSSpd;
+        gunModelADS.localPosition = gunList[selectedGun].gunModelADS;
+        gunPivot.localPosition = gunList[selectedGun].gunPosition;
+        gunModelDefaultPos.localPosition = gunList[selectedGun].gunModelDefaultPos;
 
         gunModel.sharedMesh = gunList[selectedGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
         gunMaterial.sharedMaterial = gunList[selectedGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
@@ -237,16 +239,16 @@ public class playerController_Old : MonoBehaviour
         shtRate = gunStat.shtRate;
         shtDist = gunStat.shtDist;
         shtDmg = gunStat.shtDmg;
-        //gunModel.transform.localEulerAngles = gunStat.gunRotation;
-        //gunModel.transform.localScale = gunStat.gunScale;
+        gunModel.transform.localEulerAngles = gunStat.gunRotation;
+        gunModel.transform.localScale = gunStat.gunScale;
         zoomMax = gunStat.zoomMaxFov;
         zoomInSpd = gunStat.zoomInSpd;
         zoomOutSpd = gunStat.zoomOutSpd;
-        //adsSpd = gunStat.adsSpd;
-        //notADSSpd = gunStat.notADSSpd;
-        //gunModelADS.localPosition = gunStat.gunModelADS;
-        //gunPivot.localPosition = gunStat.gunPosition;
-        //gunModelDefaultPos.localPosition = gunStat.gunModelDefaultPos;
+        adsSpd = gunStat.adsSpd;
+        notADSSpd = gunStat.notADSSpd;
+        gunModelADS.localPosition = gunStat.gunModelADS;
+        gunPivot.localPosition = gunStat.gunPosition;
+        gunModelDefaultPos.localPosition = gunStat.gunModelDefaultPos;
 
         gunModel.sharedMesh = gunStat.gunModel.GetComponent<MeshFilter>().sharedMesh;
         gunMaterial.sharedMaterial = gunStat.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
@@ -278,19 +280,19 @@ public class playerController_Old : MonoBehaviour
             {
                 isSprinting = false;
             }
-            //if (gunList.Count > 0)
-            //{
-            //    gunPivot.transform.localPosition = Vector3.Lerp(gunPivot.transform.localPosition, gunModelADS.localPosition, Time.deltaTime * adsSpd);
-            //}
+            if (gunList.Count > 0)
+            {
+                gunPivot.transform.localPosition = Vector3.Lerp(gunPivot.transform.localPosition, gunModelADS.localPosition, Time.deltaTime * adsSpd);
+            }
         }
         else
         {
             Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, zoomOrig, Time.deltaTime * zoomOutSpd);
 
-            ///if (gunList.Count > 0)
-            ///{
-            ///    gunPivot.transform.localPosition = Vector3.Lerp(gunPivot.transform.localPosition, gunModelDefaultPos.localPosition, Time.deltaTime * notADSSpd);
-            ///}
+            if (gunList.Count > 0)
+            {
+                gunPivot.transform.localPosition = Vector3.Lerp(gunPivot.transform.localPosition, gunModelDefaultPos.localPosition, Time.deltaTime * notADSSpd);
+            }
         }
     }
 
