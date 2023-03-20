@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class spawnerAI : MonoBehaviour
 {
+    [Header("----- Components -----")]
     [SerializeField] GameObject objectToSpawn;
     [SerializeField] Transform spawnPos;
 
+    [Header("----- Spawn Stats -----")]
     [SerializeField] int spawnDelay;
-
-    int spawnAmount;
+    [SerializeField] int spawnAmount;
 
     public IEnumerator spawnWave()
     {
