@@ -8,8 +8,8 @@ public class spawnerAI : MonoBehaviour
     [SerializeField] GameObject objectToSpawn;
 
     [Header("----- Spawn Stats -----")]
-    [SerializeField] int spawnDelay;
-    [SerializeField] int spawnAmount;
+    [SerializeField] float spawnDelay;
+    [SerializeField] float spawnAmount;
 
     public IEnumerator spawnWave(int spawnIntensity)
     {
