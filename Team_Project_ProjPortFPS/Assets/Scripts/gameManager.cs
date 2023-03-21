@@ -84,6 +84,7 @@ public class gameManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponent<playerController_Old>();
         playerSpawnPos = GameObject.FindGameObjectWithTag("Player Spawn Pos");
+        spawnIntensity = 1;
     }
 
     void Update()
@@ -137,6 +138,7 @@ public class gameManager : MonoBehaviour
         {
             Debug.Log("Wave Ended");
             waveNumber++;
+            spawnIntensity++;
             startWave();
         }
         if(numberOfWaves < waveNumber)
@@ -170,7 +172,7 @@ public class gameManager : MonoBehaviour
         foreach(spawnerAI spawner in spawners)
         {
             Debug.Log("Spawner Activated");
-            StartCoroutine(spawner.spawnWave());
+            StartCoroutine(spawner.spawnWave(spawnIntensity));
         }
     }
 }
