@@ -8,6 +8,8 @@ public class allyAI : MonoBehaviour, IDamage
     [Header("----- Components -----")]
     [SerializeField] Renderer model;
     [SerializeField] NavMeshAgent agent;
+    [SerializeField] Animator anim;
+    [SerializeField] Rigidbody rb;
 
     [Header("----- Stats -----")]
     [SerializeField] Transform headPos;
@@ -24,6 +26,7 @@ public class allyAI : MonoBehaviour, IDamage
     [SerializeField] GameObject bullet;
     [SerializeField] int bulletSpeed;
     [SerializeField] float shootRate;
+    [SerializeField] int shootDamage;
 
     Vector3 startingPos;
     bool destinationChosen;
