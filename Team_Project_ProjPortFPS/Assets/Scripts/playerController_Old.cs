@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class playerController_Old : MonoBehaviour
 {
-    [Header("---Components---")]
+    [Header("--- Components ---")]
     [SerializeField] CharacterController controller;
+    [SerializeField] AudioSource Aud;
 
-    [Header("---Player Stats---")]
+    [Header("--- Player Stats ---")]
     [Range(10, 1000)][SerializeField] int HP;
     [Range(5, 30)][SerializeField] float playerSpd;
     [Range(1, 10)][SerializeField] int jumpMax;
@@ -15,7 +16,7 @@ public class playerController_Old : MonoBehaviour
     [Range(10, 40)][SerializeField] int gravity;
     [Range(1, 5)][SerializeField] float sprintMod;
 
-    [Header("---Gun Stats---")]
+    [Header("--- Gun Stats---")]
     public List<gunStats> gunList = new List<gunStats>();
     [Range(0, 10)][SerializeField] float shtRate;
     [Range(0, 500)][SerializeField] int shtDist;
@@ -23,7 +24,7 @@ public class playerController_Old : MonoBehaviour
     [SerializeField] MeshFilter gunModel;
     [SerializeField] MeshRenderer gunMaterial;
 
-    [Header("---Gun Transformations---")]
+    [Header("--- Gun Transformations---")]
     public Transform gunPivot;
     public Transform gunModelADS;
     public Transform gunModelDefaultPos;
@@ -38,8 +39,15 @@ public class playerController_Old : MonoBehaviour
     [Header("---Sway Settings---")]
     [SerializeField] float smooth;
     [SerializeField] float swayMultiplier;
-
     Quaternion rotationX, rotationY, targetRotation;
+
+    [Header("--- Auido Settings---")]
+    [SerializeField] AudioClip[] audFootSteps;
+    [Range(0, 1)] [SerializeField] float audFootStepsVol;
+    [SerializeField] AudioClip[] audJump;
+    [Range(0, 1)] [SerializeField] float audJumpVol;
+    [SerializeField] AudioClip[] audDamage;
+    [Range(0, 1)] [SerializeField] float audDamageVol;
 
     int hpOrigin;
     int jumpsCurr;
