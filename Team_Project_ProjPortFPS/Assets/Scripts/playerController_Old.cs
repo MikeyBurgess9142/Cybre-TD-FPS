@@ -6,13 +6,9 @@ public class playerController_Old : MonoBehaviour
 {
     [Header("--- Components ---")]
     [SerializeField] CharacterController controller;
-<<<<<<< Updated upstream
     [SerializeField] LineRenderer lineRendered;
     [SerializeField] AudioSource aud;
-=======
-    [SerializeField] AudioSource Aud;
     public Transform playerHitBox;
->>>>>>> Stashed changes
 
     [Header("--- Player Stats ---")]
     [Range(10, 1000)][SerializeField] int HP;
