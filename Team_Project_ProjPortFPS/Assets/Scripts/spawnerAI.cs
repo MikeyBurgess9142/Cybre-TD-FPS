@@ -11,10 +11,10 @@ public class spawnerAI : MonoBehaviour
     [SerializeField] int spawnDelay;
     [SerializeField] int spawnAmount;
 
-    public IEnumerator spawnWave()
+    public IEnumerator spawnWave(int spawnIntensity)
     {
         Debug.Log("Wave Spawning");
-        for (int i = 0; i < spawnAmount; i++) 
+        for (int i = 0; i < spawnAmount * spawnIntensity; i++) 
         {
             yield return new WaitForSeconds(spawnDelay);
             createObject();

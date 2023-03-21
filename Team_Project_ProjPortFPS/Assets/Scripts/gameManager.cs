@@ -62,8 +62,9 @@ public class gameManager : MonoBehaviour
     public Button button13;
     public Button button14;
 
-    [Header("----- Spawner List -----")]
+    [Header("----- Spawner Stats -----")]
     public List<spawnerAI> spawners;
+    int spawnIntensity;
 
     [Header("---Game Goals---")]
     public int enemiesAlive;
