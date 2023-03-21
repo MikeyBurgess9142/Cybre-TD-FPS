@@ -39,9 +39,11 @@ public class allyAI : MonoBehaviour, IDamage
     bool isShooting;
     float angleToEnemy;
     float speedOrig;
+    Color origColor;
 
     void Start()
     {
+        origColor = model.material.color;
         startingPos = transform.position;
         stoppingDistOrig = agent.stoppingDistance;
         speedOrig = agent.speed;
@@ -142,7 +144,7 @@ public class allyAI : MonoBehaviour, IDamage
     {
         model.material.color = Color.red;
         yield return new WaitForSeconds(0.15f);
-        model.material.color = Color.white;
+        model.material.color = origColor;
     }
 
     void faceEnemy()
@@ -168,6 +170,14 @@ public class allyAI : MonoBehaviour, IDamage
             enemyInRange = true;
         }   
     }
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            enemyInRange = false;
+            agent.stoppingDistance = 0;
+        }
+    }
 
     public void agentStop()
     {
@@ -178,17 +188,8 @@ public class allyAI : MonoBehaviour, IDamage
     {
         agent.enabled = true;
     }
-
-    public void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Enemy"))
-        {
-            enemyInRange = false;
-            agent.stoppingDistance = 0;
-        }
-    }
-    public void OnParticleCollision(GameObject other)
-    {
-            
-    }
+    //public void OnParticleCollision(GameObject other)
+    //{
+    //        
+    //}
 }
