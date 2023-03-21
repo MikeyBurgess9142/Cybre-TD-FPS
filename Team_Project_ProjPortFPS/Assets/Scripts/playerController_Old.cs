@@ -48,6 +48,7 @@ public class playerController_Old : MonoBehaviour
     [Range(0, 1)] [SerializeField] float audJumpVol;
     [SerializeField] AudioClip[] audDamage;
     [Range(0, 1)] [SerializeField] float audDamageVol;
+    AudioClip shootAudio;
 
     int hpOrigin;
     int jumpsCurr;
@@ -236,6 +237,7 @@ public class playerController_Old : MonoBehaviour
         gunModelADS.localPosition = gunList[selectedGun].gunModelADS;
         gunPivot.localPosition = gunList[selectedGun].gunPosition;
         gunModelDefaultPos.localPosition = gunList[selectedGun].gunModelDefaultPos;
+        shootAudio = gunList[selectedGun].gunShotAud;
 
         gunModel.sharedMesh = gunList[selectedGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
         gunMaterial.sharedMaterial = gunList[selectedGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
@@ -259,6 +261,7 @@ public class playerController_Old : MonoBehaviour
         gunModelADS.localPosition = gunStat.gunModelADS;
         gunPivot.localPosition = gunStat.gunPosition;
         gunModelDefaultPos.localPosition = gunStat.gunModelDefaultPos;
+        shootAudio = gunStat.gunShotAud;
 
         gunModel.sharedMesh = gunStat.gunModel.GetComponent<MeshFilter>().sharedMesh;
         gunMaterial.sharedMaterial = gunStat.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
