@@ -23,7 +23,7 @@ MonoBehaviour:
   zoomOutSpd: 8
   adsSpd: 16
   notADSSpd: 8
-  shtRate: 1
+  shtRate: 0.6
   shtDist: 60
   shtDmg: 4
   gunModel: {fileID: 3040459024570722813, guid: a5c0115a74d5a5f4c994aafbd0c5e386, type: 3}
