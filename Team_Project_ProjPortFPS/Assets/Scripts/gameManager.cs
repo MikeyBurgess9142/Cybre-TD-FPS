@@ -87,7 +87,6 @@ public class gameManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponent<playerController_Old>();
         playerSpawnPos = GameObject.FindGameObjectWithTag("Player Spawn Pos");
-        spawnIntensity = 1;
         startWave();
     }
 
@@ -141,8 +140,6 @@ public class gameManager : MonoBehaviour
         if (enemiesAlive <= 0 && bossesAlive <= 0)
         {
             Debug.Log("Wave Ended");
-            waveNumber++;
-            spawnIntensity += intensityIncreaseAmt;
             startWave();
             if(spawnIntensity % bossWaveInterval == 0)
             {
@@ -179,6 +176,8 @@ public class gameManager : MonoBehaviour
     {
         foreach(spawnerAI spawner in spawners)
         {
+            waveNumber++;
+            spawnIntensity += intensityIncreaseAmt;
             Debug.Log("Spawner Activated");
             StartCoroutine(spawner.spawnWave(spawnIntensity));
         }
