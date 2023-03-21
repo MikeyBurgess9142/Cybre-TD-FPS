@@ -65,8 +65,8 @@ public class gameManager : MonoBehaviour
     [Header("----- Spawner Stats -----")]
     public List<spawnerAI> spawners;
     public List<spawnerAI> bossSpawners;
+    public int bossWaveInterval; //if set to 3 boss's spawn on waves 3, 6, 9...
     int spawnIntensity;
-    int bossWaveInterval; //if set to 3 boss's spawn on waves 3, 6, 9...
 
     [Header("---Game Goals---")]
     public int enemiesAlive;
@@ -87,7 +87,6 @@ public class gameManager : MonoBehaviour
         playerScript = player.GetComponent<playerController_Old>();
         playerSpawnPos = GameObject.FindGameObjectWithTag("Player Spawn Pos");
         spawnIntensity = 1;
-        bossWaveInterval = 3;
     }
 
     void Update()
