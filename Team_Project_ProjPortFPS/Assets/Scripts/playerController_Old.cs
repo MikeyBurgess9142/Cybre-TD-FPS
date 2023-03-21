@@ -6,7 +6,7 @@ public class playerController_Old : MonoBehaviour
 {
     [Header("--- Components ---")]
     [SerializeField] CharacterController controller;
-    [SerializeField] AudioSource Aud;
+    [SerializeField] AudioSource aud;
 
     [Header("--- Player Stats ---")]
     [Range(10, 1000)][SerializeField] int HP;
@@ -48,7 +48,8 @@ public class playerController_Old : MonoBehaviour
     [Range(0, 1)] [SerializeField] float audJumpVol;
     [SerializeField] AudioClip[] audDamage;
     [Range(0, 1)] [SerializeField] float audDamageVol;
-    AudioClip shootAudio;
+    [SerializeField] AudioClip audShoot;
+    [Range(0, 1)] [SerializeField] float audShootVol;
 
     int hpOrigin;
     int jumpsCurr;
@@ -58,6 +59,7 @@ public class playerController_Old : MonoBehaviour
     bool isShooting;
     bool isSprinting;
     bool zooming;
+    bool isPlayingFootSteps;
     float playerSpdOrig;
     float zoomOrig;
 
@@ -95,6 +97,11 @@ public class playerController_Old : MonoBehaviour
 
         if (controller.isGrounded && playerVeloc.y < 0)
         {
+            if (!isPlayingFootSteps && move.normalized.magnitude > 0.5f)
+            {
+                StartCoroutine(playFootSteps());
+            }
+
             playerVeloc.y = 0;
             jumpsCurr = 0;
         }
@@ -145,10 +152,26 @@ public class playerController_Old : MonoBehaviour
         }
     }
 
+    IEnumerator playFootSteps()
+    {
+        isPlayingFootSteps = true;
+        aud.PlayOneShot(audFootSteps[Random.Range(0, audFootSteps.Length)], audFootStepsVol);
+        if (!isSprinting)
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.3f);
+        }
+
+        isPlayingFootSteps = false;
+    }
+
     IEnumerator shoot()
     {
         isShooting = true;
-
+        aud.PlayOneShot(audShoot, audShootVol);
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shtDist))
         {
@@ -174,6 +197,7 @@ public class playerController_Old : MonoBehaviour
     public void takeDmg(int dmg)
     {
         HP -= dmg;
+        aud.PlayOneShot(audDamage[Random.Range(0, audDamage.Length)], audDamageVol);
         updateHP();
         StartCoroutine(gameManager.instance.playerHit());
 
@@ -237,7 +261,7 @@ public class playerController_Old : MonoBehaviour
         gunModelADS.localPosition = gunList[selectedGun].gunModelADS;
         gunPivot.localPosition = gunList[selectedGun].gunPosition;
         gunModelDefaultPos.localPosition = gunList[selectedGun].gunModelDefaultPos;
-        shootAudio = gunList[selectedGun].gunShotAud;
+        audShoot = gunList[selectedGun].gunShotAud;
 
         gunModel.sharedMesh = gunList[selectedGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
         gunMaterial.sharedMaterial = gunList[selectedGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
@@ -261,7 +285,7 @@ public class playerController_Old : MonoBehaviour
         gunModelADS.localPosition = gunStat.gunModelADS;
         gunPivot.localPosition = gunStat.gunPosition;
         gunModelDefaultPos.localPosition = gunStat.gunModelDefaultPos;
-        shootAudio = gunStat.gunShotAud;
+        audShoot = gunStat.gunShotAud;
 
         gunModel.sharedMesh = gunStat.gunModel.GetComponent<MeshFilter>().sharedMesh;
         gunMaterial.sharedMaterial = gunStat.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
