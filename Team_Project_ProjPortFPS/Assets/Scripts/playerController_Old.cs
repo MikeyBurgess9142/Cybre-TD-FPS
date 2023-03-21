@@ -86,7 +86,7 @@ public class playerController_Old : MonoBehaviour
             zoomCamera();
             gunSway();
 
-            if (!isShooting && Input.GetButton("Shoot"))
+            if (!isShooting && Input.GetButton("Shoot") && gunList.Count > 0)
             {
                 StartCoroutine(shoot());
             }
@@ -174,6 +174,8 @@ public class playerController_Old : MonoBehaviour
     {
         isShooting = true;
         aud.PlayOneShot(audShoot, audShootVol);
+        Instantiate(shootEffect, shootEffectPos.position, shootEffect.transform.rotation);
+
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shtDist))
         {
@@ -230,6 +232,7 @@ public class playerController_Old : MonoBehaviour
         }
         gunModelADS.localPosition = new Vector3(0, 0, 0);
         gunModelDefaultPos.localPosition = new Vector3(0, 0, 0);
+        shootEffectPos.localPosition = new Vector3(0, 0, 0);
     }
 
     void selectGun()
@@ -263,7 +266,9 @@ public class playerController_Old : MonoBehaviour
         gunModelADS.localPosition = gunList[selectedGun].gunModelADS;
         gunPivot.localPosition = gunList[selectedGun].gunPosition;
         gunModelDefaultPos.localPosition = gunList[selectedGun].gunModelDefaultPos;
+        shootEffectPos.transform.localPosition = gunList[selectedGun].shootEffectPos;
         audShoot = gunList[selectedGun].gunShotAud;
+        shootEffect = gunList[selectedGun].shootEffect;
 
         gunModel.sharedMesh = gunList[selectedGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
         gunMaterial.sharedMaterial = gunList[selectedGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
@@ -287,7 +292,9 @@ public class playerController_Old : MonoBehaviour
         gunModelADS.localPosition = gunStat.gunModelADS;
         gunPivot.localPosition = gunStat.gunPosition;
         gunModelDefaultPos.localPosition = gunStat.gunModelDefaultPos;
+        shootEffectPos.transform.localPosition = gunStat.shootEffectPos;
         audShoot = gunStat.gunShotAud;
+        shootEffect = gunStat.shootEffect;
 
         gunModel.sharedMesh = gunStat.gunModel.GetComponent<MeshFilter>().sharedMesh;
         gunMaterial.sharedMaterial = gunStat.gunModel.GetComponent<MeshRenderer>().sharedMaterial;

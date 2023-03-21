@@ -17,6 +17,7 @@ MonoBehaviour:
   gunScale: {x: 0.6, y: 0.6, z: 0.6}
   gunModelADS: {x: 0, y: -0.315, z: 0.5}
   gunModelDefaultPos: {x: 0.4, y: -0.5, z: 0.8}
+  shootEffectPos: {x: 0, y: 0.3867, z: 1.8592}
   zoomMaxFov: 45
   zoomInSpd: 10
   zoomOutSpd: 8
@@ -26,4 +27,5 @@ MonoBehaviour:
   shtDist: 60
   shtDmg: 4
   gunModel: {fileID: 3040459024570722813, guid: a5c0115a74d5a5f4c994aafbd0c5e386, type: 3}
-  gunShotAud: {fileID: 0}
+  shootEffect: {fileID: 3837949979570230378, guid: a575ced605515a2428c584ecf03101d7, type: 3}
+  gunShotAud: {fileID: 8300000, guid: 947719fd38845824ba3638af9d8e4e54, type: 3}
