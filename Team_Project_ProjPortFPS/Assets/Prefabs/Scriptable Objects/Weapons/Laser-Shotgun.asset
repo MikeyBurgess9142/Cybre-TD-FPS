@@ -18,7 +18,7 @@ MonoBehaviour:
   gunModelADS: {x: 0, y: -0.264, z: 0.36}
   gunModelDefaultPos: {x: 0.3, y: -0.3, z: 0.4}
   shootEffectPos: {x: -2.108, y: 0.272, z: 0}
-  zoomMaxFov: 0
+  zoomMaxFov: 45
   zoomInSpd: 8
   zoomOutSpd: 16
   adsSpd: 16
