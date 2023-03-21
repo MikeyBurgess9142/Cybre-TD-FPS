@@ -23,11 +23,13 @@ public class playerController_Old : MonoBehaviour
     [Range(0, 250)][SerializeField] int shtDmg;
     [SerializeField] MeshFilter gunModel;
     [SerializeField] MeshRenderer gunMaterial;
+    [SerializeField] GameObject shootEffect;
 
     [Header("--- Gun Transformations---")]
     public Transform gunPivot;
     public Transform gunModelADS;
     public Transform gunModelDefaultPos;
+    public Transform shootEffectPos;
     public int adsSpd;
     public int notADSSpd;
 
