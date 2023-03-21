@@ -11,6 +11,7 @@ public class gunStats : ScriptableObject
     public Vector3 gunScale;
     public Vector3 gunModelADS;
     public Vector3 gunModelDefaultPos;
+    public Vector3 shootEffectPos;
 
     [Header("Gun Aiming")]
     public float zoomMaxFov;
