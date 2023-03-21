@@ -25,5 +25,6 @@ public class gunStats : ScriptableObject
     public int shtDist;
     public int shtDmg;
     public GameObject gunModel;
+    public GameObject shootEffect;
     public AudioClip gunShotAud;
 }
