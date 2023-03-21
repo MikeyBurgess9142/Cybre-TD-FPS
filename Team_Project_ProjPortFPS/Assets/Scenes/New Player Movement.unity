@@ -221,7 +221,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 2
-  m_Radius: 0.5
+  m_Radius: 0.3
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -239,18 +239,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf4f32bc126a7bf4293c9c2bf8d4c869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterController: {fileID: 1476690}
   inputMovement: {x: 0, y: 0}
   inputCamera: {x: 0, y: 0}
   lockVerMin: -75
   lockVerMax: 75
   mainCamera: {fileID: 1310159101}
   playerPose: 0
-  playerPoseSmooth: 1
-  cameraStandHeight: 1
-  cameraCrouchHeight: 0.5
-  cameraProneHeight: -0.5
+  playerPoseSmooth: 0.25
   cameraHeight: 0
   cameraHeightSpeed: 0
+  playerStandStance:
+    cameraHeight: 1
+    playerHeight: 2
+    playerController: {fileID: 1476690}
+  playerCrouchStance:
+    cameraHeight: 0.5
+    playerHeight: 1
+    playerController: {fileID: 1476690}
+  playerProneStance:
+    cameraHeight: -0.05
+    playerHeight: 0.5
+    playerController: {fileID: 1476690}
   playerSettings:
     cameraSensHor: 0.1
     cameraSensVer: 0.1

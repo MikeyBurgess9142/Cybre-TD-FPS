@@ -7,7 +7,8 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     DefaultInput input;
-    CharacterController characterController;
+    [SerializeField] CharacterController characterController;
+    CharacterController characterControllerOrig;
     public Vector2 inputMovement;
     public Vector2 inputCamera;
     [SerializeField] float lockVerMin;
@@ -18,13 +19,15 @@ public class PlayerController : MonoBehaviour
 
     [Header("---Preferences---")]
     public Transform mainCamera;
-    [SerializeField] public Models.PlayerPose playerPose;
-    [SerializeField] public float playerPoseSmooth;
-    [SerializeField] public float cameraStandHeight;
-    [SerializeField] public float cameraCrouchHeight;
-    [SerializeField] public float cameraProneHeight;
-    [SerializeField] public float cameraHeight;
-    [SerializeField] public float cameraHeightSpeed;
+    [SerializeField] Models.PlayerPose playerPose;
+    [SerializeField] float playerPoseSmooth;
+    [SerializeField] float cameraHeight;
+    [SerializeField] float cameraHeightSpeed;
+    [SerializeField] Models.PlayerStance playerStandStance;
+    [SerializeField] Models.PlayerStance playerCrouchStance;
+    [SerializeField] Models.PlayerStance playerProneStance;
+    float playerStanceHeightVelocity;
+    Vector3 playerStanceCenterVelocity;
 
     [Header("---Settings---")]
     public Models.PlayerSettingsModel playerSettings;
@@ -44,13 +47,15 @@ public class PlayerController : MonoBehaviour
         input.Player.Movement.performed += e => inputMovement = e.ReadValue<Vector2>();
         input.Player.Camera.performed += e => inputCamera = e.ReadValue<Vector2>();
         input.Player.Jump.performed += e => Jump();
+        input.Player.Crouch.performed += e => Crouch();
+        input.Player.Prone.performed += e => Prone();
 
         input.Enable();
 
         cameraRotation = mainCamera.localRotation.eulerAngles;
         playerRotation = transform.localRotation.eulerAngles;
 
-        characterController = GetComponent<CharacterController>();
+        characterControllerOrig = characterController;
 
         cameraHeight = mainCamera.localPosition.y;
     }
@@ -60,7 +65,7 @@ public class PlayerController : MonoBehaviour
         Camera();
         Movement();
         Jumping();
-        CameraHeight();
+        PlayerStance();
     }
 
     void Camera()
@@ -75,21 +80,24 @@ public class PlayerController : MonoBehaviour
         mainCamera.localRotation = Quaternion.Euler(cameraRotation);
     }
 
-    void CameraHeight()
+    void PlayerStance()
     {
-        float poseHeight = cameraStandHeight;
+        Models.PlayerStance currentStance = playerStandStance;
 
         if (playerPose == Models.PlayerPose.Crouch)
         {
-            poseHeight = cameraCrouchHeight;
+            currentStance = playerCrouchStance;
         }
         else if (playerPose == Models.PlayerPose.Prone)
         {
-            poseHeight = cameraProneHeight;
+            currentStance = playerProneStance;
         }
 
-        cameraHeight = Mathf.SmoothDamp(mainCamera.localPosition.y, poseHeight, ref cameraHeightSpeed, playerPoseSmooth);
+        cameraHeight = Mathf.SmoothDamp(mainCamera.localPosition.y, currentStance.cameraHeight, ref cameraHeightSpeed, playerPoseSmooth);
         mainCamera.localPosition = new Vector3(mainCamera.localPosition.x, cameraHeight, mainCamera.localPosition.z);
+
+        characterController.height = Mathf.SmoothDamp(characterController.height, currentStance.playerHeight, ref playerStanceHeightVelocity, playerPoseSmooth);
+        characterController.center = Vector3.SmoothDamp(characterController.center, currentStance.playerController.center, ref playerStanceCenterVelocity, playerPoseSmooth);
     }
 
     void Movement()
@@ -131,4 +139,26 @@ public class PlayerController : MonoBehaviour
         playerGravity = 0;
     }
 
+
+    void Crouch()
+    {
+        if (playerPose == Models.PlayerPose.Crouch)
+        {
+            playerPose = Models.PlayerPose.Stand;
+            return;
+        }
+
+        playerPose = Models.PlayerPose.Crouch;
+    }
+
+    void Prone()
+    {
+        if (playerPose == Models.PlayerPose.Prone)
+        {
+            playerPose = Models.PlayerPose.Stand;
+            return;
+        }
+
+        playerPose = Models.PlayerPose.Prone;
+    }
 }

@@ -4,6 +4,13 @@ using UnityEngine;
 
 public static class Models
 {
+    public enum PlayerPose
+    {
+        Stand,
+        Crouch,
+        Prone
+    }
+
     [System.Serializable]
 
     public class PlayerSettingsModel
@@ -26,10 +33,11 @@ public static class Models
 
     }
 
-    public enum PlayerPose
+    [System.Serializable]
+    public class PlayerStance
     {
-        Stand,
-        Crouch,
-        Prone
+        public float cameraHeight;
+        public float playerHeight;
+        public CharacterController playerController;
     }
 }
