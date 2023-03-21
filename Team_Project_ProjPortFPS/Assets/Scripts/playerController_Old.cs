@@ -6,6 +6,7 @@ public class playerController_Old : MonoBehaviour
 {
     [Header("--- Components ---")]
     [SerializeField] CharacterController controller;
+    [SerializeField] LineRenderer lineRendered;
     [SerializeField] AudioSource aud;
 
     [Header("--- Player Stats ---")]
@@ -179,6 +180,9 @@ public class playerController_Old : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shtDist))
         {
+            lineRendered.enabled = true;
+            lineRendered.SetPosition(0, shootEffectPos.position);
+            lineRendered.SetPosition(1, hit.point);
             if (hit.collider.GetComponent<IDamage>() != null)
             {
                 hit.collider.GetComponent<IDamage>().takeDmg(shtDmg);
@@ -186,6 +190,7 @@ public class playerController_Old : MonoBehaviour
         }
 
         yield return new WaitForSeconds(shtRate);
+        lineRendered.enabled = false;
         isShooting = false;
     }
 

@@ -122,6 +122,10 @@ public class allyAI : MonoBehaviour, IDamage
         agent.stoppingDistance = 0;
         return false;
     }
+    public void targetEnemy()
+    {
+
+    }
 
     public void takeDmg(int dmg)
     {
