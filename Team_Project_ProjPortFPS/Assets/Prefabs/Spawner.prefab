@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 5189280418021372762}
   - component: {fileID: 5594919270001533472}
   - component: {fileID: 4303641452762966039}
-  - component: {fileID: 5974980144823623415}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Respawn
@@ -49,8 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToSpawn: {fileID: 0}
-  spawnDelay: 0
-  spawnAmount: 0
+  spawnDelay: 1
+  spawnAmount: 1
 --- !u!33 &5189280418021372762
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -114,18 +113,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5974980144823623415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9157032298411009332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a8b640615e1f094f8b94b83a8e5dd88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 0}
-  spawnDelay: 0
-  spawnAmount: 0
