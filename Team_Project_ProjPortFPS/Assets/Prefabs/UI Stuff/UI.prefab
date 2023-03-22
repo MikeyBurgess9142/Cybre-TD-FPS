@@ -375,7 +375,7 @@ GameObject:
   - component: {fileID: 397194080}
   - component: {fileID: 397194079}
   m_Layer: 5
-  m_Name: Bosseses Remaining Label (1)
+  m_Name: Bosseses Killed Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -399,7 +399,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 150, y: -100}
+  m_AnchoredPosition: {x: 150, y: -150}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &397194080
@@ -430,7 +430,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Bosses in Wave :'
+  m_text: 'Boss Waves Left :'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: d75b8f41e959450c84ac6e967084d3e1, type: 2}
@@ -915,7 +915,7 @@ GameObject:
   - component: {fileID: 805606575}
   - component: {fileID: 805606574}
   m_Layer: 5
-  m_Name: Bosses Remaining Number
+  m_Name: Bosses killed Number
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2632,7 +2632,8 @@ MonoBehaviour:
   playerHitFlash: {fileID: 148791533}
   playerHPBar: {fileID: 293577377}
   enemiesRemainingText: {fileID: 1385136531}
-  bossEnemiesRemainingText: {fileID: 805606574}
+  bossesKilledText: {fileID: 805606574}
+  wavesCurrentText: {fileID: 5276605287419310730}
   pointsTotalText: {fileID: 1429075507963364611}
   pickupPos: {fileID: 0}
   gunPistol: {fileID: 3455334594203397412, guid: 7c49de00d1009764bb3cae99302a4083, type: 3}
@@ -2674,6 +2675,8 @@ MonoBehaviour:
   isPaused: 0
   numberOfWaves: 0
   waveNumber: 0
+  wavesCurrent: 0
+  bossesKilled: 0
   enemy: []
 --- !u!114 &1579139283
 MonoBehaviour:
@@ -4592,7 +4595,7 @@ GameObject:
   - component: {fileID: 7942999837595339796}
   - component: {fileID: 5773190860880983446}
   m_Layer: 5
-  m_Name: Waves Remaining Label
+  m_Name: Current Wave Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4616,7 +4619,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 149.99988, y: -100}
+  m_AnchoredPosition: {x: 120, y: -100}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7942999837595339796
@@ -4647,7 +4650,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Bosses in Wave :'
+  m_text: 'Current Wave :'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: d75b8f41e959450c84ac6e967084d3e1, type: 2}
@@ -5209,7 +5212,7 @@ GameObject:
   - component: {fileID: 2773417056477262123}
   - component: {fileID: 5276605287419310730}
   m_Layer: 5
-  m_Name: Waves Remaining Number
+  m_Name: Current Wave Number
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

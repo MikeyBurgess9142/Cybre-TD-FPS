@@ -1271,74 +1271,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 397194077, guid: 593275ef2f6e296459b2bd4ad93b5e05, type: 3}
-      propertyPath: m_Name
-      value: Bosseses Killed Label
-      objectReference: {fileID: 0}
-    - target: {fileID: 397194078, guid: 593275ef2f6e296459b2bd4ad93b5e05, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -150
-      objectReference: {fileID: 0}
-    - target: {fileID: 397194079, guid: 593275ef2f6e296459b2bd4ad93b5e05, type: 3}
-      propertyPath: m_text
-      value: 'Boss Waves Left :'
-      objectReference: {fileID: 0}
-    - target: {fileID: 805606572, guid: 593275ef2f6e296459b2bd4ad93b5e05, type: 3}
-      propertyPath: m_Name
-      value: Bosses killed Number
-      objectReference: {fileID: 0}
-    - target: {fileID: 805606573, guid: 593275ef2f6e296459b2bd4ad93b5e05, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 805606573, guid: 593275ef2f6e296459b2bd4ad93b5e05, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 805606573, guid: 593275ef2f6e296459b2bd4ad93b5e05, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 805606573, guid: 593275ef2f6e296459b2bd4ad93b5e05, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 805606573, guid: 593275ef2f6e296459b2bd4ad93b5e05, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 215
-      objectReference: {fileID: 0}
-    - target: {fileID: 805606573, guid: 593275ef2f6e296459b2bd4ad93b5e05, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1579139282, guid: 593275ef2f6e296459b2bd4ad93b5e05, type: 3}
       propertyPath: pickupPos
       value: 
       objectReference: {fileID: 1379786212}
-    - target: {fileID: 1579139282, guid: 593275ef2f6e296459b2bd4ad93b5e05, type: 3}
-      propertyPath: bossesKilledText
-      value: 
-      objectReference: {fileID: 6969435581489357002}
-    - target: {fileID: 1579139282, guid: 593275ef2f6e296459b2bd4ad93b5e05, type: 3}
-      propertyPath: wavesCurrentText
-      value: 
-      objectReference: {fileID: 6969435581489357003}
-    - target: {fileID: 1567219707571874638, guid: 593275ef2f6e296459b2bd4ad93b5e05, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 1641368553111986438, guid: 593275ef2f6e296459b2bd4ad93b5e05, type: 3}
-      propertyPath: m_Name
-      value: Current Wave Label
-      objectReference: {fileID: 0}
-    - target: {fileID: 2664225166151657867, guid: 593275ef2f6e296459b2bd4ad93b5e05, type: 3}
-      propertyPath: m_Name
-      value: Current Wave Number
-      objectReference: {fileID: 0}
-    - target: {fileID: 5773190860880983446, guid: 593275ef2f6e296459b2bd4ad93b5e05, type: 3}
-      propertyPath: m_text
-      value: 'Current Wave :'
-      objectReference: {fileID: 0}
     - target: {fileID: 6969435581272140359, guid: 593275ef2f6e296459b2bd4ad93b5e05, type: 3}
       propertyPath: m_Name
       value: UI
@@ -1429,28 +1365,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 593275ef2f6e296459b2bd4ad93b5e05, type: 3}
---- !u!114 &6969435581489357002 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 805606574, guid: 593275ef2f6e296459b2bd4ad93b5e05, type: 3}
-  m_PrefabInstance: {fileID: 6969435581489357001}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &6969435581489357003 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5276605287419310730, guid: 593275ef2f6e296459b2bd4ad93b5e05, type: 3}
-  m_PrefabInstance: {fileID: 6969435581489357001}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &7894015379716388895
 PrefabInstance:
   m_ObjectHideFlags: 0
