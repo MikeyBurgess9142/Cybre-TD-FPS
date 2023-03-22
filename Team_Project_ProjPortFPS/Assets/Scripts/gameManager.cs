@@ -176,10 +176,10 @@ public class gameManager : MonoBehaviour
 
     public void startWave()
     {
+        waveNumber++;
+        spawnIntensity += intensityIncreaseAmt;
         foreach (spawnerAI spawner in spawners)
         {
-            waveNumber++;
-            spawnIntensity += intensityIncreaseAmt;
             Debug.Log("Spawner Activated");
             StartCoroutine(spawner.spawnWave(spawnIntensity));
         }
