@@ -118,6 +118,7 @@ MonoBehaviour:
   anim: {fileID: 121190405665150016}
   rb: {fileID: 0}
   headPos: {fileID: 121190405655870434}
+  playerHitBox: {fileID: 0}
   HP: 20
   playerFaceSpeed: 20
   viewAngle: 90
@@ -125,8 +126,8 @@ MonoBehaviour:
   pointValue: 200
   shootPos: {fileID: 121190405655870444}
   bullet: {fileID: 3737781795031576592, guid: 5df1c4e6b573d824ea23ce279ed4f111, type: 3}
-  bulletSpeed: 15
-  shootRate: 0.6
+  bulletSpeed: 50
+  shootRate: 1.5
   playerInRangeDist: 50
 --- !u!95 &121190405665150016
 Animator:
@@ -159,8 +160,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 2
-  m_Acceleration: 1
+  m_Speed: 6
+  m_Acceleration: 15
   avoidancePriority: 50
   m_AngularSpeed: 300
   m_StoppingDistance: 40
