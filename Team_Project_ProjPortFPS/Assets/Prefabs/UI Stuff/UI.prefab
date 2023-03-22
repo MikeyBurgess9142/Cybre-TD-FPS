@@ -2670,16 +2670,26 @@ MonoBehaviour:
   button15: {fileID: 9210381106573544549}
   button16: {fileID: 5399674143407563133}
   button17: {fileID: 7602444641179979343}
-  spawners: []
-  bossSpawners: []
-  bossWaveInterval: 0
-  spawnIntensity: 0
-  intensityIncreaseAmt: 0
+  spawners:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  bossSpawners:
+  - {fileID: 0}
+  - {fileID: 0}
+  bossWaveInterval: 3
+  spawnIntensity: 1
+  intensityIncreaseAmt: 1
   enemiesAlive: 0
   bossesAlive: 0
   pointsTotal: 100
   isPaused: 0
-  numberOfWaves: 0
+  numberOfWaves: 6
   waveNumber: 0
   wavesCurrent: 0
   bossesKilled: 0
@@ -8088,7 +8098,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6969435581272140379
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9280,7 +9290,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1426567602743727822
 RectTransform:
   m_ObjectHideFlags: 0
