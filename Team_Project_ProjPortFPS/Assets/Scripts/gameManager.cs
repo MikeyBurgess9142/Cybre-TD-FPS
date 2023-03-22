@@ -111,8 +111,7 @@ public class gameManager : MonoBehaviour
     }
 
     public void pasueState()
-    {
-        isPaused = true;
+    {        
         Time.timeScale = 0;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
@@ -120,12 +119,12 @@ public class gameManager : MonoBehaviour
 
     public void unpauseState()
     {
-        isPaused = false;
         Time.timeScale = 1;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         activeMenu.SetActive(false);
         activeMenu = null;
+        
     }
 
     public void updateGameGoal(int amt, int bamt, int points)

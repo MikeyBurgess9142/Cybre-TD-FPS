@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf79e9d18afe4454ebbe7f796343f8e0, type: 3}
   m_Name: Gun-Rocket Launcher
   m_EditorClassIdentifier: 
-  gunPosition: {x: 0.6, y: -0.1, z: 0.5}
-  gunRotation: {x: -6.5, y: 100, z: -3}
-  gunScale: {x: 0.8, y: 0.8, z: 0.8}
-  gunModelADS: {x: 0, y: -0.264, z: 0.36}
-  gunModelDefaultPos: {x: 0.6, y: -0.1, z: 0.5}
+  gunPosition: {x: 0.231, y: -0.125, z: 0.295}
+  gunRotation: {x: -9.8, y: 90, z: -3}
+  gunScale: {x: 0.5, y: 0.5, z: 0.5}
+  gunModelADS: {x: 0.03, y: -0.185, z: 0.1}
+  gunModelDefaultPos: {x: 0.231, y: -0.125, z: 0.295}
   shootEffectPos: {x: -2.111, y: 0.102, z: 0.021}
   zoomMaxFov: 45
   zoomInSpd: 10

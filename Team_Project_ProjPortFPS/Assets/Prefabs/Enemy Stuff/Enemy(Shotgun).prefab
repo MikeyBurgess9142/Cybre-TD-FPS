@@ -153,9 +153,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1639140345999311650}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 10, y: 0, z: 110}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1639140345999220486}
   - {fileID: 1639140345999220482}
@@ -176,8 +176,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   model: {fileID: 1639140346004524582}
   agent: {fileID: 761634936345450946}
+  anim: {fileID: 0}
+  rb: {fileID: 0}
   headPos: {fileID: 1639140345999220506}
-  playerHitBox: {fileID: 0}
   HP: 30
   playerFaceSpeed: 20
   viewAngle: 90
@@ -241,10 +242,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.3
-  m_Height: 3.6
+  m_Radius: 0.2
+  m_Height: 1.75
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.9, z: -0.05}
 --- !u!135 &4219084549889283665
 SphereCollider:
   m_ObjectHideFlags: 0

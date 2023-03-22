@@ -82,7 +82,7 @@ public class playerController_Old : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!gameManager.instance.isPaused)
+        if (Time.timeScale != 0)
         {
             movement();
             selectGun();
@@ -185,6 +185,7 @@ public class playerController_Old : MonoBehaviour
             lineRendered.enabled = true;
             lineRendered.SetPosition(0, shootEffectPos.position);
             lineRendered.SetPosition(1, hit.point);
+            Debug.Log(hit.collider.gameObject.name);
             if (hit.collider.GetComponent<IDamage>() != null)
             {
                 hit.collider.GetComponent<IDamage>().takeDmg(shtDmg);
@@ -259,6 +260,7 @@ public class playerController_Old : MonoBehaviour
     void changeGun()
     {
         resetGun();
+
         shtRate = gunList[selectedGun].shtRate;
         shtDist = gunList[selectedGun].shtDist;
         shtDmg = gunList[selectedGun].shtDmg;
