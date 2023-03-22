@@ -146,7 +146,7 @@ public class gameManager : MonoBehaviour
         bossesKilled += bkamt;
         bossesKilledText.text = bossesKilled.ToString("F0");
 
-        wavesCurrent = numberOfWaves;
+        wavesCurrent = waveNumber;
         wavesCurrentText.text = wavesCurrent.ToString("F0");
 
         pointsTotal += points;
@@ -156,7 +156,7 @@ public class gameManager : MonoBehaviour
         {
             Debug.Log("Wave Ended");
             startWave();
-            wavesCurrent = numberOfWaves;
+            wavesCurrent = waveNumber;
             wavesCurrentText.text = wavesCurrent.ToString("F0");
             if (spawnIntensity % bossWaveInterval == 0)
             {
