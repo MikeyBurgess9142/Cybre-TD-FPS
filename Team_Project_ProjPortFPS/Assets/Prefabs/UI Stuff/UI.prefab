@@ -2677,7 +2677,7 @@ MonoBehaviour:
   intensityIncreaseAmt: 0
   enemiesAlive: 0
   bossesAlive: 0
-  pointsTotal: 10000
+  pointsTotal: 100
   isPaused: 0
   numberOfWaves: 0
   waveNumber: 0
@@ -9280,7 +9280,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1426567602743727822
 RectTransform:
   m_ObjectHideFlags: 0

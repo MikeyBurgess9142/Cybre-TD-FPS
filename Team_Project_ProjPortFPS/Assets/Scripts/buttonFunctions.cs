@@ -47,7 +47,7 @@ public class buttonFunctions : MonoBehaviour
 
     public void gunSmg()
     {
-        if (gameManager.instance.pointsTotal >= 100)
+        if (gameManager.instance.pointsTotal >= 1000)
         {
             Instantiate(gameManager.instance.gunSmg, gameManager.instance.pickupPos.position, gameManager.instance.pickupPos.rotation);
             gameManager.instance.button2.enabled = false;
@@ -57,7 +57,7 @@ public class buttonFunctions : MonoBehaviour
 
     public void gunAssaultFull()
     {
-        if (gameManager.instance.pointsTotal >= 100)
+        if (gameManager.instance.pointsTotal >= 1200)
         {
             Instantiate(gameManager.instance.gunAssaultFull, gameManager.instance.pickupPos.position, gameManager.instance.pickupPos.rotation);
             gameManager.instance.button3.enabled = false;
@@ -67,7 +67,7 @@ public class buttonFunctions : MonoBehaviour
 
     public void gunAssaultSemi()
     {
-        if (gameManager.instance.pointsTotal >= 100)
+        if (gameManager.instance.pointsTotal >= 1300)
         {
             Instantiate(gameManager.instance.gunAssaultSemi, gameManager.instance.pickupPos.position, gameManager.instance.pickupPos.rotation);
             gameManager.instance.button4.enabled = false;
@@ -77,7 +77,7 @@ public class buttonFunctions : MonoBehaviour
 
     public void gunShotgun()
     {
-        if (gameManager.instance.pointsTotal >= 100)
+        if (gameManager.instance.pointsTotal >= 2000)
         {
             Instantiate(gameManager.instance.gunShotgun, gameManager.instance.pickupPos.position, gameManager.instance.pickupPos.rotation);
             gameManager.instance.button5.enabled = false;
@@ -87,7 +87,7 @@ public class buttonFunctions : MonoBehaviour
 
     public void gunSniper()
     {
-        if (gameManager.instance.pointsTotal >= 100)
+        if (gameManager.instance.pointsTotal >= 2500)
         {
             Instantiate(gameManager.instance.gunSniper, gameManager.instance.pickupPos.position, gameManager.instance.pickupPos.rotation);
             gameManager.instance.button6.enabled = false;
@@ -97,7 +97,7 @@ public class buttonFunctions : MonoBehaviour
 
     public void gunRocketLauncher()
     {
-        if (gameManager.instance.pointsTotal >= 100)
+        if (gameManager.instance.pointsTotal >= 3000)
         {
             Instantiate(gameManager.instance.gunRocketLauncher, gameManager.instance.pickupPos.position, gameManager.instance.pickupPos.rotation);
             gameManager.instance.button7.enabled = false;
@@ -107,7 +107,7 @@ public class buttonFunctions : MonoBehaviour
 
     public void laserPistol()
     {
-        if (gameManager.instance.pointsTotal >= 100)
+        if (gameManager.instance.pointsTotal >= 1000)
         {
             Instantiate(gameManager.instance.laserPistol, gameManager.instance.pickupPos.position, gameManager.instance.pickupPos.rotation);
             gameManager.instance.button8.enabled = false;
@@ -117,7 +117,7 @@ public class buttonFunctions : MonoBehaviour
 
     public void laserSmg()
     {
-        if (gameManager.instance.pointsTotal >= 100)
+        if (gameManager.instance.pointsTotal >= 2000)
         {
             Instantiate(gameManager.instance.laserSmg, gameManager.instance.pickupPos.position, gameManager.instance.pickupPos.rotation);
             gameManager.instance.button9.enabled = false;
@@ -127,7 +127,7 @@ public class buttonFunctions : MonoBehaviour
 
     public void laserAssaultFull()
     {
-        if (gameManager.instance.pointsTotal >= 100)
+        if (gameManager.instance.pointsTotal >= 2400)
         {
             Instantiate(gameManager.instance.laserAssaultFull, gameManager.instance.pickupPos.position, gameManager.instance.pickupPos.rotation);
             gameManager.instance.button10.enabled = false;
@@ -137,7 +137,7 @@ public class buttonFunctions : MonoBehaviour
 
     public void laserAssaultSemi()
     {
-        if (gameManager.instance.pointsTotal >= 100)
+        if (gameManager.instance.pointsTotal >= 2600)
         {
             Instantiate(gameManager.instance.laserAssaultSemi, gameManager.instance.pickupPos.position, gameManager.instance.pickupPos.rotation);
             gameManager.instance.button11.enabled = false;
@@ -147,7 +147,7 @@ public class buttonFunctions : MonoBehaviour
 
     public void laserShotgun()
     {
-        if (gameManager.instance.pointsTotal >= 100)
+        if (gameManager.instance.pointsTotal >= 4000)
         {
             Instantiate(gameManager.instance.laserShotgun, gameManager.instance.pickupPos.position, gameManager.instance.pickupPos.rotation);
             gameManager.instance.button12.enabled = false;
@@ -157,7 +157,7 @@ public class buttonFunctions : MonoBehaviour
 
     public void laserSniper()
     {
-        if (gameManager.instance.pointsTotal >= 100)
+        if (gameManager.instance.pointsTotal >= 5000)
         {
             Instantiate(gameManager.instance.laserSniper, gameManager.instance.pickupPos.position, gameManager.instance.pickupPos.rotation);
             gameManager.instance.button13.enabled = false;
@@ -177,7 +177,7 @@ public class buttonFunctions : MonoBehaviour
 
     public void healthSmall()
     {
-        if (gameManager.instance.pointsTotal >= 100)
+        if (gameManager.instance.pointsTotal >= 500)
         {
             Instantiate(gameManager.instance.healthSmall, gameManager.instance.pickupPos.position, gameManager.instance.pickupPos.rotation);
             gameManager.instance.unpauseState();
@@ -186,7 +186,7 @@ public class buttonFunctions : MonoBehaviour
 
     public void healthMed()
     {
-        if (gameManager.instance.pointsTotal >= 100)
+        if (gameManager.instance.pointsTotal >= 1000)
         {
             Instantiate(gameManager.instance.healthMed, gameManager.instance.pickupPos.position, gameManager.instance.pickupPos.rotation);
             gameManager.instance.unpauseState();
@@ -195,7 +195,7 @@ public class buttonFunctions : MonoBehaviour
 
     public void healthLrg()
     {
-        if (gameManager.instance.pointsTotal >= 100)
+        if (gameManager.instance.pointsTotal >= 1500)
         {
             Instantiate(gameManager.instance.healthLrg, gameManager.instance.pickupPos.position, gameManager.instance.pickupPos.rotation);
             gameManager.instance.unpauseState();
