@@ -148,6 +148,8 @@ public class gameManager : MonoBehaviour
         {
             Debug.Log("Wave Ended");
             startWave();
+            wavesCurrent = numberOfWaves;
+            wavesCurrentText.text = wavesCurrent.ToString("F0");
             if (spawnIntensity % bossWaveInterval == 0)
             {
                 startBossWave();
