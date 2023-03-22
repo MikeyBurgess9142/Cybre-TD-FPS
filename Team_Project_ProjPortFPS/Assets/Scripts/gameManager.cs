@@ -26,7 +26,8 @@ public class gameManager : MonoBehaviour
     public GameObject playerHitFlash;
     public Image playerHPBar;
     public TextMeshProUGUI enemiesRemainingText;
-    public TextMeshProUGUI bossEnemiesRemainingText;
+    public TextMeshProUGUI bossesKilledText;
+    public TextMeshProUGUI wavesCurrentText;
     public TextMeshProUGUI pointsTotalText;
 
     [Header("---Pickup References---")]
@@ -76,6 +77,8 @@ public class gameManager : MonoBehaviour
     public bool isPaused;
     public int numberOfWaves;
     public int waveNumber;
+    public int wavesCurrent;
+    public int bossesKilled;
 
     public List<NavMeshAgent> enemy;
 
@@ -132,8 +135,11 @@ public class gameManager : MonoBehaviour
         enemiesAlive += amt;
         enemiesRemainingText.text = enemiesAlive.ToString("F0");
 
-        bossesAlive += bamt;
-        bossEnemiesRemainingText.text = bossesAlive.ToString("F0");
+        bossesKilled += bamt;
+        bossesKilledText.text = bossesKilled.ToString("F0");
+
+        wavesCurrent = numberOfWaves;
+        wavesCurrentText.text = wavesCurrent.ToString("F0");
 
         pointsTotal += points;
         pointsTotalText.text = pointsTotal.ToString("F0");
