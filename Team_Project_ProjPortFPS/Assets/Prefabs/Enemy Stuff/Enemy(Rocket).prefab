@@ -1460,7 +1460,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   model: {fileID: 5732308996371161892}
   agent: {fileID: 7522056342875079261}
-  anim: {fileID: 0}
+  anim: {fileID: 5732308996367015396}
   rb: {fileID: 0}
   headPos: {fileID: 5732308996374508036}
   HP: 0
@@ -1483,7 +1483,7 @@ Animator:
   m_GameObject: {fileID: 5732308996374277746}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 0364882f9a8db45dfa89ce8d5bcb95bb, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d0ed2c74b6a91ca4e9250f663bcd9a16, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
