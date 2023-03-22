@@ -349,6 +349,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gun-Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 2210771710592440902, guid: 0fb7c052cc4d01a458d23d14cce2cf86, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fb7c052cc4d01a458d23d14cce2cf86, type: 3}
 --- !u!1001 &328304575

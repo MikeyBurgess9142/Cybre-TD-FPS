@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf79e9d18afe4454ebbe7f796343f8e0, type: 3}
   m_Name: Laser-Assault(Full)
   m_EditorClassIdentifier: 
-  gunPosition: {x: 0.6, y: -0.7, z: 0.5}
-  gunRotation: {x: -89, y: 0, z: -86}
+  gunPosition: {x: 1, y: -0.07, z: 0.07}
+  gunRotation: {x: -90, y: -90, z: 0}
   gunScale: {x: 1, y: 1, z: 1}
-  gunModelADS: {x: 0, y: -0.264, z: 0.36}
-  gunModelDefaultPos: {x: 0.6, y: -0.7, z: 0.5}
+  gunModelADS: {x: 0, y: -0.53, z: 0.1}
+  gunModelDefaultPos: {x: 0.6, y: -0.7, z: 0.7}
   shootEffectPos: {x: 2.88, y: 0, z: 0.301}
   zoomMaxFov: 45
   zoomInSpd: 8

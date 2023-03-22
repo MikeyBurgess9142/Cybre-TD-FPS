@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf79e9d18afe4454ebbe7f796343f8e0, type: 3}
   m_Name: Laser-Sniper
   m_EditorClassIdentifier: 
-  gunPosition: {x: 0.6, y: -0.48, z: 1.07}
-  gunRotation: {x: -92.4, y: 0, z: -0.75}
+  gunPosition: {x: 0.6, y: -0.5, z: 1.07}
+  gunRotation: {x: -95, y: 0, z: 0}
   gunScale: {x: 1, y: 1, z: 1}
-  gunModelADS: {x: 0, y: -0.264, z: 0.36}
+  gunModelADS: {x: 0, y: -0.4, z: -0.45}
   gunModelDefaultPos: {x: 0.6, y: -0.48, z: 1.07}
   shootEffectPos: {x: 0, y: -2.254, z: 0.148}
   zoomMaxFov: 30

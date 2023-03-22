@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Laser-Shotgun
   m_EditorClassIdentifier: 
   gunPosition: {x: 0.3, y: -0.3, z: 0.4}
-  gunRotation: {x: 0, y: 100, z: 0}
+  gunRotation: {x: 0, y: 90, z: 0}
   gunScale: {x: 0.6, y: 0.6, z: 0.6}
-  gunModelADS: {x: 0, y: -0.264, z: 0.36}
+  gunModelADS: {x: 0, y: -0.24, z: 0.27}
   gunModelDefaultPos: {x: 0.3, y: -0.3, z: 0.4}
   shootEffectPos: {x: -2.108, y: 0.272, z: 0}
   zoomMaxFov: 45
