@@ -313,6 +313,7 @@ public class playerController_Old : MonoBehaviour
     public void healthPickup(healthStats health)
     {
         takeDmg(-(health.HP));
+        updateHP();
     }
 
     void zoomInput()
