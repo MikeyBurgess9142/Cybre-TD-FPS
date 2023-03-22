@@ -13,7 +13,6 @@ public class enemyAI : MonoBehaviour, IDamage
 
     [Header("----- Stats -----")]
     [SerializeField] Transform headPos;
-    [SerializeField] Transform playerHitBox;
     [Range(1, 500)][SerializeField] int HP;
     [SerializeField] int playerFaceSpeed;
     [SerializeField] int viewAngle;
@@ -87,7 +86,7 @@ public class enemyAI : MonoBehaviour, IDamage
     bool canSeePlayer()
     {
         playerDir = (gameManager.instance.player.transform.position - headPos.position).normalized;
-        shootDir = (playerHitBox.position - headPos.position).normalized;
+        shootDir = (gameManager.instance.playerScript.playerHitBox.position - headPos.position).normalized;
         angleToPlayer = Vector3.Angle(new Vector3(playerDir.x, 0, playerDir.z), transform.forward);
 
         RaycastHit hit;
@@ -122,9 +121,9 @@ public class enemyAI : MonoBehaviour, IDamage
         if (HP <= 0)
         {
             GetComponent<CapsuleCollider>().enabled = false;
-            gameManager.instance.updateGameGoal(-1,0,pointValue);
             agent.enabled = false;
-            GameObject.Destroy(gameObject);
+            Destroy(gameObject);
+            gameManager.instance.updateGameGoal(-1,0,pointValue);
         }
         else
         {

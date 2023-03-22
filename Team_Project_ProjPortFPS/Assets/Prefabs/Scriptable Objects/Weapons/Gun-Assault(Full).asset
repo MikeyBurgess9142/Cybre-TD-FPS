@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Gun-Assault(Full)
   m_EditorClassIdentifier: 
   gunPosition: {x: 0.4, y: -0.5, z: 0.8}
-  gunRotation: {x: 0, y: 10, z: 0}
+  gunRotation: {x: -2.5, y: 0, z: 0}
   gunScale: {x: 0.6, y: 0.6, z: 0.6}
-  gunModelADS: {x: 0, y: -0.31275, z: 0.46}
+  gunModelADS: {x: 0, y: -0.375, z: 0.575}
   gunModelDefaultPos: {x: 0.4, y: -0.5, z: 0.8}
   shootEffectPos: {x: 0, y: 0.382, z: 1.858}
   zoomMaxFov: 45

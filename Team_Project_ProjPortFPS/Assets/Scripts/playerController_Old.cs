@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class playerController_Old : MonoBehaviour
@@ -47,13 +48,13 @@ public class playerController_Old : MonoBehaviour
 
     [Header("--- Auido Settings---")]
     [SerializeField] AudioClip[] audFootSteps;
-    [Range(0, 1)] [SerializeField] float audFootStepsVol;
+    [Range(0, 1)][SerializeField] float audFootStepsVol;
     [SerializeField] AudioClip[] audJump;
-    [Range(0, 1)] [SerializeField] float audJumpVol;
+    [Range(0, 1)][SerializeField] float audJumpVol;
     [SerializeField] AudioClip[] audDamage;
-    [Range(0, 1)] [SerializeField] float audDamageVol;
+    [Range(0, 1)][SerializeField] float audDamageVol;
     [SerializeField] AudioClip audShoot;
-    [Range(0, 1)] [SerializeField] float audShootVol;
+    [Range(0, 1)][SerializeField] float audShootVol;
 
     int hpOrigin;
     int jumpsCurr;
@@ -258,10 +259,10 @@ public class playerController_Old : MonoBehaviour
     void changeGun()
     {
         resetGun();
-
         shtRate = gunList[selectedGun].shtRate;
         shtDist = gunList[selectedGun].shtDist;
         shtDmg = gunList[selectedGun].shtDmg;
+        gunPivot.localPosition = gunList[selectedGun].gunPosition;
         gunModel.transform.localEulerAngles = gunList[selectedGun].gunRotation;
         gunModel.transform.localScale = gunList[selectedGun].gunScale;
         zoomMax = gunList[selectedGun].zoomMaxFov;
@@ -270,7 +271,6 @@ public class playerController_Old : MonoBehaviour
         adsSpd = gunList[selectedGun].adsSpd;
         notADSSpd = gunList[selectedGun].notADSSpd;
         gunModelADS.localPosition = gunList[selectedGun].gunModelADS;
-        gunPivot.localPosition = gunList[selectedGun].gunPosition;
         gunModelDefaultPos.localPosition = gunList[selectedGun].gunModelDefaultPos;
         shootEffectPos.transform.localPosition = gunList[selectedGun].shootEffectPos;
         audShoot = gunList[selectedGun].gunShotAud;
@@ -288,6 +288,7 @@ public class playerController_Old : MonoBehaviour
         shtRate = gunStat.shtRate;
         shtDist = gunStat.shtDist;
         shtDmg = gunStat.shtDmg;
+        gunPivot.localPosition = gunStat.gunPosition;
         gunModel.transform.localEulerAngles = gunStat.gunRotation;
         gunModel.transform.localScale = gunStat.gunScale;
         zoomMax = gunStat.zoomMaxFov;
@@ -296,7 +297,6 @@ public class playerController_Old : MonoBehaviour
         adsSpd = gunStat.adsSpd;
         notADSSpd = gunStat.notADSSpd;
         gunModelADS.localPosition = gunStat.gunModelADS;
-        gunPivot.localPosition = gunStat.gunPosition;
         gunModelDefaultPos.localPosition = gunStat.gunModelDefaultPos;
         shootEffectPos.transform.localPosition = gunStat.shootEffectPos;
         audShoot = gunStat.gunShotAud;
@@ -367,7 +367,7 @@ public class playerController_Old : MonoBehaviour
 
             targetRotation = rotationX * rotationY;
 
-            //gunPivot.localRotation = Quaternion.Slerp(gunPivot.localRotation, targetRotation, smooth * Time.deltaTime);
+            gunPivot.localRotation = Quaternion.Slerp(gunPivot.localRotation, targetRotation, smooth * Time.deltaTime);
         }
     }
 }

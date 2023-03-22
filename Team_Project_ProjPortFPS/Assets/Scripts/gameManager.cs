@@ -78,7 +78,7 @@ public class gameManager : MonoBehaviour
     public int waveNumber;
 
     public List<NavMeshAgent> enemy;
-    
+
 
 
     void Awake()
@@ -107,11 +107,12 @@ public class gameManager : MonoBehaviour
                 unpauseState();
             }
         }
-        
+
     }
 
     public void pasueState()
     {
+        isPaused = true;
         Time.timeScale = 0;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
@@ -119,6 +120,7 @@ public class gameManager : MonoBehaviour
 
     public void unpauseState()
     {
+        isPaused = false;
         Time.timeScale = 1;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -141,12 +143,12 @@ public class gameManager : MonoBehaviour
         {
             Debug.Log("Wave Ended");
             startWave();
-            if(spawnIntensity % bossWaveInterval == 0)
+            if (spawnIntensity % bossWaveInterval == 0)
             {
                 startBossWave();
             }
         }
-        if(numberOfWaves < waveNumber)
+        if (numberOfWaves < waveNumber)
         {
             pasueState();
             activeMenu = winMenu;
@@ -157,6 +159,7 @@ public class gameManager : MonoBehaviour
     public void playerDead()
     {
         pasueState();
+
         activeMenu = loseMenu;
         activeMenu.SetActive(true);
     }
@@ -174,7 +177,7 @@ public class gameManager : MonoBehaviour
 
     public void startWave()
     {
-        foreach(spawnerAI spawner in spawners)
+        foreach (spawnerAI spawner in spawners)
         {
             waveNumber++;
             spawnIntensity += intensityIncreaseAmt;
@@ -187,7 +190,10 @@ public class gameManager : MonoBehaviour
         foreach (spawnerAI spawner in bossSpawners)
         {
             Debug.Log("Spawner Activated");
-            StartCoroutine(spawner.spawnWave(spawnIntensity/bossWaveInterval));
+            if (bossSpawners.Count > 0)
+            {
+                StartCoroutine(spawner.spawnWave(spawnIntensity / bossWaveInterval));
+            }
         }
     }
 }
