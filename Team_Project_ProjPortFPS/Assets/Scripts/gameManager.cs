@@ -46,6 +46,9 @@ public class gameManager : MonoBehaviour
     public GameObject laserAssaultSemi;
     public GameObject laserSniper;
     public GameObject laserRocketLauncher;
+    public GameObject healthSmall;
+    public GameObject healthMed;
+    public GameObject healthLrg;
 
     [Header("---Shop Button References---")]
     public Button button1;
@@ -62,6 +65,9 @@ public class gameManager : MonoBehaviour
     public Button button12;
     public Button button13;
     public Button button14;
+    public Button button15;
+    public Button button16;
+    public Button button17;
 
     [Header("----- Spawner Stats -----")]
     public List<spawnerAI> spawners;

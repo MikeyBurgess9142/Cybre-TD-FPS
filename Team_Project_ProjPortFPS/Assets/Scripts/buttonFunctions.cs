@@ -174,4 +174,31 @@ public class buttonFunctions : MonoBehaviour
             gameManager.instance.unpauseState();
         }
     }
+
+    public void healthSmall()
+    {
+        if (gameManager.instance.pointsTotal >= 100)
+        {
+            Instantiate(gameManager.instance.healthSmall, gameManager.instance.pickupPos.position, gameManager.instance.pickupPos.rotation);
+            gameManager.instance.unpauseState();
+        }
+    }
+
+    public void healthMed()
+    {
+        if (gameManager.instance.pointsTotal >= 100)
+        {
+            Instantiate(gameManager.instance.healthMed, gameManager.instance.pickupPos.position, gameManager.instance.pickupPos.rotation);
+            gameManager.instance.unpauseState();
+        }
+    }
+
+    public void healthLrg()
+    {
+        if (gameManager.instance.pointsTotal >= 100)
+        {
+            Instantiate(gameManager.instance.healthLrg, gameManager.instance.pickupPos.position, gameManager.instance.pickupPos.rotation);
+            gameManager.instance.unpauseState();
+        }
+    }
 }

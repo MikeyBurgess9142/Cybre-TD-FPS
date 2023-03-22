@@ -310,6 +310,11 @@ public class playerController_Old : MonoBehaviour
         selectedGun = gunList.Count - 1;
     }
 
+    public void healthPickup(healthStats health)
+    {
+        takeDmg(-(health.HP));
+    }
+
     void zoomInput()
     {
         if (Input.GetButtonDown("Zoom"))
