@@ -136,12 +136,14 @@ public class gameManager : MonoBehaviour
         
     }
 
-    public void updateGameGoal(int amt, int bamt, int points)
+    public void updateGameGoal(int amt, int bamt, int bkamt ,int points)
     {
         enemiesAlive += amt;
         enemiesRemainingText.text = enemiesAlive.ToString("F0");
 
-        bossesKilled += bamt;
+        bossesAlive += bamt;
+
+        bossesKilled += bkamt;
         bossesKilledText.text = bossesKilled.ToString("F0");
 
         wavesCurrent = numberOfWaves;

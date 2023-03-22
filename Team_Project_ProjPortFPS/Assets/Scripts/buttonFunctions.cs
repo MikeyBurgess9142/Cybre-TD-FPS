@@ -40,7 +40,7 @@ public class buttonFunctions : MonoBehaviour
         if (gameManager.instance.pointsTotal >= 100)
         {
             Instantiate(gameManager.instance.gunPistol, gameManager.instance.pickupPos.position, gameManager.instance.pickupPos.rotation);
-            gameManager.instance.button1.enabled = false;
+            gameManager.instance.button1.enabled = false; 
             gameManager.instance.unpauseState();
         }
     }
