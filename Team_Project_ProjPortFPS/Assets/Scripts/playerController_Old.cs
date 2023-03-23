@@ -201,7 +201,6 @@ public class playerController_Old : MonoBehaviour
     {
         HP = hpOrigin;
         updateHP();
-        gameManager.instance.updateGameGoal(0, 0, 0, -(gameManager.instance.pointsTotal / 2), true);
         controller.enabled = false;
         transform.position = gameManager.instance.playerSpawnPos.transform.position;
         controller.enabled = true;
@@ -218,6 +217,7 @@ public class playerController_Old : MonoBehaviour
         {
             zooming = false;
             gameManager.instance.playerDead();
+            gameManager.instance.updateGameGoal(0, 0, 0, -(gameManager.instance.pointsTotal / 2), true);
         }
     }
 
