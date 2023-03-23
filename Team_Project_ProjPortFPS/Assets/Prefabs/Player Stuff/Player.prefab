@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 425736615}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Gun Model Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -287,7 +287,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1880528014}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ShootEffectPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -369,8 +369,8 @@ MonoBehaviour:
   playerSpd: 10
   jumpMax: 2
   jumpSpd: 10
-  gravity: 30
-  sprintMod: 1.5
+  gravity: 40
+  sprintMod: 1.4
   gunList: []
   shtRate: 0
   shtDist: 0
@@ -429,7 +429,7 @@ CharacterController:
   m_Height: 1.75
   m_Radius: 0.5
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.7
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
@@ -783,7 +783,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8273882478876964646}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ShootEffectPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -816,7 +816,7 @@ GameObject:
   - component: {fileID: 7614832568674328771}
   - component: {fileID: 3500125699141684733}
   - component: {fileID: 5935147981221561869}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Gun Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
