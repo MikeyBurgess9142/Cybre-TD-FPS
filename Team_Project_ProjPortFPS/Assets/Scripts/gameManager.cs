@@ -156,7 +156,7 @@ public class gameManager : MonoBehaviour
         if (enemiesAlive <= 0)
         {
             Debug.Log("Wave Ended");
-            startWave();
+            StartCoroutine(startWave());
             wavesCurrent = waveNumber;
             wavesCurrentText.text = wavesCurrent.ToString("F0");
             if (spawnIntensity % bossWaveInterval == 0)
