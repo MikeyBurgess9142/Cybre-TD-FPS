@@ -312,7 +312,14 @@ public class playerController_Old : MonoBehaviour
 
     public void healthPickup(healthStats health)
     {
-        HP += health.HP;
+        if(HP + health.HP > hpOrigin)
+        {
+            HP = hpOrigin;
+        }
+        else 
+        { 
+            HP += health.HP; 
+        }
         updateHP();
     }
 
