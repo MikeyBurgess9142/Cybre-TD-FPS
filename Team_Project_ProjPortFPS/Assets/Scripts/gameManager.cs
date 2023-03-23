@@ -152,7 +152,7 @@ public class gameManager : MonoBehaviour
         pointsTotal += points;
         pointsTotalText.text = pointsTotal.ToString("F0");
 
-        if (enemiesAlive <= 0 && bossesAlive <= 0)
+        if (enemiesAlive <= 0)
         {
             Debug.Log("Wave Ended");
             startWave();
@@ -163,7 +163,7 @@ public class gameManager : MonoBehaviour
                 startBossWave();
             }
         }
-        if (numberOfWaves < waveNumber)
+        if (numberOfWaves < waveNumber && bossesAlive <= 0)
         {
             pasueState();
             activeMenu = winMenu;
