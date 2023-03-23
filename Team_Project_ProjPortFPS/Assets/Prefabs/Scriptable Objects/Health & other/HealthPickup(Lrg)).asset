@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21cb1496be4ac294daa32bf0882c878f, type: 3}
   m_Name: HealthPickup(Lrg))
   m_EditorClassIdentifier: 
-  HP: 0
+  HP: 15
