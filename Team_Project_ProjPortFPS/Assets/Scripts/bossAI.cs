@@ -8,6 +8,7 @@ public class bossAI : MonoBehaviour, IDamage
     [Header("----- Components -----")]
     [SerializeField] Renderer model;
     [SerializeField] NavMeshAgent agent;
+    [SerializeField] Animator anim;
 
     [Header("----- Stats -----")]
     [SerializeField] Transform headPos;
@@ -42,7 +43,7 @@ public class bossAI : MonoBehaviour, IDamage
         startingPos = transform.position;
         stoppingDistOrig = agent.stoppingDistance;
         speedOrig = agent.speed;
-        gameManager.instance.updateGameGoal(0, 0, 0, 0);
+        gameManager.instance.updateGameGoal(0, 1, 0, 0);
         gameManager.instance.addEnemy(agent);
     }
 
@@ -50,6 +51,7 @@ public class bossAI : MonoBehaviour, IDamage
     {
         if (agent.isActiveAndEnabled)
         {
+            anim.SetFloat("Speed", agent.velocity.normalized.magnitude);
 
             if (playerInRange)
             {
@@ -99,8 +101,8 @@ public class bossAI : MonoBehaviour, IDamage
         {
             if (hit.collider.CompareTag("Player") && angleToPlayer <= viewAngle)
             {
-                //agent.stoppingDistance = stoppingDistOrig;
-                //agent.SetDestination(gameManager.instance.player.transform.position);
+                agent.stoppingDistance = stoppingDistOrig;
+                agent.SetDestination(gameManager.instance.player.transform.position);
 
                 if (agent.remainingDistance < agent.stoppingDistance)
                 {
@@ -154,10 +156,15 @@ public class bossAI : MonoBehaviour, IDamage
     IEnumerator shoot()
     {
         isShooting = true;
-        GameObject bulletClone = Instantiate(bullet, shootPos.position, bullet.transform.rotation);
-        bulletClone.GetComponent<Rigidbody>().velocity = shootDir * bulletSpeed;
+        anim.SetTrigger("Shoot");
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
+    }
+
+    public void createBullet()
+    {
+        GameObject bulletClone = Instantiate(bullet, shootPos.position, bullet.transform.rotation);
+        bulletClone.GetComponent<Rigidbody>().velocity = shootDir * bulletSpeed;
     }
 
     public void OnTriggerEnter(Collider other)
