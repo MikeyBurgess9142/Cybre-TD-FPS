@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 1147491564966614545}
   - component: {fileID: 1147491564967417393}
   - component: {fileID: 1147491564968383729}
+  - component: {fileID: 519194459}
   m_Layer: 0
   m_Name: barrier_metal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1147491564966614545
 Transform:
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1147491564966119985}
   m_LocalRotation: {x: -0.49991274, y: 0.50008726, z: 0.49991274, w: 0.50008726}
   m_LocalPosition: {x: -54.64, y: 5.84, z: 15.4}
-  m_LocalScale: {x: -0.19, y: -0.18, z: -0.18}
+  m_LocalScale: {x: -0.0475, y: -0.089999996, z: -0.12}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &519194459
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147491564966119985}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 25, z: 10}
+  m_Center: {x: 0, y: 1, z: 2}
