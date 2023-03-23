@@ -40,7 +40,7 @@ public class buttonFunctions : MonoBehaviour
         if (gameManager.instance.pointsTotal >= 100)
         {
             Instantiate(gameManager.instance.gunPistol, gameManager.instance.pickupPos.position, gameManager.instance.pickupPos.rotation);
-            gameManager.instance.updateGameGoal(0, 0, 0, -100);
+            gameManager.instance.updateGameGoal(0, 0, 0, -100, true);
             gameManager.instance.button1.enabled = false;
             gameManager.instance.unpauseState();
         }
@@ -51,7 +51,7 @@ public class buttonFunctions : MonoBehaviour
         if (gameManager.instance.pointsTotal >= 1000)
         {
             Instantiate(gameManager.instance.gunSmg, gameManager.instance.pickupPos.position, gameManager.instance.pickupPos.rotation);
-            gameManager.instance.updateGameGoal(0, 0, 0, -1000);
+            gameManager.instance.updateGameGoal(0, 0, 0, -1000, true);
             gameManager.instance.button2.enabled = false;
             gameManager.instance.unpauseState();
         }
@@ -62,7 +62,7 @@ public class buttonFunctions : MonoBehaviour
         if (gameManager.instance.pointsTotal >= 1200)
         {
             Instantiate(gameManager.instance.gunAssaultFull, gameManager.instance.pickupPos.position, gameManager.instance.pickupPos.rotation);
-            gameManager.instance.updateGameGoal(0, 0, 0, -1200);
+            gameManager.instance.updateGameGoal(0, 0, 0, -1200, true);
             gameManager.instance.button3.enabled = false;
             gameManager.instance.unpauseState();
         }
@@ -73,7 +73,7 @@ public class buttonFunctions : MonoBehaviour
         if (gameManager.instance.pointsTotal >= 1300)
         {
             Instantiate(gameManager.instance.gunAssaultSemi, gameManager.instance.pickupPos.position, gameManager.instance.pickupPos.rotation);
-            gameManager.instance.updateGameGoal(0, 0, 0, -1300);
+            gameManager.instance.updateGameGoal(0, 0, 0, -1300, true);
             gameManager.instance.button4.enabled = false;
             gameManager.instance.unpauseState();
         }
@@ -84,7 +84,7 @@ public class buttonFunctions : MonoBehaviour
         if (gameManager.instance.pointsTotal >= 2000)
         {
             Instantiate(gameManager.instance.gunShotgun, gameManager.instance.pickupPos.position, gameManager.instance.pickupPos.rotation);
-            gameManager.instance.updateGameGoal(0, 0, 0, -2000);
+            gameManager.instance.updateGameGoal(0, 0, 0, -2000, true);
             gameManager.instance.button5.enabled = false;
             gameManager.instance.unpauseState();
         }
@@ -95,7 +95,7 @@ public class buttonFunctions : MonoBehaviour
         if (gameManager.instance.pointsTotal >= 2500)
         {
             Instantiate(gameManager.instance.gunSniper, gameManager.instance.pickupPos.position, gameManager.instance.pickupPos.rotation);
-            gameManager.instance.updateGameGoal(0, 0, 0, -2500);
+            gameManager.instance.updateGameGoal(0, 0, 0, -2500, true);
             gameManager.instance.button6.enabled = false;
             gameManager.instance.unpauseState();
         }
@@ -106,7 +106,7 @@ public class buttonFunctions : MonoBehaviour
         if (gameManager.instance.pointsTotal >= 3000)
         {
             Instantiate(gameManager.instance.gunRocketLauncher, gameManager.instance.pickupPos.position, gameManager.instance.pickupPos.rotation);
-            gameManager.instance.updateGameGoal(0, 0, 0, -3000);
+            gameManager.instance.updateGameGoal(0, 0, 0, -3000, true);
             gameManager.instance.button7.enabled = false;
             gameManager.instance.unpauseState();
         }
@@ -117,7 +117,7 @@ public class buttonFunctions : MonoBehaviour
         if (gameManager.instance.pointsTotal >= 1000)
         {
             Instantiate(gameManager.instance.laserPistol, gameManager.instance.pickupPos.position, gameManager.instance.pickupPos.rotation);
-            gameManager.instance.updateGameGoal(0, 0, 0, -1000);
+            gameManager.instance.updateGameGoal(0, 0, 0, -1000, true);
             gameManager.instance.button8.enabled = false;
             gameManager.instance.unpauseState();
         }
@@ -128,7 +128,7 @@ public class buttonFunctions : MonoBehaviour
         if (gameManager.instance.pointsTotal >= 2000)
         {
             Instantiate(gameManager.instance.laserSmg, gameManager.instance.pickupPos.position, gameManager.instance.pickupPos.rotation);
-            gameManager.instance.updateGameGoal(0, 0, 0, -2000);
+            gameManager.instance.updateGameGoal(0, 0, 0, -2000, true);
             gameManager.instance.button9.enabled = false;
             gameManager.instance.unpauseState();
         }
@@ -139,7 +139,7 @@ public class buttonFunctions : MonoBehaviour
         if (gameManager.instance.pointsTotal >= 2400)
         {
             Instantiate(gameManager.instance.laserAssaultFull, gameManager.instance.pickupPos.position, gameManager.instance.pickupPos.rotation);
-            gameManager.instance.updateGameGoal(0, 0, 0, -2400);
+            gameManager.instance.updateGameGoal(0, 0, 0, -2400, true);
             gameManager.instance.button10.enabled = false;
             gameManager.instance.unpauseState();
         }
@@ -150,7 +150,7 @@ public class buttonFunctions : MonoBehaviour
         if (gameManager.instance.pointsTotal >= 2600)
         {
             Instantiate(gameManager.instance.laserAssaultSemi, gameManager.instance.pickupPos.position, gameManager.instance.pickupPos.rotation);
-            gameManager.instance.updateGameGoal(0, 0, 0, -2600);
+            gameManager.instance.updateGameGoal(0, 0, 0, -2600, true);
             gameManager.instance.button11.enabled = false;
             gameManager.instance.unpauseState();
         }
@@ -161,7 +161,7 @@ public class buttonFunctions : MonoBehaviour
         if (gameManager.instance.pointsTotal >= 4000)
         {
             Instantiate(gameManager.instance.laserShotgun, gameManager.instance.pickupPos.position, gameManager.instance.pickupPos.rotation);
-            gameManager.instance.updateGameGoal(0, 0, 0, -4000);
+            gameManager.instance.updateGameGoal(0, 0, 0, -4000, true);
             gameManager.instance.button12.enabled = false;
             gameManager.instance.unpauseState();
         }
@@ -172,7 +172,7 @@ public class buttonFunctions : MonoBehaviour
         if (gameManager.instance.pointsTotal >= 5000)
         {
             Instantiate(gameManager.instance.laserSniper, gameManager.instance.pickupPos.position, gameManager.instance.pickupPos.rotation);
-            gameManager.instance.updateGameGoal(0, 0, 0, -5000);
+            gameManager.instance.updateGameGoal(0, 0, 0, -5000, true);
             gameManager.instance.button13.enabled = false;
             gameManager.instance.unpauseState();
         }
@@ -183,7 +183,7 @@ public class buttonFunctions : MonoBehaviour
         if (gameManager.instance.pointsTotal >= 100)
         {
             Instantiate(gameManager.instance.laserRocketLauncher, gameManager.instance.pickupPos.position, gameManager.instance.pickupPos.rotation);
-            gameManager.instance.updateGameGoal(0, 0, 0, -100);
+            gameManager.instance.updateGameGoal(0, 0, 0, -100, true);
             gameManager.instance.button14.enabled = false;
             gameManager.instance.unpauseState();
         }
@@ -194,7 +194,7 @@ public class buttonFunctions : MonoBehaviour
         if (gameManager.instance.pointsTotal >= 200)
         {
             Instantiate(gameManager.instance.healthSmall, gameManager.instance.pickupPos.position, gameManager.instance.pickupPos.rotation);
-            gameManager.instance.updateGameGoal(0, 0, 0, -200);
+            gameManager.instance.updateGameGoal(0, 0, 0, -200, true);
             gameManager.instance.unpauseState();
         }
     }
@@ -204,7 +204,7 @@ public class buttonFunctions : MonoBehaviour
         if (gameManager.instance.pointsTotal >= 400)
         {
             Instantiate(gameManager.instance.healthMed, gameManager.instance.pickupPos.position, gameManager.instance.pickupPos.rotation);
-            gameManager.instance.updateGameGoal(0, 0, 0, -400);
+            gameManager.instance.updateGameGoal(0, 0, 0, -400, true);
             gameManager.instance.unpauseState();
         }
     }
@@ -214,7 +214,7 @@ public class buttonFunctions : MonoBehaviour
         if (gameManager.instance.pointsTotal >= 800)
         {
             Instantiate(gameManager.instance.healthLrg, gameManager.instance.pickupPos.position, gameManager.instance.pickupPos.rotation);
-            gameManager.instance.updateGameGoal(0, 0, 0, -800);
+            gameManager.instance.updateGameGoal(0, 0, 0, -800, true);
             gameManager.instance.unpauseState();
         }
     }

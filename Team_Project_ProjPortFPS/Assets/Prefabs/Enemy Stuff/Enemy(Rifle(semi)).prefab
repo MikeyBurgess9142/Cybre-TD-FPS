@@ -139,11 +139,11 @@ MonoBehaviour:
   anim: {fileID: 7111151804147264660}
   rb: {fileID: 0}
   headPos: {fileID: 7111151804154741620}
-  HP: 30
+  HP: 10
   playerFaceSpeed: 20
   viewAngle: 90
   shootAngle: 90
-  pointValue: 300
+  pointValue: 200
   shootPos: {fileID: 7111151804154741536}
   bullet: {fileID: 3737781795031576592, guid: 255c4c45ddee5cf48bb11ec0c3948bb3, type: 3}
   bulletSpeed: 40

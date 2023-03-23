@@ -137,7 +137,7 @@ public class gameManager : MonoBehaviour
         
     }
 
-    public void updateGameGoal(int amt, int bamt, int bkamt ,int points)
+    public void updateGameGoal(int amt, int bamt, int bkamt, int points, bool fromShop = false)
     {
         enemiesAlive += amt;
         enemiesRemainingText.text = enemiesAlive.ToString("F0");
@@ -153,7 +153,7 @@ public class gameManager : MonoBehaviour
         pointsTotal += points;
         pointsTotalText.text = pointsTotal.ToString("F0");
 
-        if (enemiesAlive <= 0)
+        if (enemiesAlive <= 0 && !fromShop)
         {
             Debug.Log("Wave Ended");
             StartCoroutine(startWave());
