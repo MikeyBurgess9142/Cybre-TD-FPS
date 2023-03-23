@@ -1417,7 +1417,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5732308996374508114}
-  - component: {fileID: 6522329295593569946}
+  - component: {fileID: 4473222058608260189}
   - component: {fileID: 5732308996367015396}
   - component: {fileID: 7522056342875079261}
   - component: {fileID: 2558339346812955958}
@@ -1446,7 +1446,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6522329295593569946
+--- !u!114 &4473222058608260189
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1455,24 +1455,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 5732308996374277746}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c367931127d57af43abb88b33ead98f8, type: 3}
+  m_Script: {fileID: 11500000, guid: 0efd475d8563f3648adcbaa10b3b4cf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  model: {fileID: 5732308996371161892}
+  model: {fileID: 0}
   agent: {fileID: 7522056342875079261}
-  anim: {fileID: 5732308996367015396}
-  rb: {fileID: 0}
-  headPos: {fileID: 5732308996374508036}
+  headPos: {fileID: 0}
+  playerHitBox: {fileID: 0}
   HP: 0
-  playerFaceSpeed: 20
-  viewAngle: 90
-  shootAngle: 90
-  pointValue: 600
-  shootPos: {fileID: 5732308996374508126}
-  bullet: {fileID: 3737781795031576592, guid: 83f67836478801b4e87b5dad8da8e3a0, type: 3}
-  bulletSpeed: 15
-  shootRate: 3
-  playerInRangeDist: 0
+  playerFaceSpeed: 0
+  viewAngle: 0
+  shootAngle: 0
+  waitTime: 0
+  roamDist: 0
+  pointValue: 0
+  shootPos: {fileID: 0}
+  bullet: {fileID: 0}
+  bulletSpeed: 0
+  shootRate: 0
 --- !u!95 &5732308996367015396
 Animator:
   serializedVersion: 5
@@ -1482,8 +1482,8 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5732308996374277746}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 0364882f9a8db45dfa89ce8d5bcb95bb, type: 3}
-  m_Controller: {fileID: 9100000, guid: d0ed2c74b6a91ca4e9250f663bcd9a16, type: 2}
+  m_Avatar: {fileID: 9000000, guid: b6c33e1d6632025468fb37a04e312606, type: 3}
+  m_Controller: {fileID: 9100000, guid: 58f67936d76417047a6d24316918b651, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
