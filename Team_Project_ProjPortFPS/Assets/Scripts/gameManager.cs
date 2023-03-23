@@ -97,7 +97,7 @@ public class gameManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponent<playerController_Old>();
         playerSpawnPos = GameObject.FindGameObjectWithTag("Player Spawn Pos");
-        startWave();
+        StartCoroutine(startWave());
     }
 
     void Update()
