@@ -210,7 +210,7 @@ MonoBehaviour:
   anim: {fileID: 1639140346008809702}
   rb: {fileID: 0}
   headPos: {fileID: 1639140345999220506}
-  HP: 50
+  HP: 150
   playerFaceSpeed: 20
   viewAngle: 90
   shootAngle: 90
