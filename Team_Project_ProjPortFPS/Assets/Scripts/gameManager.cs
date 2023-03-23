@@ -75,6 +75,7 @@ public class gameManager : MonoBehaviour
     public int bossWaveInterval; //if set to 3 boss's spawn on waves 3, 6, 9...
     public int spawnIntensity;
     public int intensityIncreaseAmt;
+    public int waveDelay;
 
     [Header("---Game Goals---")]
     public int enemiesAlive;
@@ -190,8 +191,9 @@ public class gameManager : MonoBehaviour
         enemy.Add(enmy);
     }
 
-    public void startWave()
+    public IEnumerator startWave()
     {
+        yield return new WaitForSeconds(waveDelay);
         waveNumber++;
         spawnIntensity += intensityIncreaseAmt;
         foreach (spawnerAI spawner in spawners)
