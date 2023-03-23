@@ -147,7 +147,7 @@ MonoBehaviour:
   shootPos: {fileID: 7111151804154741536}
   bullet: {fileID: 3737781795031576592, guid: 255c4c45ddee5cf48bb11ec0c3948bb3, type: 3}
   bulletSpeed: 40
-  shootRate: 0.5
+  shootRate: 2
   playerInRangeDist: 50
 --- !u!95 &7111151804147264660
 Animator:

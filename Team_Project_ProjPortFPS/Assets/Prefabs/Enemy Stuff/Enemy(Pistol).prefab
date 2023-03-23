@@ -1162,16 +1162,15 @@ MonoBehaviour:
   anim: {fileID: 1263744297882018999}
   rb: {fileID: 0}
   headPos: {fileID: 1263744297891007245}
-  playerHitBox: {fileID: 0}
-  HP: 1
+  HP: 3
   playerFaceSpeed: 20
   viewAngle: 90
   shootAngle: 40
   pointValue: 100
   shootPos: {fileID: 1263744297891007343}
   bullet: {fileID: 3737781795031576592, guid: da827120c66018144aff7012db85a3b1, type: 3}
-  bulletSpeed: 30
-  shootRate: 0.3
+  bulletSpeed: 15
+  shootRate: 1.5
   playerInRangeDist: 50
 --- !u!95 &1263744297882018999
 Animator:
