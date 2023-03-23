@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf79e9d18afe4454ebbe7f796343f8e0, type: 3}
   m_Name: Gun-SMG
   m_EditorClassIdentifier: 
-  gunPosition: {x: 1.067, y: 0.316, z: -0.817}
+  gunPosition: {x: 1, y: 0.316, z: -0.817}
   gunRotation: {x: -1, y: 0, z: 0}
   gunScale: {x: 0.5, y: 0.5, z: 0.5}
   gunModelADS: {x: 0, y: -0.305, z: 0.385}
