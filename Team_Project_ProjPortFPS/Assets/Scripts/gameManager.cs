@@ -82,6 +82,7 @@ public class gameManager : MonoBehaviour
     public int bossesAlive;
     public int pointsTotal;
     public bool isPaused;
+    public bool waveStarted;
     public int numberOfWaves;
     public int waveNumber;
     public int wavesCurrent;
@@ -97,7 +98,6 @@ public class gameManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponent<playerController_Old>();
         playerSpawnPos = GameObject.FindGameObjectWithTag("Player Spawn Pos");
-        StartCoroutine(startWave());
     }
 
     void Update()
@@ -193,13 +193,18 @@ public class gameManager : MonoBehaviour
 
     public IEnumerator startWave()
     {
-        yield return new WaitForSeconds(waveDelay);
-        waveNumber++;
-        spawnIntensity += intensityIncreaseAmt;
-        foreach (spawnerAI spawner in spawners)
+        if (!waveStarted)
         {
-            Debug.Log("Spawner Activated");
-            StartCoroutine(spawner.spawnWave(spawnIntensity));
+            waveStarted = true;
+            yield return new WaitForSeconds(waveDelay);
+            waveNumber++;
+            spawnIntensity += intensityIncreaseAmt;
+            waveStarted = false;
+            foreach (spawnerAI spawner in spawners)
+            {
+                Debug.Log("Spawner Activated");
+                StartCoroutine(spawner.spawnWave(spawnIntensity));
+            }
         }
     }
     public void startBossWave()
