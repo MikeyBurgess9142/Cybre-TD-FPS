@@ -24,8 +24,8 @@ MonoBehaviour:
   adsSpd: 16
   notADSSpd: 8
   shtRate: 1.5
-  shtDist: 100
-  shtDmg: 8
+  shtDist: 120
+  shtDmg: 10
   gunModel: {fileID: 2210771710592440902, guid: 0fb7c052cc4d01a458d23d14cce2cf86, type: 3}
   shootEffect: {fileID: 3837949979570230378, guid: a575ced605515a2428c584ecf03101d7, type: 3}
   gunShotAud: {fileID: 8300000, guid: 08f78eba48bb21c44ac5a74ca84efc83, type: 3}

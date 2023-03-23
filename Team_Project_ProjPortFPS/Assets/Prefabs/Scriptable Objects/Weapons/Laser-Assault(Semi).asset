@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf79e9d18afe4454ebbe7f796343f8e0, type: 3}
   m_Name: Laser-Assault(Semi)
   m_EditorClassIdentifier: 
-  gunPosition: {x: 1, y: -0.07, z: 0.07}
+  gunPosition: {x: 1, y: -0.7, z: 0.7}
   gunRotation: {x: -90, y: -90, z: 0}
   gunScale: {x: 1, y: 1, z: 1}
   gunModelADS: {x: 0, y: -0.53, z: 0.1}
-  gunModelDefaultPos: {x: 0.6, y: -0.07, z: 0.07}
+  gunModelDefaultPos: {x: 0.6, y: -0.7, z: 0.7}
   shootEffectPos: {x: 0, y: 0, z: 0}
   zoomMaxFov: 45
   zoomInSpd: 10
@@ -24,8 +24,8 @@ MonoBehaviour:
   adsSpd: 16
   notADSSpd: 8
   shtRate: 0.6
-  shtDist: 120
-  shtDmg: 8
+  shtDist: 80
+  shtDmg: 12
   gunModel: {fileID: 2605002816143086695, guid: cbb3eabfed285aa43b555b0124befec5, type: 3}
   shootEffect: {fileID: 2977896558986534153, guid: 3c40bca7e252e82429d8b9e7ca3bc75b, type: 3}
   gunShotAud: {fileID: 8300000, guid: e916dc818ab53904b85e6b4aad3a6bf9, type: 3}
