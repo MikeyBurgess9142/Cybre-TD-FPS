@@ -30,6 +30,15 @@ public class WeaponController : MonoBehaviour
 
     public float fallingDelay;
 
+    [Header("Weapon Idle Sway")]
+    public Transform weaponSway;
+    public float swayAmountA;
+    public float swayAmountB;
+    public float swayScale;
+    public float swayLerpSpeed;
+    public float swayTime;
+    public Vector3 swayPosition;
+
     public void Start()
     {
         weaponRotation = transform.localRotation.eulerAngles;
@@ -50,6 +59,7 @@ public class WeaponController : MonoBehaviour
 
         WeaponRotation();
         SetWeaponAnimation();
+        WeaponIdleSway();
     }
 
     public void TriggerJump()
@@ -103,5 +113,25 @@ public class WeaponController : MonoBehaviour
 
         weaponAnimator.SetBool("IsSprinting", playerController.isSprinting);
         weaponAnimator.SetFloat("WeaponAnimSpeed", playerController.weaponAnimSpeed);
+    }
+
+    void WeaponIdleSway()
+    {
+        Vector3 targetPosition = Curve(swayTime, swayAmountA, swayAmountB) / swayScale;
+
+        swayPosition = Vector3.Lerp(swayPosition, targetPosition, Time.smoothDeltaTime * swayLerpSpeed);
+        swayTime += Time.deltaTime;
+
+        if (swayTime > 6.3f)
+        {
+            swayTime = 0;
+        }
+
+        weaponSway.localPosition = swayPosition;
+    }
+
+    private Vector3 Curve(float Time, float A, float B)
+    {
+        return new Vector3(Mathf.Sin(Time), A * Mathf.Sin(B * Time + Mathf.PI));
     }
 }
