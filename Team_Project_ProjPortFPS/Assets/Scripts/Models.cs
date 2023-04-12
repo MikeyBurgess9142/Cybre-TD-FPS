@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public static class Models
@@ -23,21 +25,59 @@ public static class Models
         public bool invertY;
 
         [Header("---Movement---")]
-        public float forwardPlayerSpeed;
-        public float backwardPlayerSpeed;
-        public float strafePlayerSpeed;
+        public bool holdSprint; //----- Used for Toggle to Sprint or Hold to Sprint - True = Hold, False = Toggle.
+        public float movementSmoothing;
+
+        [Header("---Walking---")]
+        public float forwardWalkSpeed;
+        public float backwardWalkSpeed;
+        public float strafeWalkSpeed;
+
+        [Header("---Sprinting---")]
+        public float forwardSprintSpeed;
+        public float strafeSprintSpeed;
 
         [Header("---Jumping---")]
         public float jumpingHeight;
         public float jumpingFalloff;
+        public float fallingSmoothing;
 
+        [Header("---Speed Effectors---")]
+        public float speedEffector;
+        public float crouchSpeedEffector;
+        public float proneSpeedEffector;
+        public float fallingSpeedEffector;
+
+        [Header("---Is Grounded / Falling---")]
+        public float isGroundedRadius;
+        public float isFallingSpeed;
     }
 
     [System.Serializable]
     public class PlayerStance
     {
         public float cameraHeight;
-        public float playerHeight;
-        public CharacterController playerController;
+        public CapsuleCollider stanceCollider;
     }
+}
+
+[Serializable]
+public class WeaponSettingsModel
+{
+    [Header("---Weapon Sway---")]
+    public float swayAmount;
+    public float swaySmoothing;
+    public float swayResetSmoothing;
+    public float swayClampX;
+    public float swayClampY;
+    public float swayLeanAmount;
+    public bool swayYInverted;
+    public bool swayXInverted;
+
+    [Header("---Weapon Movement---")]
+    public float swayMovementX;
+    public float swayMovementY;
+    public bool swayMovementYInverted;
+    public bool swayMovementXInverted;
+    public float swayMovementSmoothing;
 }

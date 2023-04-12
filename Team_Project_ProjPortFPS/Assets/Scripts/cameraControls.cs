@@ -8,7 +8,7 @@ public class cameraControls : MonoBehaviour
     [SerializeField] int sensHor;
     [SerializeField] int sensVer;
 
-    [Header("---View Min,Max---")]
+    [Header("---View Min, Max---")]
     [SerializeField] int lockVerMin;
     [SerializeField] int lockVerMax;
 

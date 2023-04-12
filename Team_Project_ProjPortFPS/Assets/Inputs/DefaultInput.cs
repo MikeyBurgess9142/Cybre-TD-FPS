@@ -71,6 +71,24 @@ public partial class @DefaultInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Sprint"",
+                    ""type"": ""Button"",
+                    ""id"": ""5417d6e6-f4d0-4886-805e-3b9c2b31dd5e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Sprint Released"",
+                    ""type"": ""Button"",
+                    ""id"": ""d2372922-b18e-4a61-b2a0-d277ffa73894"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -172,6 +190,28 @@ public partial class @DefaultInput: IInputActionCollection2, IDisposable
                     ""action"": ""Prone"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7049999d-1e60-4f5b-9a48-e5d1eb00720d"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""95687e9b-7912-4850-b03f-3817920499ce"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sprint Released"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -185,6 +225,8 @@ public partial class @DefaultInput: IInputActionCollection2, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Crouch = m_Player.FindAction("Crouch", throwIfNotFound: true);
         m_Player_Prone = m_Player.FindAction("Prone", throwIfNotFound: true);
+        m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
+        m_Player_SprintReleased = m_Player.FindAction("Sprint Released", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -251,6 +293,8 @@ public partial class @DefaultInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Crouch;
     private readonly InputAction m_Player_Prone;
+    private readonly InputAction m_Player_Sprint;
+    private readonly InputAction m_Player_SprintReleased;
     public struct PlayerActions
     {
         private @DefaultInput m_Wrapper;
@@ -260,6 +304,8 @@ public partial class @DefaultInput: IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Crouch => m_Wrapper.m_Player_Crouch;
         public InputAction @Prone => m_Wrapper.m_Player_Prone;
+        public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
+        public InputAction @SprintReleased => m_Wrapper.m_Player_SprintReleased;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -284,6 +330,12 @@ public partial class @DefaultInput: IInputActionCollection2, IDisposable
             @Prone.started += instance.OnProne;
             @Prone.performed += instance.OnProne;
             @Prone.canceled += instance.OnProne;
+            @Sprint.started += instance.OnSprint;
+            @Sprint.performed += instance.OnSprint;
+            @Sprint.canceled += instance.OnSprint;
+            @SprintReleased.started += instance.OnSprintReleased;
+            @SprintReleased.performed += instance.OnSprintReleased;
+            @SprintReleased.canceled += instance.OnSprintReleased;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -303,6 +355,12 @@ public partial class @DefaultInput: IInputActionCollection2, IDisposable
             @Prone.started -= instance.OnProne;
             @Prone.performed -= instance.OnProne;
             @Prone.canceled -= instance.OnProne;
+            @Sprint.started -= instance.OnSprint;
+            @Sprint.performed -= instance.OnSprint;
+            @Sprint.canceled -= instance.OnSprint;
+            @SprintReleased.started -= instance.OnSprintReleased;
+            @SprintReleased.performed -= instance.OnSprintReleased;
+            @SprintReleased.canceled -= instance.OnSprintReleased;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -327,5 +385,7 @@ public partial class @DefaultInput: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);
         void OnProne(InputAction.CallbackContext context);
+        void OnSprint(InputAction.CallbackContext context);
+        void OnSprintReleased(InputAction.CallbackContext context);
     }
 }
