@@ -282,7 +282,7 @@ MonoBehaviour:
     strafeWalkSpeed: 5
     forwardSprintSpeed: 10
     strafeSprintSpeed: 10
-    jumpingHeight: 5
+    jumpingHeight: 6
     jumpingFalloff: 0.4
     fallingSmoothing: 0.1
     speedEffector: 1
