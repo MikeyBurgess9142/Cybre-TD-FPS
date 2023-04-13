@@ -254,16 +254,71 @@ MonoBehaviour:
   player: {fileID: 0}
   playerScript: {fileID: 0}
   playerSpawnPos: {fileID: 0}
+  allyScript: {fileID: 0}
   activeMenu: {fileID: 0}
   pauseMenu: {fileID: 0}
   winMenu: {fileID: 0}
   loseMenu: {fileID: 0}
+  shopMenu: {fileID: 0}
   checkPointMsg: {fileID: 0}
+  shopMsg: {fileID: 0}
   playerHitFlash: {fileID: 0}
   playerHPBar: {fileID: 0}
   enemiesRemainingText: {fileID: 0}
+  bossesKilledText: {fileID: 0}
+  wavesCurrentText: {fileID: 0}
+  pointsTotalText: {fileID: 0}
+  pickupPos: {fileID: 0}
+  gunPistol: {fileID: 0}
+  gunSmg: {fileID: 0}
+  gunShotgun: {fileID: 0}
+  gunAssaultFull: {fileID: 0}
+  gunAssaultSemi: {fileID: 0}
+  gunSniper: {fileID: 0}
+  gunRocketLauncher: {fileID: 0}
+  laserPistol: {fileID: 0}
+  laserSmg: {fileID: 0}
+  laserShotgun: {fileID: 0}
+  laserAssaultFull: {fileID: 0}
+  laserAssaultSemi: {fileID: 0}
+  laserSniper: {fileID: 0}
+  laserRocketLauncher: {fileID: 0}
+  healthSmall: {fileID: 0}
+  healthMed: {fileID: 0}
+  healthLrg: {fileID: 0}
+  button1: {fileID: 0}
+  button2: {fileID: 0}
+  button3: {fileID: 0}
+  button4: {fileID: 0}
+  button5: {fileID: 0}
+  button6: {fileID: 0}
+  button7: {fileID: 0}
+  button8: {fileID: 0}
+  button9: {fileID: 0}
+  button10: {fileID: 0}
+  button11: {fileID: 0}
+  button12: {fileID: 0}
+  button13: {fileID: 0}
+  button14: {fileID: 0}
+  button15: {fileID: 0}
+  button16: {fileID: 0}
+  button17: {fileID: 0}
+  spawners: []
+  bossSpawners: []
+  bossWaveInterval: 0
+  spawnIntensity: 0
+  intensityIncreaseAmt: 0
+  waveDelay: 0
   enemiesAlive: 0
+  bossesAlive: 0
+  pointsTotal: 0
   isPaused: 0
+  waveStarted: 0
+  numberOfWaves: 0
+  waveNumber: 0
+  wavesCurrent: 0
+  bossesKilled: 0
+  enemy: []
 --- !u!1001 &1168892678
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -271,6 +326,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 770685255, guid: 6eeea0ea7d6815c4a91b4d636845ff03, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e823cd5b5d27c0f4b8256e7c12ee3e6d, type: 2}
     - target: {fileID: 1086089923953650309, guid: 6eeea0ea7d6815c4a91b4d636845ff03, type: 3}
       propertyPath: m_Name
       value: Player
@@ -342,7 +401,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6969435581272140379, guid: 593275ef2f6e296459b2bd4ad93b5e05, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6969435581272140379, guid: 593275ef2f6e296459b2bd4ad93b5e05, type: 3}
       propertyPath: m_AnchorMax.x

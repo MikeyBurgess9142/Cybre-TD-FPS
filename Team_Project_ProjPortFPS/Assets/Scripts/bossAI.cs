@@ -123,11 +123,16 @@ public class bossAI : MonoBehaviour, IDamage
 
     public void takeDmg(int dmg)
     {
+        Debug.Log("hit2");
         HP -= dmg;
 
         if (HP <= 0)
         {
-            GetComponent<CapsuleCollider>().enabled = false;
+            if (GetComponent<CapsuleCollider>() != null)
+            {
+                GetComponent<CapsuleCollider>().enabled = false;
+            }
+           
             gameManager.instance.updateGameGoal(0,-1, 1, pointValue);
             agent.enabled = false;
             GameObject.Destroy(gameObject);

@@ -8,6 +8,7 @@ TagManager:
   - Player Spawn Pos
   - Ally
   - Spawner
+  - BossAI
   layers:
   - Default
   - TransparentFX
@@ -18,8 +19,8 @@ TagManager:
   - Enemy
   - Enemy Bullets
   - Gun URP
-  - 
-  - 
+  - Turrentbullet
+  - Boss
   - 
   - 
   - 

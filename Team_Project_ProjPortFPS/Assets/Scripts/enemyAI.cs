@@ -120,7 +120,10 @@ public class enemyAI : MonoBehaviour, IDamage
         anim.SetTrigger("Damage");
         if (HP <= 0)
         {
-            GetComponent<CapsuleCollider>().enabled = false;
+            if (GetComponent<CapsuleCollider>() != null)
+            {
+                GetComponent<CapsuleCollider>().enabled = false;
+            }
             agent.enabled = false;
             Destroy(gameObject);
             gameManager.instance.updateGameGoal(-1, 0, 0, pointValue);
