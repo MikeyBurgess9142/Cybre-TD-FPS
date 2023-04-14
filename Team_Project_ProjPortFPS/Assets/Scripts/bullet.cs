@@ -5,6 +5,7 @@ using UnityEngine;
 public class bullet : MonoBehaviour
 {
     public int dmg;
+    public GameObject hitEffect;
     [Range(1,5)][SerializeField] int timer;
     bool hit;
 
@@ -20,6 +21,15 @@ public class bullet : MonoBehaviour
         {
             hit = true;
             gameManager.instance.playerScript.takeDmg(dmg);
+        }
+
+        if (other.CompareTag("Barrier") && !hit)
+        {
+            hit = true;
+            Instantiate(hitEffect, transform.position, transform.rotation);    
+            other.gameObject.GetComponent<Barrier>().TakeDmg(dmg);
+
+            Destroy(gameObject);
         }
     }
 }

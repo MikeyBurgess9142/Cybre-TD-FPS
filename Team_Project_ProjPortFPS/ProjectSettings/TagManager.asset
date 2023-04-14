@@ -9,6 +9,7 @@ TagManager:
   - Ally
   - Spawner
   - BossAI
+  - Barrier
   layers:
   - Default
   - TransparentFX
