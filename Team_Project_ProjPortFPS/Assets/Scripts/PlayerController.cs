@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("---Preferences---")]
     public Transform mainCamera;
+    public Transform cam;
     public Transform playerTransform;
     [SerializeField] Models.PlayerPose playerPose;
     [SerializeField] float playerPoseSmooth;

@@ -249,6 +249,7 @@ MonoBehaviour:
   lockVerMin: -75
   lockVerMax: 75
   mainCamera: {fileID: 1310159101}
+  cam: {fileID: 1964167448}
   playerTransform: {fileID: 1829524977}
   playerPose: 0
   playerPoseSmooth: 0.25
