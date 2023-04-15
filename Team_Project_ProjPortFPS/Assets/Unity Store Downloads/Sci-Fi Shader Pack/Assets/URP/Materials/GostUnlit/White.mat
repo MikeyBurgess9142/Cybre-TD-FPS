@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Weak
+  m_Name: White
   m_Shader: {fileID: 4800000, guid: fec5efd03698055498e21c779f022c64, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -31,5 +31,5 @@ Material:
     m_Colors:
     - _Color: {r: 2.02, g: 0.742647, b: 0.742647, a: 0}
     - _Color0: {r: 0, g: 0, b: 0, a: 0}
-    - _EmissionColor: {r: 0, g: 5.3403134, b: 4.067878, a: 0}
+    - _EmissionColor: {r: 7.129739, g: 7.129739, b: 7.129739, a: 0}
   m_BuildTextureStacks: []

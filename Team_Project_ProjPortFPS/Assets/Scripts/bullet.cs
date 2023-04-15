@@ -25,11 +25,17 @@ public class bullet : MonoBehaviour
 
         if (other.CompareTag("Barrier") && !hit)
         {
-            hit = true;
-            Instantiate(hitEffect, transform.position, transform.rotation);    
-            other.gameObject.GetComponent<Barrier>().TakeDmg(dmg);
+           
+           
+            if (other.gameObject.GetComponent<Barrier>().barrierActive == true)
+            {
+                hit = true;
+                Instantiate(hitEffect, transform.position, transform.rotation);
+                other.gameObject.GetComponent<Barrier>().TakeDmg(dmg);
+                Destroy(gameObject);
+            }
 
-            Destroy(gameObject);
+           
         }
     }
 }

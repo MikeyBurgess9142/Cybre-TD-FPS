@@ -25,7 +25,7 @@ Material:
     - _EmissionPower: 3
     - _Invert: 0
     - _Invert1: 0
-    - _Power: 1
+    - _Power: 0.36
     - _Scale: 0.2
     - __dirty: 0
     m_Colors:

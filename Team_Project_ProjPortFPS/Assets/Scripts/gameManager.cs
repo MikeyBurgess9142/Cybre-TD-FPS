@@ -23,6 +23,8 @@ public class gameManager : MonoBehaviour
     public GameObject shopMenu;
     public GameObject checkPointMsg;
     public GameObject shopMsg;
+    public GameObject interactMessage;
+    public GameObject maxUpgradeMsg;
     public GameObject playerHitFlash;
     public Image playerHPBar;
     public TextMeshProUGUI enemiesRemainingText;
