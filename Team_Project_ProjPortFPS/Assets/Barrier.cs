@@ -30,7 +30,7 @@ public class Barrier : MonoBehaviour
     }
     public void Update()
     {
-        if (Input.GetKeyUp(KeyCode.E) && canUpgrade == true )
+        if (Input.GetKeyUp(KeyCode.F) && canUpgrade == true )
         {
            
 
