@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
@@ -42,6 +43,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Vector3 jumpForce;
     float playerGravity;
     Vector3 jumpSpeed;
+    public bool isGrounded;
+    public bool isFalling;
 
     public bool isSprinting;
     Vector3 movementSpeed;
@@ -51,8 +54,19 @@ public class PlayerController : MonoBehaviour
     public WeaponController currentWeapon;
     public float weaponAnimSpeed;
 
-    public bool isGrounded;
-    public bool isFalling;
+    [Header("Leaning")]
+    public Transform cameraLeanPivot;
+    public float leanAngle;
+    public float leanSmoothing;
+    float currentLean;
+    float targetLean;
+    float leanVelocity;
+
+    bool isLeaningLeft;
+    bool isLeaningRight;
+
+    [Header("Aiming")]
+    public bool isAiming;
 
     void Awake()
     {
@@ -70,6 +84,15 @@ public class PlayerController : MonoBehaviour
         input.Player.Sprint.performed += e => ToggleSprint();
         input.Player.SprintReleased.performed += e => StopSprint();
 
+        input.Weapon.AimPressed.performed += e => AimPressed();
+        input.Weapon.AimReleased.performed += e => AimReleased();
+
+        input.Player.LeanLeftPressed.performed += e => isLeaningLeft = true;
+        input.Player.LeanLeftReleased.performed += e => isLeaningLeft = false;
+
+        input.Player.LeanRightPressed.performed += e => isLeaningRight = true;
+        input.Player.LeanRightReleased.performed += e => isLeaningRight = false;
+        ;
         input.Enable();
 
         cameraRotation = mainCamera.localRotation.eulerAngles;
@@ -89,36 +112,29 @@ public class PlayerController : MonoBehaviour
         SetIsFalling();
 
         Camera();
-        Movement();
-        Jumping();
-        PlayerStance();
-    }
-
-    void SetIsGrounded()
-    {
-        isGrounded = Physics.CheckSphere(playerTransform.position, playerSettings.isGroundedRadius, groundMask);
-    }
-
-    void SetIsFalling()
-    {
-        isFalling = !isGrounded && characterController.velocity.magnitude >= playerSettings.isFallingSpeed;
+        Movement();       
     }
 
     void Camera()
     {
         // Horizontal Rotation
-        playerRotation.y += playerSettings.cameraSensHor * (playerSettings.invertX ? -inputCamera.x : inputCamera.x);
+        playerRotation.y += (isAiming ? playerSettings.cameraSensHor * playerSettings.aimSpeedEffector : playerSettings.cameraSensHor) * (playerSettings.invertX ? -inputCamera.x : inputCamera.x);
         transform.localRotation = Quaternion.Euler(playerRotation);
 
         // Vertical Rotation
-        cameraRotation.x += playerSettings.cameraSensVer * (playerSettings.invertY ? inputCamera.y : -inputCamera.y);
+        cameraRotation.x += (isAiming ? playerSettings.cameraSensVer * playerSettings.aimSpeedEffector : playerSettings.cameraSensVer) * (playerSettings.invertY ? inputCamera.y : -inputCamera.y);
         cameraRotation.x = Mathf.Clamp(cameraRotation.x, lockVerMin, lockVerMax);
         mainCamera.localRotation = Quaternion.Euler(cameraRotation);
     }
 
     void Movement()
     {
-        if (inputMovement.y <= 0.2f)
+        Jumping();
+        PlayerStance();
+        Leaning();
+        Aiming();
+
+        if (inputMovement.y <= 0.2f || isAiming)
         {
             isSprinting = false;
         }
@@ -143,6 +159,10 @@ public class PlayerController : MonoBehaviour
         else if (playerPose == Models.PlayerPose.Prone)
         {
             playerSettings.speedEffector = playerSettings.proneSpeedEffector;
+        }
+        else if (isAiming)
+        {
+            playerSettings.speedEffector = playerSettings.aimSpeedEffector;
         }
         else
         {
@@ -178,6 +198,56 @@ public class PlayerController : MonoBehaviour
         characterController.Move(newMovementSpeed);
     }
 
+    void AimPressed()
+    {
+        isAiming = true;
+    }
+
+    void AimReleased()
+    {
+        isAiming = false;
+    }
+
+    void Aiming()
+    {
+        if (!currentWeapon)
+        {
+            return;
+        }
+
+        currentWeapon.isAiming = isAiming;
+    }
+
+    void SetIsGrounded()
+    {
+        isGrounded = Physics.CheckSphere(playerTransform.position, playerSettings.isGroundedRadius, groundMask);
+    }
+
+    void SetIsFalling()
+    {
+        isFalling = !isGrounded && characterController.velocity.magnitude >= playerSettings.isFallingSpeed;
+    }
+
+    void Leaning()
+    {
+        if (isLeaningLeft)
+        {
+            targetLean = leanAngle;
+        }
+        else if (isLeaningRight)
+        {
+            targetLean = -leanAngle;
+        }
+        else
+        {
+            targetLean = 0;
+        }
+
+        currentLean = Mathf.SmoothDamp(currentLean, targetLean, ref leanVelocity, leanSmoothing);
+
+        cameraLeanPivot.localRotation = Quaternion.Euler(new Vector3(0, 0, currentLean));
+    }
+    
     void PlayerStance()
     {
         Models.PlayerStance currentStance = playerStandStance;
@@ -281,7 +351,7 @@ public class PlayerController : MonoBehaviour
 
     void ToggleSprint()
     {
-        if (inputMovement.y <= 0.2f)
+        if (inputMovement.y <= 0.2f || isAiming)
         {
             isSprinting = false;
             return;

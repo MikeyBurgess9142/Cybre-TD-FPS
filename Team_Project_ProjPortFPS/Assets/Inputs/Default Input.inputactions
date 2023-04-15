@@ -67,6 +67,42 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Lean Left  Pressed",
+                    "type": "Button",
+                    "id": "4cc887fc-1ba6-4a4c-99aa-15d568fb5fa5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Lean Left Released",
+                    "type": "Button",
+                    "id": "2da901e8-2737-40e1-b882-f99d16b7935d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Lean Right Pressed",
+                    "type": "Button",
+                    "id": "ef538f26-21ea-45f5-9c1d-4b7fb16bfd64",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Lean Right Released",
+                    "type": "Button",
+                    "id": "fa2ccfc1-3602-4990-9ad8-af2d08bbba57",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -188,6 +224,98 @@
                     "processors": "",
                     "groups": "",
                     "action": "Sprint Released",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "be0e3edd-6e63-4fec-8aa5-ddb5bef18e3d",
+                    "path": "<Keyboard>/q",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Lean Left  Pressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d8b44356-47a8-4a85-b466-d9aef6e6fa94",
+                    "path": "<Keyboard>/e",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Lean Right Pressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "86182693-f648-4681-9f8a-4091705fb455",
+                    "path": "<Keyboard>/e",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Lean Right Released",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "14e125c5-0a41-48ef-b21b-448555040e9a",
+                    "path": "<Keyboard>/q",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Lean Left Released",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Weapon",
+            "id": "26644887-cf3d-4160-a620-f7dc088bf3ff",
+            "actions": [
+                {
+                    "name": "AimPressed",
+                    "type": "Button",
+                    "id": "0395b840-2ada-4310-b18a-d0a6e43abb94",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "AimReleased",
+                    "type": "Button",
+                    "id": "2c2438bd-d334-4345-886a-67812c761e8f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "3549392c-67e5-4ef0-b3ab-8e75da51ecb6",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AimPressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7240ff7e-a671-4b3e-a142-c50b496f2cd2",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AimReleased",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

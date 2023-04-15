@@ -21,6 +21,8 @@ public static class Models
         public float cameraSensHor;
         public float cameraSensVer;
 
+        public float ADSSensEffector;
+
         public bool invertX;
         public bool invertY;
 
@@ -47,6 +49,7 @@ public static class Models
         public float crouchSpeedEffector;
         public float proneSpeedEffector;
         public float fallingSpeedEffector;
+        public float aimSpeedEffector;
 
         [Header("---Is Grounded / Falling---")]
         public float isGroundedRadius;
@@ -66,6 +69,7 @@ public class WeaponSettingsModel
 {
     [Header("---Weapon Sway---")]
     public float swayAmount;
+    public float swayAmountADS;
     public float swaySmoothing;
     public float swayResetSmoothing;
     public float swayClampX;
@@ -77,6 +81,8 @@ public class WeaponSettingsModel
     [Header("---Weapon Movement---")]
     public float swayMovementX;
     public float swayMovementY;
+    public float swayMovementXADS;
+    public float swayMovementYADS;
     public bool swayMovementYInverted;
     public bool swayMovementXInverted;
     public float swayMovementSmoothing;

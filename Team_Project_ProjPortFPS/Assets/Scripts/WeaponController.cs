@@ -35,9 +35,19 @@ public class WeaponController : MonoBehaviour
     public float swayAmountA;
     public float swayAmountB;
     public float swayScale;
+    public float swayScaleADS;
     public float swayLerpSpeed;
     public float swayTime;
     public Vector3 swayPosition;
+
+
+    [Header("Sights")]
+    public bool isAiming;
+    public Transform weaponSight;
+    public float sightOffset;
+    public float ADSSpeed;
+    Vector3 weaponSwayPosition;
+    Vector3 weaponSwayPositionVelocity;
 
     public void Start()
     {
@@ -60,6 +70,21 @@ public class WeaponController : MonoBehaviour
         WeaponRotation();
         SetWeaponAnimation();
         WeaponIdleSway();
+        Aiming();
+    }
+
+    void Aiming()
+    {
+        Vector3 targetPosition = transform.position;
+
+        if (isAiming)
+        {
+            targetPosition = playerController.mainCamera.transform.position + (weaponSway.transform.position - weaponSight.transform.position) + (playerController.mainCamera.transform.forward * sightOffset);
+        }
+
+        weaponSwayPosition = weaponSway.transform.position;
+        weaponSwayPosition = Vector3.SmoothDamp(weaponSwayPosition, targetPosition, ref weaponSwayPositionVelocity, ADSSpeed);
+        weaponSway.transform.position = weaponSwayPosition + swayPosition;
     }
 
     public void TriggerJump()
@@ -70,18 +95,18 @@ public class WeaponController : MonoBehaviour
 
     void WeaponRotation()
     {
-        targetWeaponRotation.y += settings.swayAmount * (settings.swayXInverted ? -playerController.inputCamera.x : playerController.inputCamera.x); // Horizontal Rotation
-        targetWeaponRotation.x += settings.swayAmount * (settings.swayYInverted ? playerController.inputCamera.y : -playerController.inputCamera.y); // Vertical Rotation
+        targetWeaponRotation.y += (isAiming ? settings.swayAmountADS : settings.swayAmount) * (settings.swayXInverted ? -playerController.inputCamera.x : playerController.inputCamera.x); // Horizontal Rotation
+        targetWeaponRotation.x += (isAiming ? settings.swayAmountADS : settings.swayAmount) * (settings.swayYInverted ? playerController.inputCamera.y : -playerController.inputCamera.y); // Vertical Rotation
 
         targetWeaponRotation.x = Mathf.Clamp(targetWeaponRotation.x, -settings.swayClampX, settings.swayClampX);
         targetWeaponRotation.y = Mathf.Clamp(targetWeaponRotation.y, -settings.swayClampY, settings.swayClampY);
-        targetWeaponRotation.z = targetWeaponRotation.y * settings.swayLeanAmount;
+        targetWeaponRotation.z = isAiming ? 0 : targetWeaponRotation.y * settings.swayLeanAmount;
 
         targetWeaponRotation = Vector3.SmoothDamp(targetWeaponRotation, Vector3.zero, ref targetWeaponRotationVelocity, settings.swayResetSmoothing);
         weaponRotation = Vector3.SmoothDamp(weaponRotation, targetWeaponRotation, ref weaponRotationVelocity, settings.swaySmoothing);
 
-        targetWeaponMovementRotation.z = settings.swayMovementX * (settings.swayMovementXInverted ? -playerController.inputMovement.x : playerController.inputMovement.x);
-        targetWeaponMovementRotation.x = settings.swayMovementY * (settings.swayMovementYInverted ? -playerController.inputMovement.y : playerController.inputMovement.y);
+        targetWeaponMovementRotation.z = (isAiming ? settings.swayMovementXADS: settings.swayMovementX) * (settings.swayMovementXInverted ? -playerController.inputMovement.x : playerController.inputMovement.x);
+        targetWeaponMovementRotation.x = (isAiming ? settings.swayMovementYADS: settings.swayMovementY) * (settings.swayMovementYInverted ? -playerController.inputMovement.y : playerController.inputMovement.y);
 
         targetWeaponMovementRotation = Vector3.SmoothDamp(targetWeaponMovementRotation, Vector3.zero, ref targetWeaponMovementRotationVelocity, settings.swayMovementSmoothing);
         weaponMovementRotation = Vector3.SmoothDamp(weaponMovementRotation, targetWeaponMovementRotation, ref weaponMovementRotationVelocity, settings.swayMovementSmoothing);
@@ -117,7 +142,7 @@ public class WeaponController : MonoBehaviour
 
     void WeaponIdleSway()
     {
-        Vector3 targetPosition = Curve(swayTime, swayAmountA, swayAmountB) / swayScale;
+        Vector3 targetPosition = Curve(swayTime, swayAmountA, swayAmountB) / (isAiming ? swayScaleADS : swayScale);
 
         swayPosition = Vector3.Lerp(swayPosition, targetPosition, Time.smoothDeltaTime * swayLerpSpeed);
         swayTime += Time.deltaTime;
@@ -126,11 +151,9 @@ public class WeaponController : MonoBehaviour
         {
             swayTime = 0;
         }
-
-        weaponSway.localPosition = swayPosition;
     }
 
-    private Vector3 Curve(float Time, float A, float B)
+    Vector3 Curve(float Time, float A, float B)
     {
         return new Vector3(Mathf.Sin(Time), A * Mathf.Sin(B * Time + Mathf.PI));
     }
