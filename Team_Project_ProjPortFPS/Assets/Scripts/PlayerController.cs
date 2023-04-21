@@ -10,6 +10,8 @@ using UnityEngine.Rendering;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
+
     DefaultInput input;
     [SerializeField] CharacterController characterController;
     public Vector2 inputMovement;
@@ -42,7 +44,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float gravity;
     [SerializeField] float gravitySpeed;
     [SerializeField] Vector3 jumpForce;
-    float playerGravity;
+    public float playerGravity;
     Vector3 jumpSpeed;
     public bool isGrounded;
     public bool isFalling;
@@ -52,8 +54,12 @@ public class PlayerController : MonoBehaviour
     Vector3 velocitySpeed;
 
     [Header("Weapon")]
+    [SerializeField] MeshFilter weapon;
+    [SerializeField] MeshRenderer weaponMaterial;
+    public List<gunStats> gunList = new List<gunStats>();
     public WeaponController currentWeapon;
     public float weaponAnimSpeed;
+    int selectedGun;
 
     [Header("Leaning")]
     public Transform cameraLeanPivot;
@@ -71,6 +77,7 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
+        instance = this;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
@@ -109,11 +116,15 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        SetIsGrounded();
-        SetIsFalling();
+        if (Time.timeScale != 0)
+        {
+            SetIsGrounded();
+            SetIsFalling();
 
-        Camera();
-        Movement();       
+            Camera();
+            Movement();
+            selectGun();
+        }
     }
 
     void Camera()
@@ -188,10 +199,12 @@ public class PlayerController : MonoBehaviour
             playerGravity -= gravity * Time.deltaTime;
         }
 
-        if (playerGravity < -0.1f && isGrounded)
+        if (isGrounded && playerGravity < -0.1f)
         {
             playerGravity = -0.1f;
         }
+
+        //playerGravity -= gravity * Time.deltaTime;
 
         newMovementSpeed.y += playerGravity;
         newMovementSpeed += jumpForce * Time.deltaTime;
@@ -245,7 +258,6 @@ public class PlayerController : MonoBehaviour
         }
 
         currentLean = Mathf.SmoothDamp(currentLean, targetLean, ref leanVelocity, leanSmoothing);
-
         cameraLeanPivot.localRotation = Quaternion.Euler(new Vector3(0, 0, currentLean));
     }
     
@@ -291,7 +303,7 @@ public class PlayerController : MonoBehaviour
             }
 
             playerPose = Models.PlayerPose.Stand;
-            //return; --------------------------- This can be used to make the player stand up and not jump at the same time.
+            //return; --------------------------- This can be used to make the player stand up only and not jump at the same time.
         }
 
         jumpForce = Vector3.up * playerSettings.jumpingHeight;
@@ -367,6 +379,39 @@ public class PlayerController : MonoBehaviour
         {
             isSprinting = false;
         }
+    }
+    void selectGun()
+    {
+        if (Input.GetAxis("Mouse ScrollWheel") > 0 && selectedGun < gunList.Count - 1)
+        {
+            selectedGun++;
+            ChangeGun();
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && selectedGun > 0)
+        {
+            selectedGun--;
+            ChangeGun();
+        }
+    }
+
+    void ChangeGun()
+    {
+
+
+        weapon.sharedMesh = gunList[selectedGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
+        weaponMaterial.sharedMaterial = gunList[selectedGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+    }
+
+    public void GunPickup(gunStats gunStat)
+    {
+        gunList.Add(gunStat);
+
+
+
+        weapon.sharedMesh = gunStat.gunModel.GetComponent<MeshFilter>().sharedMesh;
+        weaponMaterial.sharedMaterial = gunStat.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+
+        selectedGun = gunList.Count - 1;
     }
 
     void OnDrawGizmos()

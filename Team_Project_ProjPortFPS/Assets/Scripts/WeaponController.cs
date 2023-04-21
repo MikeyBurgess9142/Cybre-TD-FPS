@@ -1,3 +1,4 @@
+using TreeEditor;
 using UnityEditor;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
@@ -32,13 +33,16 @@ public class WeaponController : MonoBehaviour
 
     [Header("Weapon Idle Sway")]
     public Transform weaponSway;
+    public Transform weaponBreathing;
+    public Transform cameraSwayADS;
     public float swayAmountA;
     public float swayAmountB;
     public float swayScale;
     public float swayScaleADS;
     public float swayLerpSpeed;
     public float swayTime;
-    public Vector3 swayPosition;
+    Vector3 swayPosition;
+    Vector3 cameraOriginalPosition = new(0, 0, 0);
 
 
     [Header("Sights")]
@@ -79,12 +83,18 @@ public class WeaponController : MonoBehaviour
 
         if (isAiming)
         {
-            targetPosition = playerController.cam.transform.position + (weaponSway.transform.position - weaponSight.transform.position) + (playerController.cam.transform.forward * sightOffset);
+            targetPosition = playerController.cam.position + (weaponSway.position - weaponSight.position) + (playerController.cam.forward * sightOffset);
+            //cameraSwayADS.localEulerAngles = swayPosition; Needs work. Trying to rotate camera with gun ADS sway.
+        }
+        else
+        {
+            cameraSwayADS.localPosition = cameraOriginalPosition;
         }
 
-        weaponSwayPosition = weaponSway.transform.position;
+        weaponSwayPosition = weaponSway.position;
         weaponSwayPosition = Vector3.SmoothDamp(weaponSwayPosition, targetPosition, ref weaponSwayPositionVelocity, ADSSpeed);
-        weaponSway.transform.position = weaponSwayPosition + swayPosition;
+        weaponSway.position = weaponSwayPosition;
+
     }
 
     public void TriggerJump()
@@ -105,8 +115,8 @@ public class WeaponController : MonoBehaviour
         targetWeaponRotation = Vector3.SmoothDamp(targetWeaponRotation, Vector3.zero, ref targetWeaponRotationVelocity, settings.swayResetSmoothing);
         weaponRotation = Vector3.SmoothDamp(weaponRotation, targetWeaponRotation, ref weaponRotationVelocity, settings.swaySmoothing);
 
-        targetWeaponMovementRotation.z = (isAiming ? settings.swayMovementXADS: settings.swayMovementX) * (settings.swayMovementXInverted ? -playerController.inputMovement.x : playerController.inputMovement.x);
-        targetWeaponMovementRotation.x = (isAiming ? settings.swayMovementYADS: settings.swayMovementY) * (settings.swayMovementYInverted ? -playerController.inputMovement.y : playerController.inputMovement.y);
+        targetWeaponMovementRotation.z = (isAiming ? settings.swayMovementXADS : settings.swayMovementX) * (settings.swayMovementXInverted ? -playerController.inputMovement.x : playerController.inputMovement.x);
+        targetWeaponMovementRotation.x = (isAiming ? settings.swayMovementYADS : settings.swayMovementY) * (settings.swayMovementYInverted ? -playerController.inputMovement.y : playerController.inputMovement.y);
 
         targetWeaponMovementRotation = Vector3.SmoothDamp(targetWeaponMovementRotation, Vector3.zero, ref targetWeaponMovementRotationVelocity, settings.swayMovementSmoothing);
         weaponMovementRotation = Vector3.SmoothDamp(weaponMovementRotation, targetWeaponMovementRotation, ref weaponMovementRotationVelocity, settings.swayMovementSmoothing);
@@ -147,10 +157,14 @@ public class WeaponController : MonoBehaviour
         swayPosition = Vector3.Lerp(swayPosition, targetPosition, Time.smoothDeltaTime * swayLerpSpeed);
         swayTime += Time.deltaTime;
 
-        if (swayTime > 6.3f)
+        if (swayTime > 6.29475f)
         {
             swayTime = 0;
         }
+
+        weaponBreathing.localPosition = swayPosition;
+
+        Debug.Log("sway Time : " + swayTime);
     }
 
     Vector3 Curve(float Time, float A, float B)

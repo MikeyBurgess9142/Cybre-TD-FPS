@@ -12,6 +12,7 @@ public class gameManager : MonoBehaviour
     [Header("---Player Stuff---")]
     public GameObject player;
     public playerController_Old playerScript;
+    public PlayerController playerControllerScript;
     public GameObject playerSpawnPos;
     public allyAI allyScript;
 
@@ -92,13 +93,12 @@ public class gameManager : MonoBehaviour
 
     public List<NavMeshAgent> enemy;
 
-
-
     void Awake()
     {
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponent<playerController_Old>();
+        playerControllerScript = player.GetComponent<PlayerController>();
         playerSpawnPos = GameObject.FindGameObjectWithTag("Player Spawn Pos");
     }
 
