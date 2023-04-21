@@ -206,10 +206,10 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (isGrounded && playerGravity < 0)
-        {
-            playerGravity = 0;
-        }
+        //if (playerGravity < -0.1f && isGrounded)
+        //{
+        //    playerGravity = -0.1f;
+        //}
 
         newMovementSpeed.y += playerGravity;
         newMovementSpeed += jumpForce * Time.deltaTime;
@@ -310,7 +310,7 @@ public class PlayerController : MonoBehaviour
         }
 
         jumpForce = Vector3.up * playerSettings.jumpingHeight;
-        playerGravity = 0;
+        //playerGravity = 0;
         currentWeapon.TriggerJump();
     }
 
