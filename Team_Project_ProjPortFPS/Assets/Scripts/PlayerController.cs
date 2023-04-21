@@ -200,7 +200,7 @@ public class PlayerController : MonoBehaviour
             {
                 playerGravity -= gravity * Time.deltaTime;
             }
-            else
+            else if (isGrounded && playerGravity < -0.1)
             {
                 playerGravity = 0;
             }
@@ -208,7 +208,7 @@ public class PlayerController : MonoBehaviour
 
         //if (playerGravity < -0.1f && isGrounded)
         //{
-        //    playerGravity = -0.1f;
+        //    playerGravity = 0;
         //}
 
         newMovementSpeed.y += playerGravity;
@@ -288,7 +288,10 @@ public class PlayerController : MonoBehaviour
 
     void Jumping()
     {
-        jumpForce = Vector3.SmoothDamp(jumpForce, Vector3.zero, ref jumpSpeed, playerSettings.jumpingFalloff);
+        if (!isGrounded)
+        {
+            jumpForce = Vector3.SmoothDamp(jumpForce, Vector3.zero, ref jumpSpeed, playerSettings.jumpingFalloff);
+        }
     }
 
     void Jump()
