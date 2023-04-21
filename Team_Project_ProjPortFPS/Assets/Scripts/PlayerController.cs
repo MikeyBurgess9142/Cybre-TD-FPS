@@ -206,6 +206,11 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        if (isGrounded && playerGravity < 0)
+        {
+            playerGravity = 0;
+        }
+
         newMovementSpeed.y += playerGravity;
         newMovementSpeed += jumpForce * Time.deltaTime;
 
@@ -403,6 +408,8 @@ public class PlayerController : MonoBehaviour
     public void GunPickup(gunStats gunStat)
     {
         gunList.Add(gunStat);
+
+
 
         weapon.sharedMesh = gunStat.gunModel.GetComponent<MeshFilter>().sharedMesh;
         weaponMaterial.sharedMaterial = gunStat.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
