@@ -310,7 +310,7 @@ public class PlayerController : MonoBehaviour
         }
 
         jumpForce = Vector3.up * playerSettings.jumpingHeight;
-        //playerGravity = 0;
+        playerGravity = 0;
         currentWeapon.TriggerJump();
     }
 
