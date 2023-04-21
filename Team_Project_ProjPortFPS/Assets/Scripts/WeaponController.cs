@@ -94,7 +94,6 @@ public class WeaponController : MonoBehaviour
         weaponSwayPosition = weaponSway.position;
         weaponSwayPosition = Vector3.SmoothDamp(weaponSwayPosition, targetPosition, ref weaponSwayPositionVelocity, ADSSpeed);
         weaponSway.position = weaponSwayPosition;
-
     }
 
     public void TriggerJump()

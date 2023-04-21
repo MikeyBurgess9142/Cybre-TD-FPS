@@ -196,15 +196,15 @@ public class PlayerController : MonoBehaviour
 
         if (playerGravity > gravitySpeed)
         {
-            playerGravity -= gravity * Time.deltaTime;
+            if (!isGrounded)
+            {
+                playerGravity -= gravity * Time.deltaTime;
+            }
+            else
+            {
+                playerGravity = 0;
+            }
         }
-
-        if (isGrounded && playerGravity < -0.1f)
-        {
-            playerGravity = -0.1f;
-        }
-
-        //playerGravity -= gravity * Time.deltaTime;
 
         newMovementSpeed.y += playerGravity;
         newMovementSpeed += jumpForce * Time.deltaTime;
@@ -260,7 +260,7 @@ public class PlayerController : MonoBehaviour
         currentLean = Mathf.SmoothDamp(currentLean, targetLean, ref leanVelocity, leanSmoothing);
         cameraLeanPivot.localRotation = Quaternion.Euler(new Vector3(0, 0, currentLean));
     }
-    
+
     void PlayerStance()
     {
         Models.PlayerStance currentStance = playerStandStance;
@@ -274,13 +274,11 @@ public class PlayerController : MonoBehaviour
             currentStance = playerProneStance;
         }
 
-
         cameraHeight = Mathf.SmoothDamp(mainCamera.localPosition.y, currentStance.cameraHeight, ref cameraHeightSpeed, playerPoseSmooth);
         mainCamera.localPosition = new Vector3(mainCamera.localPosition.x, cameraHeight, mainCamera.localPosition.z);
 
         characterController.height = Mathf.SmoothDamp(characterController.height, currentStance.stanceCollider.height, ref playerStanceHeightVelocity, playerPoseSmooth);
         characterController.center = Vector3.SmoothDamp(characterController.center, currentStance.stanceCollider.center, ref playerStanceCenterVelocity, playerPoseSmooth);
-
     }
 
     void Jumping()
@@ -405,8 +403,6 @@ public class PlayerController : MonoBehaviour
     public void GunPickup(gunStats gunStat)
     {
         gunList.Add(gunStat);
-
-
 
         weapon.sharedMesh = gunStat.gunModel.GetComponent<MeshFilter>().sharedMesh;
         weaponMaterial.sharedMaterial = gunStat.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
