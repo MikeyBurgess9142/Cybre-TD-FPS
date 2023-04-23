@@ -1,5 +1,50 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &660648533
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 660648534}
+  - component: {fileID: 660648535}
+  m_Layer: 11
+  m_Name: Collider
+  m_TagString: Barrier
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &660648534
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660648533}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 784079808472414847}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &660648535
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660648533}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.204917, y: 2.9711351, z: 0.5644033}
+  m_Center: {x: 0.044237137, y: 0.15257525, z: -0.00090767443}
 --- !u!1 &784079808472414840
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,7 +56,7 @@ GameObject:
   - component: {fileID: 784079808472414847}
   - component: {fileID: 784079808472414845}
   - component: {fileID: 784079808472414846}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BarrierController
   m_TagString: Barrier
   m_Icon: {fileID: 0}
@@ -29,7 +74,8 @@ Transform:
   m_LocalPosition: {x: 25.32, y: 1.5, z: 4.85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 660648534}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -48,6 +94,7 @@ MonoBehaviour:
   weakBarrierHp: 10
   midBarrierHp: 15
   strongBarrierHp: 20
+  barriercollider: {fileID: 660648533}
   defaultBarrier: {fileID: 9070984173557442198, guid: c8523a46c40e83d4cb6c1c2e2c0c8ef0, type: 3}
   weakBarrier: {fileID: 909902557241065262, guid: 879ddc4af1f133a44a8abd9c312ac585, type: 3}
   midBarrier: {fileID: 6775118965669940917, guid: 8211ffb1e998fab4291065b611064311, type: 3}

@@ -102,6 +102,11 @@ public class gameManager : MonoBehaviour
         playerSpawnPos = GameObject.FindGameObjectWithTag("Player Spawn Pos");
     }
 
+    private void Start()
+    {
+        StartCoroutine(startWave());
+    }
+
     void Update()
     {
         if (Input.GetButtonDown("Cancel") && activeMenu == null)
@@ -205,7 +210,11 @@ public class gameManager : MonoBehaviour
             foreach (spawnerAI spawner in spawners)
             {
                 Debug.Log("Spawner Activated");
-                //StartCoroutine(spawner.spawnWave(spawnIntensity));
+
+                StartCoroutine(spawner.spawnWave(spawnIntensity));
+
+               StartCoroutine(spawner.spawnWave(spawnIntensity));
+
             }
         }
     }

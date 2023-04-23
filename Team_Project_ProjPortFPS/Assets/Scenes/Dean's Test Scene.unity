@@ -262,6 +262,8 @@ MonoBehaviour:
   shopMenu: {fileID: 0}
   checkPointMsg: {fileID: 0}
   shopMsg: {fileID: 0}
+  interactMessage: {fileID: 0}
+  maxUpgradeMsg: {fileID: 0}
   playerHitFlash: {fileID: 0}
   playerHPBar: {fileID: 0}
   enemiesRemainingText: {fileID: 0}

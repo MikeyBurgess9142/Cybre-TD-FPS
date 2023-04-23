@@ -11,6 +11,7 @@ public class Barrier : MonoBehaviour
     public int weakBarrierHp;
     public int midBarrierHp;
     public int strongBarrierHp;
+    public GameObject barriercollider;
     public GameObject defaultBarrier;
     public GameObject weakBarrier;
     public GameObject midBarrier;
@@ -90,16 +91,19 @@ public class Barrier : MonoBehaviour
 
     public void DefaultBarrier()
     {
+        barriercollider.SetActive(false);
         barrierActive = false;
         upgradeMax = false;
         currentBarrier = Instantiate(defaultBarrier, this.gameObject.transform.position, this.gameObject.transform.rotation);
     }
     public void WeakUpgrade()
     {
+        
         gameManager.instance.pointsTotal -= 50;
         Destroy(currentBarrier);
         currentBarrier = Instantiate(weakBarrier, this.gameObject.transform.position, this.gameObject.transform.rotation);
         hp = weakBarrierHp;
+        barriercollider.SetActive(true);
         barrierActive = true;
         
     }
