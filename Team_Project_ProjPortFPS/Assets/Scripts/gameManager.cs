@@ -205,7 +205,7 @@ public class gameManager : MonoBehaviour
             foreach (spawnerAI spawner in spawners)
             {
                 Debug.Log("Spawner Activated");
-                StartCoroutine(spawner.spawnWave(spawnIntensity));
+                //StartCoroutine(spawner.spawnWave(spawnIntensity));
             }
         }
     }
