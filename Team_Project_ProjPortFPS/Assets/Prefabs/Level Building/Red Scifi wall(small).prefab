@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5742205400367713191}
   - component: {fileID: 5742205400367713188}
   m_Layer: 0
-  m_Name: Green Scifi wall(small)
+  m_Name: Red Scifi wall(small)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9be72c9aaa2e65144ae6c1b23c3a02e7, type: 2}
+  - {fileID: 2100000, guid: 2c2e34ec82cf91e4da2115f5d7dbb9b7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
