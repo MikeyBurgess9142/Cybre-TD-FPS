@@ -115,6 +115,8 @@ public class playerController_Old : MonoBehaviour
         move = move.normalized;
         controller.Move(move * Time.deltaTime * playerSpd);
 
+        //Jumping ------------------------------------------------------------------------------------------
+
         if (Input.GetButtonDown("Jump") && jumpsCurr < jumpMax)
         {
             jumpsCurr++;

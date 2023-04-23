@@ -5,8 +5,11 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEditor.Rendering.LookDev;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
+using static UnityEngine.EventSystems.StandaloneInputModule;
+using static UnityEngine.LightAnchor;
 
 public class PlayerController : MonoBehaviour
 {
@@ -48,6 +51,7 @@ public class PlayerController : MonoBehaviour
     Vector3 jumpSpeed;
     public bool isGrounded;
     public bool isFalling;
+    Vector3 moveDirection;
 
     public bool isSprinting;
     Vector3 movementSpeed;
@@ -127,16 +131,36 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Camera()
+    void RotatePlayer()
     {
-        // Horizontal Rotation
-        playerRotation.y += (isAiming ? playerSettings.cameraSensHor * playerSettings.aimSpeedEffector : playerSettings.cameraSensHor) * (playerSettings.invertX ? -inputCamera.x : inputCamera.x);
+        playerRotation.y += (isAiming ? playerSettings.cameraSensHor * playerSettings.aimSpeedEffector : playerSettings.cameraSensHor) * (playerSettings.invertX ? -inputCamera.x : inputCamera.x) * Time.smoothDeltaTime;
         transform.localRotation = Quaternion.Euler(playerRotation);
 
-        // Vertical Rotation
-        cameraRotation.x += (isAiming ? playerSettings.cameraSensVer * playerSettings.aimSpeedEffector : playerSettings.cameraSensVer) * (playerSettings.invertY ? inputCamera.y : -inputCamera.y);
+        cameraRotation.x += (isAiming ? playerSettings.cameraSensVer * playerSettings.aimSpeedEffector : playerSettings.cameraSensVer) * (playerSettings.invertY ? inputCamera.y : -inputCamera.y) * Time.smoothDeltaTime;
         cameraRotation.x = Mathf.Clamp(cameraRotation.x, lockVerMin, lockVerMax);
         mainCamera.localRotation = Quaternion.Euler(cameraRotation);
+    }
+
+    void RotateCamera()
+    {
+        cameraRotation.y += (isAiming ? playerSettings.cameraSensHor * playerSettings.aimSpeedEffector : playerSettings.cameraSensHor) * (playerSettings.invertX ? -inputCamera.x : inputCamera.x) * Time.smoothDeltaTime;
+        mainCamera.localRotation = Quaternion.Euler(cameraRotation);
+
+        cameraRotation.x += (isAiming ? playerSettings.cameraSensVer * playerSettings.aimSpeedEffector : playerSettings.cameraSensVer) * (playerSettings.invertY ? inputCamera.y : -inputCamera.y) * Time.smoothDeltaTime;
+        cameraRotation.x = Mathf.Clamp(cameraRotation.x, lockVerMin, lockVerMax);
+        mainCamera.localRotation = Quaternion.Euler(cameraRotation);
+    }
+
+    void Camera()
+    {
+        if (isGrounded)
+        {
+            RotatePlayer();
+        }
+        else
+        {
+            RotateCamera();
+        }
     }
 
     void Movement()
@@ -167,10 +191,12 @@ public class PlayerController : MonoBehaviour
         else if (playerPose == Models.PlayerPose.Crouch)
         {
             playerSettings.speedEffector = playerSettings.crouchSpeedEffector;
+            isSprinting = false;
         }
         else if (playerPose == Models.PlayerPose.Prone)
         {
             playerSettings.speedEffector = playerSettings.proneSpeedEffector;
+            isSprinting = false;
         }
         else if (isAiming)
         {
@@ -191,8 +217,49 @@ public class PlayerController : MonoBehaviour
         verticalSpeed *= playerSettings.speedEffector;
         horizontalSpeed *= playerSettings.speedEffector;
 
-        movementSpeed = Vector3.SmoothDamp(movementSpeed, new(horizontalSpeed * inputMovement.x * Time.deltaTime, 0, verticalSpeed * inputMovement.y * Time.deltaTime), ref velocitySpeed, isGrounded ? playerSettings.movementSmoothing : playerSettings.fallingSmoothing);
-        Vector3 newMovementSpeed = transform.TransformDirection(movementSpeed);
+        if (isGrounded)
+        {
+            playerSettings.isJumping = false;
+
+            Vector3 cameraForward = mainCamera.transform.forward;
+            Vector3 cameraRight = mainCamera.transform.right;
+
+            // Remove the Y-axis components to avoid any vertical movement
+            cameraForward.y = 0;
+            cameraRight.y = 0;
+
+            // Normalize the vectors
+            cameraForward.Normalize();
+            cameraRight.Normalize();
+
+            moveDirection = (inputMovement.y * cameraForward) + (inputMovement.x * cameraRight);
+            moveDirection.Normalize();
+
+            float forwardSpeed = verticalSpeed * inputMovement.y * Time.deltaTime;
+            float strafeSpeed = horizontalSpeed * inputMovement.x * Time.deltaTime;
+
+            movementSpeed = Vector3.SmoothDamp(movementSpeed, new Vector3(strafeSpeed, 0, forwardSpeed), ref velocitySpeed, isGrounded ? playerSettings.movementSmoothing : playerSettings.fallingSmoothing);
+            playerSettings.jumpDirection = moveDirection * movementSpeed.magnitude;
+        }
+        else
+        {
+            if (playerSettings.isJumping)
+            {
+                moveDirection.x = 0;
+                moveDirection.z = 0;
+            }
+        }
+
+        Vector3 newMovementSpeed;
+
+        if (isGrounded || !playerSettings.isJumping)
+        {
+            newMovementSpeed = moveDirection * movementSpeed.magnitude;
+        }
+        else
+        {
+            newMovementSpeed = playerSettings.jumpDirection;
+        }
 
         if (playerGravity > gravitySpeed)
         {
@@ -200,16 +267,12 @@ public class PlayerController : MonoBehaviour
             {
                 playerGravity -= gravity * Time.deltaTime;
             }
-            else if (isGrounded && playerGravity < -0.1)
+
+            if (isGrounded && playerGravity < -0.1)
             {
                 playerGravity = 0;
             }
         }
-
-        //if (playerGravity < -0.1f && isGrounded)
-        //{
-        //    playerGravity = 0;
-        //}
 
         newMovementSpeed.y += playerGravity;
         newMovementSpeed += jumpForce * Time.deltaTime;
@@ -239,7 +302,10 @@ public class PlayerController : MonoBehaviour
 
     void SetIsGrounded()
     {
+        //isGrounded = Physics.Raycast(transform.position, -Vector3.up, playerSettings.groundDistance + 0.1f);
         isGrounded = Physics.CheckSphere(playerTransform.position, playerSettings.isGroundedRadius, groundMask);
+
+        //Debug.Log("isGrounded = " + isGrounded);
     }
 
     void SetIsFalling()
@@ -290,7 +356,9 @@ public class PlayerController : MonoBehaviour
     {
         if (!isGrounded)
         {
+            playerSettings.isJumping = true;
             jumpForce = Vector3.SmoothDamp(jumpForce, Vector3.zero, ref jumpSpeed, playerSettings.jumpingFalloff);
+            StartCoroutine(ResetJump());
         }
     }
 
@@ -317,10 +385,16 @@ public class PlayerController : MonoBehaviour
         currentWeapon.TriggerJump();
     }
 
+    IEnumerator ResetJump()
+    {
+        yield return new WaitForSeconds(0.1f);
+        playerSettings.isJumping = false;
+    }
+
     void Crouch()
     {
         if (playerPose == Models.PlayerPose.Crouch) // || playerPose == Models.PlayerPose.Prone) : This can be added for the player -
-        {                                                                                      // to be able to stand straight up from prone.
+        {                                                                                       // to be able to stand straight up from prone.
             if (StanceCheck(playerStandStance.stanceCollider.height))
             {
                 return;
@@ -362,18 +436,28 @@ public class PlayerController : MonoBehaviour
 
     bool StanceCheck(float stanceCheckHeight)
     {
-        Vector3 start = new Vector3(playerTransform.position.x, playerTransform.position.y + characterController.radius + stanceCheck, playerTransform.position.z);
-        Vector3 end = new Vector3(playerTransform.position.x, playerTransform.position.y - characterController.radius - stanceCheck + stanceCheckHeight, playerTransform.position.z);
+        Vector3 start = new(playerTransform.position.x, playerTransform.position.y + characterController.radius + stanceCheck, playerTransform.position.z);
+        Vector3 end = new(playerTransform.position.x, playerTransform.position.y - characterController.radius - stanceCheck + stanceCheckHeight, playerTransform.position.z);
 
         return Physics.CheckCapsule(start, end, characterController.radius, playerMask);
     }
 
     void ToggleSprint()
     {
-        if (inputMovement.y <= 0.2f || isAiming)
+        if (inputMovement.y <= 0.2f || isAiming || playerPose == Models.PlayerPose.Prone)
         {
             isSprinting = false;
             return;
+        }
+
+        if (playerPose == Models.PlayerPose.Crouch)
+        {
+            if (StanceCheck(playerStandStance.stanceCollider.height))
+            {
+                return;
+            }
+
+            playerPose = Models.PlayerPose.Stand;
         }
 
         isSprinting = !isSprinting;

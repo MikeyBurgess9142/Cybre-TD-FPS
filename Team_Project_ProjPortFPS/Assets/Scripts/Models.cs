@@ -20,6 +20,7 @@ public static class Models
         [Header("---Camera Settings---")]
         public float cameraSensHor;
         public float cameraSensVer;
+        public float cameraFollowSpeed = 5f;
 
         public float ADSSensEffector;
 
@@ -43,6 +44,8 @@ public static class Models
         public float jumpingHeight;
         public float jumpingFalloff;
         public float fallingSmoothing;
+        public Vector3 jumpDirection;
+        public bool isJumping;
 
         [Header("---Speed Effectors---")]
         public float speedEffector;
@@ -54,6 +57,7 @@ public static class Models
         [Header("---Is Grounded / Falling---")]
         public float isGroundedRadius;
         public float isFallingSpeed;
+        public float groundDistance;
     }
 
     [System.Serializable]

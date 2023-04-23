@@ -272,8 +272,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 503
   playerSettings:
-    cameraSensHor: 0.1
-    cameraSensVer: 0.1
+    cameraSensHor: 20
+    cameraSensVer: 20
+    cameraFollowSpeed: 5
     ADSSensEffector: 0.6
     invertX: 0
     invertY: 0
@@ -285,8 +286,10 @@ MonoBehaviour:
     forwardSprintSpeed: 10
     strafeSprintSpeed: 10
     jumpingHeight: 6
-    jumpingFalloff: 0.4
+    jumpingFalloff: 100
     fallingSmoothing: 0.1
+    jumpDirection: {x: 0, y: 0, z: 0}
+    isJumping: 0
     speedEffector: 1
     crouchSpeedEffector: 0.6
     proneSpeedEffector: 0.2
@@ -294,6 +297,7 @@ MonoBehaviour:
     aimSpeedEffector: 0.5
     isGroundedRadius: 0.25
     isFallingSpeed: 3
+    groundDistance: 0.5
   gravity: 0.03
   gravitySpeed: -2
   jumpForce: {x: 0, y: 0, z: 0}
@@ -351,7 +355,7 @@ CapsuleCollider:
   m_Radius: 0.3
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.08, z: 0}
 --- !u!1001 &245608777
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -531,7 +535,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 372370257}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.06, y: 0.49, z: 4.72}
+  m_LocalPosition: {x: -2, y: 0.5, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -824,7 +828,7 @@ MonoBehaviour:
   swayAmountA: 1
   swayAmountB: 2
   swayScale: 50
-  swayScaleADS: 5000
+  swayScaleADS: 200
   swayLerpSpeed: 14
   swayTime: 0
   isAiming: 0
@@ -1214,7 +1218,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1540051644}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.04, y: 2.29, z: 4.72}
+  m_LocalPosition: {x: 0, y: 2.5, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1460,7 +1464,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1969364163}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.041, y: 1.5, z: 4.72}
+  m_LocalPosition: {x: -1, y: 1.5, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

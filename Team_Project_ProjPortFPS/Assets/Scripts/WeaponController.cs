@@ -163,7 +163,7 @@ public class WeaponController : MonoBehaviour
 
         weaponBreathing.localPosition = swayPosition;
 
-        Debug.Log("sway Time : " + swayTime);
+        //Debug.Log("sway Time : " + swayTime);
     }
 
     Vector3 Curve(float Time, float A, float B)
