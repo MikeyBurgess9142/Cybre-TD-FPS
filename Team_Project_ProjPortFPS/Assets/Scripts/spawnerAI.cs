@@ -8,15 +8,20 @@ public class spawnerAI : MonoBehaviour
     [SerializeField] GameObject objectToSpawn;
 
     [Header("----- Spawn Stats -----")]
-    [SerializeField] float spawnDelay;
-    [SerializeField] float spawnAmount;
 
-    public IEnumerator spawnWave(int spawnIntensity)
+    [SerializeField] int spawnAmount;
+
+    private void Start()
+    {
+        spawnWave(spawnAmount);
+    }
+   
+    public void spawnWave(int spawnAmount)
     {
         Debug.Log("Wave Spawning");
-        for (int i = 0; i < spawnAmount * spawnIntensity; i++) 
+        for (int i = 0; i < spawnAmount ; i++) 
         {
-            yield return new WaitForSeconds(spawnDelay);
+           
             createObject();
         }
     }

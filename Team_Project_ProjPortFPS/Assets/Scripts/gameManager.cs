@@ -104,7 +104,7 @@ public class gameManager : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(startWave());
+        //StartCoroutine(startWave());
     }
 
     void Update()
@@ -211,9 +211,9 @@ public class gameManager : MonoBehaviour
             {
                 Debug.Log("Spawner Activated");
 
-                StartCoroutine(spawner.spawnWave(spawnIntensity));
+               // StartCoroutine(spawner.spawnWave(spawnIntensity));
 
-               StartCoroutine(spawner.spawnWave(spawnIntensity));
+              // StartCoroutine(spawner.spawnWave(spawnIntensity));
 
             }
         }
@@ -225,7 +225,7 @@ public class gameManager : MonoBehaviour
             Debug.Log("Spawner Activated");
             if (bossSpawners.Count > 0)
             {
-                StartCoroutine(spawner.spawnWave(spawnIntensity / bossWaveInterval));
+               // StartCoroutine(spawner.spawnWave(spawnIntensity / bossWaveInterval));
             }
         }
     }
