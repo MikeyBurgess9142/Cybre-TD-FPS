@@ -25,6 +25,7 @@ public class gameManager : MonoBehaviour
     public GameObject checkPointMsg;
     public GameObject shopMsg;
     public GameObject interactMessage;
+    public GameObject turretMessage;
     public GameObject maxUpgradeMsg;
     public GameObject playerHitFlash;
     public Image playerHPBar;
@@ -32,10 +33,12 @@ public class gameManager : MonoBehaviour
     public TextMeshProUGUI bossesKilledText;
     public TextMeshProUGUI wavesCurrentText;
     public TextMeshProUGUI pointsTotalText;
+ 
 
     [Header("---Pickup References---")]
     public Transform pickupPos;
     public GameObject gunPistol;
+    public GameObject personalTurret;
     public GameObject gunSmg;
     public GameObject gunShotgun;
     public GameObject gunAssaultFull;
@@ -71,7 +74,7 @@ public class gameManager : MonoBehaviour
     public Button button15;
     public Button button16;
     public Button button17;
-
+    public Button button18;
     [Header("----- Spawner Stats -----")]
     public List<spawnerAI> spawners;
     public List<spawnerAI> bossSpawners;
@@ -100,10 +103,13 @@ public class gameManager : MonoBehaviour
         playerScript = player.GetComponent<playerController_Old>();
         playerControllerScript = player.GetComponent<PlayerController>();
         playerSpawnPos = GameObject.FindGameObjectWithTag("Player Spawn Pos");
+        personalTurret = GameObject.Find("TurretPos"); 
     }
 
     private void Start()
     {
+       
+        pointsTotalText.text = pointsTotal.ToString("F0");
         //StartCoroutine(startWave());
     }
 
@@ -126,6 +132,8 @@ public class gameManager : MonoBehaviour
         }
 
     }
+
+
 
     public void pasueState()
     {        

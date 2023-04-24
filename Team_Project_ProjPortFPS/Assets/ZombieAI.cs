@@ -8,6 +8,7 @@ public class ZombieAI : MonoBehaviour
     private GameObject player;
     public int health = 100;
     public int damage = 10;
+    public int pointsOnDeath;
     public float chaseDistance = 20.0f;
     private float attackDistance = 2.0f;
     public float stoppingDistance = 2f;
@@ -21,7 +22,7 @@ public class ZombieAI : MonoBehaviour
     public LayerMask attackableLayers;
     private Collider[] potentialTargets;
     private GameObject currentAttackTarget;
-
+    
     void Start()
     {
         player = gameManager.instance.player;
@@ -75,7 +76,6 @@ public class ZombieAI : MonoBehaviour
                     navMeshAgent.isStopped = true;
                 }
             }
-
             else
             {
                 navMeshAgent.isStopped = false;
@@ -85,6 +85,7 @@ public class ZombieAI : MonoBehaviour
         }
         else
         {
+            currentAttackTarget = null;
             isInIdleState = false;
             animator.SetBool("isRunning", false);
         }
@@ -104,8 +105,12 @@ public class ZombieAI : MonoBehaviour
     {
         // Add any death animations or effects here
         animator.SetTrigger("die");
+        this.gameObject.GetComponent<CapsuleCollider>().enabled = false;
         navMeshAgent.enabled = false;
         this.enabled = false;
+        Destroy(gameObject, 3);
+        gameManager.instance.pointsTotal += pointsOnDeath;
+        gameManager.instance.pointsTotalText.text = gameManager.instance.pointsTotal.ToString("F0");
     }
 
     public void TakeDamage(int damage)
@@ -133,14 +138,19 @@ public class ZombieAI : MonoBehaviour
     }
     private void LookAtTarget()
     {
-        if (currentAttackTarget != null)
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && currentAttackTarget != null)
         {
-
             Vector3 direction = (currentAttackTarget.transform.position - transform.position).normalized;
             Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
         }
-       
+        else
+        {
+            Vector3 direction = (player.transform.position - transform.position).normalized;
+            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
+        }
+
 
     }
 

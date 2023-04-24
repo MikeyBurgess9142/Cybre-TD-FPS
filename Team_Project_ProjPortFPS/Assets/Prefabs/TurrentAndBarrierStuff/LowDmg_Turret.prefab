@@ -50,7 +50,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2897161398464544403
 Transform:
   m_ObjectHideFlags: 0
@@ -86,6 +86,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 396149146653143692, guid: 4546579a7d8418043b9c54448f8079af, type: 3}
   bulletSpeed: 50
   bulletDmg: 5
+  maxRotationAngle: 0
 --- !u!135 &2897161398464544402
 SphereCollider:
   m_ObjectHideFlags: 0

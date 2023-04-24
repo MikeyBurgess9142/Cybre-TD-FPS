@@ -10,6 +10,8 @@ TagManager:
   - Spawner
   - BossAI
   - Barrier
+  - Costtext
+  - PersonalTurret
   layers:
   - Default
   - TransparentFX

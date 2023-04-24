@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 784079808472414847}
   - component: {fileID: 784079808472414845}
   - component: {fileID: 784079808472414846}
+  - component: {fileID: 231530826}
   m_Layer: 11
   m_Name: BarrierController
   m_TagString: Barrier
@@ -91,9 +92,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce8d5ff36eef85e41848dfe7f82b9c00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weakBarrierHp: 10
-  midBarrierHp: 15
-  strongBarrierHp: 20
+  weakBarrierHp: 200
+  midBarrierHp: 400
+  strongBarrierHp: 600
   barriercollider: {fileID: 660648533}
   defaultBarrier: {fileID: 9070984173557442198, guid: c8523a46c40e83d4cb6c1c2e2c0c8ef0, type: 3}
   weakBarrier: {fileID: 909902557241065262, guid: 879ddc4af1f133a44a8abd9c312ac585, type: 3}
@@ -113,3 +114,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10.204917, y: 2.9711351, z: 6.3691306}
   m_Center: {x: 0.044237137, y: 0.15257525, z: -0.1549393}
+--- !u!54 &231530826
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784079808472414840}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

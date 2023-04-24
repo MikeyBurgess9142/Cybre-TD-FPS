@@ -8,35 +8,46 @@ public class TurrentBullet : MonoBehaviour
         public float speed = 10f;
         public int damage = 1;
         public float lifetime = 5f;
+    public float detectionDistance = 1f;
 
-        private void Start()
+    private void Start()
         {
             Destroy(gameObject, lifetime);
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void Update()
         {
-            if (other.CompareTag("Enemy") )
-            {
+        // Move the bullet forward
+        transform.Translate(Vector3.forward * speed * Time.deltaTime);
 
-            // Assuming the enemy has a script called "EnemyHealth" that manages its health
-            EnemyTurrentDamager enemyHealth = other.GetComponent<EnemyTurrentDamager>();
-            BossTurrentDamager bossHealth = other.GetComponent<BossTurrentDamager>();
-            if (enemyHealth != null)
+        // Check for enemies in front of the bullet using a Raycast
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.forward, out hit, detectionDistance))
+        {
+            if (hit.collider.CompareTag("Enemy"))
             {
-                enemyHealth.CallTakeDamage(damage);
+                // Assuming the enemy has a script called "EnemyHealth" that manages its health
+                EnemyTurrentDamager enemyHealth = hit.collider.GetComponent<EnemyTurrentDamager>();
+                ZombieAI zombieAI = hit.collider.GetComponent<ZombieAI>();
+                BossTurrentDamager bossHealth = hit.collider.GetComponent<BossTurrentDamager>();
+
+                if (enemyHealth != null)
+                {
+                    enemyHealth.CallTakeDamage(damage);
+                }
+                if (bossHealth != null)
+                {
+                    bossHealth.CallTakeDamage(damage);
+                }
+                if (zombieAI != null)
+                {
+                    zombieAI.TakeDamage(damage);
+                }
+
                 Destroy(gameObject);
             }
-            if (bossHealth != null)
-            {
-                bossHealth.CallTakeDamage(damage);
-                Destroy(gameObject);
-            }
-           
-           
         }
-
-
-        }
-    
+    }
 }
+    
+

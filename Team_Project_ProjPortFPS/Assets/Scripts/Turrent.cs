@@ -10,11 +10,12 @@ public class Turrent : MonoBehaviour
     public float rotationSpeed = 5f;
     public float fireRate = 1f;
     private float nextFireTime = 0f;
-
+    public float maxRotationAngle;
     [Header("-----Bullet-----")]
     public GameObject bulletPrefab;
-    public float bulletSpeed = 1f;
+
     public int bulletDmg = 1;
+
 
     private List<GameObject> enemiesInRange = new List<GameObject>();
 
@@ -27,6 +28,7 @@ public class Turrent : MonoBehaviour
         {
             RotateTowardsTarget(target);
             Shoot(target);
+           
         }
     }
 
@@ -58,12 +60,17 @@ public class Turrent : MonoBehaviour
 
         foreach (GameObject enemy in enemiesInRange)
         {
-            float distance = Vector3.Distance(transform.position, enemy.transform.position);
-            if (distance < minDistance)
+            if (enemy.GetComponent<ZombieAI>().health > 0)
             {
-                minDistance = distance;
-                closestEnemy = enemy;
+                float distance = Vector3.Distance(transform.position, enemy.transform.position);
+                if (distance < minDistance)
+                {
+                    minDistance = distance;
+                    closestEnemy = enemy;
+                }
             }
+
+           
         }
 
         return closestEnemy;
@@ -71,8 +78,19 @@ public class Turrent : MonoBehaviour
 
     private void RotateTowardsTarget(GameObject target)
     {
-        Vector3 direction = target.transform.position - transform.position;
+        Vector3 direction = (target.transform.position + new Vector3(0, 0.5f, 0)) - transform.position;
         Quaternion targetRotation = Quaternion.LookRotation(direction);
+
+        // Calculate the angle between the turret and the target
+        float angle = Quaternion.Angle(transform.rotation, targetRotation);
+
+        // If the angle is greater than the allowed angle, clamp the rotation
+        if (angle > maxRotationAngle)
+        {
+            targetRotation = Quaternion.RotateTowards(transform.rotation, targetRotation, maxRotationAngle);
+        }
+
+        // Rotate the turret towards the target
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
     }
 
@@ -84,7 +102,7 @@ public class Turrent : MonoBehaviour
             TurrentBullet turret = bullet.GetComponent<TurrentBullet>();
             turret.damage = bulletDmg;
 
-            bullet.GetComponent<Rigidbody>().velocity = firePoint.forward * bulletSpeed;
+          
             nextFireTime = Time.time + 1f / fireRate;
         }
     }
