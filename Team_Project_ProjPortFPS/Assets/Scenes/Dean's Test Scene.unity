@@ -253,6 +253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   playerScript: {fileID: 0}
+  playerControllerScript: {fileID: 0}
   playerSpawnPos: {fileID: 0}
   allyScript: {fileID: 0}
   activeMenu: {fileID: 0}
@@ -263,6 +264,7 @@ MonoBehaviour:
   checkPointMsg: {fileID: 0}
   shopMsg: {fileID: 0}
   interactMessage: {fileID: 0}
+  turretMessage: {fileID: 0}
   maxUpgradeMsg: {fileID: 0}
   playerHitFlash: {fileID: 0}
   playerHPBar: {fileID: 0}
@@ -272,6 +274,7 @@ MonoBehaviour:
   pointsTotalText: {fileID: 0}
   pickupPos: {fileID: 0}
   gunPistol: {fileID: 0}
+  personalTurret: {fileID: 0}
   gunSmg: {fileID: 0}
   gunShotgun: {fileID: 0}
   gunAssaultFull: {fileID: 0}
@@ -305,6 +308,7 @@ MonoBehaviour:
   button15: {fileID: 0}
   button16: {fileID: 0}
   button17: {fileID: 0}
+  button18: {fileID: 0}
   spawners: []
   bossSpawners: []
   bossWaveInterval: 0

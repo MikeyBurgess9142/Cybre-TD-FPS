@@ -192,6 +192,10 @@ public class playerController_Old : MonoBehaviour
             {
                 hit.collider.GetComponent<IDamage>().takeDmg(shtDmg);
             }
+            if (hit.collider.GetComponent<ZombieAI>() != null)
+            {
+                hit.collider.GetComponent<ZombieAI>().TakeDamage(shtDmg);
+            }
             if (hit.collider.GetComponent<Barrier>() != null)
             {
                 hit.collider.GetComponent<Barrier>().TakeDmg(shtDmg);

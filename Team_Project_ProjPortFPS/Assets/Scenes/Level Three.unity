@@ -4581,7 +4581,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToSpawn: {fileID: 5732308996374277746, guid: b21b9542754fcd846b99087e9bd9cb83, type: 3}
-  spawnDelay: 8
   spawnAmount: 0
 --- !u!4 &1199638614
 Transform:

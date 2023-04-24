@@ -45,7 +45,16 @@ public class buttonFunctions : MonoBehaviour
             gameManager.instance.unpauseState();
         }
     }
-
+    public void PersonalTurrent()
+    {
+        if (gameManager.instance.pointsTotal >= 2100)
+        {
+           gameManager.instance.personalTurret.transform.GetChild(0).gameObject.SetActive(true);
+            gameManager.instance.updateGameGoal(0, 0, 0, -2100, true);
+            gameManager.instance.button18.enabled = false;
+            gameManager.instance.unpauseState();
+        }
+    }
     public void gunSmg()
     {
         if (gameManager.instance.pointsTotal >= 1000)
