@@ -7,6 +7,7 @@ using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Utilities;
 using UnityEngine.Rendering;
 using static UnityEngine.EventSystems.StandaloneInputModule;
 using static UnityEngine.LightAnchor;
@@ -15,8 +16,12 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
 
-    DefaultInput input;
+    [Header("--- Components ---")]
     [SerializeField] CharacterController characterController;
+    [SerializeField] LineRenderer lineRendered;
+    [SerializeField] AudioSource aud;
+    public Transform playerHitBox;
+    DefaultInput input;
     public Vector2 inputMovement;
     public Vector2 inputCamera;
     [SerializeField] float lockVerMin;
@@ -48,14 +53,20 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float gravitySpeed;
     [SerializeField] Vector3 jumpForce;
     public float playerGravity;
+    private Vector3 initialJumpDirection;
     Vector3 jumpSpeed;
     public bool isGrounded;
     public bool isFalling;
-    Vector3 moveDirection;
 
     public bool isSprinting;
     Vector3 movementSpeed;
     Vector3 velocitySpeed;
+    int hpOrigin;
+    bool isPlayingFootSteps;
+    float playerSpdOrig;
+    Vector3 forwardDirection;
+
+    bool debugTimer;
 
     [Header("Weapon")]
     [SerializeField] MeshFilter weapon;
@@ -64,6 +75,7 @@ public class PlayerController : MonoBehaviour
     public WeaponController currentWeapon;
     public float weaponAnimSpeed;
     int selectedGun;
+    bool isShooting;
 
     [Header("Leaning")]
     public Transform cameraLeanPivot;
@@ -79,14 +91,18 @@ public class PlayerController : MonoBehaviour
     [Header("Aiming")]
     public bool isAiming;
 
-    void Awake()
+    [Header("--- Auido Settings---")]
+    [SerializeField] AudioClip[] audFootSteps;
+    [Range(0, 1)][SerializeField] float audFootStepsVol;
+    [SerializeField] AudioClip[] audJump;
+    [Range(0, 1)][SerializeField] float audJumpVol;
+    [SerializeField] AudioClip[] audDamage;
+    [Range(0, 1)][SerializeField] float audDamageVol;
+    [SerializeField] AudioClip audShoot;
+    [Range(0, 1)][SerializeField] float audShootVol;
+
+    private void SetupInputActions()
     {
-        instance = this;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-
-        input = new();
-
         input.Player.Movement.performed += e => inputMovement = e.ReadValue<Vector2>();
         input.Player.Camera.performed += e => inputCamera = e.ReadValue<Vector2>();
         input.Player.Jump.performed += e => Jump();
@@ -104,8 +120,17 @@ public class PlayerController : MonoBehaviour
 
         input.Player.LeanRightPressed.performed += e => isLeaningRight = true;
         input.Player.LeanRightReleased.performed += e => isLeaningRight = false;
-        ;
-        input.Enable();
+    }
+
+    void Awake()
+    {
+        instance = this;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
+        input = new();
+
+        SetupInputActions();
 
         cameraRotation = mainCamera.localRotation.eulerAngles;
         playerRotation = transform.localRotation.eulerAngles;
@@ -118,128 +143,169 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Update()
+    private void OnEnable()
+    {
+        input.Enable();
+    }
+
+    private void OnDisable()
+    {
+        input.Disable();
+    }
+
+    void FixedUpdate()
     {
         if (Time.timeScale != 0)
         {
             SetIsGrounded();
             SetIsFalling();
-
-            Camera();
             Movement();
-            selectGun();
+            Jumping();
         }
     }
 
-    void RotatePlayer()
+    void Update()
     {
-        playerRotation.y += (isAiming ? playerSettings.cameraSensHor * playerSettings.aimSpeedEffector : playerSettings.cameraSensHor) * (playerSettings.invertX ? -inputCamera.x : inputCamera.x) * Time.smoothDeltaTime;
-        transform.localRotation = Quaternion.Euler(playerRotation);
-
-        cameraRotation.x += (isAiming ? playerSettings.cameraSensVer * playerSettings.aimSpeedEffector : playerSettings.cameraSensVer) * (playerSettings.invertY ? inputCamera.y : -inputCamera.y) * Time.smoothDeltaTime;
-        cameraRotation.x = Mathf.Clamp(cameraRotation.x, lockVerMin, lockVerMax);
-        mainCamera.localRotation = Quaternion.Euler(cameraRotation);
+        if (Time.timeScale != 0)
+        {
+            PlayerStance();
+            Leaning();
+            Aiming();
+            SelectGun();
+        }
     }
 
-    void RotateCamera()
+    void LateUpdate()
     {
-        cameraRotation.y += (isAiming ? playerSettings.cameraSensHor * playerSettings.aimSpeedEffector : playerSettings.cameraSensHor) * (playerSettings.invertX ? -inputCamera.x : inputCamera.x) * Time.smoothDeltaTime;
-        mainCamera.localRotation = Quaternion.Euler(cameraRotation);
-
-        cameraRotation.x += (isAiming ? playerSettings.cameraSensVer * playerSettings.aimSpeedEffector : playerSettings.cameraSensVer) * (playerSettings.invertY ? inputCamera.y : -inputCamera.y) * Time.smoothDeltaTime;
-        cameraRotation.x = Mathf.Clamp(cameraRotation.x, lockVerMin, lockVerMax);
-        mainCamera.localRotation = Quaternion.Euler(cameraRotation);
+        if (Time.timeScale != 0)
+        {
+            Camera();
+        }
     }
 
     void Camera()
     {
-        if (isGrounded)
-        {
-            RotatePlayer();
-        }
-        else
-        {
-            RotateCamera();
-        }
+        //Camera Rotation
+        cameraRotation.x += (isAiming ? playerSettings.cameraSensVer * playerSettings.aimSpeedEffector : playerSettings.cameraSensVer) * (playerSettings.invertY ? inputCamera.y : -inputCamera.y) * Time.smoothDeltaTime;
+        cameraRotation.x = Mathf.Clamp(cameraRotation.x, lockVerMin, lockVerMax);
+        mainCamera.localRotation = Quaternion.Euler(cameraRotation);
     }
 
     void Movement()
     {
-        Jumping();
-        PlayerStance();
-        Leaning();
-        Aiming();
+        // Player Rotation
+        playerRotation.y += (isAiming ? playerSettings.cameraSensHor * playerSettings.aimSpeedEffector : playerSettings.cameraSensHor) * (playerSettings.invertX ? -inputCamera.x : inputCamera.x) * Time.fixedDeltaTime;
+        transform.localRotation = Quaternion.Euler(playerRotation);
+
+        if (!isGrounded)
+        {
+            playerGravity -= gravity * Time.fixedDeltaTime;
+        }
+        else if (Mathf.Abs(playerGravity) > 0.3f)
+        {
+            playerGravity = 0;
+        }
 
         if (inputMovement.y <= 0.2f || isAiming)
         {
             isSprinting = false;
         }
 
-        float verticalSpeed = playerSettings.forwardWalkSpeed;
-        float horizontalSpeed = playerSettings.strafeWalkSpeed;
+        float verticalSpeed;
+        float horizontalSpeed;
 
-        if (isSprinting)
+        if (!isSprinting)
+        {
+            verticalSpeed = playerSettings.forwardWalkSpeed;
+            horizontalSpeed = playerSettings.strafeWalkSpeed;
+        }
+        else
         {
             verticalSpeed = playerSettings.forwardSprintSpeed;
             horizontalSpeed = playerSettings.strafeSprintSpeed;
         }
 
+        float speedEffector = GetSpeedEffector();
+        verticalSpeed *= speedEffector;
+        horizontalSpeed *= speedEffector;
+
+        weaponAnimSpeed = characterController.velocity.magnitude / (playerSettings.forwardWalkSpeed * speedEffector);
+        weaponAnimSpeed = Mathf.Clamp(weaponAnimSpeed, 0, 1);
+
+        Vector3 moveDirection = CalculateMoveDirection();
+        Vector3 newMovementSpeed = CalculateNewMovement(moveDirection, verticalSpeed, horizontalSpeed);
+
+        characterController.Move(newMovementSpeed);
+    }
+
+    float GetSpeedEffector()
+    {
         if (!isGrounded)
         {
-            playerSettings.speedEffector = playerSettings.fallingSpeedEffector;
+            return playerSettings.fallingSpeedEffector;
         }
         else if (playerPose == Models.PlayerPose.Crouch)
         {
-            playerSettings.speedEffector = playerSettings.crouchSpeedEffector;
-            isSprinting = false;
+            return playerSettings.crouchSpeedEffector;
         }
         else if (playerPose == Models.PlayerPose.Prone)
         {
-            playerSettings.speedEffector = playerSettings.proneSpeedEffector;
-            isSprinting = false;
+            return playerSettings.proneSpeedEffector;
         }
         else if (isAiming)
         {
-            playerSettings.speedEffector = playerSettings.aimSpeedEffector;
-        }
-        else
-        {
-            playerSettings.speedEffector = 1;
+            return playerSettings.aimSpeedEffector;
         }
 
-        weaponAnimSpeed = characterController.velocity.magnitude / (playerSettings.forwardWalkSpeed * playerSettings.speedEffector);
+        return 1;
+    }
 
-        if (weaponAnimSpeed > 1)
-        {
-            weaponAnimSpeed = 1;
-        }
+    Vector3 CalculateMoveDirection()
+    {
+        Vector3 transformForward = transform.forward.normalized;
+        Vector3 transformRight = transform.right.normalized;
+        transformForward.y = 0;
+        transformForward.y = 0;
 
-        verticalSpeed *= playerSettings.speedEffector;
-        horizontalSpeed *= playerSettings.speedEffector;
+        return (inputMovement.y * transformForward).normalized + (inputMovement.x * transformRight).normalized;
+    }
 
+    Vector3 CalculateNewMovement(Vector3 moveDirection, float verticalSpeed, float horizontalSpeed)
+    {
         if (isGrounded)
         {
             playerSettings.isJumping = false;
 
-            Vector3 cameraForward = mainCamera.transform.forward;
-            Vector3 cameraRight = mainCamera.transform.right;
+            float angle = Vector3.Angle(moveDirection, characterController.velocity);
+            float jumpDirectionMultiplier = 1f;
 
-            // Remove the Y-axis components to avoid any vertical movement
-            cameraForward.y = 0;
-            cameraRight.y = 0;
+            if (isSprinting)
+            {
+                if (angle > 20f && angle < 30f)
+                {
+                    jumpDirectionMultiplier = 0.25f; //<-
+                }                                    // |
+            }                                        // |
+            else                                     // - You can adjust this value to find the best balance between responsiveness and limiting fast strafe jumps
+            {                                        // |
+                if (angle >= 90f)                    // |
+                {                                    // |
+                    jumpDirectionMultiplier = 0.5f;  //<-
+                }
+            }
 
-            // Normalize the vectors
-            cameraForward.Normalize();
-            cameraRight.Normalize();
+            if (Vector3.Angle(moveDirection, characterController.velocity) != 0)
+            {
+                Debug.Log(Vector3.Angle(moveDirection, characterController.velocity));
+            }
 
-            moveDirection = (inputMovement.y * cameraForward) + (inputMovement.x * cameraRight);
-            moveDirection.Normalize();
-
-            float forwardSpeed = verticalSpeed * inputMovement.y * Time.deltaTime;
-            float strafeSpeed = horizontalSpeed * inputMovement.x * Time.deltaTime;
+            float forwardSpeed = verticalSpeed * inputMovement.y * Time.fixedDeltaTime;
+            float strafeSpeed = horizontalSpeed * inputMovement.x * Time.fixedDeltaTime;
 
             movementSpeed = Vector3.SmoothDamp(movementSpeed, new Vector3(strafeSpeed, 0, forwardSpeed), ref velocitySpeed, isGrounded ? playerSettings.movementSmoothing : playerSettings.fallingSmoothing);
-            playerSettings.jumpDirection = moveDirection * movementSpeed.magnitude;
+
+            float backwardJumpingFactor = inputMovement.y < 0 ? 0.75f : 1f;
+            playerSettings.jumpDirection = backwardJumpingFactor * jumpDirectionMultiplier * movementSpeed.magnitude * moveDirection;
         }
         else
         {
@@ -261,23 +327,10 @@ public class PlayerController : MonoBehaviour
             newMovementSpeed = playerSettings.jumpDirection;
         }
 
-        if (playerGravity > gravitySpeed)
-        {
-            if (!isGrounded)
-            {
-                playerGravity -= gravity * Time.deltaTime;
-            }
-
-            if (isGrounded && playerGravity < -0.1)
-            {
-                playerGravity = 0;
-            }
-        }
-
         newMovementSpeed.y += playerGravity;
-        newMovementSpeed += jumpForce * Time.deltaTime;
+        newMovementSpeed += jumpForce * Time.fixedDeltaTime;
 
-        characterController.Move(newMovementSpeed);
+        return newMovementSpeed;
     }
 
     void AimPressed()
@@ -302,9 +355,12 @@ public class PlayerController : MonoBehaviour
 
     void SetIsGrounded()
     {
-        //isGrounded = Physics.Raycast(transform.position, -Vector3.up, playerSettings.groundDistance + 0.1f);
-        isGrounded = Physics.CheckSphere(playerTransform.position, playerSettings.isGroundedRadius, groundMask);
+        //float groundCheckDistance = 0.1f; // Adjust this value as needed
+        //bool raycastGrounded = Physics.Raycast(transform.localPosition, Vector3.down, out RaycastHit hit, characterController.height * 0.5f + groundCheckDistance);
+        //isGrounded = characterController.isGrounded || raycastGrounded;
+        isGrounded = characterController.isGrounded || Physics.CheckSphere(playerTransform.position, playerSettings.isGroundedRadius, groundMask);
 
+        //FDebug.DrawLine(transform.localPosition, hit.point, Color.red);
         //Debug.Log("isGrounded = " + isGrounded);
     }
 
@@ -352,16 +408,6 @@ public class PlayerController : MonoBehaviour
         characterController.center = Vector3.SmoothDamp(characterController.center, currentStance.stanceCollider.center, ref playerStanceCenterVelocity, playerPoseSmooth);
     }
 
-    void Jumping()
-    {
-        if (!isGrounded)
-        {
-            playerSettings.isJumping = true;
-            jumpForce = Vector3.SmoothDamp(jumpForce, Vector3.zero, ref jumpSpeed, playerSettings.jumpingFalloff);
-            StartCoroutine(ResetJump());
-        }
-    }
-
     void Jump()
     {
         if (!isGrounded || playerPose == Models.PlayerPose.Prone)
@@ -380,15 +426,28 @@ public class PlayerController : MonoBehaviour
             //return; --------------------------- This can be used to make the player stand up only and not jump at the same time.
         }
 
-        jumpForce = Vector3.up * playerSettings.jumpingHeight;
         playerGravity = 0;
+        jumpForce = new Vector3(0, playerSettings.jumpingHeight, 0); // Set the initial upward force for jumping
         currentWeapon.TriggerJump();
+    }
+
+    void Jumping()
+    {
+        if (!isGrounded)
+        {
+            playerSettings.isJumping = true;
+            jumpForce = Vector3.SmoothDamp(jumpForce, Vector3.zero, ref jumpSpeed, playerSettings.jumpingFalloff);
+            StartCoroutine(ResetJump());
+        }
     }
 
     IEnumerator ResetJump()
     {
         yield return new WaitForSeconds(0.1f);
-        playerSettings.isJumping = false;
+        if (isGrounded)
+        {
+            playerSettings.isJumping = false;
+        }
     }
 
     void Crouch()
@@ -470,7 +529,7 @@ public class PlayerController : MonoBehaviour
             isSprinting = false;
         }
     }
-    void selectGun()
+    void SelectGun()
     {
         if (Input.GetAxis("Mouse ScrollWheel") > 0 && selectedGun < gunList.Count - 1)
         {

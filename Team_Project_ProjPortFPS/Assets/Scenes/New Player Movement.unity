@@ -244,6 +244,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterController: {fileID: 1476690}
+  lineRendered: {fileID: 0}
+  aud: {fileID: 0}
+  playerHitBox: {fileID: 0}
   inputMovement: {x: 0, y: 0}
   inputCamera: {x: 0, y: 0}
   lockVerMin: -75
@@ -274,11 +277,10 @@ MonoBehaviour:
   playerSettings:
     cameraSensHor: 20
     cameraSensVer: 20
-    cameraFollowSpeed: 5
     ADSSensEffector: 0.6
     invertX: 0
     invertY: 0
-    holdSprint: 1
+    holdSprint: 0
     movementSmoothing: 0.1
     forwardWalkSpeed: 5
     backwardWalkSpeed: 2.5
@@ -286,10 +288,12 @@ MonoBehaviour:
     forwardSprintSpeed: 10
     strafeSprintSpeed: 10
     jumpingHeight: 6
-    jumpingFalloff: 100
-    fallingSmoothing: 0.1
+    jumpingFalloff: 0.4
+    fallingSmoothing: 0.01
     jumpDirection: {x: 0, y: 0, z: 0}
     isJumping: 0
+    walkJumpFactor: 0.5
+    backwardJumpFactor: 0.3
     speedEffector: 1
     crouchSpeedEffector: 0.6
     proneSpeedEffector: 0.2
@@ -298,7 +302,7 @@ MonoBehaviour:
     isGroundedRadius: 0.25
     isFallingSpeed: 3
     groundDistance: 0.5
-  gravity: 0.03
+  gravity: 0.15
   gravitySpeed: -2
   jumpForce: {x: 0, y: 0, z: 0}
   playerGravity: 0
@@ -314,6 +318,14 @@ MonoBehaviour:
   leanAngle: 15
   leanSmoothing: 0.2
   isAiming: 0
+  audFootSteps: []
+  audFootStepsVol: 0
+  audJump: []
+  audJumpVol: 0
+  audDamage: []
+  audDamageVol: 0
+  audShoot: {fileID: 0}
+  audShootVol: 0
 --- !u!136 &1476692
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -96,6 +96,30 @@ public class playerController_Old : MonoBehaviour
         }
     }
 
+    //IEnumerator Shoot()
+    //{
+    //    isShooting = true;
+    //    aud.PlayOneShot(audShoot, audShootVol);
+    //    Instantiate(shootEffect, shootEffectPos.position, shootEffect.transform.rotation);
+
+    //    RaycastHit hit;
+    //    if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shtDist))
+    //    {
+    //        lineRendered.enabled = true;
+    //        lineRendered.SetPosition(0, shootEffectPos.position);
+    //        lineRendered.SetPosition(1, hit.point);
+    //        Debug.Log(hit.collider.gameObject.name);
+    //        if (hit.collider.GetComponent<IDamage>() != null)
+    //        {
+    //            hit.collider.GetComponent<IDamage>().takeDmg(shtDmg);
+    //        }
+    //        if (hit.collider.GetComponent<Barrier>() != null)
+    //        {
+    //            hit.collider.GetComponent<Barrier>().TakeDmg(shtDmg);
+    //        }
+    //    }
+    //}
+
     void movement()
     {
         sprint();
