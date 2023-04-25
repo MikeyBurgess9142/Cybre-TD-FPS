@@ -30,10 +30,16 @@ public class TurrentBullet : MonoBehaviour
                 EnemyTurrentDamager enemyHealth = hit.collider.GetComponent<EnemyTurrentDamager>();
                 ZombieAI zombieAI = hit.collider.GetComponent<ZombieAI>();
                 BossTurrentDamager bossHealth = hit.collider.GetComponent<BossTurrentDamager>();
+                bossAI bossAI = hit.collider.GetComponent<bossAI>();
 
                 if (enemyHealth != null)
                 {
                     enemyHealth.CallTakeDamage(damage);
+                }
+                
+                 if (bossAI != null)
+                {
+                    bossAI.takeDmg(damage);
                 }
                 if (bossHealth != null)
                 {

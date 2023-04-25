@@ -2701,7 +2701,7 @@ MonoBehaviour:
   attackRate: 5
   attackableLayers:
     serializedVersion: 2
-    m_Bits: 6152
+    m_Bits: 12296
 --- !u!54 &617833595
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -76,15 +76,19 @@ public class PersonalTurret : MonoBehaviour
 
         foreach (GameObject enemy in enemiesInRange)
         {
-            if (enemy.GetComponent<ZombieAI>().health > 0)
+            if (enemy.GetComponent<ZombieAI>() != null)
             {
-                float distance = Vector3.Distance(transform.position, enemy.transform.position);
-                if (distance < minDistance)
+                if (enemy.GetComponent<ZombieAI>().health > 0)
                 {
-                    minDistance = distance;
-                    closestEnemy = enemy;
+                    float distance = Vector3.Distance(transform.position, enemy.transform.position);
+                    if (distance < minDistance)
+                    {
+                        minDistance = distance;
+                        closestEnemy = enemy;
+                    }
                 }
             }
+           
         }
 
         return closestEnemy;

@@ -9,7 +9,7 @@ public class CivilianFollower : MonoBehaviour
     public Transform targetLocation;
     private GameObject targetCollider;
     public float stopDistance = 1.0f;
-    public float playerDetectionDistance = 5.0f;
+    
 
     private NavMeshAgent agent;
     private Animator animator;

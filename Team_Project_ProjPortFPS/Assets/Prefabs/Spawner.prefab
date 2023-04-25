@@ -47,8 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a8b640615e1f094f8b94b83a8e5dd88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 0}
-  spawnDelay: 1
+  objectToSpawn: {fileID: 7870097902821062902, guid: e79cab43b02dbf1479ea3ff45dee0e4d, type: 3}
   spawnAmount: 1
 --- !u!33 &5189280418021372762
 MeshFilter:
