@@ -47,6 +47,7 @@ public class allyAI : MonoBehaviour, IDamage
         startingPos = transform.position;
         stoppingDistOrig = agent.stoppingDistance;
         speedOrig = agent.speed;
+
     }
 
     void Update()

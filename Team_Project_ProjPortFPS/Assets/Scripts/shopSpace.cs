@@ -24,7 +24,7 @@ public class shopSpace : MonoBehaviour
     {
         if (Input.GetButtonDown("Shop") && gameManager.instance.activeMenu == null)
         {
-            gameManager.instance.pasueState();
+            gameManager.instance.pauseState();
             gameManager.instance.activeMenu = gameManager.instance.shopMenu;
             gameManager.instance.activeMenu.SetActive(true);
         }

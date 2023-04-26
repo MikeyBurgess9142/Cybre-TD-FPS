@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class gameManager : MonoBehaviour
 {
@@ -31,7 +32,9 @@ public class gameManager : MonoBehaviour
     public Image playerHPBar;
     public TextMeshProUGUI enemiesRemainingText;
     public TextMeshProUGUI bossesKilledText;
-    public TextMeshProUGUI wavesCurrentText;
+    public TextMeshProUGUI bossesAliveText;
+    public TextMeshProUGUI civilliansRescuedText;
+    public TextMeshProUGUI civilliansTotalText;
     public TextMeshProUGUI pointsTotalText;
  
 
@@ -85,13 +88,13 @@ public class gameManager : MonoBehaviour
 
     [Header("---Game Goals---")]
     public int enemiesAlive;
-    public int bossesAlive;
+    public int bossesTotal;
     public int pointsTotal;
     public bool isPaused;
     public bool waveStarted;
     public int numberOfWaves;
-    public int waveNumber;
-    public int wavesCurrent;
+    public int civillians;
+    public int civilliansRescued;
     public int bossesKilled;
 
     public List<NavMeshAgent> enemy;
@@ -123,7 +126,7 @@ public class gameManager : MonoBehaviour
 
             if (isPaused)
             {
-                pasueState();
+                pauseState();
             }
             else
             {
@@ -135,7 +138,7 @@ public class gameManager : MonoBehaviour
 
 
 
-    public void pasueState()
+    public void pauseState()
     {        
         Time.timeScale = 0;
         Cursor.visible = true;
@@ -152,44 +155,57 @@ public class gameManager : MonoBehaviour
         
     }
 
-    public void updateGameGoal(int amt, int bamt, int bkamt, int points, bool fromShop = false)
+    public void updateGameGoal(int bkamt, int bamt, int cramt, int camt, int points, bool fromShop = false)
     {
-        enemiesAlive += amt;
-        enemiesRemainingText.text = enemiesAlive.ToString("F0");
 
-        bossesAlive += bamt;
+        bossesTotal += bamt;
+        bossesAliveText.text = bossesTotal.ToString("F0");
 
         bossesKilled += bkamt;
         bossesKilledText.text = bossesKilled.ToString("F0");
 
-        wavesCurrent = waveNumber;
-        wavesCurrentText.text = wavesCurrent.ToString("F0");
+        civillians += camt;
+        civilliansTotalText.text = civillians.ToString("F0");
+
+        civilliansRescued += cramt;
+        civilliansRescuedText.text = civilliansRescued.ToString("F0");
+
 
         pointsTotal += points;
         pointsTotalText.text = pointsTotal.ToString("F0");
 
-        if (enemiesAlive <= 0 && !fromShop)
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneAt(1))
         {
-            Debug.Log("Wave Ended");
-            StartCoroutine(startWave());
-            wavesCurrent = waveNumber;
-            wavesCurrentText.text = wavesCurrent.ToString("F0");
-            if (spawnIntensity % bossWaveInterval == 0)
+            if (bossesKilled == bossesTotal && civilliansRescued == civillians )
             {
-                startBossWave();
+                pauseState();
+                SceneManager.LoadScene(2);
             }
         }
-        if (numberOfWaves < waveNumber && bossesAlive <= 0)
+
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneAt(2))
         {
-            pasueState();
-            activeMenu = winMenu;
-            activeMenu.SetActive(true);
+            if (bossesKilled == bossesTotal && civilliansRescued == civillians)
+            {
+                pauseState();
+                SceneManager.LoadScene(3);
+            }
+        }
+
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneAt(3))
+        {
+            if (bossesKilled == bossesTotal && civilliansRescued == civillians)
+            {
+                pauseState();
+                activeMenu = winMenu;
+                activeMenu.SetActive(true);
+            }
         }
     }
 
     public void playerDead()
     {
-        pasueState();
+        pauseState();
 
         activeMenu = loseMenu;
         activeMenu.SetActive(true);
@@ -212,7 +228,7 @@ public class gameManager : MonoBehaviour
         {
             waveStarted = true;
             yield return new WaitForSeconds(waveDelay);
-            waveNumber++;
+            //waveNumber++;
             spawnIntensity += intensityIncreaseAmt;
             waveStarted = false;
             foreach (spawnerAI spawner in spawners)

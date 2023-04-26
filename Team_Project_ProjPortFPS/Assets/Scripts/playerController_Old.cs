@@ -251,7 +251,7 @@ public class playerController_Old : MonoBehaviour
         {
             zooming = false;
             gameManager.instance.playerDead();
-            gameManager.instance.updateGameGoal(0, 0, 0, -(gameManager.instance.pointsTotal / 2), true);
+            gameManager.instance.updateGameGoal(0, 0, 0, 0, -(gameManager.instance.pointsTotal /10), true);
         }
     }
 

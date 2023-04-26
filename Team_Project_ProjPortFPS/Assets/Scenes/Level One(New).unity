@@ -567,6 +567,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3241530501989549270, guid: 584cfa1e0ae0cc44db96d777e2959eef, type: 3}
   m_PrefabInstance: {fileID: 28363519}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &35617819 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5276605287419310730, guid: 593275ef2f6e296459b2bd4ad93b5e05, type: 3}
+  m_PrefabInstance: {fileID: 1576761787}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &52721553
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12019,6 +12030,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 784079808472414847, guid: 5c0358402dc7c0145934aca03eb3b6ca, type: 3}
   m_PrefabInstance: {fileID: 816503165}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &837386958 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3038575579101797372, guid: 593275ef2f6e296459b2bd4ad93b5e05, type: 3}
+  m_PrefabInstance: {fileID: 1576761787}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &845528511
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21339,17 +21361,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1317536907}
     - target: {fileID: 1579139282, guid: 593275ef2f6e296459b2bd4ad93b5e05, type: 3}
-      propertyPath: spawners.Array.data[0]
+      propertyPath: civilliansTotalText
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1429075507963364611, guid: 593275ef2f6e296459b2bd4ad93b5e05, type: 3}
-      propertyPath: m_text
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 5257559307292304757, guid: 593275ef2f6e296459b2bd4ad93b5e05, type: 3}
-      propertyPath: m_text
-      value: Press B Key to Shop.
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 35617819}
+    - target: {fileID: 1579139282, guid: 593275ef2f6e296459b2bd4ad93b5e05, type: 3}
+      propertyPath: civilliansRescuedText
+      value: 
+      objectReference: {fileID: 837386958}
     - target: {fileID: 6969435581272140359, guid: 593275ef2f6e296459b2bd4ad93b5e05, type: 3}
       propertyPath: m_Name
       value: UI
