@@ -13,7 +13,7 @@ public class bossAI : MonoBehaviour, IDamage
     [Header("----- Stats -----")]
     [SerializeField] Transform headPos;
     [SerializeField] Transform playerHitBox;
-    [Range(1, 500)] [SerializeField] int HP;
+    [Range(1, 10000)] [SerializeField] int HP;
     [SerializeField] int playerFaceSpeed;
     [SerializeField] int viewAngle;
     [SerializeField] int shootAngle;
