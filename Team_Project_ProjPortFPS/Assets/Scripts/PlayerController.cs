@@ -1,15 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
-using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Utilities;
-using UnityEngine.Rendering;
-using static UnityEngine.EventSystems.StandaloneInputModule;
 using static UnityEngine.LightAnchor;
 
 public class PlayerController : MonoBehaviour
@@ -64,9 +57,8 @@ public class PlayerController : MonoBehaviour
     int hpOrigin;
     bool isPlayingFootSteps;
     float playerSpdOrig;
-    Vector3 forwardDirection;
 
-    bool debugTimer;
+    Vector3 previousVelocity;
 
     [Header("Weapon")]
     [SerializeField] MeshFilter weapon;
@@ -161,6 +153,7 @@ public class PlayerController : MonoBehaviour
             SetIsFalling();
             Movement();
             Jumping();
+            Camera();
         }
     }
 
@@ -175,18 +168,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void LateUpdate()
-    {
-        if (Time.timeScale != 0)
-        {
-            Camera();
-        }
-    }
-
     void Camera()
     {
         //Camera Rotation
-        cameraRotation.x += (isAiming ? playerSettings.cameraSensVer * playerSettings.aimSpeedEffector : playerSettings.cameraSensVer) * (playerSettings.invertY ? inputCamera.y : -inputCamera.y) * Time.smoothDeltaTime;
+        cameraRotation.x += (isAiming ? playerSettings.cameraSensVer * playerSettings.aimSpeedEffector : playerSettings.cameraSensVer) * (playerSettings.invertY ? inputCamera.y : -inputCamera.y) * Time.fixedDeltaTime;
         cameraRotation.x = Mathf.Clamp(cameraRotation.x, lockVerMin, lockVerMax);
         mainCamera.localRotation = Quaternion.Euler(cameraRotation);
     }
@@ -206,7 +191,7 @@ public class PlayerController : MonoBehaviour
             playerGravity = 0;
         }
 
-        if (inputMovement.y <= 0.2f || isAiming)
+        if (inputMovement.y <= 0.1f || isAiming)
         {
             isSprinting = false;
         }
@@ -265,7 +250,7 @@ public class PlayerController : MonoBehaviour
         Vector3 transformForward = transform.forward.normalized;
         Vector3 transformRight = transform.right.normalized;
         transformForward.y = 0;
-        transformForward.y = 0;
+        transformRight.y = 0;
 
         return (inputMovement.y * transformForward).normalized + (inputMovement.x * transformRight).normalized;
     }
@@ -276,12 +261,12 @@ public class PlayerController : MonoBehaviour
         {
             playerSettings.isJumping = false;
 
+            float jumpDirectionMultiplier = 1;
             float angle = Vector3.Angle(moveDirection, characterController.velocity);
-            float jumpDirectionMultiplier = 1f;
 
             if (isSprinting)
             {
-                if (angle > 20f && angle < 30f)
+                if (angle > 20f)
                 {
                     jumpDirectionMultiplier = 0.25f; //<-
                 }                                    // |
@@ -294,9 +279,10 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            if (Vector3.Angle(moveDirection, characterController.velocity) != 0)
+            if (Vector3.Angle(moveDirection, characterController.velocity) > 10)
             {
-                Debug.Log(Vector3.Angle(moveDirection, characterController.velocity));
+                Debug.Log(angle);
+                Debug.Log(jumpDirectionMultiplier);
             }
 
             float forwardSpeed = verticalSpeed * inputMovement.y * Time.fixedDeltaTime;
