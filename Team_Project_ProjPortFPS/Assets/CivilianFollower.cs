@@ -23,7 +23,7 @@ public class CivilianFollower : MonoBehaviour
         animator = GetComponent<Animator>();
         player = gameManager.instance.player;
         targetCollider = GameObject.Find("SpawnRoom");
-        gameManager.instance.updateGameGoal(0, 0, 1, 0, 0);
+        gameManager.instance.updateGameGoal(0, 0, 0, 1, 0, 0);
     }
 
     private void Update()
@@ -44,7 +44,7 @@ public class CivilianFollower : MonoBehaviour
                 animator.SetBool("IsSadIdle", false);
                 animator.SetBool("IsRunning", false);
                 animator.SetTrigger("ReachedTarget");
-                gameManager.instance.updateGameGoal(0, 0, 0, 1, 0);
+                gameManager.instance.updateGameGoal(0, 0, 0, 0, 1, 0);
             }
         }
        

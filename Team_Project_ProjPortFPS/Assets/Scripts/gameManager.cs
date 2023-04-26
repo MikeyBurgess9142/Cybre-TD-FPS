@@ -155,10 +155,11 @@ public class gameManager : MonoBehaviour
         
     }
 
-    public void updateGameGoal(int bkamt, int bamt, int cramt, int camt, int points, bool fromShop = false)
+    public void updateGameGoal(int enmsAlive, int bkamt, int bamt, int cramt, int camt, int points, bool fromShop = false)
     {
+        enemiesAlive = enmsAlive;
 
-        bossesTotal += bamt;
+    bossesTotal += bamt;
         bossesAliveText.text = bossesTotal.ToString("F0");
 
         bossesKilled += bkamt;
