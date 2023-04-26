@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -275,13 +275,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 503
   playerSettings:
-    cameraSensHor: 20
-    cameraSensVer: 20
+    cameraSensHor: 5
+    cameraSensVer: 5
     ADSSensEffector: 0.6
     invertX: 0
     invertY: 0
     holdSprint: 0
-    movementSmoothing: 0.1
+    movementSmoothing: 0.05
     forwardWalkSpeed: 5
     backwardWalkSpeed: 2.5
     strafeWalkSpeed: 5
