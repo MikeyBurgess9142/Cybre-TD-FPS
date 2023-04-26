@@ -49,7 +49,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eef6296765f31644db801e56e67c9e85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dmg: 4
+  dmg: 10
+  hitEffect: {fileID: 2955623459812423943, guid: f5507a8c6a22c404ab324980c4e8a11b, type: 3}
   timer: 3
 --- !u!54 &868366773010386414
 Rigidbody:
