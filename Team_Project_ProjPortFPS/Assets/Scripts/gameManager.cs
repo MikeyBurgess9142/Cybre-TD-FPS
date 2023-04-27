@@ -107,7 +107,7 @@ public class gameManager : MonoBehaviour
 
     void Awake()
     {
-        
+        PlayerPrefs.DeleteAll();
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponent<playerController_Old>();
