@@ -145,46 +145,45 @@ public class PlayerController : MonoBehaviour
         input.Disable();
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (Time.timeScale != 0)
         {
             SetIsGrounded();
             SetIsFalling();
+
             Movement();
             Jumping();
-            Camera();
-        }
-    }
-
-    void Update()
-    {
-        if (Time.timeScale != 0)
-        {
             PlayerStance();
             Leaning();
             Aiming();
             SelectGun();
+            Camera();
         }
     }
+    //private void LateUpdate()
+    //{
+    //    Camera();
+    //}
 
     void Camera()
     {
         //Camera Rotation
-        cameraRotation.x += (isAiming ? playerSettings.cameraSensVer * playerSettings.aimSpeedEffector : playerSettings.cameraSensVer) * (playerSettings.invertY ? inputCamera.y : -inputCamera.y) * Time.fixedDeltaTime;
+        cameraRotation.x += (isAiming ? playerSettings.cameraSensVer * playerSettings.aimSpeedEffector : playerSettings.cameraSensVer) * (playerSettings.invertY ? inputCamera.y : -inputCamera.y) * Time.deltaTime;
         cameraRotation.x = Mathf.Clamp(cameraRotation.x, lockVerMin, lockVerMax);
         mainCamera.localRotation = Quaternion.Euler(cameraRotation);
+
     }
 
     void Movement()
     {
         // Player Rotation
-        playerRotation.y += (isAiming ? playerSettings.cameraSensHor * playerSettings.aimSpeedEffector : playerSettings.cameraSensHor) * (playerSettings.invertX ? -inputCamera.x : inputCamera.x) * Time.fixedDeltaTime;
+        playerRotation.y += (isAiming ? playerSettings.cameraSensHor * playerSettings.aimSpeedEffector : playerSettings.cameraSensHor) * (playerSettings.invertX ? -inputCamera.x : inputCamera.x) * Time.deltaTime;
         transform.localRotation = Quaternion.Euler(playerRotation);
 
         if (!isGrounded)
         {
-            playerGravity -= gravity * Time.fixedDeltaTime;
+            playerGravity -= gravity * Time.deltaTime;
         }
         else if (Mathf.Abs(playerGravity) > 0.3f)
         {
@@ -261,37 +260,38 @@ public class PlayerController : MonoBehaviour
         {
             playerSettings.isJumping = false;
 
-            float jumpDirectionMultiplier = 1;
-            float angle = Vector3.Angle(moveDirection, characterController.velocity);
+            //float jumpDirectionMultiplier = 1;
+            //float angle = Vector3.Angle(moveDirection, characterController.velocity);
 
-            if (isSprinting)
-            {
-                if (angle > 20f)
-                {
-                    jumpDirectionMultiplier = 0.25f; //<-
-                }                                    // |
-            }                                        // |
-            else                                     // - You can adjust this value to find the best balance between responsiveness and limiting fast strafe jumps
-            {                                        // |
-                if (angle >= 90f)                    // |
-                {                                    // |
-                    jumpDirectionMultiplier = 0.5f;  //<-
-                }
-            }
+            //if (isSprinting)
+            //{
+            //    if (angle > 20f)
+            //    {
+            //        jumpDirectionMultiplier = 0.25f; //<-
+            //    }                                    // |
+            //}                                        // |
+            //else                                     // - You can adjust this value to find the best balance between responsiveness and limiting fast strafe jumps
+            //{                                        // |
+            //    if (angle >= 90f)                    // |
+            //    {                                    // |
+            //        jumpDirectionMultiplier = 0.5f;  //<-
+            //    }
+            //}
 
-            if (Vector3.Angle(moveDirection, characterController.velocity) > 10)
-            {
-                Debug.Log(angle);
-                Debug.Log(jumpDirectionMultiplier);
-            }
+            //if (Vector3.Angle(moveDirection, characterController.velocity) > 10)
+            //{
+            //    Debug.Log(angle);
+            //    Debug.Log(jumpDirectionMultiplier);
+            //}
 
-            float forwardSpeed = verticalSpeed * inputMovement.y * Time.fixedDeltaTime;
-            float strafeSpeed = horizontalSpeed * inputMovement.x * Time.fixedDeltaTime;
+            float forwardSpeed = verticalSpeed * inputMovement.y * Time.deltaTime;
+            float strafeSpeed = horizontalSpeed * inputMovement.x * Time.deltaTime;
 
             movementSpeed = Vector3.SmoothDamp(movementSpeed, new Vector3(strafeSpeed, 0, forwardSpeed), ref velocitySpeed, isGrounded ? playerSettings.movementSmoothing : playerSettings.fallingSmoothing);
 
             float backwardJumpingFactor = inputMovement.y < 0 ? 0.75f : 1f;
-            playerSettings.jumpDirection = backwardJumpingFactor * jumpDirectionMultiplier * movementSpeed.magnitude * moveDirection;
+            //playerSettings.jumpDirection = backwardJumpingFactor * jumpDirectionMultiplier * movementSpeed.magnitude * moveDirection;
+            playerSettings.jumpDirection = backwardJumpingFactor * movementSpeed.magnitude * moveDirection;
         }
         else
         {
@@ -314,7 +314,7 @@ public class PlayerController : MonoBehaviour
         }
 
         newMovementSpeed.y += playerGravity;
-        newMovementSpeed += jumpForce * Time.fixedDeltaTime;
+        newMovementSpeed += jumpForce * Time.deltaTime;
 
         return newMovementSpeed;
     }

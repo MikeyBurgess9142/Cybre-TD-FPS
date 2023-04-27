@@ -20,6 +20,7 @@ public static class Models
         [Header("---Camera Settings---")]
         public float cameraSensHor;
         public float cameraSensVer;
+        public float cameraSmoothing;
 
         public float ADSSensEffector;
 
