@@ -23,6 +23,9 @@ public class PlayerController : MonoBehaviour
     Vector3 cameraRotation;
     Vector3 playerRotation;
 
+    [Header("---PlayerStats---")]
+    public int HP;
+
     [Header("---Preferences---")]
     public Transform mainCamera;
     public Transform cam;
@@ -145,6 +148,10 @@ public class PlayerController : MonoBehaviour
         input.Disable();
     }
 
+    private void Start()
+    {
+        respawnPlayer();
+    }
     void Update()
     {
         if (Time.timeScale != 0)
@@ -159,8 +166,11 @@ public class PlayerController : MonoBehaviour
             Aiming();
             SelectGun();
             Camera();
+            
         }
     }
+
+    
     //private void LateUpdate()
     //{
     //    Camera();
@@ -243,7 +253,61 @@ public class PlayerController : MonoBehaviour
 
         return 1;
     }
+    public void updateHP()
+    {
+        gameManager.instance.playerHPBar.fillAmount = (float)HP / (float)hpOrigin;
+    }
 
+    public void respawnPlayer()
+    {
+        
+        updateHP();
+
+        if (PlayerPrefs.HasKey("PlayerHealth"))
+        {
+
+            float playerPosX = PlayerPrefs.GetFloat("PlayerPosX");
+            float playerPosY = PlayerPrefs.GetFloat("PlayerPosY");
+            float playerPosZ = PlayerPrefs.GetFloat("PlayerPosZ");
+
+
+            float playerRotX = PlayerPrefs.GetFloat("PlayerRotX");
+            float playerRotY = PlayerPrefs.GetFloat("PlayerRotY");
+            float playerRotZ = PlayerPrefs.GetFloat("PlayerRotZ");
+            float playerRotW = PlayerPrefs.GetFloat("PlayerRotW");
+
+
+            HP = PlayerPrefs.GetInt("PlayerHealth");
+            
+
+            // If the gun string is not empty, split it into an array of gun names and add each gun to the gun list
+
+
+            gameManager.instance.civilliansRescued = PlayerPrefs.GetInt("civilliansRescued");
+            gameManager.instance.civilliansRescuedText.text = gameManager.instance.civilliansRescued.ToString("F0");
+            //PlayerPrefs.SetString("CurrentGun", currentGun);
+
+
+            gameManager.instance.bossesKilled = PlayerPrefs.GetInt("BossesKilled");
+            gameManager.instance.bossesKilledText.text = gameManager.instance.bossesKilled.ToString("F0");
+            gameManager.instance.pointsTotal = PlayerPrefs.GetInt("pointsTotal");
+
+            gameManager.instance.pointsTotalText.text = gameManager.instance.pointsTotal.ToString("F0");
+
+
+
+            transform.position = new Vector3(playerPosX, playerPosY, playerPosZ);
+
+        }
+        else
+        {
+            HP = 100;
+            transform.position = gameManager.instance.playerSpawnPos.transform.position;
+        }
+
+
+
+    }
     Vector3 CalculateMoveDirection()
     {
         Vector3 transformForward = transform.forward.normalized;
@@ -548,7 +612,20 @@ public class PlayerController : MonoBehaviour
 
         selectedGun = gunList.Count - 1;
     }
+    public void takeDmg(int dmg)
+    {
+        HP -= dmg;
+        aud.PlayOneShot(audDamage[UnityEngine.Random.Range(0, audDamage.Length)], audDamageVol);
+        updateHP();
+        StartCoroutine(gameManager.instance.playerHit());
 
+        if (HP <= 0)
+        {
+            //zooming = false;
+            gameManager.instance.playerDead();
+            gameManager.instance.updateGameGoal(0, 0, 0, 0, 0, -(gameManager.instance.pointsTotal / 10), true);
+        }
+    }
     void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(playerTransform.position, playerSettings.isGroundedRadius);

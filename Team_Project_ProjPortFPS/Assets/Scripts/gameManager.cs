@@ -9,6 +9,10 @@ using UnityEngine.SceneManagement;
 public class gameManager : MonoBehaviour
 {
     public static gameManager instance;
+    private Vector3 playerPos;
+    private Quaternion playerRot;
+    private Vector3 currentplayerPos;
+    private Quaternion currentplayerRot;
 
     [Header("---Player Stuff---")]
     public GameObject player;
@@ -16,6 +20,7 @@ public class gameManager : MonoBehaviour
     public PlayerController playerControllerScript;
     public GameObject playerSpawnPos;
     public allyAI allyScript;
+    
 
     [Header("---UI---")]
     public GameObject activeMenu;
@@ -96,28 +101,34 @@ public class gameManager : MonoBehaviour
     public int civillians;
     public int civilliansRescued;
     public int bossesKilled;
+    public int friendsSaved;
 
     public List<NavMeshAgent> enemy;
 
     void Awake()
     {
+        
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponent<playerController_Old>();
         playerControllerScript = player.GetComponent<PlayerController>();
         playerSpawnPos = GameObject.FindGameObjectWithTag("Player Spawn Pos");
-        personalTurret = GameObject.Find("TurretPos"); 
+        personalTurret = GameObject.Find("TurretPos");
+       
+
     }
 
     private void Start()
     {
-       
+
         pointsTotalText.text = pointsTotal.ToString("F0");
         //StartCoroutine(startWave());
     }
 
     void Update()
     {
+        currentplayerPos = playerScript.gameObject.transform.position;
+        currentplayerRot = playerScript.gameObject.transform.rotation;
         if (Input.GetButtonDown("Cancel") && activeMenu == null)
         {
             isPaused = !isPaused;
@@ -136,7 +147,46 @@ public class gameManager : MonoBehaviour
 
     }
 
+    public  void LoadGame()
+    {
+       
+        
+        string sceneName = PlayerPrefs.GetString("CurrentScene");
+        SceneManager.LoadScene(sceneName);
+        unpauseState();
+       
 
+    }
+    public void SpawnPlayer()
+    {
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        
+        player.transform.position = playerPos;
+        player.transform.rotation = playerRot;
+    }
+    public  void SaveGame()
+    {
+       
+        PlayerPrefs.SetInt("PlayerHealth", playerScript.HP);
+        PlayerPrefs.SetInt("civilliansRescued", civilliansRescued);
+      
+        PlayerPrefs.SetInt("pointsTotal", pointsTotal);
+        //PlayerPrefs.SetString("CurrentGun", currentGun);
+        PlayerPrefs.SetInt("bossesKilled", bossesKilled);
+     
+        PlayerPrefs.SetString("CurrentScene", SceneManager.GetActiveScene().name);
+        //saves player position
+        PlayerPrefs.SetFloat("PlayerPosX", currentplayerPos.x);
+        PlayerPrefs.SetFloat("PlayerPosY", currentplayerPos.y);
+        PlayerPrefs.SetFloat("PlayerPosZ", currentplayerPos.z);
+        //saves player rotation
+        PlayerPrefs.SetFloat("PlayerRotX", currentplayerRot.x);
+        PlayerPrefs.SetFloat("PlayerRotY", currentplayerRot.y);
+        PlayerPrefs.SetFloat("PlayerRotZ", currentplayerRot.z);
+        PlayerPrefs.SetFloat("PlayerRotW", currentplayerRot.w);
+        
+        PlayerPrefs.Save();
+    }
 
     public void pauseState()
     {        
@@ -150,7 +200,11 @@ public class gameManager : MonoBehaviour
         Time.timeScale = 1;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        activeMenu.SetActive(false);
+        if (activeMenu != null)
+        {
+            activeMenu.SetActive(false);
+        }
+       
         activeMenu = null;
         
     }
@@ -172,28 +226,28 @@ public class gameManager : MonoBehaviour
         civilliansRescuedText.text = civilliansRescued.ToString("F0");
 
 
-        pointsTotal += points;
+       pointsTotal += points;
         pointsTotalText.text = pointsTotal.ToString("F0");
 
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneAt(1))
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneAt(0))
         {
             if (bossesKilled == bossesTotal && civilliansRescued == civillians )
+            {
+                pauseState();
+                SceneManager.LoadScene(1);
+            }
+        }
+
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneAt(0))
+        {
+            if (bossesKilled == bossesTotal && civilliansRescued == civillians)
             {
                 pauseState();
                 SceneManager.LoadScene(2);
             }
         }
 
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneAt(2))
-        {
-            if (bossesKilled == bossesTotal && civilliansRescued == civillians)
-            {
-                pauseState();
-                SceneManager.LoadScene(3);
-            }
-        }
-
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneAt(3))
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneAt(0))
         {
             if (bossesKilled == bossesTotal && civilliansRescued == civillians)
             {

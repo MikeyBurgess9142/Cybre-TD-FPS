@@ -20,6 +20,19 @@ public class mainMenu : MonoBehaviour
         SceneManager.LoadScene(3);
     }
 
+    public void LoadGame()
+    {
+
+
+        string sceneName = PlayerPrefs.GetString("CurrentScene");
+        SceneManager.LoadScene(sceneName);
+        Time.timeScale = 1;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
+
+    }
+
     public void QuitGame()
     {
         Application.Quit();

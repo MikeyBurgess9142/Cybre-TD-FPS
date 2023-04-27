@@ -12,7 +12,7 @@ public class playerController_Old : MonoBehaviour
     public Transform playerHitBox;
 
     [Header("--- Player Stats ---")]
-    [Range(10, 1000)][SerializeField] int HP;
+    [Range(10, 1000)] public  int HP;
     [Range(5, 30)][SerializeField] float playerSpd;
     [Range(1, 10)][SerializeField] int jumpMax;
     [Range(1, 25)][SerializeField] int jumpSpd;
@@ -235,9 +235,47 @@ public class playerController_Old : MonoBehaviour
     {
         HP = hpOrigin;
         updateHP();
-        controller.enabled = false;
-        transform.position = gameManager.instance.playerSpawnPos.transform.position;
-        controller.enabled = true;
+        
+        if (PlayerPrefs.HasKey("PlayerHealth"))
+        {
+
+            float playerPosX = PlayerPrefs.GetFloat("PlayerPosX");
+            float playerPosY = PlayerPrefs.GetFloat("PlayerPosY");
+            float playerPosZ = PlayerPrefs.GetFloat("PlayerPosZ");
+
+
+            float playerRotX = PlayerPrefs.GetFloat("PlayerRotX");
+            float playerRotY = PlayerPrefs.GetFloat("PlayerRotY");
+            float playerRotZ = PlayerPrefs.GetFloat("PlayerRotZ");
+            float playerRotW = PlayerPrefs.GetFloat("PlayerRotW");
+            
+
+            gameManager.instance.playerScript.HP = PlayerPrefs.GetInt("PlayerHealth");
+
+           
+            gameManager.instance.civilliansRescued = PlayerPrefs.GetInt("civilliansRescued");
+            gameManager.instance.civilliansRescuedText.text = gameManager.instance.civilliansRescued.ToString("F0");
+            //PlayerPrefs.SetString("CurrentGun", currentGun);
+
+
+            gameManager.instance.bossesKilled = PlayerPrefs.GetInt("BossesKilled");
+            gameManager.instance.bossesKilledText.text = gameManager.instance.bossesKilled.ToString("F0");
+            gameManager.instance.pointsTotal = PlayerPrefs.GetInt("pointsTotal");
+
+            gameManager.instance.pointsTotalText.text = gameManager.instance.pointsTotal.ToString("F0");
+           
+
+           
+            transform.position = new Vector3(playerPosX, playerPosY, playerPosZ);
+
+        }
+        else
+        {
+            transform.position = gameManager.instance.playerSpawnPos.transform.position;
+        }
+
+       
+        
     }
 
     public void takeDmg(int dmg)

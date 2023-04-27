@@ -1,0 +1,142 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5054894883770309241
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5054894883770309246}
+  - component: {fileID: 5054894883770309247}
+  - component: {fileID: 5054894883770309240}
+  m_Layer: 5
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &5054894883770309246
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5054894883770309241}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.875, y: 0.875, z: 0.875}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 840, y: 480}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5054894883770309247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5054894883770309241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 098a66ef406793847bbb9af5b690334f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  playerScript: {fileID: 0}
+  playerControllerScript: {fileID: 0}
+  playerSpawnPos: {fileID: 0}
+  allyScript: {fileID: 0}
+  activeMenu: {fileID: 0}
+  pauseMenu: {fileID: 0}
+  winMenu: {fileID: 0}
+  loseMenu: {fileID: 0}
+  shopMenu: {fileID: 0}
+  checkPointMsg: {fileID: 0}
+  shopMsg: {fileID: 0}
+  interactMessage: {fileID: 0}
+  turretMessage: {fileID: 0}
+  maxUpgradeMsg: {fileID: 0}
+  playerHitFlash: {fileID: 0}
+  playerHPBar: {fileID: 0}
+  enemiesRemainingText: {fileID: 0}
+  bossesKilledText: {fileID: 0}
+  bossesAliveText: {fileID: 0}
+  civilliansRescuedText: {fileID: 0}
+  civilliansTotalText: {fileID: 0}
+  pointsTotalText: {fileID: 0}
+  pickupPos: {fileID: 0}
+  gunPistol: {fileID: 3455334594203397412, guid: 7c49de00d1009764bb3cae99302a4083, type: 3}
+  personalTurret: {fileID: 0}
+  gunSmg: {fileID: 5407598496746668248, guid: f53b44b49de3d584d87b12aea2125f51, type: 3}
+  gunShotgun: {fileID: 4924559513781399878, guid: 180e40a195296e043872fa94e5b12c12, type: 3}
+  gunAssaultFull: {fileID: 1205910820345473931, guid: 176d2c8996188414a97d7fb9b4acc723, type: 3}
+  gunAssaultSemi: {fileID: 3040459024570722813, guid: a5c0115a74d5a5f4c994aafbd0c5e386, type: 3}
+  gunSniper: {fileID: 2210771710592440902, guid: 0fb7c052cc4d01a458d23d14cce2cf86, type: 3}
+  gunRocketLauncher: {fileID: 1950741687981957073, guid: 3797f476cefe40444b6e98e9cd8694be, type: 3}
+  laserPistol: {fileID: 8815034888603009954, guid: cbf74a796d9b43f4588c9b8088bde521, type: 3}
+  laserSmg: {fileID: 4100046301481859056, guid: 610d707ae50fc4041b854738d676746b, type: 3}
+  laserShotgun: {fileID: 5479016032465530803, guid: 67d02bc893a30eb428ec57b07a40685d, type: 3}
+  laserAssaultFull: {fileID: 2499239086550704792, guid: 2d684dfca68b8b340b6d029596f5f18f, type: 3}
+  laserAssaultSemi: {fileID: 2605002816143086695, guid: cbb3eabfed285aa43b555b0124befec5, type: 3}
+  laserSniper: {fileID: 2263333929785320140, guid: 3a11532ffdd753046a2a7d327c268e66, type: 3}
+  laserRocketLauncher: {fileID: 0}
+  healthSmall: {fileID: 4037344813491005168, guid: d304c1854e349f64ebf5cbc1d3fdea8b, type: 3}
+  healthMed: {fileID: 3184651577915172350, guid: 8ee1e9264df195843a04694e3c6f1375, type: 3}
+  healthLrg: {fileID: 5053995930462586997, guid: e0804618f2f3b0647a8aa47f7a3df3f3, type: 3}
+  button1: {fileID: 0}
+  button2: {fileID: 0}
+  button3: {fileID: 0}
+  button4: {fileID: 0}
+  button5: {fileID: 0}
+  button6: {fileID: 0}
+  button7: {fileID: 0}
+  button8: {fileID: 0}
+  button9: {fileID: 0}
+  button10: {fileID: 0}
+  button11: {fileID: 0}
+  button12: {fileID: 0}
+  button13: {fileID: 0}
+  button14: {fileID: 0}
+  button15: {fileID: 0}
+  button16: {fileID: 0}
+  button17: {fileID: 0}
+  button18: {fileID: 0}
+  spawners:
+  - {fileID: 0}
+  bossSpawners: []
+  bossWaveInterval: 3
+  spawnIntensity: 10
+  intensityIncreaseAmt: 2
+  waveDelay: 2
+  enemiesAlive: 0
+  bossesTotal: 0
+  pointsTotal: 1000
+  isPaused: 0
+  waveStarted: 0
+  numberOfWaves: 6
+  civillians: 0
+  civilliansRescued: 0
+  bossesKilled: 0
+  friendsSaved: 0
+  enemy: []
+--- !u!114 &5054894883770309240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5054894883770309241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3d2a75858815db4f822faa173b6d9e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
