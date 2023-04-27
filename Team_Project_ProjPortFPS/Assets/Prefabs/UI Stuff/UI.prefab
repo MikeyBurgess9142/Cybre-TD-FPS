@@ -3548,8 +3548,8 @@ MonoBehaviour:
   enemiesRemainingText: {fileID: 0}
   bossesKilledText: {fileID: 1344028786}
   bossesAliveText: {fileID: 805606574}
-  civilliansRescuedText: {fileID: 0}
-  civilliansTotalText: {fileID: 0}
+  civilliansRescuedText: {fileID: 3038575579101797372}
+  civilliansTotalText: {fileID: 5276605287419310730}
   pointsTotalText: {fileID: 1429075507963364611}
   pickupPos: {fileID: 0}
   gunPistol: {fileID: 3455334594203397412, guid: 7c49de00d1009764bb3cae99302a4083, type: 3}
@@ -3604,6 +3604,7 @@ MonoBehaviour:
   civillians: 0
   civilliansRescued: 0
   bossesKilled: 0
+  friendsSaved: 0
   enemy: []
 --- !u!114 &1579139283
 MonoBehaviour:
@@ -8979,9 +8980,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Options
-
-'
+  m_text: Main Menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -9309,7 +9308,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1579139283}
         m_TargetAssemblyTypeName: buttonFunctions, Assembly-CSharp
-        m_MethodName: restart
+        m_MethodName: MainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

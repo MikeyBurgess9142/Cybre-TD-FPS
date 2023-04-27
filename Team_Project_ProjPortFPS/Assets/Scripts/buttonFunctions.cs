@@ -22,6 +22,12 @@ public class buttonFunctions : MonoBehaviour
         Application.Quit();
     }
 
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+
     public void respawnPlayer()
     {
         gameManager.instance.unpauseState();
@@ -227,4 +233,5 @@ public class buttonFunctions : MonoBehaviour
             gameManager.instance.unpauseState();
         }
     }
+    
 }
