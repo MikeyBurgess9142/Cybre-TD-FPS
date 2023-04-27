@@ -45,7 +45,7 @@ public class enemyAI : MonoBehaviour, IDamage
         startingPos = transform.position;
         stoppingDistOrig = agent.stoppingDistance;
         speedOrig = agent.speed;
-        gameManager.instance.updateGameGoal(1,0,0,0);
+        gameManager.instance.updateGameGoal(1, 0, 0, 0, 0, 0);
         gameManager.instance.addEnemy(agent);
     }
 
@@ -126,7 +126,7 @@ public class enemyAI : MonoBehaviour, IDamage
             }
             agent.enabled = false;
             Destroy(gameObject);
-            gameManager.instance.updateGameGoal(-1, 0, 0, pointValue);
+            gameManager.instance.updateGameGoal(0, 0, 0, 0, 0, pointValue);
         }
         else
         {
