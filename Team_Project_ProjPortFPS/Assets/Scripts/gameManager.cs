@@ -232,7 +232,7 @@ public class gameManager : MonoBehaviour
             }
         }
 
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneAt(2))
+        else if (SceneManager.GetActiveScene() == SceneManager.GetSceneAt(2))
         {
             if (bossesKilled == bossesTotal && civilliansRescued == civillians)
             {
@@ -242,7 +242,7 @@ public class gameManager : MonoBehaviour
             }
         }
 
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneAt(3))
+        else if (SceneManager.GetActiveScene() == SceneManager.GetSceneAt(3))
         {
             if (bossesKilled == bossesTotal && civilliansRescued == civillians)
             {
