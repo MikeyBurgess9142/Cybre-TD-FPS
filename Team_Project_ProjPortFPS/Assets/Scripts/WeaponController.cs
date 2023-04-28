@@ -1,4 +1,10 @@
+<<<<<<< Updated upstream
 //using TreeEditor;
+=======
+using System.Collections;
+using System.Net.Sockets;
+using TreeEditor;
+>>>>>>> Stashed changes
 using UnityEditor;
 //using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
@@ -43,19 +49,24 @@ public class WeaponController : MonoBehaviour
     public float swayTime;
     Vector3 swayPosition;
     Vector3 cameraOriginalPosition = new(0, 0, 0);
-
+    public float lerpSpeed;
 
     [Header("Sights")]
     public bool isAiming;
     public Transform weaponSight;
     public float sightOffset;
     public float ADSSpeed;
+    public float fovOrig;
+    public float fovZoomMax;
+    public int fovZoomInSpd;
+    public int fovZoomOutSpd;
     Vector3 weaponSwayPosition;
     Vector3 weaponSwayPositionVelocity;
 
     public void Start()
     {
         weaponRotation = transform.localRotation.eulerAngles;
+        fovOrig = Camera.main.fieldOfView;
     }
 
     public void Initialize(PlayerController PlayerController)
@@ -84,11 +95,13 @@ public class WeaponController : MonoBehaviour
         if (isAiming)
         {
             targetPosition = playerController.cam.position + (weaponSway.position - weaponSight.position) + (playerController.cam.forward * sightOffset);
+            Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, fovZoomMax, Time.deltaTime * fovZoomInSpd);
             //cameraSwayADS.localEulerAngles = swayPosition; Needs work. Trying to rotate camera with gun ADS sway.
         }
         else
         {
             cameraSwayADS.localPosition = cameraOriginalPosition;
+            Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, fovOrig, Time.deltaTime * fovZoomOutSpd);
         }
 
         weaponSwayPosition = weaponSway.position;
@@ -145,6 +158,7 @@ public class WeaponController : MonoBehaviour
             isGroundedTrigger = false;
         }
 
+        weaponAnimator.SetBool("IsWalking", playerController.isWalking);
         weaponAnimator.SetBool("IsSprinting", playerController.isSprinting);
         weaponAnimator.SetFloat("WeaponAnimSpeed", playerController.weaponAnimSpeed);
     }
@@ -162,9 +176,30 @@ public class WeaponController : MonoBehaviour
         }
 
         weaponBreathing.localPosition = swayPosition;
-
-        //Debug.Log("sway Time : " + swayTime);
     }
+
+    //void ResetAnimations()
+    //{
+    //    StartCoroutine(ResetAnimationCoroutine("Walking", lerpSpeed));
+    //}
+
+    //IEnumerator ResetAnimationCoroutine(string animationName, float lerpDuration)
+    //{
+    //    AnimatorStateInfo stateInfo = weaponAnimator.GetCurrentAnimatorStateInfo(0);
+    //    float currentNormalizedTime = stateInfo.normalizedTime % 1;
+
+    //    float elapsedTime = 0;
+    //    while (elapsedTime < lerpDuration)
+    //    {
+    //        float newNormalizedTime = Mathf.Lerp(currentNormalizedTime, 0, elapsedTime / lerpDuration);
+    //        weaponAnimator.Play(animationName, 0, newNormalizedTime);
+
+    //        elapsedTime += Time.deltaTime;
+    //        yield return null;
+    //    }
+
+    //    weaponAnimator.Play(animationName, 0, 0);
+    //}
 
     Vector3 Curve(float Time, float A, float B)
     {

@@ -18,12 +18,12 @@ MonoBehaviour:
   gunModelADS: {x: 0, y: -0.375, z: 0.575}
   gunModelDefaultPos: {x: 0.4, y: -0.5, z: 0.8}
   shootEffectPos: {x: 0, y: 0.382, z: 1.858}
-  zoomMaxFov: 45
+  zoomMaxFov: 40
   zoomInSpd: 8
   zoomOutSpd: 6
   adsSpd: 16
   notADSSpd: 8
-  shtRate: 0.15
+  shtRate: 0.25
   shtDist: 50
   shtDmg: 4
   gunModel: {fileID: 1205910820345473931, guid: 176d2c8996188414a97d7fb9b4acc723, type: 3}

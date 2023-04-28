@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf79e9d18afe4454ebbe7f796343f8e0, type: 3}
   m_Name: Gun-SMG
   m_EditorClassIdentifier: 
-  gunPosition: {x: 1, y: 0.316, z: -0.817}
+  gunPosition: {x: 0.15, y: 0.225, z: 0.435}
   gunRotation: {x: -1, y: 0, z: 0}
-  gunScale: {x: 0.5, y: 0.5, z: 0.5}
+  gunScale: {x: 0.4, y: 0.4, z: 0.4}
+  gunModeSightsPos: {x: 0, y: 0.2425, z: -0.175}
   gunModelADS: {x: 0, y: -0.305, z: 0.385}
   gunModelDefaultPos: {x: 0.37, y: -0.42, z: 0.715}
   shootEffectPos: {x: 0, y: 0.513, z: 1.296}
-  zoomMaxFov: 45
+  zoomMaxFov: 50
   zoomInSpd: 8
   zoomOutSpd: 6
   adsSpd: 16

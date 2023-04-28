@@ -9,6 +9,7 @@ public class gunStats : ScriptableObject
     public Vector3 gunPosition;
     public Vector3 gunRotation;
     public Vector3 gunScale;
+    public Vector3 gunModeSightsPos;
     public Vector3 gunModelADS;
     public Vector3 gunModelDefaultPos;
     public Vector3 shootEffectPos;

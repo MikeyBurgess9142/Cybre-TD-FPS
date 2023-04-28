@@ -1,8 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.XR;
+using UnityEngine.Rendering;
 using static UnityEngine.LightAnchor;
 
 public class PlayerController : MonoBehaviour
@@ -11,25 +14,31 @@ public class PlayerController : MonoBehaviour
 
     [Header("--- Components ---")]
     [SerializeField] CharacterController characterController;
+    public Transform mainCamera;
+    public Transform cam;
+    public Transform playerTransform;
     [SerializeField] LineRenderer lineRendered;
     [SerializeField] AudioSource aud;
     public Transform playerHitBox;
     DefaultInput input;
     public Vector2 inputMovement;
     public Vector2 inputCamera;
+    public float mouseScroll;
     [SerializeField] float lockVerMin;
     [SerializeField] float lockVerMax;
 
     Vector3 cameraRotation;
     Vector3 playerRotation;
 
+<<<<<<< Updated upstream
     [Header("---PlayerStats---")]
     public int HP;
+=======
+    [Header("--- Player Stats ---")]
+    [Range(10, 1000)][SerializeField] int HP;
+>>>>>>> Stashed changes
 
     [Header("---Preferences---")]
-    public Transform mainCamera;
-    public Transform cam;
-    public Transform playerTransform;
     [SerializeField] Models.PlayerPose playerPose;
     [SerializeField] float playerPoseSmooth;
     [SerializeField] float cameraHeight;
@@ -49,28 +58,46 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float gravitySpeed;
     [SerializeField] Vector3 jumpForce;
     public float playerGravity;
-    private Vector3 initialJumpDirection;
     Vector3 jumpSpeed;
     public bool isGrounded;
     public bool isFalling;
 
+    public float timeSinceLastJump;
+    Vector3 previousJumpDirection;
+
     public bool isSprinting;
+    public bool isWalking;
     Vector3 movementSpeed;
     Vector3 velocitySpeed;
     int hpOrigin;
     bool isPlayingFootSteps;
-    float playerSpdOrig;
 
-    Vector3 previousVelocity;
-
-    [Header("Weapon")]
-    [SerializeField] MeshFilter weapon;
-    [SerializeField] MeshRenderer weaponMaterial;
+    [Header("Weapon Stats")]
     public List<gunStats> gunList = new List<gunStats>();
+    [Range(0, 10)][SerializeField] float shootRate;
+    [Range(0, 500)][SerializeField] int shootDist;
+    [Range(0, 250)][SerializeField] int shootDmg;
+    [SerializeField] MeshFilter weaponMesh;
+    [SerializeField] MeshRenderer weaponMaterial;
+    [SerializeField] GameObject shootEffect;
     public WeaponController currentWeapon;
     public float weaponAnimSpeed;
     int selectedGun;
     bool isShooting;
+    bool canShoot;
+
+    WaitForSeconds shootRateWait;
+
+    [Header("--- Weapon Transformations---")]
+    public Transform weaponHolderPos;
+    public Transform weapon;
+    public Transform weaponSights;
+    public Transform shootEffectPos;
+
+    [Header("----- Weapon ADS Stats -----")]
+    public float zoomMax;
+    public int zoomInSpeed;
+    public int zoomOutSpeed;
 
     [Header("Leaning")]
     public Transform cameraLeanPivot;
@@ -107,8 +134,15 @@ public class PlayerController : MonoBehaviour
         input.Player.Sprint.performed += e => ToggleSprint();
         input.Player.SprintReleased.performed += e => StopSprint();
 
+        input.Player.MouseScrollWheel.performed += e => mouseScroll = e.ReadValue<float>();
+
         input.Weapon.AimPressed.performed += e => AimPressed();
         input.Weapon.AimReleased.performed += e => AimReleased();
+
+
+        input.Weapon.Shoot.performed += e => Shoot();
+        //input.Weapon.Shoot.performed += e => isShooting = true;
+        //input.Weapon.Shoot.canceled += e => isShooting = false;
 
         input.Player.LeanLeftPressed.performed += e => isLeaningLeft = true;
         input.Player.LeanLeftReleased.performed += e => isLeaningLeft = false;
@@ -122,6 +156,7 @@ public class PlayerController : MonoBehaviour
         instance = this;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        canShoot = true;
 
         input = new();
 
@@ -138,6 +173,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        hpOrigin = HP;
+
+        RespawnPlayer();
+        UpdateHP();
+    }
+
     private void OnEnable()
     {
         input.Enable();
@@ -148,11 +191,15 @@ public class PlayerController : MonoBehaviour
         input.Disable();
     }
 
+<<<<<<< Updated upstream
     private void Start()
     {
         respawnPlayer();
     }
     void Update()
+=======
+    void FixedUpdate()
+>>>>>>> Stashed changes
     {
         if (Time.timeScale != 0)
         {
@@ -161,10 +208,18 @@ public class PlayerController : MonoBehaviour
 
             Movement();
             Jumping();
+        }
+    }
+
+    void Update()
+    {
+        if (Time.timeScale != 0)
+        {
             PlayerStance();
             Leaning();
             Aiming();
             SelectGun();
+<<<<<<< Updated upstream
             Camera();
             
         }
@@ -175,8 +230,16 @@ public class PlayerController : MonoBehaviour
     //{
     //    Camera();
     //}
+=======
+            JumpTimer();
+            ShootMouseClick();
 
-    void Camera()
+            Cam();
+        }
+    }
+>>>>>>> Stashed changes
+
+    void Cam()
     {
         //Camera Rotation
         cameraRotation.x += (isAiming ? playerSettings.cameraSensVer * playerSettings.aimSpeedEffector : playerSettings.cameraSensVer) * (playerSettings.invertY ? inputCamera.y : -inputCamera.y) * Time.deltaTime;
@@ -193,16 +256,36 @@ public class PlayerController : MonoBehaviour
 
         if (!isGrounded)
         {
-            playerGravity -= gravity * Time.deltaTime;
+            playerGravity -= gravity * Time.fixedDeltaTime;
         }
-        else if (Mathf.Abs(playerGravity) > 0.3f)
+        else
         {
-            playerGravity = 0;
+            if (playerGravity < -0.1f)
+            {
+                playerGravity = -0.1f;
+            }
+        }
+
+        if (isGrounded && playerGravity <= 0)
+        {
+            if (!isPlayingFootSteps && movementSpeed.normalized.magnitude > 0.5f)
+            {
+                StartCoroutine(PlayFootSteps());
+            }
         }
 
         if (inputMovement.y <= 0.1f || isAiming)
         {
             isSprinting = false;
+        }
+
+        if (Mathf.Abs(inputMovement.y) <= 0.1f && Mathf.Abs(inputMovement.x) <= 0.1f || isSprinting)
+        {
+            isWalking = false;
+        }
+        else
+        {
+            isWalking = true;
         }
 
         float verticalSpeed;
@@ -312,10 +395,22 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 transformForward = transform.forward.normalized;
         Vector3 transformRight = transform.right.normalized;
-        transformForward.y = 0;
-        transformRight.y = 0;
 
-        return (inputMovement.y * transformForward).normalized + (inputMovement.x * transformRight).normalized;
+        transformForward.y = 0f;
+        transformRight.y = 0f;
+
+        Vector3 moveDirection = (inputMovement.y * transformForward) + (inputMovement.x * transformRight);
+
+        if (moveDirection.magnitude > 1f)
+        {
+            moveDirection.Normalize();
+        }
+        else if (Mathf.Abs(inputMovement.x) < 0.1f && Mathf.Abs(inputMovement.y) < 0.1f)
+        {
+            moveDirection = Vector3.zero;
+        }
+
+        return moveDirection;
     }
 
     Vector3 CalculateNewMovement(Vector3 moveDirection, float verticalSpeed, float horizontalSpeed)
@@ -324,37 +419,12 @@ public class PlayerController : MonoBehaviour
         {
             playerSettings.isJumping = false;
 
-            //float jumpDirectionMultiplier = 1;
-            //float angle = Vector3.Angle(moveDirection, characterController.velocity);
-
-            //if (isSprinting)
-            //{
-            //    if (angle > 20f)
-            //    {
-            //        jumpDirectionMultiplier = 0.25f; //<-
-            //    }                                    // |
-            //}                                        // |
-            //else                                     // - You can adjust this value to find the best balance between responsiveness and limiting fast strafe jumps
-            //{                                        // |
-            //    if (angle >= 90f)                    // |
-            //    {                                    // |
-            //        jumpDirectionMultiplier = 0.5f;  //<-
-            //    }
-            //}
-
-            //if (Vector3.Angle(moveDirection, characterController.velocity) > 10)
-            //{
-            //    Debug.Log(angle);
-            //    Debug.Log(jumpDirectionMultiplier);
-            //}
-
-            float forwardSpeed = verticalSpeed * inputMovement.y * Time.deltaTime;
-            float strafeSpeed = horizontalSpeed * inputMovement.x * Time.deltaTime;
+            float forwardSpeed = verticalSpeed * inputMovement.y * Time.fixedDeltaTime;
+            float strafeSpeed = horizontalSpeed * inputMovement.x * Time.fixedDeltaTime;
 
             movementSpeed = Vector3.SmoothDamp(movementSpeed, new Vector3(strafeSpeed, 0, forwardSpeed), ref velocitySpeed, isGrounded ? playerSettings.movementSmoothing : playerSettings.fallingSmoothing);
 
             float backwardJumpingFactor = inputMovement.y < 0 ? 0.75f : 1f;
-            //playerSettings.jumpDirection = backwardJumpingFactor * jumpDirectionMultiplier * movementSpeed.magnitude * moveDirection;
             playerSettings.jumpDirection = backwardJumpingFactor * movementSpeed.magnitude * moveDirection;
         }
         else
@@ -374,13 +444,40 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            float angleBetweenJumps = Vector3.Angle(previousJumpDirection, playerSettings.jumpDirection); // Calculate the angle between previous jump direction and current jump direction
+
+            if (angleBetweenJumps >= playerSettings.angleThreshold && timeSinceLastJump <= playerSettings.jumpTimeWindow)
+            {
+                float speedReductionFactor = Mathf.Clamp(angleBetweenJumps / 180f, 0.25f, 0.5f);
+                playerSettings.jumpDirection *= speedReductionFactor;
+            }
+
+            timeSinceLastJump = 0f;
+            previousJumpDirection = playerSettings.jumpDirection; // Update previousJumpDirection
+
             newMovementSpeed = playerSettings.jumpDirection;
         }
 
         newMovementSpeed.y += playerGravity;
-        newMovementSpeed += jumpForce * Time.deltaTime;
+        newMovementSpeed += jumpForce * Time.fixedDeltaTime;
 
         return newMovementSpeed;
+    }
+
+    IEnumerator PlayFootSteps()
+    {
+        isPlayingFootSteps = true;
+        aud.PlayOneShot(audFootSteps[UnityEngine.Random.Range(0, audFootSteps.Length)], audFootStepsVol);
+        if (!isSprinting)
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.3f);
+        }
+
+        isPlayingFootSteps = false;
     }
 
     void AimPressed()
@@ -476,15 +573,19 @@ public class PlayerController : MonoBehaviour
             //return; --------------------------- This can be used to make the player stand up only and not jump at the same time.
         }
 
-        playerGravity = 0;
-        jumpForce = new Vector3(0, playerSettings.jumpingHeight, 0); // Set the initial upward force for jumping
-        currentWeapon.TriggerJump();
+        if (isGrounded)
+        {
+            playerGravity = 0;
+            jumpForce = new Vector3(0, playerSettings.jumpingHeight, 0); // Set the initial upward force for jumping
+            currentWeapon.TriggerJump();
+        }
     }
 
     void Jumping()
     {
         if (!isGrounded)
         {
+            isSprinting = false;
             playerSettings.isJumping = true;
             jumpForce = Vector3.SmoothDamp(jumpForce, Vector3.zero, ref jumpSpeed, playerSettings.jumpingFalloff);
             StartCoroutine(ResetJump());
@@ -497,6 +598,19 @@ public class PlayerController : MonoBehaviour
         if (isGrounded)
         {
             playerSettings.isJumping = false;
+        }
+    }
+
+    void JumpTimer()
+    {
+        if (!playerSettings.isJumping)
+        {
+            timeSinceLastJump += Time.deltaTime;
+
+            if (timeSinceLastJump > playerSettings.jumpTimeWindow)
+            {
+                timeSinceLastJump = playerSettings.jumpTimeWindow + 1f;
+            }
         }
     }
 
@@ -579,35 +693,81 @@ public class PlayerController : MonoBehaviour
             isSprinting = false;
         }
     }
+
+    public void ResetGun()
+    {
+        Camera.main.fieldOfView = currentWeapon.fovOrig;
+        weaponHolderPos.transform.localPosition = new Vector3(0, 0, 0);
+        weapon.transform.localPosition = new Vector3(0, 0, 0);
+        weapon.transform.eulerAngles = new Vector3(0, 0, 0);
+        weapon.transform.localScale = new Vector3(0, 0, 0);
+        weaponSights.transform.localPosition = new Vector3(0, 0, 0);
+        shootEffectPos.localPosition = new Vector3(0, 0, 0);
+    }
+
     void SelectGun()
     {
-        if (Input.GetAxis("Mouse ScrollWheel") > 0 && selectedGun < gunList.Count - 1)
+        if (gunList.Count > 1)
         {
-            selectedGun++;
-            ChangeGun();
-        }
-        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && selectedGun > 0)
-        {
-            selectedGun--;
-            ChangeGun();
+            if (mouseScroll > 0 && selectedGun < gunList.Count - 1)
+            {
+                selectedGun++;
+                ChangeGun();
+            }
+            else if (mouseScroll < 0 && selectedGun > 0)
+            {
+                selectedGun--;
+                ChangeGun();
+            }
         }
     }
 
     void ChangeGun()
     {
+        ResetGun();
 
+        weaponHolderPos.transform.localPosition = gunList[selectedGun].gunPosition;
+        weapon.transform.localRotation = Quaternion.Euler(gunList[selectedGun].gunRotation);
+        weapon.transform.localScale = gunList[selectedGun].gunScale;
+        weaponSights.transform.localPosition = gunList[selectedGun].gunModeSightsPos;
 
-        weapon.sharedMesh = gunList[selectedGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
+        shootRate = gunList[selectedGun].shtRate;
+        shootRateWait = new WaitForSeconds(shootRate);
+        shootDist = gunList[selectedGun].shtDist;
+        shootDmg = gunList[selectedGun].shtDmg;
+        currentWeapon.fovZoomMax = gunList[selectedGun].zoomMaxFov;
+        currentWeapon.fovZoomInSpd = gunList[selectedGun].zoomInSpd;
+        currentWeapon.fovZoomOutSpd = gunList[selectedGun].zoomOutSpd;
+        shootEffectPos.transform.localPosition = gunList[selectedGun].shootEffectPos;
+        audShoot = gunList[selectedGun].gunShotAud;
+        shootEffect = gunList[selectedGun].shootEffect;
+
+        weaponMesh.sharedMesh = gunList[selectedGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
         weaponMaterial.sharedMaterial = gunList[selectedGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
     }
 
     public void GunPickup(gunStats gunStat)
     {
+        ResetGun();
         gunList.Add(gunStat);
 
+        weaponHolderPos.transform.localPosition = gunStat.gunPosition;
+        weapon.transform.localRotation = Quaternion.Euler(gunStat.gunRotation);
+        weapon.transform.localScale = gunStat.gunScale;
+        weaponSights.transform.localPosition = gunStat.gunModeSightsPos;
 
+        shootRate = gunStat.shtRate;
+        shootRateWait = new WaitForSeconds(shootRate);
+        shootDist = gunStat.shtDist;
+        shootDmg = gunStat.shtDmg;
+        currentWeapon.fovZoomMax = gunStat.zoomMaxFov;
+        currentWeapon.fovZoomInSpd = gunStat.zoomInSpd;
+        currentWeapon.fovZoomOutSpd = gunStat.zoomOutSpd;
+        shootEffectPos.transform.localPosition = gunStat.shootEffectPos;
+        audShoot = gunStat.gunShotAud;
+        shootEffect = gunStat.shootEffect;
 
-        weapon.sharedMesh = gunStat.gunModel.GetComponent<MeshFilter>().sharedMesh;
+        weaponMesh.sharedMesh = gunStat.gunModel.GetComponent<MeshFilter>().sharedMesh;
         weaponMaterial.sharedMaterial = gunStat.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
 
         selectedGun = gunList.Count - 1;
@@ -619,13 +779,123 @@ public class PlayerController : MonoBehaviour
         updateHP();
         StartCoroutine(gameManager.instance.playerHit());
 
+<<<<<<< Updated upstream
         if (HP <= 0)
         {
             //zooming = false;
+=======
+    public void UpdateHP()
+    {
+        gameManager.instance.playerHPBar.fillAmount = (float)HP / (float)hpOrigin;
+    }
+
+    public void HealthPickup(healthStats health)
+    {
+        if (HP + health.HP > hpOrigin)
+        {
+            HP = hpOrigin;
+        }
+        else
+        {
+            HP += health.HP;
+        }
+        UpdateHP();
+    }
+
+    public void RespawnPlayer()
+    {
+        HP = hpOrigin;
+        UpdateHP();
+        characterController.enabled = false;
+        transform.position = gameManager.instance.playerSpawnPos.transform.position;
+        characterController.enabled = true;
+    }
+
+    public void TakeDmg(int dmg)
+    {
+        HP -= dmg;
+        aud.PlayOneShot(audDamage[UnityEngine.Random.Range(0, audDamage.Length)], audDamageVol);
+        UpdateHP();
+        StartCoroutine(gameManager.instance.playerHit());
+
+        if (HP <= 0)
+        {
+            isAiming = false;
+>>>>>>> Stashed changes
             gameManager.instance.playerDead();
             gameManager.instance.updateGameGoal(0, 0, 0, 0, 0, -(gameManager.instance.pointsTotal / 10), true);
         }
     }
+<<<<<<< Updated upstream
+=======
+
+    void Shoot()
+    {
+        if (!isShooting && gunList.Count > 0 && canShoot)
+        {
+            StartCoroutine(Shooting());
+        }
+        //else
+        //{
+        //    StopCoroutine(Shooting());
+        //}
+    }
+
+    void ShootMouseClick()
+    {
+        if (!isShooting && Input.GetButton("Shoot") && gunList.Count > 0 && canShoot)
+        {
+            StartCoroutine(Shooting());
+        }
+        else
+        {
+            StopCoroutine(Shooting());
+        }
+    }
+
+    //void StopShooting()
+    //{
+    //    if (isShooting == false)
+    //    {
+    //        StopCoroutine(Shooting());
+    //    }
+    //}
+
+    IEnumerator Shooting()
+    {
+        isShooting = true;
+        canShoot = false;
+        aud.PlayOneShot(audShoot, audShootVol);
+        Instantiate(shootEffect, shootEffectPos.position, shootEffect.transform.rotation);
+
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDist))
+        {
+            lineRendered.enabled = true;
+            lineRendered.SetPosition(0, shootEffectPos.position);
+            lineRendered.SetPosition(1, hit.point);
+            Debug.Log(hit.collider.gameObject.name);
+            if (hit.collider.GetComponent<IDamage>() != null)
+            {
+                hit.collider.GetComponent<IDamage>().takeDmg(shootDmg);
+            }
+            if (hit.collider.GetComponent<ZombieAI>() != null)
+            {
+                hit.collider.GetComponent<ZombieAI>().TakeDamage(shootDmg);
+            }
+            if (hit.collider.GetComponent<Barrier>() != null)
+            {
+                hit.collider.GetComponent<Barrier>().TakeDmg(shootDmg);
+            }
+        }
+
+        yield return shootRateWait;
+        lineRendered.enabled = false;
+        isShooting = false;
+        canShoot = true;
+    }
+
+>>>>>>> Stashed changes
     void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(playerTransform.position, playerSettings.isGroundedRadius);

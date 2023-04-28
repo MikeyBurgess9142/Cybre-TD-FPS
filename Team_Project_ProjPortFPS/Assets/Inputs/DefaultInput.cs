@@ -125,6 +125,15 @@ public partial class @DefaultInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Mouse Scroll Wheel"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""c0caca30-9df8-46ab-b247-4f3f5f72cb4e"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -358,6 +367,17 @@ public partial class @DefaultInput: IInputActionCollection2, IDisposable
                     ""action"": ""Lean Left Released"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1e096157-8b6d-4c1d-86f6-a244f1fbcb38"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Mouse Scroll Wheel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -382,6 +402,15 @@ public partial class @DefaultInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""84814e67-2c27-4870-a4fd-d9dfe57901b4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -398,8 +427,30 @@ public partial class @DefaultInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""f224b4e5-e345-47fd-a6b0-10e9ec0cfa35"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AimPressed"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""7240ff7e-a671-4b3e-a142-c50b496f2cd2"",
                     ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AimReleased"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""917d8a92-dc8e-487c-ad6a-515b022910ea"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": ""Press(behavior=1)"",
                     ""processors"": """",
                     ""groups"": """",
@@ -425,10 +476,12 @@ public partial class @DefaultInput: IInputActionCollection2, IDisposable
         m_Player_LeanLeftReleased = m_Player.FindAction("Lean Left Released", throwIfNotFound: true);
         m_Player_LeanRightPressed = m_Player.FindAction("Lean Right Pressed", throwIfNotFound: true);
         m_Player_LeanRightReleased = m_Player.FindAction("Lean Right Released", throwIfNotFound: true);
+        m_Player_MouseScrollWheel = m_Player.FindAction("Mouse Scroll Wheel", throwIfNotFound: true);
         // Weapon
         m_Weapon = asset.FindActionMap("Weapon", throwIfNotFound: true);
         m_Weapon_AimPressed = m_Weapon.FindAction("AimPressed", throwIfNotFound: true);
         m_Weapon_AimReleased = m_Weapon.FindAction("AimReleased", throwIfNotFound: true);
+        m_Weapon_Shoot = m_Weapon.FindAction("Shoot", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -501,6 +554,7 @@ public partial class @DefaultInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_LeanLeftReleased;
     private readonly InputAction m_Player_LeanRightPressed;
     private readonly InputAction m_Player_LeanRightReleased;
+    private readonly InputAction m_Player_MouseScrollWheel;
     public struct PlayerActions
     {
         private @DefaultInput m_Wrapper;
@@ -516,6 +570,7 @@ public partial class @DefaultInput: IInputActionCollection2, IDisposable
         public InputAction @LeanLeftReleased => m_Wrapper.m_Player_LeanLeftReleased;
         public InputAction @LeanRightPressed => m_Wrapper.m_Player_LeanRightPressed;
         public InputAction @LeanRightReleased => m_Wrapper.m_Player_LeanRightReleased;
+        public InputAction @MouseScrollWheel => m_Wrapper.m_Player_MouseScrollWheel;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -558,6 +613,9 @@ public partial class @DefaultInput: IInputActionCollection2, IDisposable
             @LeanRightReleased.started += instance.OnLeanRightReleased;
             @LeanRightReleased.performed += instance.OnLeanRightReleased;
             @LeanRightReleased.canceled += instance.OnLeanRightReleased;
+            @MouseScrollWheel.started += instance.OnMouseScrollWheel;
+            @MouseScrollWheel.performed += instance.OnMouseScrollWheel;
+            @MouseScrollWheel.canceled += instance.OnMouseScrollWheel;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -595,6 +653,9 @@ public partial class @DefaultInput: IInputActionCollection2, IDisposable
             @LeanRightReleased.started -= instance.OnLeanRightReleased;
             @LeanRightReleased.performed -= instance.OnLeanRightReleased;
             @LeanRightReleased.canceled -= instance.OnLeanRightReleased;
+            @MouseScrollWheel.started -= instance.OnMouseScrollWheel;
+            @MouseScrollWheel.performed -= instance.OnMouseScrollWheel;
+            @MouseScrollWheel.canceled -= instance.OnMouseScrollWheel;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -618,12 +679,14 @@ public partial class @DefaultInput: IInputActionCollection2, IDisposable
     private List<IWeaponActions> m_WeaponActionsCallbackInterfaces = new List<IWeaponActions>();
     private readonly InputAction m_Weapon_AimPressed;
     private readonly InputAction m_Weapon_AimReleased;
+    private readonly InputAction m_Weapon_Shoot;
     public struct WeaponActions
     {
         private @DefaultInput m_Wrapper;
         public WeaponActions(@DefaultInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @AimPressed => m_Wrapper.m_Weapon_AimPressed;
         public InputAction @AimReleased => m_Wrapper.m_Weapon_AimReleased;
+        public InputAction @Shoot => m_Wrapper.m_Weapon_Shoot;
         public InputActionMap Get() { return m_Wrapper.m_Weapon; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -639,6 +702,9 @@ public partial class @DefaultInput: IInputActionCollection2, IDisposable
             @AimReleased.started += instance.OnAimReleased;
             @AimReleased.performed += instance.OnAimReleased;
             @AimReleased.canceled += instance.OnAimReleased;
+            @Shoot.started += instance.OnShoot;
+            @Shoot.performed += instance.OnShoot;
+            @Shoot.canceled += instance.OnShoot;
         }
 
         private void UnregisterCallbacks(IWeaponActions instance)
@@ -649,6 +715,9 @@ public partial class @DefaultInput: IInputActionCollection2, IDisposable
             @AimReleased.started -= instance.OnAimReleased;
             @AimReleased.performed -= instance.OnAimReleased;
             @AimReleased.canceled -= instance.OnAimReleased;
+            @Shoot.started -= instance.OnShoot;
+            @Shoot.performed -= instance.OnShoot;
+            @Shoot.canceled -= instance.OnShoot;
         }
 
         public void RemoveCallbacks(IWeaponActions instance)
@@ -679,10 +748,12 @@ public partial class @DefaultInput: IInputActionCollection2, IDisposable
         void OnLeanLeftReleased(InputAction.CallbackContext context);
         void OnLeanRightPressed(InputAction.CallbackContext context);
         void OnLeanRightReleased(InputAction.CallbackContext context);
+        void OnMouseScrollWheel(InputAction.CallbackContext context);
     }
     public interface IWeaponActions
     {
         void OnAimPressed(InputAction.CallbackContext context);
         void OnAimReleased(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
     }
 }

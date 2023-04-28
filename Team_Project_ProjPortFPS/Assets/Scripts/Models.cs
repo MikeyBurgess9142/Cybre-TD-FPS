@@ -20,7 +20,6 @@ public static class Models
         [Header("---Camera Settings---")]
         public float cameraSensHor;
         public float cameraSensVer;
-        public float cameraSmoothing;
 
         public float ADSSensEffector;
 
@@ -41,13 +40,14 @@ public static class Models
         public float strafeSprintSpeed;
 
         [Header("---Jumping---")]
+        public bool isJumping;
+        public Vector3 jumpDirection;
         public float jumpingHeight;
         public float jumpingFalloff;
         public float fallingSmoothing;
-        public Vector3 jumpDirection;
-        public bool isJumping;
-        public float walkJumpFactor;
         public float backwardJumpFactor;
+        public float angleThreshold;
+        public float jumpTimeWindow;
 
         [Header("---Speed Effectors---")]
         public float speedEffector;
