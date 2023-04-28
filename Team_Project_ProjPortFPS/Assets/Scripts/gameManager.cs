@@ -231,25 +231,27 @@ public class gameManager : MonoBehaviour
        pointsTotal += points;
         pointsTotalText.text = pointsTotal.ToString("F0");
 
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneAt(0))
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneAt(1))
         {
             if (bossesKilled == bossesTotal && civilliansRescued == civillians )
             {
                 pauseState();
-                SceneManager.LoadScene(1);
+                SceneManager.LoadScene(2);
+                unpauseState();
             }
         }
 
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneAt(0))
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneAt(2))
         {
             if (bossesKilled == bossesTotal && civilliansRescued == civillians)
             {
                 pauseState();
-                SceneManager.LoadScene(2);
+                SceneManager.LoadScene(3);
+                unpauseState();
             }
         }
 
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneAt(0))
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneAt(3))
         {
             if (bossesKilled == bossesTotal && civilliansRescued == civillians)
             {

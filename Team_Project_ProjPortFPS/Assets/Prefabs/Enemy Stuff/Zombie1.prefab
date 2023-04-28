@@ -2694,7 +2694,7 @@ MonoBehaviour:
   health: 1
   damage: 2
   pointsOnDeath: 50
-  chaseDistance: 66
+  chaseDistance: 30
   stoppingDistance: 4
   rotationSpeed: 10
   runSpeed: 10
