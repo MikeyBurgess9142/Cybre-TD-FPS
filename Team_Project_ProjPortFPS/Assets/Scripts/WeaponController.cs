@@ -1,12 +1,3 @@
-<<<<<<< Updated upstream
-//using TreeEditor;
-=======
-using System.Collections;
-using System.Net.Sockets;
-using TreeEditor;
->>>>>>> Stashed changes
-using UnityEditor;
-//using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class WeaponController : MonoBehaviour

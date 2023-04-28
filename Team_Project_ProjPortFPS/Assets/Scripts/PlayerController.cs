@@ -30,13 +30,8 @@ public class PlayerController : MonoBehaviour
     Vector3 cameraRotation;
     Vector3 playerRotation;
 
-<<<<<<< Updated upstream
-    [Header("---PlayerStats---")]
-    public int HP;
-=======
     [Header("--- Player Stats ---")]
     [Range(10, 1000)][SerializeField] int HP;
->>>>>>> Stashed changes
 
     [Header("---Preferences---")]
     [SerializeField] Models.PlayerPose playerPose;
@@ -191,15 +186,7 @@ public class PlayerController : MonoBehaviour
         input.Disable();
     }
 
-<<<<<<< Updated upstream
-    private void Start()
-    {
-        respawnPlayer();
-    }
-    void Update()
-=======
     void FixedUpdate()
->>>>>>> Stashed changes
     {
         if (Time.timeScale != 0)
         {
@@ -219,25 +206,12 @@ public class PlayerController : MonoBehaviour
             Leaning();
             Aiming();
             SelectGun();
-<<<<<<< Updated upstream
-            Camera();
-            
-        }
-    }
-
-    
-    //private void LateUpdate()
-    //{
-    //    Camera();
-    //}
-=======
             JumpTimer();
             ShootMouseClick();
 
             Cam();
         }
     }
->>>>>>> Stashed changes
 
     void Cam()
     {
@@ -336,61 +310,7 @@ public class PlayerController : MonoBehaviour
 
         return 1;
     }
-    public void updateHP()
-    {
-        gameManager.instance.playerHPBar.fillAmount = (float)HP / (float)hpOrigin;
-    }
 
-    public void respawnPlayer()
-    {
-        
-        updateHP();
-
-        if (PlayerPrefs.HasKey("PlayerHealth"))
-        {
-
-            float playerPosX = PlayerPrefs.GetFloat("PlayerPosX");
-            float playerPosY = PlayerPrefs.GetFloat("PlayerPosY");
-            float playerPosZ = PlayerPrefs.GetFloat("PlayerPosZ");
-
-
-            float playerRotX = PlayerPrefs.GetFloat("PlayerRotX");
-            float playerRotY = PlayerPrefs.GetFloat("PlayerRotY");
-            float playerRotZ = PlayerPrefs.GetFloat("PlayerRotZ");
-            float playerRotW = PlayerPrefs.GetFloat("PlayerRotW");
-
-
-            HP = PlayerPrefs.GetInt("PlayerHealth");
-            
-
-            // If the gun string is not empty, split it into an array of gun names and add each gun to the gun list
-
-
-            gameManager.instance.civilliansRescued = PlayerPrefs.GetInt("civilliansRescued");
-            gameManager.instance.civilliansRescuedText.text = gameManager.instance.civilliansRescued.ToString("F0");
-            //PlayerPrefs.SetString("CurrentGun", currentGun);
-
-
-            gameManager.instance.bossesKilled = PlayerPrefs.GetInt("BossesKilled");
-            gameManager.instance.bossesKilledText.text = gameManager.instance.bossesKilled.ToString("F0");
-            gameManager.instance.pointsTotal = PlayerPrefs.GetInt("pointsTotal");
-
-            gameManager.instance.pointsTotalText.text = gameManager.instance.pointsTotal.ToString("F0");
-
-
-
-            transform.position = new Vector3(playerPosX, playerPosY, playerPosZ);
-
-        }
-        else
-        {
-            HP = 100;
-            transform.position = gameManager.instance.playerSpawnPos.transform.position;
-        }
-
-
-
-    }
     Vector3 CalculateMoveDirection()
     {
         Vector3 transformForward = transform.forward.normalized;
@@ -772,18 +692,7 @@ public class PlayerController : MonoBehaviour
 
         selectedGun = gunList.Count - 1;
     }
-    public void takeDmg(int dmg)
-    {
-        HP -= dmg;
-        aud.PlayOneShot(audDamage[UnityEngine.Random.Range(0, audDamage.Length)], audDamageVol);
-        updateHP();
-        StartCoroutine(gameManager.instance.playerHit());
-
-<<<<<<< Updated upstream
-        if (HP <= 0)
-        {
-            //zooming = false;
-=======
+   
     public void UpdateHP()
     {
         gameManager.instance.playerHPBar.fillAmount = (float)HP / (float)hpOrigin;
@@ -804,11 +713,50 @@ public class PlayerController : MonoBehaviour
 
     public void RespawnPlayer()
     {
-        HP = hpOrigin;
-        UpdateHP();
-        characterController.enabled = false;
-        transform.position = gameManager.instance.playerSpawnPos.transform.position;
-        characterController.enabled = true;
+        if (PlayerPrefs.HasKey("PlayerHealth"))
+        {
+
+            float playerPosX = PlayerPrefs.GetFloat("PlayerPosX");
+            float playerPosY = PlayerPrefs.GetFloat("PlayerPosY");
+            float playerPosZ = PlayerPrefs.GetFloat("PlayerPosZ");
+
+
+            float playerRotX = PlayerPrefs.GetFloat("PlayerRotX");
+            float playerRotY = PlayerPrefs.GetFloat("PlayerRotY");
+            float playerRotZ = PlayerPrefs.GetFloat("PlayerRotZ");
+            float playerRotW = PlayerPrefs.GetFloat("PlayerRotW");
+
+
+            HP = PlayerPrefs.GetInt("PlayerHealth");
+
+
+            // If the gun string is not empty, split it into an array of gun names and add each gun to the gun list
+
+
+            gameManager.instance.civilliansRescued = PlayerPrefs.GetInt("civilliansRescued");
+            gameManager.instance.civilliansRescuedText.text = gameManager.instance.civilliansRescued.ToString("F0");
+            //PlayerPrefs.SetString("CurrentGun", currentGun);
+
+
+            gameManager.instance.bossesKilled = PlayerPrefs.GetInt("BossesKilled");
+            gameManager.instance.bossesKilledText.text = gameManager.instance.bossesKilled.ToString("F0");
+            gameManager.instance.pointsTotal = PlayerPrefs.GetInt("pointsTotal");
+
+            gameManager.instance.pointsTotalText.text = gameManager.instance.pointsTotal.ToString("F0");
+
+
+
+            transform.position = new Vector3(playerPosX, playerPosY, playerPosZ);
+
+        }
+        else
+        {
+            HP = hpOrigin;
+            UpdateHP();
+            characterController.enabled = false;
+            transform.position = gameManager.instance.playerSpawnPos.transform.position;
+            characterController.enabled = true;
+        }
     }
 
     public void TakeDmg(int dmg)
@@ -821,13 +769,10 @@ public class PlayerController : MonoBehaviour
         if (HP <= 0)
         {
             isAiming = false;
->>>>>>> Stashed changes
             gameManager.instance.playerDead();
             gameManager.instance.updateGameGoal(0, 0, 0, 0, 0, -(gameManager.instance.pointsTotal / 10), true);
         }
     }
-<<<<<<< Updated upstream
-=======
 
     void Shoot()
     {
@@ -895,7 +840,6 @@ public class PlayerController : MonoBehaviour
         canShoot = true;
     }
 
->>>>>>> Stashed changes
     void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(playerTransform.position, playerSettings.isGroundedRadius);
