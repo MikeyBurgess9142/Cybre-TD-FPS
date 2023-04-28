@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2346999988050449301}
   m_Layer: 0
   m_Name: PersonalTurret
-  m_TagString: Untagged
+  m_TagString: PersonalTurret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,16 +47,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29b80d94bcf882e46a5f43c1abdec655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 0}
-  range: 10
-  rotationSpeed: 100
-  fireRate: 10
+  firePoint: {fileID: 2278582906469762264}
+  range: 30
+  rotationSpeed: 300
+  fireRate: 0.5
   playerTransform: {fileID: 0}
   followSpeed: 1
-  followDistance: 0
+  followDistance: 2
   moveDistance: 1
   moveSpeed: 1
-  maxRotationAngle: 90
+  maxRotationAngle: 180
   bulletPrefab: {fileID: 396149146653143692, guid: 4546579a7d8418043b9c54448f8079af, type: 3}
   bulletDmg: 5
 --- !u!54 &2346999988050449290
@@ -86,7 +86,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 4
+  m_Radius: 12
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3264156802507203367
 GameObject:
@@ -136,16 +136,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 499964, guid: 32303dc3554fcfc419798a1f0235187f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.21334
+      objectReference: {fileID: 0}
+    - target: {fileID: 499964, guid: 32303dc3554fcfc419798a1f0235187f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.21334
+      objectReference: {fileID: 0}
+    - target: {fileID: 499964, guid: 32303dc3554fcfc419798a1f0235187f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.21334
+      objectReference: {fileID: 0}
+    - target: {fileID: 499964, guid: 32303dc3554fcfc419798a1f0235187f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.78
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 499964, guid: 32303dc3554fcfc419798a1f0235187f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.36
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 499964, guid: 32303dc3554fcfc419798a1f0235187f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.62
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 499964, guid: 32303dc3554fcfc419798a1f0235187f, type: 3}
       propertyPath: m_LocalRotation.w

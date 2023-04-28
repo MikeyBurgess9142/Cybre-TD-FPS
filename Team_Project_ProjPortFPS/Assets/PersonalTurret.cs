@@ -8,11 +8,11 @@ public class PersonalTurret : MonoBehaviour
     public Transform firePoint;
     public float range = 10f;
     public float rotationSpeed = 5f;
-    public float fireRate = 0.2f; // changed from 1f to 0.2f
+    public float fireRate = 0.2f;
     private float nextFireTime = 0f;
     public Transform playerTransform;
     public float followSpeed = 1f;
-    public float followDistance = 5f;
+    public float followDistance = 2f;
     public float moveDistance = 1f;
     public float moveSpeed = 1f;
     public float maxRotationAngle;
@@ -42,7 +42,7 @@ public class PersonalTurret : MonoBehaviour
         movementOffset = Mathf.PingPong(Time.time * moveSpeed, moveDistance);
 
         // Calculate the target position based on the player's position and the movement offset
-        Vector3 targetPosition = playerTransform.position + new Vector3(0f, followDistance + movementOffset, 0f);
+        Vector3 targetPosition = playerTransform.position + new Vector3(0f, followDistance + movementOffset - 1f, 0f);
 
         // Smoothly move the turret towards the target position
         transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * followSpeed);
@@ -99,7 +99,8 @@ public class PersonalTurret : MonoBehaviour
         Quaternion targetRotation;
         if (target != null)
         {
-            Vector3 direction = (target.transform.position + new Vector3(0, 0.5f, 0)) - transform.position;
+            Vector3 direction = (target.transform.position + new Vector3(0, target.transform.localScale.y / 2, 0)) - transform.position;
+            direction.y = 0; // Ignore the Y-axis difference between the turret and the target
             targetRotation = Quaternion.LookRotation(direction);
 
             // Calculate the angle between the turret and the target
@@ -128,7 +129,7 @@ public class PersonalTurret : MonoBehaviour
             TurrentBullet turret = bullet.GetComponent<TurrentBullet>();
             turret.damage = bulletDmg;
 
-            nextFireTime = Time.time + 5f; // set nextFireTime to five seconds in the future
+            nextFireTime = Time.time + fireRate; // set nextFireTime to five seconds in the future
         }
     }
 }
