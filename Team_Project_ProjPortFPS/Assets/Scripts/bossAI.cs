@@ -133,7 +133,7 @@ public class bossAI : MonoBehaviour, IDamage
                 GetComponent<CapsuleCollider>().enabled = false;
             }
            
-            gameManager.instance.updateGameGoal(0, 1, 0, 0, 0, pointValue);
+            gameManager.instance.updateGameGoal(0, 0, 1, 0, 0, pointValue);
             agent.enabled = false;
             GameObject.Destroy(gameObject);
         }

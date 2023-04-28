@@ -215,7 +215,7 @@ public class gameManager : MonoBehaviour
     {
         enemiesAlive = enmsAlive;
 
-    bossesTotal += bamt;
+        bossesTotal += bamt;
         bossesAliveText.text = bossesTotal.ToString("F0");
 
         bossesKilled += bkamt;
