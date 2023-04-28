@@ -715,28 +715,22 @@ public class PlayerController : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("PlayerHealth"))
         {
-
             float playerPosX = PlayerPrefs.GetFloat("PlayerPosX");
             float playerPosY = PlayerPrefs.GetFloat("PlayerPosY");
             float playerPosZ = PlayerPrefs.GetFloat("PlayerPosZ");
-
 
             float playerRotX = PlayerPrefs.GetFloat("PlayerRotX");
             float playerRotY = PlayerPrefs.GetFloat("PlayerRotY");
             float playerRotZ = PlayerPrefs.GetFloat("PlayerRotZ");
             float playerRotW = PlayerPrefs.GetFloat("PlayerRotW");
 
-
             HP = PlayerPrefs.GetInt("PlayerHealth");
 
-
             // If the gun string is not empty, split it into an array of gun names and add each gun to the gun list
-
 
             gameManager.instance.civilliansRescued = PlayerPrefs.GetInt("civilliansRescued");
             gameManager.instance.civilliansRescuedText.text = gameManager.instance.civilliansRescued.ToString("F0");
             //PlayerPrefs.SetString("CurrentGun", currentGun);
-
 
             gameManager.instance.bossesKilled = PlayerPrefs.GetInt("BossesKilled");
             gameManager.instance.bossesKilledText.text = gameManager.instance.bossesKilled.ToString("F0");
@@ -744,10 +738,7 @@ public class PlayerController : MonoBehaviour
 
             gameManager.instance.pointsTotalText.text = gameManager.instance.pointsTotal.ToString("F0");
 
-
-
             transform.position = new Vector3(playerPosX, playerPosY, playerPosZ);
-
         }
         else
         {

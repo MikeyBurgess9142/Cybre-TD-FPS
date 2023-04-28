@@ -26,7 +26,7 @@ public class buttonFunctions : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
-
+    
 
     public void respawnPlayer()
     {
@@ -51,6 +51,7 @@ public class buttonFunctions : MonoBehaviour
             gameManager.instance.unpauseState();
         }
     }
+
     public void PersonalTurrent()
     {
         if (gameManager.instance.pointsTotal >= 2100)
@@ -61,6 +62,7 @@ public class buttonFunctions : MonoBehaviour
             gameManager.instance.unpauseState();
         }
     }
+
     public void gunSmg()
     {
         if (gameManager.instance.pointsTotal >= 1000)

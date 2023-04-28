@@ -114,13 +114,10 @@ public class gameManager : MonoBehaviour
         playerControllerScript = player.GetComponent<PlayerController>();
         playerSpawnPos = GameObject.FindGameObjectWithTag("Player Spawn Pos");
         personalTurret = GameObject.Find("TurretPos");
-       
-
     }
 
     private void Start()
     {
-
         pointsTotalText.text = pointsTotal.ToString("F0");
         //StartCoroutine(startWave());
     }
@@ -146,18 +143,13 @@ public class gameManager : MonoBehaviour
                 unpauseState();
             }
         }
-
     }
 
     public  void LoadGame()
-    {
-       
-        
+    {   
         string sceneName = PlayerPrefs.GetString("CurrentScene");
         SceneManager.LoadScene(sceneName);
         unpauseState();
-       
-
     }
     public void SpawnPlayer()
     {
@@ -167,8 +159,7 @@ public class gameManager : MonoBehaviour
         player.transform.rotation = playerRot;
     }
     public  void SaveGame()
-    {
-       
+    {    
         PlayerPrefs.SetInt("PlayerHealth", playerScript.HP);
         PlayerPrefs.SetInt("civilliansRescued", civilliansRescued);
       

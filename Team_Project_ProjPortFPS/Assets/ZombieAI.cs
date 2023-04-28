@@ -186,8 +186,7 @@ public class ZombieAI : MonoBehaviour
     public void ApplyDamageToTarget()
     {
         if (currentAttackTarget != null)
-        {
-            
+        {    
             if (currentAttackTarget.CompareTag("Barrier"))
             {
                 Debug.Log("Attack");
@@ -195,7 +194,9 @@ public class ZombieAI : MonoBehaviour
             }
             if (currentAttackTarget.CompareTag("Player"))
             {
-                gameManager.instance.player.GetComponent<playerController_Old>().takeDmg(damage);
+                //gameManager.instance.player.GetComponent<playerController_Old>().takeDmg(damage);
+                gameManager.instance.playerControllerScript.GetComponent<PlayerController>().TakeDmg(damage);
+
             }
             if (currentAttackTarget.CompareTag("Ally"))
             {
