@@ -129,8 +129,8 @@ public class gameManager : MonoBehaviour
     {
         //currentplayerPos = playerScript.gameObject.transform.position;
         //currentplayerRot = playerScript.gameObject.transform.rotation;
-        currentplayerPos = playerControllerScript.gameObject.transform.position;
-        currentplayerRot = playerControllerScript.gameObject.transform.rotation;
+        //currentplayerPos = playerControllerScript.gameObject.transform.position;
+        //currentplayerRot = playerControllerScript.gameObject.transform.rotation;
         if (Input.GetButtonDown("Cancel") && activeMenu == null)
         {
             isPaused = !isPaused;
