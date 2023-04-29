@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     Vector3 playerRotation;
 
     [Header("--- Player Stats ---")]
-    [Range(10, 1000)][SerializeField] int HP;
+    [Range(10, 1000)] public int HP;
 
     [Header("---Preferences---")]
     [SerializeField] Models.PlayerPose playerPose;
@@ -267,11 +267,13 @@ public class PlayerController : MonoBehaviour
 
         if (!isSprinting)
         {
+            canShoot = true;
             verticalSpeed = playerSettings.forwardWalkSpeed;
             horizontalSpeed = playerSettings.strafeWalkSpeed;
         }
         else
         {
+            canShoot = false;
             verticalSpeed = playerSettings.forwardSprintSpeed;
             horizontalSpeed = playerSettings.strafeSprintSpeed;
         }
@@ -800,7 +802,6 @@ public class PlayerController : MonoBehaviour
     IEnumerator Shooting()
     {
         isShooting = true;
-        canShoot = false;
         aud.PlayOneShot(audShoot, audShootVol);
         Instantiate(shootEffect, shootEffectPos.position, shootEffect.transform.rotation);
 
@@ -810,7 +811,7 @@ public class PlayerController : MonoBehaviour
             lineRendered.enabled = true;
             lineRendered.SetPosition(0, shootEffectPos.position);
             lineRendered.SetPosition(1, hit.point);
-            Debug.Log(hit.collider.gameObject.name);
+            //Debug.Log(hit.collider.gameObject.name);
             if (hit.collider.GetComponent<IDamage>() != null)
             {
                 hit.collider.GetComponent<IDamage>().takeDmg(shootDmg);
@@ -828,7 +829,6 @@ public class PlayerController : MonoBehaviour
         yield return shootRateWait;
         lineRendered.enabled = false;
         isShooting = false;
-        canShoot = true;
     }
 
     void OnDrawGizmos()

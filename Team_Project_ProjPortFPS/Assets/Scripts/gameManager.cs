@@ -160,7 +160,7 @@ public class gameManager : MonoBehaviour
     }
     public  void SaveGame()
     {    
-        PlayerPrefs.SetInt("PlayerHealth", playerScript.HP);
+        PlayerPrefs.SetInt("PlayerHealth", playerControllerScript.HP);
         PlayerPrefs.SetInt("civilliansRescued", civilliansRescued);
       
         PlayerPrefs.SetInt("pointsTotal", pointsTotal);
