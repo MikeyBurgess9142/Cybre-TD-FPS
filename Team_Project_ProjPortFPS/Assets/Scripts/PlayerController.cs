@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.XR;
@@ -273,9 +274,13 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            canShoot = false;
             verticalSpeed = playerSettings.forwardSprintSpeed;
             horizontalSpeed = playerSettings.strafeSprintSpeed;
+        }
+
+        if (canShoot && isShooting)
+        {
+            isSprinting = false;
         }
 
         float speedEffector = GetSpeedEffector();
@@ -589,7 +594,7 @@ public class PlayerController : MonoBehaviour
 
     void ToggleSprint()
     {
-        if (inputMovement.y <= 0.2f || isAiming || playerPose == Models.PlayerPose.Prone || isShooting)
+        if (inputMovement.y <= 0.2f || isAiming || playerPose == Models.PlayerPose.Prone)
         {
             isSprinting = false;
             return;
@@ -694,7 +699,7 @@ public class PlayerController : MonoBehaviour
 
         selectedGun = gunList.Count - 1;
     }
-   
+
     public void UpdateHP()
     {
         gameManager.instance.playerHPBar.fillAmount = (float)HP / (float)hpOrigin;
