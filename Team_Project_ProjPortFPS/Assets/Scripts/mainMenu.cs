@@ -28,10 +28,13 @@ public class mainMenu : MonoBehaviour
 
 
         string sceneName = PlayerPrefs.GetString("CurrentScene");
-        SceneManager.LoadScene(sceneName);
-        Time.timeScale = 1;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+       if (PlayerPrefs.HasKey("PlayerHealth")) {
+            SceneManager.LoadScene(sceneName);
+            Time.timeScale = 1;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        
 
 
     }
