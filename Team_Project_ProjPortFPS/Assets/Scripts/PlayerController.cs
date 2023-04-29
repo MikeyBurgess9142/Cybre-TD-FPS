@@ -587,7 +587,7 @@ public class PlayerController : MonoBehaviour
 
     void ToggleSprint()
     {
-        if (inputMovement.y <= 0.2f || isAiming || playerPose == Models.PlayerPose.Prone)
+        if (inputMovement.y <= 0.2f || isAiming || playerPose == Models.PlayerPose.Prone || isShooting)
         {
             isSprinting = false;
             return;
