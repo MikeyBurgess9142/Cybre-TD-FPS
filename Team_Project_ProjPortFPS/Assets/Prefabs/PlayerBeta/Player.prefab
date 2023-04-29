@@ -736,10 +736,10 @@ MonoBehaviour:
     invertY: 0
     holdSprint: 1
     movementSmoothing: 0.05
-    forwardWalkSpeed: 5
-    backwardWalkSpeed: 2.5
-    strafeWalkSpeed: 5
-    forwardSprintSpeed: 10
+    forwardWalkSpeed: 10
+    backwardWalkSpeed: 5
+    strafeWalkSpeed: 10
+    forwardSprintSpeed: 15
     strafeSprintSpeed: 7
     isJumping: 0
     jumpDirection: {x: 0, y: 0, z: 0}
