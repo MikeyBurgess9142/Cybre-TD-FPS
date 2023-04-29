@@ -222,7 +222,7 @@ public class gameManager : MonoBehaviour
        pointsTotal += points;
         pointsTotalText.text = pointsTotal.ToString("F0");
 
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneAt(1))
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneAt(0))
         {
             if (bossesKilled == bossesTotal && civilliansRescued == civillians )
             {
@@ -232,7 +232,7 @@ public class gameManager : MonoBehaviour
             }
         }
 
-        else if (SceneManager.GetActiveScene() == SceneManager.GetSceneAt(2))
+        else if (SceneManager.GetActiveScene() == SceneManager.GetSceneAt(0))
         {
             if (bossesKilled == bossesTotal && civilliansRescued == civillians)
             {
@@ -242,7 +242,7 @@ public class gameManager : MonoBehaviour
             }
         }
 
-        else if (SceneManager.GetActiveScene() == SceneManager.GetSceneAt(3))
+        else if (SceneManager.GetActiveScene() == SceneManager.GetSceneAt(0))
         {
             if (bossesKilled == bossesTotal && civilliansRescued == civillians)
             {
