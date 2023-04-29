@@ -93,7 +93,7 @@ public class bossAI : MonoBehaviour, IDamage
     bool canSeePlayer()
     {
         playerDir = (gameManager.instance.player.transform.position - headPos.position).normalized;
-        shootDir = (gameManager.instance.playerControllerScript.playerHitBox.position - headPos.position).normalized;
+        shootDir = (gameManager.instance.playerControllerScript.playerHitBox.position - shootPos.position).normalized;
         angleToPlayer = Vector3.Angle(new Vector3(playerDir.x, 0, playerDir.z), transform.forward);
 
         RaycastHit hit;

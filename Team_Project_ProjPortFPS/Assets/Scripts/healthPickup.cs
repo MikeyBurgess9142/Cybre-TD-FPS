@@ -10,7 +10,7 @@ public class healthPickup : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            gameManager.instance.playerScript.healthPickup(health);
+            gameManager.instance.playerControllerScript.HealthPickup(health);
             Destroy(gameObject);
         }
     }

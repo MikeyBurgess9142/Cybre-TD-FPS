@@ -26,12 +26,11 @@ public class buttonFunctions : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
-    
 
     public void respawnPlayer()
     {
         gameManager.instance.unpauseState();
-        gameManager.instance.playerScript.respawnPlayer();
+        gameManager.instance.playerControllerScript.RespawnPlayer();
     }
 
     //Shop Menu Buttons
