@@ -20,7 +20,7 @@ public class bullet : MonoBehaviour
         if (other.CompareTag("Player") && !hit)
         {
             hit = true;
-            gameManager.instance.playerScript.takeDmg(dmg);
+            gameManager.instance.playerControllerScript.TakeDmg(dmg);
         }
 
         if (other.CompareTag("Barrier") && !hit)
