@@ -27,6 +27,7 @@ public class PersonalTurret : MonoBehaviour
     private void Start()
     {
         startPosition = transform.position;
+        playerTransform = GameObject.Find("Player").transform;
     }
     private void Update()
     {
