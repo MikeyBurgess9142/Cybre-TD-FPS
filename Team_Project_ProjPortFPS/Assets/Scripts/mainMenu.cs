@@ -8,19 +8,19 @@ public class mainMenu : MonoBehaviour
     public void LevelOne()
     {
         SceneManager.LoadScene(1);
-        gameManager.instance.unpauseState();
+        //gameManager.instance.unpauseState();
     }
 
     public void LevelTwo()
     {
         SceneManager.LoadScene(2);
-        gameManager.instance.unpauseState();
+        //gameManager.instance.unpauseState();
     }
 
     public void LevelThree()
     {
         SceneManager.LoadScene(3);
-        gameManager.instance.unpauseState();
+        //gameManager.instance.unpauseState();
     }
 
     public void LoadGame()
