@@ -2177,6 +2177,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7572155865118511095, guid: a8c43c5a69946824c9436e54ee8bb4cc, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572155865118511095, guid: a8c43c5a69946824c9436e54ee8bb4cc, type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572155865118511095, guid: a8c43c5a69946824c9436e54ee8bb4cc, type: 3}
+      propertyPath: m_Size.z
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8c43c5a69946824c9436e54ee8bb4cc, type: 3}
 --- !u!1001 &151465299
@@ -3330,6 +3342,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1561979618}
     m_Modifications:
+    - target: {fileID: 4473222058608260189, guid: b21b9542754fcd846b99087e9bd9cb83, type: 3}
+      propertyPath: playerHitBox
+      value: 
+      objectReference: {fileID: 420438947}
     - target: {fileID: 5732308996374277746, guid: b21b9542754fcd846b99087e9bd9cb83, type: 3}
       propertyPath: m_Name
       value: Enemy(Boss 1)
@@ -6909,6 +6925,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 731934552796179561, guid: 395914223e5a20047ac9a81baf95c3d4, type: 3}
   m_PrefabInstance: {fileID: 416815487}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &420438947 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7572155865118511088, guid: a8c43c5a69946824c9436e54ee8bb4cc, type: 3}
+  m_PrefabInstance: {fileID: 151336790}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &422969817
 PrefabInstance:
@@ -11097,6 +11118,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1561979618}
     m_Modifications:
+    - target: {fileID: 4473222058608260189, guid: b21b9542754fcd846b99087e9bd9cb83, type: 3}
+      propertyPath: playerHitBox
+      value: 
+      objectReference: {fileID: 420438947}
     - target: {fileID: 5732308996374277746, guid: b21b9542754fcd846b99087e9bd9cb83, type: 3}
       propertyPath: m_Name
       value: Enemy(Boss 1)
@@ -22706,6 +22731,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1561979618}
     m_Modifications:
+    - target: {fileID: 4473222058608260189, guid: b21b9542754fcd846b99087e9bd9cb83, type: 3}
+      propertyPath: playerHitBox
+      value: 
+      objectReference: {fileID: 420438947}
     - target: {fileID: 5732308996374277746, guid: b21b9542754fcd846b99087e9bd9cb83, type: 3}
       propertyPath: m_Name
       value: Enemy(Boss 1)
